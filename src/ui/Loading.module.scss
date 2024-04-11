@@ -1,0 +1,51 @@
+.loader {
+    --v-width: 100%;
+    --v-height: 100%;
+    --v-size: 64px;
+    --v-min-height: var(--v-size);
+    --v-thickness: 8px;
+    --v-color: var(--c-primary);
+    --v-secondary-color: var(--c-primary);
+
+    width: var(--v-width);
+    height: var(--v-height);
+    min-height: var(--v-min-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+        display: block;
+        position: absolute;
+        width: var(--v-size);
+        height: var(--v-size);
+        margin: var(--v-thickness);
+        border: var(--v-thickness) solid var(--v-color);
+        border-radius: 50%;
+        animation: loading-ring 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: var(--v-color) transparent transparent transparent;
+
+        &:nth-child(1) {
+            animation-delay: -0.3s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: -0.15s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0s;
+            border-color: var(--v-secondary-color) transparent transparent transparent;
+        }
+    }
+
+    @keyframes loading-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

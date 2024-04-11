@@ -1,0 +1,16 @@
+@use './tokens' as *;
+
+@mixin baseInput {
+    color: var(--c-fg);
+    background-color: var(--c-bg-light);
+    border-radius: $radius-md;
+    font-size: $font-md;
+    border: var(--b-light);
+    transition:
+        outline-color var(--t-fast),
+        border var(--t-mid);
+
+    &:hover {
+        border: 1px solid var(--c-primary);
+    }
+}

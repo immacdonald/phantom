@@ -1,0 +1,81 @@
+@use '../tokens' as *;
+@use '../mixin' as *;
+
+.toggle {
+    --v-width: auto;
+    --v-half: auto;
+    --v-padding: 4px;
+
+    position: relative;
+    width: fit-content;
+    height: 3em;
+    overflow: hidden;
+    font-weight: bold;
+
+    @include baseInput;
+}
+
+.checkbox {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+
+    &:before,
+    &:after {
+        display: none !important;
+    }
+}
+
+.states {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $radius-sm;
+    width: var(--v-width);
+    height: 100%;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.before,
+.indicator,
+.after {
+    padding: var(--v-padding);
+    border-radius: $radius-sm;
+    transition: 0.3s ease all;
+}
+
+.before,
+.after {
+    width: var(--v-half);
+    text-align: center;
+    line-height: 1;
+    color: var(--c-fg);
+    z-index: 1;
+}
+
+.indicator {
+    position: absolute;
+    width: calc(50% - var(--v-padding));
+    height: calc(100% - 2 * var(--v-padding));
+    left: var(--v-padding);
+    background-color: var(--c-primary);
+    z-index: 0;
+}
+
+.checkbox:checked+.states .indicator {
+    left: calc(50%);
+}
+
+.checkbox:checked+.states .after {
+    color: var(--c-fg-on-primary);
+}
+
+.checkbox:not(:checked)+.states .before {
+    color: var(--c-fg-on-primary);
+}

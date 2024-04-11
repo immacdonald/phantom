@@ -1,0 +1,216 @@
+@use '../tokens' as *;
+
+@mixin outline($border, $borderHover, $borderSelected) {
+    background-color: var(--c-bg-light);
+    border: 1px solid $border;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.active {
+            border-color: $borderHover;
+            background-color: var(--c-bg-dim);
+        }
+
+        &:active {
+            border-color: $borderSelected;
+        }
+    }
+}
+
+@mixin ghost($hover) {
+    border: none;
+    background: transparent;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.active {
+            background-color: $hover;
+        }
+
+        &:active {
+            background-color: var(--a-dark);
+        }
+    }
+}
+
+@mixin filled($background, $backgroundHover, $backgroundSelected) {
+    background-color: $background;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.active {
+            background-color: $backgroundHover;
+        }
+
+        &:active {
+            background-color: $backgroundSelected;
+        }
+    }
+}
+
+.clear {
+    // Remove regular button styling
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: $font-md;
+    font-family: var(--font-body);
+    padding: $sm;
+    border-radius: $radius-sm;
+}
+
+.button {
+    @extend .clear;
+
+    --v-size: 40px;
+    --v-internal: 24px;
+    --v-font: #{$font-md};
+
+    &.large {
+        --v-size: 64px;
+        --v-internal: 40px;
+    }
+
+    &.small {
+        --v-size: 32px;
+        --v-internal: 12px;
+        --v-font: #{$font-xs};
+    }
+
+    width: auto;
+
+    &.full {
+        width: 100%;
+    }
+
+    //min-width: var(--v-size);
+    height: var(--v-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $sm;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--v-font);
+    font-weight: $semi;
+    border-radius: $radius-sm;
+    text-transform: uppercase;
+
+    transition:
+        background var(--t-mid),
+        transform var(--t-mid),
+        box-shadow var(--t-mid),
+        border-color var(--t-mid),
+        outline var(--t-mid),
+        color var(--t-mid);
+
+    span {
+        height: var(--v-internal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-wrap: nowrap;
+
+        &:not(:last-child) {
+            padding-right: $xs;
+        }
+    }
+
+    svg {
+        font-size: var(--v-size);
+        width: var(--v-internal);
+        height: var(--v-internal);
+    }
+
+    --v-light: var(--c-primary-light);
+    --v-medium: var(--c-primary);
+    --v-dark: var(--c-primary-dark);
+
+    &[data-mode='error'] {
+        --v-light: var(--c-critical);
+        --v-medium: var(--c-critical);
+        --v-dark: var(--c-bg-critical);
+    }
+
+    &[data-mode='accent'] {
+        --v-light: var(--c-accent);
+        --v-medium: var(--c-accent);
+        --v-dark: var(--c-bg-accent);
+    }
+
+    &.filled {
+        @include filled(var(--v-medium), var(--v-dark), var(--v-dark));
+        --v-text: var(--c-fg-on-primary);
+        --v-text-hover: var(--c-fg-on-primary);
+        --v-text-active: var(--c-fg-on-primary);
+    }
+
+    &.outline {
+        @include outline(var(--v-medium), var(--v-dark), var(--v-dark));
+        --v-text: var(--v-medium);
+        --v-text-hover: var(--v-medium);
+        --v-text-active: var(--v-dark);
+    }
+
+    &.ghost {
+        @include ghost(var(--a-faint));
+        --v-text: var(--c-primary);
+        --v-text-hover: var(--c-primary);
+        --v-text-active: var(--c-primary);
+    }
+
+    color: var(--v-text);
+
+    &.hasLabel {
+        padding: $sm $md;
+    }
+
+    &.smallIcon {
+        svg {
+            width: 20px !important;
+        }
+    }
+
+    &.rounded {
+        border-radius: var(--v-size);
+    }
+
+    &:not([disabled], .disabled) {
+        &:focus {
+            outline: none;
+            box-shadow: var(--shadow-low);
+        }
+
+        &:hover,
+        &.active {
+            color: var(--v-text-hover);
+        }
+
+        &:active {
+            color: var(--v-text-active);
+            filter: brightness(var(--f-active-brightness));
+        }
+    }
+
+    &.loading {
+        --v-color: var(--v-text);
+        --v-secondary-color: var(--v-text);
+        display: grid;
+        place-items: center;
+
+        > * {
+            grid-row: 1;
+            grid-column: 1;
+        }
+    }
+
+    &[disabled], &.disabled {
+        background-color: var(--c-bg-light);
+        border: none;
+        color: var(--c-fg-light);
+        cursor: not-allowed;
+        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+    }
+}

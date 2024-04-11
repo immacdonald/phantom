@@ -46,5 +46,9 @@
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "react-router-dom": "^6.22.3"
   }
 }
