@@ -1,4 +1,5 @@
 import {postcssModules, sassPlugin} from 'esbuild-sass-plugin'
+import { copy } from 'esbuild-plugin-copy';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
@@ -10,11 +11,21 @@ export default defineConfig({
   minify: true,
   bundle: true,
   skipNodeModulesBundle: true,
-  entry: ['src/index.ts', 'src/components/index.ts'],
+  entry: ['src/index.ts', '!src/ui/'],
   target: 'es2020',
   outDir: 'lib',
-  esbuildPlugins: [sassPlugin({
-    type: "style",
-    transform: postcssModules({})
-  })],
+  esbuildPlugins: [
+    sassPlugin({
+      type: "style",
+      transform: postcssModules({})
+    }),
+    copy({
+      resolveFrom: 'cwd',
+      assets: {
+        from: ['./src/ui/**'],
+        to: ['./lib/ui'],
+      },
+      watch: true,
+    }),
+],
 })
