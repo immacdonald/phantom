@@ -11,8 +11,8 @@ export default defineConfig({
   minify: true,
   bundle: true,
   skipNodeModulesBundle: true,
-  entry: ['src/index.ts', '!src/ui/'],
-  external: ['src/ui'],
+  entry: ['src/index.ts'],// '!src/ui'],
+  //external: ['src/', '!src/index.ts'],
   target: 'es2020',
   outDir: 'lib',
   esbuildPlugins: [
@@ -23,8 +23,8 @@ export default defineConfig({
     copy({
       resolveFrom: 'cwd',
       assets: {
-        from: ['./src/ui/**'],
-        to: ['./lib/ui'],
+        from: ['./src/**'],
+        to: ['./lib/'],
       },
       watch: true,
     }),

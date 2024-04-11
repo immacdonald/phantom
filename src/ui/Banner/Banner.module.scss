@@ -1,0 +1,43 @@
+.banner {
+    position: absolute;
+    top: $sm;
+    min-width: min(max(50%, 320px), 95%);
+    min-height: 48px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-fg-on-primary);
+
+    border-radius: $radius-md;
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-high);
+
+    opacity: 0;
+    transform: translateY(-120%);
+    transition:
+        transform var(--t-slow),
+        opacity var(--t-slow);
+
+    &[data-state='on'] {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    .message {
+        width: fit-content;
+        font-size: $font-md;
+        font-weight: $bold;
+    }
+
+    &[data-mode='error'] {
+        background-color: var(--c-bg-critical);
+        border-color: var(--c-critical);
+    }
+
+    &[data-mode='success'] {
+        background: var(--c-bg-positive);
+        border-color: var(--c-positive);
+    }
+}

@@ -1,0 +1,28 @@
+.modals {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    visibility: none;
+    pointer-events: none;
+    backdrop-filter: blur(0px);
+    transition:
+        backdrop-filter var(--t-mid),
+        background-color var(--t-mid);
+
+    &.active {
+        visibility: visible;
+        pointer-events: all;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur($xxs);
+    }
+}

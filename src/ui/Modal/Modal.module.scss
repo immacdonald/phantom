@@ -1,0 +1,51 @@
+.modal {
+    display: flex;
+    position: relative;
+    width: 25%;
+    min-width: 480px;
+    max-height: 90%;
+
+    border-radius: $radius-lg;
+    background-color: var(--c-bg-light);
+    box-shadow: var(--shadow-high);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: $md;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-self: flex-end;
+    margin-top: $md;
+    gap: $sm;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    margin-top: $sm;
+    margin-bottom: $xs;
+    align-self: flex-start;
+    align-items: center;
+}
+
+.message {
+    margin: $xs;
+    width: 100%;
+}

@@ -1,11 +1,12 @@
 import React, { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import style from './Toggle.module.scss';
+import { Callback } from '../../../types';
 
 interface ToggleProps {
     checked?: string;
     notChecked?: string;
     defaultState?: boolean;
-    onChange?: (boolean) => void;
+    onChange?: Callback<boolean>;
 }
 
 const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultState = false, onChange = () => {} }: ToggleProps) => {

@@ -10,3 +10,6 @@ export type ResponsiveObject<T> = {
 };
 
 export type ResponsiveType<T> = T | ResponsiveObject<T>;
+
+export type Callback<T> = (reponse: T) => void;
+

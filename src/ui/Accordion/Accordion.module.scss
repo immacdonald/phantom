@@ -1,0 +1,45 @@
+.accordion {
+    margin: $xs 0;
+    border-top: var(--b-light);
+    border-bottom: var(--b-light);
+    border-radius: $radius-sm;
+
+    .toggle {
+        width: 100%;
+
+        .button {
+            justify-content: flex-start;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            svg {
+                transform: rotate(-90deg);
+                transition: transform var(--t-mid);
+            }
+        }
+    }
+
+    &.open {
+        .button {
+            svg {
+                transform: rotate(0deg);
+            }
+        }
+    }
+
+    .wrapper {
+        height: 0px;
+        margin: 0px;
+        overflow: hidden;
+        transition: height var(--t-mid);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+
+        .content {
+            height: auto;
+            padding: $sm;
+            border-radius: $radius-sm;
+            overflow-y: visible;
+        }
+    }
+}

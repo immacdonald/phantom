@@ -2,17 +2,16 @@
   "name": "@imacdonald/phantom",
   "version": "0.0.1",
   "description": "React Phantom Design and Component Library",
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "type": "module",
   "files": [
-    "lib"
+    "src"
   ],
   "exports": {
-    ".": "./lib/index.js",
-    "./ui": "./lib/ui/index.js",
-    "./ui/style": "./lib/ui/tokens.scss"
+    ".": "./src/index.js",
+    "./ui": "./src/ui/index.js",
+    "./ui/style": "./src/ui/tokens.scss"
   },
   "scripts": {
     "build": "rm -rf ./lib && cp -R ./src ./lib",
@@ -49,6 +48,7 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "react-select": "^5.8.0"
   }
 }
