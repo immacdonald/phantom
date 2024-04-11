@@ -15,5 +15,5 @@
     "strictPropertyInitialization": false,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "types.d.ts"],
 }

@@ -1,5 +1,3 @@
-@use '../tokens' as *;
-
 @mixin outline($border, $borderHover, $borderSelected) {
     background-color: var(--c-bg-light);
     border: 1px solid $border;

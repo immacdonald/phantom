@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
-import Loading from '../Loading';
+import Loading from '../../Loading';
 import style from './Button.module.scss';
 import { Link } from 'react-router-dom';
 

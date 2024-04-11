@@ -12,13 +12,14 @@ export default defineConfig({
   bundle: true,
   skipNodeModulesBundle: true,
   entry: ['src/index.ts', '!src/ui/'],
+  external: ['src/ui'],
   target: 'es2020',
   outDir: 'lib',
   esbuildPlugins: [
-    sassPlugin({
+    /*sassPlugin({
       type: "style",
       transform: postcssModules({})
-    }),
+    }),*/
     copy({
       resolveFrom: 'cwd',
       assets: {
