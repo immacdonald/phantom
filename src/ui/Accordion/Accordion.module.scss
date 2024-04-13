@@ -1,5 +1,6 @@
 .accordion {
-    margin: $xs 0;
+    margin-top: $xs;
+    margin-bottom: $md;
     border-top: var(--b-light);
     border-bottom: var(--b-light);
     border-radius: $radius-sm;
@@ -23,6 +24,12 @@
         .button {
             svg {
                 transform: rotate(0deg);
+            }
+        }
+
+        &:not(.transition) {
+            .wrapper {
+                overflow: visible;
             }
         }
     }

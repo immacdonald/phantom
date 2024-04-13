@@ -68,13 +68,14 @@ interface BooleanDropdownProps {
     defaultValue?: DropdownValue;
     placeholder?: string;
     disabled?: boolean;
+    labels?: [string, string];
     onChange?: (selected: DropdownValue | null) => void;
 }
 
-const BooleanDropdown: React.FC<BooleanDropdownProps> = ({ isClearable = true, defaultValue = null, placeholder, disabled = false, onChange = () => {} }) => {
+const BooleanDropdown: React.FC<BooleanDropdownProps> = ({ isClearable = true, defaultValue = null, placeholder, disabled = false, labels = ['True', 'False'], onChange = () => {} }) => {
     const options = [
-        { value: true, label: 'True' },
-        { value: false, label: 'False' }
+        { value: true, label: labels[0] },
+        { value: false, label: labels[1] }
     ];
     const [internalValue, setInternalValue] = useState<DropdownOption | null>();
 
