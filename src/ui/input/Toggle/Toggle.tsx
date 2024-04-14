@@ -1,15 +1,17 @@
 import React, { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import style from './Toggle.module.scss';
 import { Callback } from '../../../types';
+import classNames from 'classnames';
 
 interface ToggleProps {
     checked?: string;
     notChecked?: string;
     defaultState?: boolean;
+    disabled?: boolean;
     onChange?: Callback<boolean>;
 }
 
-const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultState = false, onChange = () => {} }: ToggleProps) => {
+const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultState = false, disabled = false, onChange = () => {} }: ToggleProps) => {
     const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
             onChange(event.target.checked);
@@ -29,9 +31,13 @@ const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultSt
 
     const properties = useMemo(() => (width ? ({ '--v-width': `calc(${width}px + 2 * var(--v-padding))`, '--v-half': 'calc(50% - var(--v-padding))' } as CSSProperties) : undefined), [width]);
 
+    const toggleClasses = classNames(style.toggle, {
+        [style.disabled]: disabled
+    })
+
     return (
-        <div className={style.toggle} style={properties}>
-            <input type="checkbox" className={style.checkbox} defaultChecked={defaultState} onChange={handleChange} />
+        <div className={toggleClasses} style={properties}>
+            <input type="checkbox" className={style.checkbox} defaultChecked={defaultState} onChange={handleChange} disabled={disabled} />
             <div className={style.states} style={width ? undefined : { visibility: 'hidden' }}>
                 <span ref={before} className={style.before}>
                     {notChecked}

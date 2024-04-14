@@ -26,6 +26,14 @@
     font-weight: bold;
 
     @include baseInput;
+
+    &[disabled], &.disabled {
+        background-color: var(--c-bg-light);
+        border: none;
+        color: var(--c-fg-light);
+        cursor: not-allowed;
+        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+    }
 }
 
 .checkbox {
@@ -41,6 +49,10 @@
     &:before,
     &:after {
         display: none !important;
+    }
+
+    &[disabled], &.disabled {
+        cursor: not-allowed;
     }
 }
 
