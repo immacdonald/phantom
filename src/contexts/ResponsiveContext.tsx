@@ -28,6 +28,7 @@ function getCurrentBreakpoint(width: number): Breakpoints | null {
 
 interface ResponsiveContextInterface {
     windowSize: any,
+    getWindowSizeInstant: () => any,
     parse: <T, >(responsiveType: ResponsiveType<T>) => T,
     isMobile: boolean
 }
@@ -36,6 +37,8 @@ const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null)
 
 const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const windowSize = useWindowSize();
+
+    const getWindowSizeInstant = () => ({ width: window.innerWidth, height: window.innerHeight });
 
     const parse = <T,>(responsiveType: ResponsiveType<T>): T => {
         // If responsiveType is just a static value return it
@@ -62,7 +65,7 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const isMobile = false;
 
     return (
-        <ResponsiveContext.Provider value={{ parse, isMobile, windowSize }}>{children}</ResponsiveContext.Provider>
+        <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, getWindowSizeInstant }}>{children}</ResponsiveContext.Provider>
     )
 }
 

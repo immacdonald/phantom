@@ -104,9 +104,10 @@
 
     [class*='dropdown__multi-value'] {
         background-color: var(--c-primary);
-        margin: 0 8px;
+        margin: 4px 8px;
         padding: 2px 4px;
         border-radius: 4px;
+        white-space: unset;
 
         &:first-of-type {
             margin-left: 2px;

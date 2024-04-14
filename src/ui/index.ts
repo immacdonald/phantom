@@ -6,3 +6,5 @@ export * from './Banner';
 export * from './Accordion';
 export * from './Split';
 export * from './StyledImage';
+export * from './Anchor';
+export * from './Popover';

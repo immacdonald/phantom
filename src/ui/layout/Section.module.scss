@@ -1,0 +1,100 @@
+.section {
+    --v-min-padding: 3%;
+    width: 100%;
+    min-height: 64px;
+    background-color: var(--c-bg-light);
+    padding-block: 64px;
+    padding-inline: max(calc((100% - $screen-lg) / 2), var(--v-min-padding));
+    flex-grow: 1;
+    position: relative;
+
+    &.alt {
+        background-color: var(--c-bg-tint);
+    }
+
+    &.highlight {
+        background-color: var(--c-primary);
+        color: var(--c-fg-on-primary);
+    }
+
+    &.parallax {
+        background-color: var(--c-primary);
+        background-attachment: fixed;
+        background-position: center center;
+        color: var(--c-fg-on-primary);
+        background-size: cover;
+
+        @include respond-max($screen-sm) {
+            background-attachment: local;
+        }
+    }
+
+    &.floating {
+        background-color: var(--c-bg);
+        padding-inline: 0px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+
+        > div {
+            width: min(600px, 95%);
+            background-color: var(--c-bg-light);
+            padding: $xl;
+            border: var(--b-light);
+            border-radius: $radius-md;
+            box-shadow: var(--shadow-high);
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            gap: 12px;
+        }
+
+        &:first-of-type {
+            margin-top: $xl;
+
+            @include respond-height-max($screen-height-md) {
+                padding-block: 1rem;
+                margin-top: 0px;
+            }
+        }
+    }
+
+    &.inset {
+        background-color: var(--c-bg);
+        padding-inline: $md;
+        padding-block: $xl;
+
+        > div {
+            width: 100%;
+            min-height: 128px;
+            background-color: var(--c-bg-light);
+            border: var(--b-light);
+            padding: $xl;
+            border-radius: $radius-md;
+            box-shadow: var(--shadow-high);
+        }
+
+        &:first-of-type {
+            @include respond-max($screen-xs) {
+                padding-top: $sm;
+                padding-inline: $sm;
+            }
+
+            @include respond-height-max($screen-height-md) {
+                padding-top: $sm;
+                padding-inline: $sm;
+            }
+        }
+    }
+
+    @include respond-max($screen-md) {
+        padding-block: 48px;
+    }
+
+    @include respond-max($screen-sm) {
+        padding-block: 32px;
+    }
+}
