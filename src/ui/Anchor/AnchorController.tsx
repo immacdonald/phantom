@@ -1,5 +1,5 @@
-import style from './Anchor.module.scss';
 import React, { useEffect, useRef } from 'react';
+import style from './Anchor.module.scss';
 
 interface AnchorControllerProps {
     influenceOverscroll?: boolean;
@@ -7,15 +7,15 @@ interface AnchorControllerProps {
 }
 
 const AnchorController: React.FC<AnchorControllerProps> = ({ influenceOverscroll = true, defaultOverscrollBehavior = 'unset' }) => {
-    const ref = useRef<HTMLDivElement>(null)
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (influenceOverscroll && ref.current) {
             const observer = new MutationObserver((mutationsList) => {
                 for (const mutation of mutationsList) {
-                    if (mutation.type == "childList") {
+                    if (mutation.type == 'childList') {
                         if (ref.current?.children.length || 0 > 0) {
-                            // Lock the overscroll-y 
+                            // Lock the overscroll-y
                             document.body.style.overscrollBehaviorY = 'none';
                         } else {
                             // Unlock to the default behavior
@@ -30,13 +30,11 @@ const AnchorController: React.FC<AnchorControllerProps> = ({ influenceOverscroll
             return () => {
                 observer.disconnect();
                 document.body.style.overscrollBehaviorY = defaultOverscrollBehavior;
-            }
+            };
         }
     }, [influenceOverscroll]);
 
-    return (
-        <div className={style.anchors} id="anchors" ref={ref} />
-    );
+    return <div className={style.anchors} id="anchors" ref={ref} />;
 };
 
 export { AnchorController };

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../../Loading';
 import style from './Button.module.scss';
-import { Link } from 'react-router-dom';
 
 type ButtonProps = {
     label?: string;
@@ -21,9 +21,9 @@ type ButtonProps = {
     isLoading?: boolean;
     customStyle?: string;
     disabled?: boolean;
-    type?: "button" | "reset" | "submit";
-    form?: string,
-}
+    type?: 'button' | 'reset' | 'submit';
+    form?: string;
+};
 
 const Button: React.FC<ButtonProps> = ({
     label,
@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
     isLoading = false,
     customStyle,
     disabled = false,
-    type = "button",
+    type = 'button',
     form
 }) => {
     const buttonClasses = classNames(style.button, {
@@ -78,7 +78,7 @@ const Button: React.FC<ButtonProps> = ({
 
     const visibility = useMemo(() => (isLoading ? ({ visibility: 'hidden' } as CSSProperties) : undefined), [isLoading]);
 
-    const props = { className: buttonClasses, "data-mode": mode }
+    const props = { className: buttonClasses, 'data-mode': mode };
 
     const renderChildren = (
         <>
@@ -86,7 +86,7 @@ const Button: React.FC<ButtonProps> = ({
             {label && <span style={visibility}>{label}</span>}
             {isLoading && <Loading size={24} thickness={3} color="inherit" secondaryColor="inherit" />}
         </>
-    )
+    );
 
     return link ? (
         <Link to={link} {...props}>

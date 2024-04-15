@@ -1,4 +1,4 @@
-@mixin baseInput {
+@mixin base-input {
     color: var(--c-fg);
     background-color: var(--c-bg-light);
     border-radius: $radius-md;
@@ -13,7 +13,6 @@
     }
 }
 
-
 .toggle {
     --v-width: auto;
     --v-half: auto;
@@ -25,9 +24,10 @@
     overflow: hidden;
     font-weight: bold;
 
-    @include baseInput;
+    @include base-input;
 
-    &[disabled], &.disabled {
+    &[disabled],
+    &.disabled {
         background-color: var(--c-bg-light);
         border: none;
         color: var(--c-fg-light);
@@ -46,12 +46,13 @@
     cursor: pointer;
     z-index: 3;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         display: none !important;
     }
 
-    &[disabled], &.disabled {
+    &[disabled],
+    &.disabled {
         cursor: not-allowed;
     }
 }
@@ -93,14 +94,14 @@
     z-index: 0;
 }
 
-.checkbox:checked+.states .indicator {
+.checkbox:checked + .states .indicator {
     left: calc(50%);
 }
 
-.checkbox:checked+.states .after {
+.checkbox:checked + .states .after {
     color: var(--c-fg-on-primary);
 }
 
-.checkbox:not(:checked)+.states .before {
+.checkbox:not(:checked) + .states .before {
     color: var(--c-fg-on-primary);
 }

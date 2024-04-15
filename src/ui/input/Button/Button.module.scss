@@ -46,8 +46,8 @@
     }
 }
 
-.clear {
-    // Remove regular button styling
+// Remove regular button styling
+%clear {
     background: none;
     border: none;
     text-decoration: none;
@@ -59,8 +59,12 @@
     border-radius: $radius-sm;
 }
 
+.clear {
+    @extend %clear;
+}
+
 .button {
-    @extend .clear;
+    @extend %clear;
 
     --v-size: 40px;
     --v-internal: 24px;
@@ -83,7 +87,6 @@
         width: 100%;
     }
 
-    //min-width: var(--v-size);
     height: var(--v-size);
     display: flex;
     align-items: center;
@@ -95,7 +98,6 @@
     font-weight: $semi;
     border-radius: $radius-sm;
     text-transform: uppercase;
-
     transition:
         background var(--t-mid),
         transform var(--t-mid),
@@ -140,6 +142,7 @@
 
     &.filled {
         @include filled(var(--v-medium), var(--v-dark), var(--v-dark));
+
         --v-text: var(--c-fg-on-primary);
         --v-text-hover: var(--c-fg-on-primary);
         --v-text-active: var(--c-fg-on-primary);
@@ -147,6 +150,7 @@
 
     &.outline {
         @include outline(var(--v-medium), var(--v-dark), var(--v-dark));
+
         --v-text: var(--v-medium);
         --v-text-hover: var(--v-medium);
         --v-text-active: var(--v-dark);
@@ -154,6 +158,7 @@
 
     &.ghost {
         @include ghost(var(--a-faint));
+
         --v-text: var(--c-primary);
         --v-text-hover: var(--c-primary);
         --v-text-active: var(--c-primary);
@@ -195,6 +200,7 @@
     &.loading {
         --v-color: var(--v-text);
         --v-secondary-color: var(--v-text);
+
         display: grid;
         place-items: center;
 
@@ -204,7 +210,8 @@
         }
     }
 
-    &[disabled], &.disabled {
+    &[disabled],
+    &.disabled {
         background-color: var(--c-bg-light);
         border: none;
         color: var(--c-fg-light);

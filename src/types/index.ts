@@ -1,22 +1,22 @@
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react';
 
 // Responsive design and component system
 export type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ResponsiveObject<T> = {
-    base: T,
-    xs?: T,
-    sm?: T,
-    md?: T,
-    lg?: T,
-    xl?: T
+    base: T;
+    xs?: T;
+    sm?: T;
+    md?: T;
+    lg?: T;
+    xl?: T;
 };
 
 export type ResponsiveType<T> = T | ResponsiveObject<T>;
 
 export interface ComponentCSSProps {
     className?: string;
-    properties?: CSSProperties
+    properties?: CSSProperties;
 }
 
 // Simple data structures
@@ -29,7 +29,6 @@ export interface Position {
     x: number;
     y: number;
 }
-
 
 // Utility
 export type Callback<T> = (reponse: T) => void;

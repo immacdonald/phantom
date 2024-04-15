@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { popNotification } from './notifications';
 import style from './Banner.module.scss';
+import { popNotification } from './notifications';
 
 interface BannerProps {
     notificationLength?: number;

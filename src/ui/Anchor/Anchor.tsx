@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import React, { ReactElement, ReactNode, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useResponsiveContext } from '../../contexts';
-import style from './Anchor.module.scss';
 import { useInterval } from '../../hooks';
 import { Dimensions, Position } from '../../types';
+import style from './Anchor.module.scss';
 
 type XYWH = Position & Dimensions;
 type TRBL = { top: number; right: number; bottom: number; left: number };
@@ -31,18 +31,7 @@ interface ComputedAnchor extends Position {
 
 const edgeSafety = 8;
 
-const Anchor: React.FC<AnchorProps> = ({
-    component,
-    direction = 'top',
-    padding = 8,
-    pollingInterval = 33,
-    visible = true,
-    update = true,
-    innerRef,
-    children,
-    anchorProps,
-    componentClassName
-}) => {
+const Anchor: React.FC<AnchorProps> = ({ component, direction = 'top', padding = 8, pollingInterval = 33, visible = true, update = true, innerRef, children, anchorProps, componentClassName }) => {
     const anchorRef = innerRef ?? useRef<HTMLDivElement>(null);
     const componentRef = useRef<HTMLDivElement>(null);
     const [anchorBounds, setAnchorBounds] = useState<XYWH>({ x: 0, y: 0, width: 0, height: 0 });
@@ -83,9 +72,12 @@ const Anchor: React.FC<AnchorProps> = ({
         }
     };
 
-    useInterval(() => {
-        pollBounds();
-    }, (visible && update) ? pollingInterval : null); 
+    useInterval(
+        () => {
+            pollBounds();
+        },
+        visible && update ? pollingInterval : null
+    );
 
     const computeOffsetValues = (bounds: XYWH) => {
         const halfAnchor = { width: bounds.width / 2, height: bounds.height / 2 };

@@ -1,65 +1,70 @@
 {
-  "name": "@imacdonald/phantom",
-  "version": "0.0.1",
-  "description": "React Phantom Design and Component Library",
-  "main": "./src/index.js",
-  "module": "./src/index.js",
-  "type": "module",
-  "files": [
-    "src"
-  ],
-  "exports": {
-    ".": "./src/index.js",
-    "./ui": "./src/ui/index.js",
-    "./ui/style": "./src/ui/tokens.scss"
-  },
-  "scripts": {
-    "build": "rm -rf ./lib && cp -R ./src ./lib",
-    "dev": "tsup --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit --emitDeclarationOnly false",
-    "prettier": "prettier ./ --check",
-    "prettier:fix": "prettier ./ --write",
-    "format": "npm run lint && npm run prettier:fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/immacdonald/phantom.git"
-  },
-  "keywords": [
-    "react",
-    "component"
-  ],
-  "author": "Ian MacDonald",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/immacdonald/phantom/issues"
-  },
-  "homepage": "https://github.com/immacdonald/phantom#readme",
-  "peerDependencies": {
-    "react": "^18.2.0"
-  },
-  "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
-    "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.25",
-    "@typescript-eslint/eslint-plugin": "^7.6.0",
-    "esbuild-plugin-copy": "^2.1.1",
-    "esbuild-sass-plugin": "^3.2.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "postcss-modules": "^6.0.0",
-    "prettier": "^3.2.5",
-    "sass": "^1.72.0",
-    "sass-loader": "^14.1.1",
-    "ts-node": "^10.9.2",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.3"
-  },
-  "dependencies": {
-    "classnames": "^2.5.1",
-    "react-router-dom": "^6.22.3",
-    "react-select": "^5.8.0"
-  }
+    "name": "@imacdonald/phantom",
+    "version": "0.0.1",
+    "description": "React Phantom Design and Component Library",
+    "main": "./src/index.js",
+    "module": "./src/index.js",
+    "type": "module",
+    "files": [
+        "src"
+    ],
+    "exports": {
+        ".": "./src/index.js",
+        "./ui": "./src/ui/index.js",
+        "./ui/style": "./src/ui/tokens.scss"
+    },
+    "scripts": {
+        "build": "rm -rf ./lib && cp -R ./src ./lib",
+        "dev": "tsup --watch",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit --emitDeclarationOnly false",
+        "prettier": "prettier ./ --check",
+        "prettier:fix": "prettier ./ --write",
+        "stylelint": "npx stylelint '**/*.scss'",
+        "stylelint:fix": "npx stylelint '**/*.scss' --fix",
+        "format": "npm run lint && npm run stylelint:fix && npm run prettier:fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/immacdonald/phantom.git"
+    },
+    "keywords": [
+        "react",
+        "component"
+    ],
+    "author": "Ian MacDonald",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/immacdonald/phantom/issues"
+    },
+    "homepage": "https://github.com/immacdonald/phantom#readme",
+    "peerDependencies": {
+        "react": "^18.2.0"
+    },
+    "devDependencies": {
+        "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+        "@types/react": "^18.2.73",
+        "@types/react-dom": "^18.2.25",
+        "@typescript-eslint/eslint-plugin": "^7.6.0",
+        "esbuild-plugin-copy": "^2.1.1",
+        "esbuild-sass-plugin": "^3.2.0",
+        "eslint": "^8.57.0",
+        "eslint-plugin-react": "^7.34.1",
+        "eslint-plugin-react-refresh": "^0.4.6",
+        "postcss-modules": "^6.0.0",
+        "prettier": "^3.2.5",
+        "sass": "^1.72.0",
+        "sass-loader": "^14.1.1",
+        "stylelint": "^16.3.1",
+        "stylelint-config-standard": "^36.0.0",
+        "stylelint-config-standard-scss": "^13.1.0",
+        "ts-node": "^10.9.2",
+        "tsup": "^8.0.2",
+        "typescript": "^5.4.3"
+    },
+    "dependencies": {
+        "classnames": "^2.5.1",
+        "react-router-dom": "^6.22.3",
+        "react-select": "^5.8.0"
+    }
 }

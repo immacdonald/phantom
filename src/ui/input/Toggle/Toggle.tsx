@@ -1,7 +1,7 @@
-import React, { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import style from './Toggle.module.scss';
-import { Callback } from '../../../types';
 import classNames from 'classnames';
+import React, { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Callback } from '../../../types';
+import style from './Toggle.module.scss';
 
 interface ToggleProps {
     checked?: string;
@@ -33,7 +33,7 @@ const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultSt
 
     const toggleClasses = classNames(style.toggle, {
         [style.disabled]: disabled
-    })
+    });
 
     return (
         <div className={toggleClasses} style={properties}>

@@ -4,7 +4,6 @@
     width: 25%;
     min-width: 480px;
     max-height: 90%;
-
     border-radius: $radius-lg;
     background-color: var(--c-bg-light);
     box-shadow: var(--shadow-high);
@@ -28,8 +27,7 @@
 
 .content {
     display: flex;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;

@@ -1,2 +1,2 @@
-export * from "./ResponsiveContext";
+export * from './ResponsiveContext';
 export * from './useResponsiveContext';

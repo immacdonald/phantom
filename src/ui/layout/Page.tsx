@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
-import style from './Page.module.scss';
 import { ComponentCSSProps } from '../../types';
+import style from './Page.module.scss';
 
 interface PageProps extends ComponentCSSProps {
     title?: string;

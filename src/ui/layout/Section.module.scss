@@ -1,5 +1,6 @@
 .section {
     --v-min-padding: 3%;
+
     width: 100%;
     min-height: 64px;
     background-color: var(--c-bg-light);
@@ -31,8 +32,7 @@
 
     &.floating {
         background-color: var(--c-bg);
-        padding-inline: 0px;
-
+        padding-inline: 0;
         display: flex;
         flex-direction: column;
         justify-content: start;
@@ -57,7 +57,7 @@
 
             @include respond-height-max($screen-height-md) {
                 padding-block: 1rem;
-                margin-top: 0px;
+                margin-top: 0;
             }
         }
     }

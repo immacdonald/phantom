@@ -9,11 +9,9 @@
     align-items: center;
     justify-content: center;
     color: var(--c-fg-on-primary);
-
     border-radius: $radius-md;
     border: 1px solid transparent;
     box-shadow: var(--shadow-high);
-
     opacity: 0;
     transform: translateY(-120%);
     transition:

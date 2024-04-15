@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { getModal } from './modals';
 import style from './ModalController.module.scss';
+import { getModal } from './modals';
 
 const ModalController: React.FC = () => {
     const [modal, setModal] = useState<JSX.Element | null>(null);

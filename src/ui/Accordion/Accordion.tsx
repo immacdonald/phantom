@@ -1,6 +1,6 @@
-import { Button } from '..'
 import classNames from 'classnames';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import { Button } from '..';
 import style from './Accordion.module.scss';
 
 interface CollapsibleProps {
@@ -18,26 +18,32 @@ const Accordion: React.FC<CollapsibleProps> = ({ label, Icon, defaultState = fal
     const setState = (state: boolean) => {
         setOpen(state);
         // Add a transition state during the transition
-        if(transition) {
+        if (transition) {
             clearTimeout(transition);
         }
-        setTransition(setTimeout(() => {
-            setTransition(null)
-        }, 500));
-    }
+        setTransition(
+            setTimeout(() => {
+                setTransition(null);
+            }, 500)
+        );
+    };
 
     const contentRef = useRef<HTMLDivElement>(null);
 
-    const accordionClasses = classNames(style.accordion, {
-        [style.open]: open,
-        [style.transition]: transition != null,
-    }, className);
+    const accordionClasses = classNames(
+        style.accordion,
+        {
+            [style.open]: open,
+            [style.transition]: transition != null
+        },
+        className
+    );
 
     const height = ((open && contentRef.current?.scrollHeight) || 0) + 'px';
 
     useEffect(() => {
         setState(defaultState);
-    }, [defaultState])
+    }, [defaultState]);
 
     return (
         <div className={accordionClasses}>

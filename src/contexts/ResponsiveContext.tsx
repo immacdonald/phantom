@@ -1,6 +1,6 @@
-import { ReactNode, createContext } from "react";
+import { createContext, ReactNode } from 'react';
 import { useWindowSize } from '../hooks';
-import { Breakpoints, Dimensions, ResponsiveObject, ResponsiveType } from "../types";
+import { Breakpoints, Dimensions, ResponsiveObject, ResponsiveType } from '../types';
 
 const breakpoints: Breakpoints[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -17,19 +17,18 @@ function isResponsiveObject<T>(obj: ResponsiveType<T>): boolean {
     return +pixels;
 }*/
 
-
 function getCurrentBreakpoint(width: number): Breakpoints | null {
     //if (width < pxToInt)
-    if(width) {
+    if (width) {
         //
     }
     return null;
 }
 
 interface ResponsiveContextInterface {
-    windowSize: Dimensions,
-    parse: <T, >(responsiveType: ResponsiveType<T>) => T,
-    isMobile: boolean
+    windowSize: Dimensions;
+    parse: <T>(responsiveType: ResponsiveType<T>) => T;
+    isMobile: boolean;
 }
 
 const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null);
@@ -43,7 +42,7 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
             return responsiveType as T;
         }
 
-        const responsiveObject = responsiveType as ResponsiveObject<T>
+        const responsiveObject = responsiveType as ResponsiveObject<T>;
 
         // If it's a ResponsiveObject find the value for the breakpoint
         const breakpoint: Breakpoints | null = getCurrentBreakpoint(windowSize.width);
@@ -57,14 +56,12 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
         }
 
         return responsiveObject.base;
-    }
+    };
 
     const isMobile = false;
 
-    return (
-        <ResponsiveContext.Provider value={{ parse, isMobile, windowSize }}>{children}</ResponsiveContext.Provider>
-    )
-}
+    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize }}>{children}</ResponsiveContext.Provider>;
+};
 
-export { ResponsiveContext, ResponsiveContextProvider }
-export type { ResponsiveContextInterface }
+export { ResponsiveContext, ResponsiveContextProvider };
+export type { ResponsiveContextInterface };

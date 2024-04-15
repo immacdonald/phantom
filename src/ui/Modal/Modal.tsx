@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import { setModal } from './modals';
-import { Icon } from '../Icon';
 import { Button } from '../';
+import { Icon } from '../Icon';
 import style from './Modal.module.scss';
+import { setModal } from './modals';
 
 interface ModalProps {
     icon?: ReactNode;

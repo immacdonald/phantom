@@ -1,4 +1,4 @@
-import { Icon, IconProps } from "./Icon";
+import { Icon, IconProps } from './Icon';
 
 const withIcon = (WrappedComponent: React.FC) => {
     return function WithIcon(props: IconProps) {
@@ -6,4 +6,4 @@ const withIcon = (WrappedComponent: React.FC) => {
     };
 };
 
-export { withIcon }
+export { withIcon };

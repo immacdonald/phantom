@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
-import useBackButton from './useBackButton';
 import { Callback } from '../types';
+import useBackButton from './useBackButton';
 
 const useQueryParams = (whitelist?: string[], onUpdate?: Callback<any>) => {
     const search = useRef<string>(window.location.search);
@@ -32,11 +32,10 @@ const useQueryParams = (whitelist?: string[], onUpdate?: Callback<any>) => {
         }
 
         if (onUpdate) {
-            const val = readAllQueryParams()
+            const val = readAllQueryParams();
             onUpdate(val);
         }
-
-    }
+    };
 
     // State to trigger re-renders
     useEffect(() => {

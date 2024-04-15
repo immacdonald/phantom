@@ -18,6 +18,7 @@
     --v-offset-x: 0px;
     --v-offset-y: 0px;
     --v-padding: 0px 0px 0px 0px;
+
     padding: var(--v-padding);
     transform: translate(calc(var(--v-anchor-x) + var(--v-offset-x)), calc(var(--v-anchor-y) + var(--v-offset-y)));
 }
@@ -26,6 +27,6 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
 }

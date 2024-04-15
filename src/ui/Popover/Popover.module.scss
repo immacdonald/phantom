@@ -6,10 +6,6 @@
     --popover-arrow-size: 8px;
     --popover-arrow-max-shift: 40%;
 
-    // Depends on offset-x and offset-y from the Anchor component
-    //--v-offset-x: 0px;
-    //--v-offset-y: 0px;
-
     &.highlight {
         --popover-background-color: var(--c-primary);
         --popover-border-color: var(--c-primary-text);
@@ -50,9 +46,11 @@
         max-width: none;
     }
 
-    @mixin popoverAlignment($direction, $perpendicular) {
+    @mixin popover-alignment($direction, $perpendicular) {
         $parallel-offset: 100%;
         $perpendicular-offset: 50%;
+
+        // Depends on offset-x and offset-y from the Anchor component
         $computed-margin: calc(-1 * var(--popover-arrow-size) - clamp(calc(-1 * var(--popover-arrow-max-shift)), var(--v-offset-x), var(--popover-arrow-max-shift)));
 
         &::before {
@@ -72,25 +70,25 @@
 
     &[data-direction='top'] {
         .popoverInner {
-            @include popoverAlignment(top, left);
+            @include popover-alignment(top, left);
         }
     }
 
     &[data-direction='bottom'] {
         .popoverInner {
-            @include popoverAlignment(bottom, left);
+            @include popover-alignment(bottom, left);
         }
     }
 
     &[data-direction='right'] {
         .popoverInner {
-            @include popoverAlignment(right, top);
+            @include popover-alignment(right, top);
         }
     }
 
     &[data-direction='left'] {
         .popoverInner {
-            @include popoverAlignment(left, top);
+            @include popover-alignment(left, top);
         }
     }
 }

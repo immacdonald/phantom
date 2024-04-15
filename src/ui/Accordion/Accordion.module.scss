@@ -20,6 +20,22 @@
         }
     }
 
+    .wrapper {
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+        transition: height var(--t-mid);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+
+        .content {
+            height: auto;
+            padding: $sm;
+            border-radius: $radius-sm;
+            overflow-y: visible;
+        }
+    }
+
     &.open {
         .button {
             svg {
@@ -31,22 +47,6 @@
             .wrapper {
                 overflow: visible;
             }
-        }
-    }
-
-    .wrapper {
-        height: 0px;
-        margin: 0px;
-        overflow: hidden;
-        transition: height var(--t-mid);
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-
-        .content {
-            height: auto;
-            padding: $sm;
-            border-radius: $radius-sm;
-            overflow-y: visible;
         }
     }
 }

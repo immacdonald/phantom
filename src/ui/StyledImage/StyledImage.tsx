@@ -16,7 +16,7 @@ const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round 
 
     return (
         <div className={style.container}>
-            <img src={image} className={imageStyle} style={ maxWidth ? { '--v-max-width': `${maxWidth}px` } as React.CSSProperties : undefined} />
+            <img src={image} className={imageStyle} style={maxWidth ? ({ '--v-max-width': `${maxWidth}px` } as React.CSSProperties) : undefined} />
         </div>
     );
 };

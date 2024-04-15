@@ -1,4 +1,4 @@
-export * from './input'
+export * from './input';
 export * from './Modal';
 export * from './layout';
 export * from './Icon';
