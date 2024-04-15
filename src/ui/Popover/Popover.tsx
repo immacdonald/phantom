@@ -48,7 +48,7 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
         setHover(false);
     };
 
-    const ref: React.MutableRefObject<any> = useRef();
+    const ref = useRef<HTMLDivElement>(null);
     useOutsideClick(ref, () => onOutsideClick());
 
     const onOutsideClick = () => {
@@ -84,6 +84,7 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
             componentClassName={popoverClasses}
             visible={displayPopover}
             innerRef={ref}
+            pollingInterval={8}
         >
             {children}
         </Anchor>

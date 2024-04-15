@@ -1,16 +1,13 @@
 import classNames from 'classnames';
-import React, { ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, ReactNode, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useResponsiveContext } from '../../contexts/ResponsiveContext';
+import { useResponsiveContext } from '../../contexts';
 import style from './Anchor.module.scss';
+import { useInterval } from '../../hooks';
+import { Dimensions, Position } from '../../types';
 
-type XYWH = { x: number; y: number; width: number; height: number };
+type XYWH = Position & Dimensions;
 type TRBL = { top: number; right: number; bottom: number; left: number };
-
-type Position = {
-    x: number;
-    y: number;
-};
 
 interface AnchorProps {
     component: ReactElement;
@@ -19,7 +16,7 @@ interface AnchorProps {
     pollingInterval?: number;
     visible?: boolean;
     update?: boolean;
-    innerRef?: React.MutableRefObject<HTMLDivElement>;
+    innerRef?: React.RefObject<HTMLDivElement>;
     children: ReactNode;
     anchorProps?: React.HTMLAttributes<HTMLDivElement>;
     componentClassName?: string;
@@ -46,7 +43,7 @@ const Anchor: React.FC<AnchorProps> = ({
     anchorProps,
     componentClassName
 }) => {
-    const anchorRef = innerRef ?? useRef<HTMLDivElement | null>(null);
+    const anchorRef = innerRef ?? useRef<HTMLDivElement>(null);
     const componentRef = useRef<HTMLDivElement>(null);
     const [anchorBounds, setAnchorBounds] = useState<XYWH>({ x: 0, y: 0, width: 0, height: 0 });
     const [componentAnchoring, setComponentAnchoring] = useState<ComputedAnchor>({
@@ -63,43 +60,32 @@ const Anchor: React.FC<AnchorProps> = ({
         computed: false
     });
 
-    const { getWindowSizeInstant } = useResponsiveContext();
+    const { windowSize } = useResponsiveContext();
 
     // Update polling
     const lastBoundingBox = useRef<DOMRect | null>(null);
-    const windowSize = useRef<{ width: number; height: number }>({ width: 0, height: 0 });
+    const lastWindowSize = useRef<Dimensions>({ width: 0, height: 0 });
 
     const pollBounds = () => {
         const boundingBox = anchorRef.current!.getBoundingClientRect();
-        const currentWindowSize = getWindowSizeInstant();
 
         if (
             boundingBox.x != lastBoundingBox.current?.x ||
             boundingBox.y != lastBoundingBox.current?.y ||
-            currentWindowSize.width != windowSize.current.width ||
-            currentWindowSize.height != windowSize.current.height
+            windowSize.width != lastWindowSize.current.width ||
+            windowSize.height != lastWindowSize.current.height
         ) {
             lastBoundingBox.current = boundingBox;
-            windowSize.current = { width: currentWindowSize.width, height: currentWindowSize.height };
+            lastWindowSize.current = { width: windowSize.width, height: windowSize.height };
             const bounds = { x: boundingBox.x, y: boundingBox.y, width: boundingBox.width, height: boundingBox.height };
             setAnchorBounds(bounds);
             computeOffsetValues(bounds);
         }
     };
 
-    useEffect(() => {
-        let intervalId: any | null = null;
-
-        if (visible && update && anchorRef.current && componentRef.current) {
-            intervalId = setInterval(pollBounds, pollingInterval);
-        }
-
-        return () => {
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
-        };
-    }, [visible, update]);
+    useInterval(() => {
+        pollBounds();
+    }, (visible && update) ? pollingInterval : null); 
 
     const computeOffsetValues = (bounds: XYWH) => {
         const halfAnchor = { width: bounds.width / 2, height: bounds.height / 2 };
@@ -137,8 +123,8 @@ const Anchor: React.FC<AnchorProps> = ({
         }
 
         const right = bounds.x + halfAnchor.width + desiredPosition.x - directionalPadding.right / 2 + halfComponent.width;
-        if (right > windowSize.current!.width - edgeSafety) {
-            offset.x = windowSize.current!.width - edgeSafety - right;
+        if (right > windowSize.width - edgeSafety) {
+            offset.x = windowSize.width - edgeSafety - right;
         }
 
         const top = bounds.y + halfAnchor.height + desiredPosition.y - directionalPadding.bottom / 2 - halfComponent.height;
@@ -147,8 +133,8 @@ const Anchor: React.FC<AnchorProps> = ({
         }
 
         const bottom = bounds.y + halfAnchor.height + desiredPosition.y - directionalPadding.top / 2 + halfComponent.height;
-        if (bottom > windowSize.current!.height - edgeSafety) {
-            offset.y = windowSize.current!.height - edgeSafety - bottom;
+        if (bottom > windowSize.height - edgeSafety) {
+            offset.y = windowSize.height - edgeSafety - bottom;
         }
 
         setComponentAnchoring({ ...componentAnchoring, ...desiredPosition, padding: directionalPadding, offsetX: offset.x, offsetY: offset.y, computed: true });

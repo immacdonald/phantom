@@ -13,7 +13,7 @@ interface CollapsibleProps {
 
 const Accordion: React.FC<CollapsibleProps> = ({ label, Icon, defaultState = false, className, children }) => {
     const [open, setOpen] = useState<boolean>(false);
-    const [transition, setTransition] = useState<any>(null);
+    const [transition, setTransition] = useState<ReturnType<typeof setTimeout> | null>(null);
 
     const setState = (state: boolean) => {
         setOpen(state);

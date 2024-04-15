@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
-
-// Define a type for the screenSize state
-type WindowSize = {
-    width: number;
-    height: number;
-};
+import { Dimensions } from '../types';
 
 const useWindowSize = () => {
     // Use the ScreenSize type for the state
-    const [windowSize, setWindowSize] = useState<WindowSize>({
+    const [windowSize, setWindowSize] = useState<Dimensions>({
         width: window.innerWidth,
         height: window.innerHeight
     });

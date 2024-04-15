@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react';
 import useBackButton from './useBackButton';
+import { Callback } from '../types';
 
-const useQueryParams = (whitelist?: string[], onUpdate?: (query: any) => void) => {
+const useQueryParams = (whitelist?: string[], onUpdate?: Callback<any>) => {
     const search = useRef<string>(window.location.search);
 
     useBackButton(() => {

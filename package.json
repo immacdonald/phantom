@@ -16,7 +16,11 @@
   "scripts": {
     "build": "rm -rf ./lib && cp -R ./src ./lib",
     "dev": "tsup --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit --emitDeclarationOnly false",
+    "prettier": "prettier ./ --check",
+    "prettier:fix": "prettier ./ --write",
+    "format": "npm run lint && npm run prettier:fix"
   },
   "repository": {
     "type": "git",
@@ -36,11 +40,17 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.25",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
     "esbuild-plugin-copy": "^2.1.1",
     "esbuild-sass-plugin": "^3.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-refresh": "^0.4.6",
     "postcss-modules": "^6.0.0",
+    "prettier": "^3.2.5",
     "sass": "^1.72.0",
     "sass-loader": "^14.1.1",
     "ts-node": "^10.9.2",

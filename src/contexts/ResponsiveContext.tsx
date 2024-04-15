@@ -1,6 +1,6 @@
-import { ReactNode, createContext, useContext } from "react";
+import { ReactNode, createContext } from "react";
 import { useWindowSize } from '../hooks';
-import { Breakpoints, ResponsiveObject, ResponsiveType } from "../types";
+import { Breakpoints, Dimensions, ResponsiveObject, ResponsiveType } from "../types";
 
 const breakpoints: Breakpoints[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -27,8 +27,7 @@ function getCurrentBreakpoint(width: number): Breakpoints | null {
 }
 
 interface ResponsiveContextInterface {
-    windowSize: any,
-    getWindowSizeInstant: () => any,
+    windowSize: Dimensions,
     parse: <T, >(responsiveType: ResponsiveType<T>) => T,
     isMobile: boolean
 }
@@ -37,8 +36,6 @@ const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null)
 
 const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const windowSize = useWindowSize();
-
-    const getWindowSizeInstant = () => ({ width: window.innerWidth, height: window.innerHeight });
 
     const parse = <T,>(responsiveType: ResponsiveType<T>): T => {
         // If responsiveType is just a static value return it
@@ -65,20 +62,9 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const isMobile = false;
 
     return (
-        <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, getWindowSizeInstant }}>{children}</ResponsiveContext.Provider>
+        <ResponsiveContext.Provider value={{ parse, isMobile, windowSize }}>{children}</ResponsiveContext.Provider>
     )
 }
 
-const useResponsiveContext = () => {
-    const context = useContext(ResponsiveContext);
-
-    if (context === undefined) {
-        throw new Error('useResponsiveContext was used outside of its Provider');
-    } else if (!context) {
-        throw new Error('useResponsiveContext is null');
-    }
-
-    return context;
-}
-
-export { ResponsiveContext, ResponsiveContextProvider, useResponsiveContext }
+export { ResponsiveContext, ResponsiveContextProvider }
+export type { ResponsiveContextInterface }

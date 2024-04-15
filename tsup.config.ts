@@ -1,4 +1,4 @@
-import {postcssModules, sassPlugin} from 'esbuild-sass-plugin'
+// import {postcssModules, sassPlugin} from 'esbuild-sass-plugin'
 import { copy } from 'esbuild-plugin-copy';
 import { defineConfig } from 'tsup';
 

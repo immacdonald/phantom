@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { Callback } from "../types";
 
-const useBackButton = (callback: any) => {
+const useBackButton = (callback: Callback<void>) => {
   const handleEvent = () => {
     callback();
   };
