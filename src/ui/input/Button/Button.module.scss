@@ -1,10 +1,12 @@
+@use '../../tokens' as *;
+
 @mixin outline($border, $borderHover, $borderSelected) {
     background-color: var(--c-bg-light);
     border: 1px solid $border;
 
     &:not([disabled], .disabled) {
         &:hover,
-        &.active {
+        &.focus {
             border-color: $borderHover;
             background-color: var(--c-bg-dim);
         }
@@ -21,7 +23,7 @@
 
     &:not([disabled], .disabled) {
         &:hover,
-        &.active {
+        &.focus {
             background-color: $hover;
         }
 
@@ -36,7 +38,7 @@
 
     &:not([disabled], .disabled) {
         &:hover,
-        &.active {
+        &.focus {
             background-color: $backgroundHover;
         }
 
@@ -183,11 +185,10 @@
     &:not([disabled], .disabled) {
         &:focus {
             outline: none;
-            box-shadow: var(--shadow-low);
         }
 
         &:hover,
-        &.active {
+        &.focus {
             color: var(--v-text-hover);
         }
 

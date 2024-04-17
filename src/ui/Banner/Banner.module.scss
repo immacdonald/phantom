@@ -1,3 +1,5 @@
+@use '../tokens' as *;
+
 .banner {
     position: absolute;
     top: $sm;
@@ -11,7 +13,7 @@
     color: var(--c-fg-on-primary);
     border-radius: $radius-md;
     border: 1px solid transparent;
-    box-shadow: var(--shadow-high);
+    box-shadow: var(--shadow-lifted);
     opacity: 0;
     transform: translateY(-120%);
     transition:

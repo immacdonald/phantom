@@ -11,7 +11,8 @@
     "exports": {
         ".": "./src/index.js",
         "./ui": "./src/ui/index.js",
-        "./ui/style": "./src/ui/tokens.scss"
+        "./ui/style": "./src/ui/tokens.scss",
+        "./ui/variables": "./src/ui/variables.module.scss"
     },
     "scripts": {
         "build": "rm -rf ./lib && cp -R ./src ./lib",

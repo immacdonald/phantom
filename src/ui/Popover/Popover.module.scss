@@ -1,7 +1,9 @@
+@use '../tokens' as *;
+
 .popover {
     --popover-text-color: var(--c-fg);
-    --popover-background-color: var(--c-bg-light);
-    --popover-border-color: var(--c-bg);
+    --popover-background-color: var(--color-surface-overlay);
+    --popover-border-color: var(--c-bg-dim);
     --popover-border-width: 1px;
     --popover-arrow-size: 8px;
     --popover-arrow-max-shift: 40%;
@@ -23,7 +25,7 @@
         background-color: var(--popover-background-color);
         padding: $xs $sm;
         border-radius: $radius-sm;
-        box-shadow: var(--shadow-high);
+        box-shadow: var(--shadow-overlay);
         border: var(--popover-border-width) solid var(--popover-border-color);
         height: 100%;
         position: relative;

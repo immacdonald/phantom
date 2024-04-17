@@ -38,3 +38,16 @@ $heavy: 800 !default;
 
 // Z-Index
 $z-anchor: 103;
+
+// Favor responding at a maximum breakpoint for consistency
+@mixin respond-max($breakpoint) {
+	@media (max-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin respond-height-max($breakpoint) {
+    @media (max-height: $breakpoint) {
+        @content;
+    }
+}

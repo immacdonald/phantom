@@ -1,0 +1,35 @@
+:root {
+    // Border
+    --border-thin: 1px solid;
+    --border-thick: 2px solid;
+    --border-color-light: var(--c-bg-dim);
+    --border-color-dark: var(--c-bg-dark);
+    --border-light: var(--border-thin) var(--border-color-light);
+    --border-dark: var(--border-thin) var(--border-color-dark);
+
+    // Input
+    --input-color-active: var(--c-primary);
+    --input-color-active-hover: var(--c-primary-light);
+    --input-color-fg-active: var(--c-fg-on-primary);
+
+    --input-border: var(--border-light);
+    --input-border-active: var(--border-thin) var(--input-color-active);
+    --input-outline: var(--border-thin) var(--input-color-active);
+
+    --input-color-fg: var(--c-fg);
+    --input-color-fg-light: var(--c-fg-light);
+    --input-color-fg-disabled: var(--c-fg-light);
+    --input-color-bg: var(--c-bg-light);
+    --input-color-bg-disabled: var(--c-bg-light);
+    --input-color-bg-selected: var(--c-bg);
+
+    // Shadows
+    --shadow-subtle: 0px 1px 0px 0px rgba(26, 26, 26, 0.07);
+    --shadow-raised: 0px 3px 1px -1px rgba(26, 26, 26, 0.07);
+    --shadow-lifted: 0px 4px 6px -2px rgba(26, 26, 26, 0.20);
+    --shadow-floating: 0px 8px 16px -4px rgba(26, 26, 26, 0.22);
+    --shadow-overlay: 0px 12px 20px -8px rgba(26, 26, 26, 0.24);
+
+    --border-overlay: var(--border-light);
+    --color-surface-overlay: var(--c-bg-light);
+}

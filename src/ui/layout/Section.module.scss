@@ -1,10 +1,12 @@
+@use '../tokens' as *;
+
 .section {
     --v-min-padding: 3%;
 
     width: 100%;
     min-height: 64px;
     background-color: var(--c-bg-light);
-    padding-block: 64px;
+    padding-block: 96px;
     padding-inline: max(calc((100% - $screen-lg) / 2), var(--v-min-padding));
     flex-grow: 1;
     position: relative;
@@ -44,7 +46,7 @@
             padding: $xl;
             border: var(--b-light);
             border-radius: $radius-md;
-            box-shadow: var(--shadow-high);
+            box-shadow: var(--shadow-floating);
             display: flex;
             flex-direction: column;
             justify-content: start;
@@ -74,7 +76,7 @@
             border: var(--b-light);
             padding: $xl;
             border-radius: $radius-md;
-            box-shadow: var(--shadow-high);
+            box-shadow: var(--shadow-lifted);
         }
 
         &:first-of-type {
@@ -91,10 +93,10 @@
     }
 
     @include respond-max($screen-md) {
-        padding-block: 48px;
+        padding-block: 72px;
     }
 
     @include respond-max($screen-sm) {
-        padding-block: 32px;
+        padding-block: 48px;
     }
 }

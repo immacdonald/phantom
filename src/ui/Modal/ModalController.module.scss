@@ -1,3 +1,5 @@
+@use '../tokens' as *;
+
 .modals {
     position: fixed;
     inset: 0;
@@ -10,15 +12,12 @@
     justify-content: center;
     visibility: none;
     pointer-events: none;
-    backdrop-filter: blur(0);
     transition:
-        backdrop-filter var(--t-mid),
         background-color var(--t-mid);
 
     &.active {
         visibility: visible;
         pointer-events: all;
-        background-color: rgb(0 0 0 / 40%);
-        backdrop-filter: blur($xxs);
+        background-color: rgb(0 0 0 / 15%);
     }
 }

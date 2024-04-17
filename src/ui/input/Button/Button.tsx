@@ -93,7 +93,7 @@ const Button: React.FC<ButtonProps> = ({
             {renderChildren}
         </Link>
     ) : (
-        <button type={type} onClick={handleMouseClick} form={form} {...props}>
+        <button type={type} onClick={handleMouseClick} form={form} disabled={disabled} {...props}>
             {renderChildren}
         </button>
     );

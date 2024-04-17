@@ -1,15 +1,17 @@
+@use '../../tokens' as *;
+
 @mixin base-input {
-    color: var(--c-fg);
-    background-color: var(--c-bg-light);
+    color: var(--input-color-fg);
+    background-color: var(--input-color-bg);
     border-radius: $radius-md;
     font-size: $font-md;
-    border: var(--b-light);
+    border: var(--input-border);
     transition:
         outline-color var(--t-fast),
         border var(--t-mid);
 
     &:hover {
-        border: 1px solid var(--c-primary);
+        border: var(--input-outline);
     }
 }
 
@@ -28,9 +30,9 @@
 
     &[disabled],
     &.disabled {
-        background-color: var(--c-bg-light);
+        background-color: var(--input-color-bg-disabled);
         border: none;
-        color: var(--c-fg-light);
+        color: var(--input-color-fg-disabled);
         cursor: not-allowed;
         filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
     }
@@ -81,7 +83,7 @@
     width: var(--v-half);
     text-align: center;
     line-height: 1;
-    color: var(--c-fg);
+    color: var(--input-color-fg);
     z-index: 1;
 }
 
@@ -90,7 +92,7 @@
     width: calc(50% - var(--v-padding));
     height: calc(100% - 2 * var(--v-padding));
     left: var(--v-padding);
-    background-color: var(--c-primary);
+    background-color: var(--input-color-active);
     z-index: 0;
 }
 
@@ -99,9 +101,9 @@
 }
 
 .checkbox:checked + .states .after {
-    color: var(--c-fg-on-primary);
+    color: var(--input-color-fg-active);
 }
 
 .checkbox:not(:checked) + .states .before {
-    color: var(--c-fg-on-primary);
+    color: var(--input-color-fg-active);
 }

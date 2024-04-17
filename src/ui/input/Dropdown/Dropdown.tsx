@@ -57,6 +57,8 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, d
             value={internalValue}
             placeholder={placeholder || 'Select'}
             isDisabled={disabled}
+            unstyled
+            menuPortalTarget={document.body}
             onChange={handleChange}
         />
     );
@@ -108,6 +110,8 @@ const BooleanDropdown: React.FC<BooleanDropdownProps> = ({ isClearable = true, d
             value={internalValue}
             placeholder={placeholder || 'Select'}
             isDisabled={disabled}
+            unstyled
+            menuPortalTarget={document.body}
             onChange={handleChange}
         />
     );
@@ -157,6 +161,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options = [], isClearable
             value={internalValue}
             placeholder={placeholder || 'Select'}
             isDisabled={disabled}
+            unstyled
+            menuPortalTarget={document.body}
             onChange={handleChange}
         />
     );

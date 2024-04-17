@@ -9,13 +9,15 @@ interface PopoverProps {
     direction?: 'bottom' | 'top' | 'left' | 'right';
     highlight?: boolean;
     delay?: number;
+    anchorClass?: string;
+    anchorProps?: React.HTMLAttributes<HTMLDivElement>;
     customStyle?: string;
     canHover?: boolean;
     canClick?: boolean;
     children: ReactNode;
 }
 
-const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight = false, delay = 500, customStyle = null, canHover = true, canClick = false, children }) => {
+const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight = false, delay = 500, anchorClass, anchorProps, customStyle = null, canHover = true, canClick = false, children }) => {
     const [click, setClick] = useState<boolean>(false);
     const [hover, setHover] = useState<boolean>(false);
     const hoverTimeout = useRef<number | null>(null);
@@ -64,10 +66,11 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
         customStyle
     );
 
-    const anchorProps = {
+    const fullAnchorProps = {
         onMouseEnter: canHover ? hoverPopover : undefined,
         onMouseLeave: canHover ? hoverExitPopover : undefined,
-        onClick: canClick ? () => setClick(!click) : undefined
+        onClick: canClick ? () => setClick(!click) : undefined,
+        ...anchorProps
     };
 
     const displayPopover = hover || click;
@@ -75,7 +78,8 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
     return (
         <Anchor
             direction={direction}
-            anchorProps={anchorProps}
+            anchorClass={anchorClass}
+            anchorProps={fullAnchorProps}
             component={
                 <div className={popoverClasses}>
                     <div className={style.popoverInner}>{content}</div>

@@ -3,12 +3,12 @@ import { ComponentCSSProps } from '../../types';
 import style from './Page.module.scss';
 
 interface PageProps extends ComponentCSSProps {
-    title?: string;
+    title: string;
     subheader?: React.ReactNode;
     children?: ReactNode;
 }
 
-const Page: React.FC<PageProps> = ({ title = 'AnalystKit', subheader, children }: PageProps) => {
+const Page: React.FC<PageProps> = ({ title, subheader, children }: PageProps) => {
     useEffect(() => {
         document.title = title;
         window.scrollTo(0, 0);
