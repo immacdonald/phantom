@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
+import { PollingRate } from '../../types';
 import { Anchor } from '../Anchor';
 import style from './Popover.module.scss';
 
@@ -67,9 +68,8 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
     );
 
     const fullAnchorProps = {
-        onMouseEnter: canHover ? hoverPopover : undefined,
-        onMouseLeave: canHover ? hoverExitPopover : undefined,
-        onClick: canClick ? () => setClick(!click) : undefined,
+        ...(canHover ? { onMouseEnter: hoverPopover, onMouseLeave: hoverExitPopover } : {}),
+        ...(canClick ? { onClick: () => setClick(!click) } : {}),
         ...anchorProps
     };
 
@@ -88,7 +88,7 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
             componentClassName={popoverClasses}
             visible={displayPopover}
             innerRef={ref}
-            pollingInterval={8}
+            pollingInterval={PollingRate.FPS60}
         >
             {children}
         </Anchor>

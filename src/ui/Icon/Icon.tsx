@@ -10,11 +10,11 @@ const sizeMap: Record<string, string> = {
 };
 
 const colorMap: Record<string, string> = {
-    inverse: 'var(--c-fg-inverse)',
-    primary: 'var(--c-primary)',
-    secondary: 'var(--c-secondary)',
-    positive: 'var(--c-positive)',
-    critical: 'var(--c-critical)'
+    inverse: 'var(--color-text-inverse)',
+    primary: 'var(--color-primary)',
+    secondary: 'var(--color-secondary)',
+    positive: 'var(--color-positive)',
+    critical: 'var(--color-critical)'
 };
 
 interface IconProps {

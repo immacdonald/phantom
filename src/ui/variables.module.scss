@@ -1,21 +1,73 @@
 :root {
+    // Brand
+    --color-primary: var(--c-primary);
+    --color-primary-hover: var(--c-primary);
+    --color-primary-active: var(--c-primary);
+    --color-surface-primary: var(--c-bg-tint);
+    --color-text-on-primary: var(--c-fg-on-primary);
+    --color-secondary: var(--c-secondary);
+    --color-accent: var(--c-accent);
+    --color-accent-hover: var(--c-accent);
+    --color-accent-active: var(--c-accent);
+    --color-surface-accent: var(--c-accent);
+    --color-text-on-accent: var(--c-fg-on-primary);
+
+    // Colors
+    // Text
+    --color-text: var(--c-fg);
+    --color-text-inverse: var(--c-fg-inverse);
+
+    // Surface
+    --color-surface-page: var(--c-bg-light);
+    --color-surface-background: var(--c-bg);
+    --color-surface-foreground: var(--c-bg-light);
+    --color-surface-overlay: var(--color-surface-foreground);
+    --color-surface-inverse: var(--c-bg-inverse);
+
+    // Contexts
+    // Positive
+    --color-positive: var(--c-positive);
+    --color-positive-hover: var(--c-positive);
+    --color-positive-active: var(--c-positive);
+    --color-surface-positive: var(--c-positive);
+    --color-text-on-positive: var(--c-fg-on-primary);
+
+    // Critical
+    --color-critical: var(--c-critical);
+    --color-critical-hover: var(--c-critical);
+    --color-critical-active: var(--c-critical);
+    --color-surface-critical: var(--c-critical);
+    --color-text-on-critical: var(--c-fg-on-primary);
+
+    // Info
+    --color-info: var(--c-info);
+    --color-info-hover: var(--c-info);
+    --color-info-active: var(--c-info);
+    --color-surface-info: var(--c-info);
+    --color-text-on-info: var(--c-fg-on-primary);
+
+    // Warning
+    --color-warning: var(--c-warning);
+    --color-warning-hover: var(--c-warning);
+    --color-warning-active: var(--c-warning);
+    --color-surface-warning: var(--c-warning);
+    --color-text-on-warning: var(--c-fg-on-primary);
+
     // Border
-    --border-thin: 1px solid;
-    --border-thick: 2px solid;
+    --border-width-thin: 1px;
+    --border-width-thick: 2px;
     --border-color-light: var(--c-bg-dim);
     --border-color-dark: var(--c-bg-dark);
-    --border-light: var(--border-thin) var(--border-color-light);
-    --border-dark: var(--border-thin) var(--border-color-dark);
+    --border-light: var(--border-width-thin) solid var(--border-color-light);
+    --border-dark: var(--border-width-thin) solid var(--border-color-dark);
 
     // Input
-    --input-color-active: var(--c-primary);
+    --input-color-active: var(--color-primary);
     --input-color-active-hover: var(--c-primary-light);
     --input-color-fg-active: var(--c-fg-on-primary);
-
     --input-border: var(--border-light);
-    --input-border-active: var(--border-thin) var(--input-color-active);
-    --input-outline: var(--border-thin) var(--input-color-active);
-
+    --input-border-active: var(--border-width-thin) solid var(--input-color-active);
+    --input-outline: var(--border-width-thin) solid var(--input-color-active);
     --input-color-fg: var(--c-fg);
     --input-color-fg-light: var(--c-fg-light);
     --input-color-fg-disabled: var(--c-fg-light);
@@ -24,12 +76,8 @@
     --input-color-bg-selected: var(--c-bg);
 
     // Shadows
-    --shadow-subtle: 0px 1px 0px 0px rgba(26, 26, 26, 0.07);
-    --shadow-raised: 0px 3px 1px -1px rgba(26, 26, 26, 0.07);
-    --shadow-lifted: 0px 4px 6px -2px rgba(26, 26, 26, 0.20);
-    --shadow-floating: 0px 8px 16px -4px rgba(26, 26, 26, 0.22);
-    --shadow-overlay: 0px 12px 20px -8px rgba(26, 26, 26, 0.24);
-
-    --border-overlay: var(--border-light);
-    --color-surface-overlay: var(--c-bg-light);
+    --shadow-subtle: 0px 3px 1px -1px rgb(26 26 26 / 7%);
+    --shadow-raised: 0px 4px 6px -2px rgb(26 26 26 / 20%);
+    --shadow-lifted: 0px 8px 16px -4px rgb(26 26 26 / 22%);
+    --shadow-floating: 0px 12px 20px -8px rgb(26 26 26 / 24%);
 }

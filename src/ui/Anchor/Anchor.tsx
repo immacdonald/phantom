@@ -3,7 +3,7 @@ import React, { ReactElement, ReactNode, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useResponsiveContext } from '../../contexts';
 import { useInterval } from '../../hooks';
-import { Dimensions, Position } from '../../types';
+import { Dimensions, PollingRate, Position } from '../../types';
 import style from './Anchor.module.scss';
 
 type XYWH = Position & Dimensions;
@@ -13,7 +13,7 @@ interface AnchorProps {
     component: ReactElement;
     direction?: 'left' | 'right' | 'top' | 'bottom';
     padding?: number;
-    pollingInterval?: number;
+    pollingInterval?: PollingRate;
     visible?: boolean;
     update?: boolean;
     innerRef?: React.RefObject<HTMLDivElement>;
@@ -32,7 +32,19 @@ interface ComputedAnchor extends Position {
 
 const edgeSafety = 8;
 
-const Anchor: React.FC<AnchorProps> = ({ component, direction = 'top', padding = 8, pollingInterval = 33, visible = true, update = true, innerRef, children, anchorClass, anchorProps, componentClassName }) => {
+const Anchor: React.FC<AnchorProps> = ({
+    component,
+    direction = 'top',
+    padding = 8,
+    pollingInterval = 33,
+    visible = true,
+    update = true,
+    innerRef,
+    children,
+    anchorClass,
+    anchorProps,
+    componentClassName
+}) => {
     const anchorRef = innerRef ?? useRef<HTMLDivElement>(null);
     const componentRef = useRef<HTMLDivElement>(null);
     const [anchorBounds, setAnchorBounds] = useState<XYWH>({ x: 0, y: 0, width: 0, height: 0 });

@@ -3,11 +3,11 @@
 .accordion {
     margin-top: $xs;
     margin-bottom: $md;
-    border-top: var(--b-light);
-    border-bottom: var(--b-light);
+    border-top: var(--border-light);
+    border-bottom: var(--border-light);
     border-radius: $radius-sm;
 
-    .toggle {
+    > .toggle {
         width: 100%;
 
         .button {
@@ -16,17 +16,27 @@
             border-bottom-right-radius: 0;
 
             svg {
-                transform: rotate(-90deg);
+                transform: rotate(0deg);
                 transition: transform var(--t-mid);
             }
         }
     }
 
-    .wrapper {
+    &.open {
+        > .toggle {
+            .button {
+                svg {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+    }
+
+    > .wrapper {
         height: 0;
         margin: 0;
         overflow: hidden;
-        transition: height var(--t-mid);
+        transition: height var(--t-fast);
         border-top-left-radius: 0;
         border-top-right-radius: 0;
 
@@ -35,20 +45,6 @@
             padding: $sm;
             border-radius: $radius-sm;
             overflow-y: visible;
-        }
-    }
-
-    &.open {
-        .button {
-            svg {
-                transform: rotate(0deg);
-            }
-        }
-
-        &:not(.transition) {
-            .wrapper {
-                overflow: visible;
-            }
         }
     }
 }

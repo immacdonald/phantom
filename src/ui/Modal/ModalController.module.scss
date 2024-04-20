@@ -12,8 +12,7 @@
     justify-content: center;
     visibility: none;
     pointer-events: none;
-    transition:
-        background-color var(--t-mid);
+    transition: background-color var(--t-mid);
 
     &.active {
         visibility: visible;

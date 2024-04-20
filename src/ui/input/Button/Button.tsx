@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
+import React, { CSSProperties, ComponentType, MouseEvent, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../../Loading';
 import style from './Button.module.scss';
@@ -11,7 +11,7 @@ type ButtonProps = {
     visual?: 'ghost' | 'outline' | 'filled';
     mode?: 'error' | 'accent';
     rounded?: boolean;
-    Icon?: any;
+    Icon?: ComponentType<ButtonProps>;
     color?: boolean;
     smallIcon?: boolean;
     active?: boolean;

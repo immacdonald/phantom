@@ -126,20 +126,20 @@
         height: var(--v-internal);
     }
 
-    --v-light: var(--c-primary-light);
-    --v-medium: var(--c-primary);
-    --v-dark: var(--c-primary-dark);
+    --v-light: var(--color-primary);
+    --v-medium: var(--color-primary-hover);
+    --v-dark: var(--color-primary-active);
 
     &[data-mode='error'] {
-        --v-light: var(--c-critical);
-        --v-medium: var(--c-critical);
-        --v-dark: var(--c-bg-critical);
+        --v-light: var(--color-critical);
+        --v-medium: var(--color-critical-hover);
+        --v-dark: var(--color-critical-active);
     }
 
     &[data-mode='accent'] {
-        --v-light: var(--c-accent);
-        --v-medium: var(--c-accent);
-        --v-dark: var(--c-bg-accent);
+        --v-light: var(--color-accent);
+        --v-medium: var(--color-accent-hover);
+        --v-dark: var(--color-accent-active);
     }
 
     &.filled {
@@ -161,9 +161,9 @@
     &.ghost {
         @include ghost(var(--a-faint));
 
-        --v-text: var(--c-primary);
-        --v-text-hover: var(--c-primary);
-        --v-text-active: var(--c-primary);
+        --v-text: var(--color-primary);
+        --v-text-hover: var(--color-primary);
+        --v-text-active: var(--color-primary);
     }
 
     color: var(--v-text);
@@ -194,7 +194,6 @@
 
         &:active {
             color: var(--v-text-active);
-            filter: brightness(var(--f-active-brightness));
         }
     }
 
@@ -213,9 +212,9 @@
 
     &[disabled],
     &.disabled {
-        background-color: var(--c-bg-light);
+        background-color: var(--input-color-bg-disabled);
         border: none;
-        color: var(--c-fg-light);
+        color: var(--input-color-fg-disabled);
         cursor: not-allowed;
         filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
     }

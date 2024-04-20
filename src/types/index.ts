@@ -19,6 +19,15 @@ export interface ComponentCSSProps {
     properties?: CSSProperties;
 }
 
+export enum PollingRate {
+    FPS120 = 8,
+    FPS60 = 16,
+    FPS30 = 33,
+    QuarterSecond = 250,
+    HalfSecond = 500,
+    Second = 1000
+}
+
 // Simple data structures
 export interface Dimensions {
     width: number;
@@ -31,4 +40,9 @@ export interface Position {
 }
 
 // Utility
-export type Callback<T> = (reponse: T) => void;
+type CallbackOne<T> = (arg1: T) => void;
+type CallbackTwo<T, U> = (arg1: T, arg2: U) => void;
+type CallbackThree<T, U, V> = (arg1: T, arg2: U, arg3: V) => void;
+type CallbackFour<T, U, V, W> = (arg1: T, arg2: U, arg3: V, arg4: W) => void;
+type CallbackFive<T, U, V, W, X> = (arg1: T, arg2: U, arg3: V, arg4: W, arg5: X) => void;
+export type Callback<T, U = void, V = void, W = void, X = void> = CallbackOne<T> | CallbackTwo<T, U> | CallbackThree<T, U, V> | CallbackFour<T, U, V, W> | CallbackFive<T, U, V, W, X>;

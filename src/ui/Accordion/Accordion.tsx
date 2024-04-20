@@ -1,78 +1,54 @@
 import classNames from 'classnames';
-import React, { ReactNode, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
 import { Button } from '..';
+import { useInterval } from '../../hooks';
+import { Chevron } from '../../icons';
+import { PollingRate } from '../../types';
+import { IconProps } from '../Icon/Icon';
 import style from './Accordion.module.scss';
-import { useResponsiveContext } from '../../contexts';
 
-interface CollapsibleProps {
+interface AccordionProps {
     label: string;
-    Icon: any;
+    Icon?: ComponentType<IconProps>;
     defaultState?: boolean;
     className?: string;
     children: ReactNode;
 }
 
-const Accordion: React.FC<CollapsibleProps> = ({ label, Icon, defaultState = false, className, children }) => {
-    const [open, setOpen] = useState<boolean>(false);
-    const transition = useRef<boolean>(false);
-    const transitionTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultState = false, className, children }) => {
+    const [open, setState] = useState<boolean>(false);
+    const [height, setHeight] = useState<number>(0);
+    const ref = useRef<HTMLDivElement>(null);
 
-    // Use window size to force a re-render on dimension changes
-    const { windowSize: _ } = useResponsiveContext();
-    const [, forceUpdate] = useReducer(x => x + 1, 0);
-
-    const setState = (state: boolean) => {
-        setOpen(state);
-        transitionState();
+    const poll = () => {
+        setHeight((open && ref.current?.scrollHeight) || 0);
     };
 
-    const wrapperRef = useRef<HTMLDivElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
-
-    const accordionClasses = classNames(
-        style.accordion,
-        {
-            [style.open]: open,
-            [style.transition]: transition.current
-        },
-        className
-    );
-
-    const transitionState = () => {
-        // Add a transition state during the transition
-        if (transitionTimeout.current) {
-            clearTimeout(transitionTimeout.current);
-        }
-
-        transition.current = true;
-        transitionTimeout.current = setTimeout(() => {
-            transition.current = false;
-            transitionTimeout.current = null;
-            forceUpdate();
-        }, 500)
-    }
-    
-    // Calculate the height of each render to ensure the exact space is used
-    const height = useRef<number>(0);
-    const lastHeight = useRef<number>(0);
-
-    height.current = ((open && contentRef.current?.scrollHeight) || 0);
-    if(height.current != lastHeight.current) {
-        transitionState();
-        lastHeight.current = height.current;
-    }
+    useInterval(() => {
+        poll();
+    }, PollingRate.FPS30);
 
     useEffect(() => {
         setState(defaultState);
     }, [defaultState]);
+
+    const accordionClasses = classNames(
+        style.accordion,
+        {
+            [style.open]: open
+        },
+        className
+    );
 
     return (
         <div className={accordionClasses}>
             <div className={style.toggle}>
                 <Button label={label} onClick={() => setState(!open)} visual="ghost" Icon={Icon} full customStyle={style.button} />
             </div>
-            <div className={style.wrapper} ref={wrapperRef} style={{ height: `${height.current}px` }}>
-                <div className={style.content} ref={contentRef}>{children}</div>
+            <div className={style.wrapper} style={{ height: `${height}px` }}>
+                <div className={style.content} ref={ref}>
+                    {children}
+                </div>
             </div>
         </div>
     );

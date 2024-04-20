@@ -5,26 +5,26 @@
 
     width: 100%;
     min-height: 64px;
-    background-color: var(--c-bg-light);
+    background-color: var(--color-surface-foreground);
     padding-block: 96px;
     padding-inline: max(calc((100% - $screen-lg) / 2), var(--v-min-padding));
     flex-grow: 1;
     position: relative;
 
     &.alt {
-        background-color: var(--c-bg-tint);
+        background-color: var(--color-surface-primary);
     }
 
     &.highlight {
-        background-color: var(--c-primary);
-        color: var(--c-fg-on-primary);
+        background-color: var(--color-primary);
+        color: var(--color-text-on-primary);
     }
 
     &.parallax {
-        background-color: var(--c-primary);
+        background-color: var(--color-primary);
         background-attachment: fixed;
         background-position: center center;
-        color: var(--c-fg-on-primary);
+        color: var(--color-text-on-primary);
         background-size: cover;
 
         @include respond-max($screen-sm) {
@@ -33,7 +33,7 @@
     }
 
     &.floating {
-        background-color: var(--c-bg);
+        background-color: var(--color-surface-background);
         padding-inline: 0;
         display: flex;
         flex-direction: column;
@@ -42,11 +42,11 @@
 
         > div {
             width: min(600px, 95%);
-            background-color: var(--c-bg-light);
+            background-color: var(--color-surface-foreground);
             padding: $xl;
-            border: var(--b-light);
+            border: var(--border-light);
             border-radius: $radius-md;
-            box-shadow: var(--shadow-floating);
+            box-shadow: var(--shadow-lifted);
             display: flex;
             flex-direction: column;
             justify-content: start;
@@ -55,8 +55,6 @@
         }
 
         &:first-of-type {
-            margin-top: $xl;
-
             @include respond-height-max($screen-height-md) {
                 padding-block: 1rem;
                 margin-top: 0;
@@ -65,15 +63,15 @@
     }
 
     &.inset {
-        background-color: var(--c-bg);
+        background-color: var(--color-surface-background);
         padding-inline: $md;
         padding-block: $xl;
 
         > div {
             width: 100%;
             min-height: 128px;
-            background-color: var(--c-bg-light);
-            border: var(--b-light);
+            background-color: var(--color-surface-foreground);
+            border: var(--border-light);
             padding: $xl;
             border-radius: $radius-md;
             box-shadow: var(--shadow-lifted);

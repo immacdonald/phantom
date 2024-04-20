@@ -10,10 +10,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--c-fg-on-primary);
+    color: var(--color-text);
+    background-color: var(--color-surface-overlay);
     border-radius: $radius-md;
     border: 1px solid transparent;
-    box-shadow: var(--shadow-lifted);
+    box-shadow: var(--shadow-floating);
     opacity: 0;
     transform: translateY(-120%);
     transition:
@@ -32,12 +33,12 @@
     }
 
     &[data-mode='error'] {
-        background-color: var(--c-bg-critical);
-        border-color: var(--c-critical);
+        background-color: var(--color-surface-critical);
+        border-color: var(--color-critical);
     }
 
     &[data-mode='success'] {
-        background: var(--c-bg-positive);
-        border-color: var(--c-positive);
+        background-color: var(--color-surface-positive);
+        border-color: var(--color-positive);
     }
 }

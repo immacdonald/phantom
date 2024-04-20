@@ -49,8 +49,8 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, d
 
     return (
         <Select
-            className={style.dropdown}
-            classNamePrefix="dropdown"
+            className={style.select}
+            classNamePrefix="select"
             options={formattedOptions}
             isMulti={false}
             isClearable={isClearable}
@@ -102,8 +102,8 @@ const BooleanDropdown: React.FC<BooleanDropdownProps> = ({ isClearable = true, d
 
     return (
         <Select
-            className={style.dropdown}
-            classNamePrefix="dropdown"
+            className={style.select}
+            classNamePrefix="select"
             options={options}
             isMulti={false}
             isClearable={isClearable}
@@ -153,8 +153,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options = [], isClearable
 
     return (
         <Select
-            className={style.dropdown}
-            classNamePrefix="dropdown"
+            className={style.select}
+            classNamePrefix="select"
             options={formattedOptions}
             isMulti={true}
             isClearable={isClearable}
