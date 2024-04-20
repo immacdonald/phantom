@@ -34,11 +34,13 @@
 
     &[data-mode='error'] {
         background-color: var(--color-surface-critical);
+        color: var(--color-text-on-critical);
         border-color: var(--color-critical);
     }
 
     &[data-mode='success'] {
         background-color: var(--color-surface-positive);
+        color: var(--color-text-on-positive);
         border-color: var(--color-positive);
     }
 }

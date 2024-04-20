@@ -2,20 +2,20 @@
     "name": "@imacdonald/phantom",
     "version": "0.0.1",
     "description": "React Phantom Design and Component Library",
-    "main": "./src/index.js",
-    "module": "./src/index.js",
+    "main": "./lib/index.js",
+    "module": "./lib/index.js",
     "type": "module",
     "files": [
-        "src"
+        "lib"
     ],
     "exports": {
-        ".": "./src/index.js",
-        "./ui": "./src/ui/index.js",
-        "./ui/style": "./src/ui/tokens.scss",
-        "./ui/variables": "./src/ui/variables.module.scss"
+        ".": "./lib/index.js",
+        "./style/tokens": "./lib/style/tokens.scss",
+        "./style/variables": "./lib/style/variables.module.scss"
     },
     "scripts": {
-        "build": "rm -rf ./lib && cp -R ./src ./lib",
+        "prepare": "npm run build",
+        "build": "tsup",
         "dev": "tsup --watch",
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit --emitDeclarationOnly false",
@@ -39,15 +39,13 @@
         "url": "https://github.com/immacdonald/phantom/issues"
     },
     "homepage": "https://github.com/immacdonald/phantom#readme",
-    "peerDependencies": {
-        "react": "^18.2.0"
-    },
     "devDependencies": {
         "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
         "@types/react": "^18.2.73",
         "@types/react-dom": "^18.2.25",
         "@typescript-eslint/eslint-plugin": "^7.6.0",
         "esbuild-plugin-copy": "^2.1.1",
+        "esbuild-plugin-svgr": "^2.1.0",
         "esbuild-sass-plugin": "^3.2.0",
         "eslint": "^8.57.0",
         "eslint-plugin-react": "^7.34.1",
@@ -65,6 +63,7 @@
     },
     "dependencies": {
         "classnames": "^2.5.1",
+        "react": "^18.2.0",
         "react-router-dom": "^6.22.3",
         "react-select": "^5.8.0"
     }

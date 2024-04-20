@@ -1,6 +1,7 @@
-// import {postcssModules, sassPlugin} from 'esbuild-sass-plugin'
+import {postcssModules, sassPlugin} from 'esbuild-sass-plugin'
 import { copy } from 'esbuild-plugin-copy';
 import { defineConfig } from 'tsup';
+import svgr from 'esbuild-plugin-svgr';
 
 export default defineConfig({
     splitting: true,
@@ -11,20 +12,20 @@ export default defineConfig({
     minify: true,
     bundle: true,
     skipNodeModulesBundle: true,
-    entry: ['src/index.ts'], // '!src/ui'],
-    //external: ['src/', '!src/index.ts'],
+    entry: ['src/index.ts'],
     target: 'es2020',
     outDir: 'lib',
     esbuildPlugins: [
-        /*sassPlugin({
-      type: "style",
-      transform: postcssModules({})
-    }),*/
+        sassPlugin({
+            type: "style",
+            transform: postcssModules({})
+        }),
+        svgr(),
         copy({
             resolveFrom: 'cwd',
             assets: {
-                from: ['./src/**'],
-                to: ['./lib/']
+                from: ['./src/ui/{tokens.scss,variables.module.scss}'],
+                to: ['./lib/style/']
             },
             watch: true
         })

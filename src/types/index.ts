@@ -29,6 +29,8 @@ export enum PollingRate {
 }
 
 // Simple data structures
+export type Primitive = string | number | boolean;
+export type NullablePrimitive = Primitive | null;
 export interface Dimensions {
     width: number;
     height: number;

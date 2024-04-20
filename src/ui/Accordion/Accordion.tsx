@@ -3,7 +3,7 @@ import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 're
 import { Button } from '..';
 import { useInterval } from '../../hooks';
 import { Chevron } from '../../icons';
-import { PollingRate } from '../../types';
+import { Callback, PollingRate } from '../../types';
 import { IconProps } from '../Icon/Icon';
 import style from './Accordion.module.scss';
 
@@ -12,10 +12,11 @@ interface AccordionProps {
     Icon?: ComponentType<IconProps>;
     defaultState?: boolean;
     className?: string;
+    onClick?: Callback<void>;
     children: ReactNode;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultState = false, className, children }) => {
+const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultState = false, className, onClick = () => {}, children }) => {
     const [open, setState] = useState<boolean>(false);
     const [height, setHeight] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
@@ -30,7 +31,7 @@ const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultSta
 
     useEffect(() => {
         setState(defaultState);
-    }, [defaultState]);
+    }, []);
 
     const accordionClasses = classNames(
         style.accordion,
@@ -43,7 +44,17 @@ const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultSta
     return (
         <div className={accordionClasses}>
             <div className={style.toggle}>
-                <Button label={label} onClick={() => setState(!open)} visual="ghost" Icon={Icon} full customStyle={style.button} />
+                <Button
+                    label={label}
+                    onClick={() => {
+                        setState(!open);
+                        onClick();
+                    }}
+                    visual="ghost"
+                    Icon={Icon}
+                    full
+                    customStyle={style.button}
+                />
             </div>
             <div className={style.wrapper} style={{ height: `${height}px` }}>
                 <div className={style.content} ref={ref}>

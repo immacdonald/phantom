@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { Callback } from '../types';
+import { Callback, Primitive } from '../types';
+import { parsePrimitive } from '../utility';
 import useBackButton from './useBackButton';
 
-const useQueryParams = (whitelist?: string[], onUpdate?: Callback<any>) => {
+const useQueryParams = (whitelist?: string[], onUpdate?: Callback<Record<string, Primitive>>) => {
     const search = useRef<string>(window.location.search);
 
     useBackButton(() => {
@@ -46,23 +47,16 @@ const useQueryParams = (whitelist?: string[], onUpdate?: Callback<any>) => {
         (param: string) => {
             const searchParams = new URLSearchParams(search.current);
             const value = searchParams.get(param);
-            // Return the boolean types or a string
-            if (value == 'true') {
-                return true;
-            } else if (value == 'false') {
-                return false;
-            } else {
-                return value;
-            }
+            return parsePrimitive(value);
         },
         [search.current, onUpdate]
     );
 
     const readAllQueryParams = useCallback(() => {
         const searchParams = new URLSearchParams(search.current);
-        const query: Record<string, string> = {};
+        const query: Record<string, Primitive> = {};
         searchParams.forEach((value, key) => {
-            query[key] = value;
+            query[key] = parsePrimitive(value)!;
         });
         return query;
     }, [search.current, onUpdate]);

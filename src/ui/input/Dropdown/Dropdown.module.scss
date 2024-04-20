@@ -18,7 +18,6 @@
         background-color: var(--input-color-bg);
         border-radius: $radius-md;
         font-size: $font-md;
-        padding: $sm $sm;
         transition:
             outline-color var(--t-fast),
             border var(--t-mid);
@@ -45,6 +44,7 @@
 
     [class^='select__value-container'] {
         padding-inline: 8px;
+        overflow: initial !important;
     }
 
     [class^='select__placeholder'] {
@@ -69,19 +69,19 @@
         padding: 2px 4px;
         border-radius: 4px;
         white-space: unset;
-    
+
         [class*='select__multi-value__label'] {
             color: var(--input-color-fg-active);
         }
-    
+
         [class*='select__multi-value__remove'] {
             padding: 2px;
             margin: 0;
-    
-            >svg {
+
+            > svg {
                 fill: var(--input-color-fg-active) !important;
             }
-    
+
             &:hover {
                 background-color: var(--input-color-fg-active-hover);
             }
@@ -89,7 +89,7 @@
     }
 
     [class^='select--is-disabled'] {
-        >div {
+        > div {
             pointer-events: all;
             cursor: not-allowed;
             background-color: var(--input-color-bg-disabled);
@@ -98,12 +98,7 @@
             filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
         }
     }
-
-    [class^='select__value-container'] {
-        overflow: initial !important;
-    }
 }
-
 
 [class^='select__menu']:not([class*='portal'], [class*='list']) {
     background-color: var(--input-color-bg);
@@ -121,25 +116,25 @@
         border-radius: 0 0 $radius-md $radius-md;
         padding: 0;
     }
-    
+
     [class^='select__option'] {
         background-color: var(--input-color-bg);
         min-height: 40px;
         text-align: left;
         padding: 8px 12px;
-    
+
         &:hover,
         &:active {
             background-color: var(--input-color-bg-selected);
         }
     }
-    
+
     [class^='select__option--is-selected'] {
         font-weight: 700;
         background-color: var(--input-color-active) !important;
         color: var(--input-color-fg-active) !important;
     }
-    
+
     [class^='select__option--is-focused'] {
         background-color: var(--input-color-bg-selected);
     }
