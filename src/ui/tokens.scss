@@ -57,3 +57,24 @@ $z-anchor: 103;
         @content;
     }
 }
+
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        width: $sm;
+        height: $sm;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--c-bg-dim);
+        border-radius: $sm;
+        border: $xs solid var(--c-bg-dim);
+    }
+
+    &::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+    }
+}

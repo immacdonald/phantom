@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React from 'react';
 import style from './Split.module.scss';
 
@@ -14,7 +14,7 @@ const Split: React.FC<SplitProps> = ({ main, verticalCenter = false, children })
         return false;
     }
 
-    const className = classNames(style.split, {
+    const className = clsx(style.split, {
         [style.left]: main == 'left',
         [style.right]: main == 'right',
         [style.verticalCenter]: verticalCenter

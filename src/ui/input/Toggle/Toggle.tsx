@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Callback } from '../../../types';
 import style from './Toggle.module.scss';
@@ -31,7 +31,7 @@ const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultSt
 
     const properties = useMemo(() => (width ? ({ '--v-width': `calc(${width}px + 2 * var(--v-padding))`, '--v-half': 'calc(50% - var(--v-padding))' } as CSSProperties) : undefined), [width]);
 
-    const toggleClasses = classNames(style.toggle, {
+    const toggleClasses = clsx(style.toggle, {
         [style.disabled]: disabled
     });
 

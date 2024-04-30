@@ -95,11 +95,9 @@
     justify-content: center;
     padding: $sm;
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
     font-size: var(--v-font);
     font-weight: $semi;
     border-radius: $radius-sm;
-    text-transform: uppercase;
     transition:
         background var(--t-mid),
         transform var(--t-mid),
@@ -124,6 +122,10 @@
         font-size: var(--v-size);
         width: var(--v-internal);
         height: var(--v-internal);
+    }
+
+    &.link {
+        text-decoration: none !important;
     }
 
     --v-light: var(--color-primary);
@@ -161,8 +163,8 @@
     &.ghost {
         @include ghost(var(--a-faint));
 
-        --v-text: var(--color-primary);
-        --v-text-hover: var(--color-primary);
+        --v-text: var(--color-text);
+        --v-text-hover: var(--color-text);
         --v-text-active: var(--color-primary);
     }
 
@@ -170,12 +172,6 @@
 
     &.hasLabel {
         padding: $sm $md;
-    }
-
-    &.smallIcon {
-        svg {
-            width: 20px !important;
-        }
     }
 
     &.rounded {

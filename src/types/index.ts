@@ -16,7 +16,7 @@ export type ResponsiveType<T> = T | ResponsiveObject<T>;
 
 export interface ComponentCSSProps {
     className?: string;
-    properties?: CSSProperties;
+    cssProperties?: CSSProperties;
 }
 
 export enum PollingRate {

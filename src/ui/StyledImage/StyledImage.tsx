@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import style from './StyledImage.module.scss';
 
 interface StyledImageProps {
@@ -9,7 +9,7 @@ interface StyledImageProps {
 }
 
 const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round = false, maxWidth }) => {
-    const imageStyle = classNames(style.image, {
+    const imageStyle = clsx(style.image, {
         [style.border]: border,
         [style.round]: round
     });

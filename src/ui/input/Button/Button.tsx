@@ -1,11 +1,12 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { ComponentType, CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { ComponentCSSProps } from '../../../types';
 import { IconProps } from '../../Icon';
 import Loading from '../../Loading';
 import style from './Button.module.scss';
 
-type ButtonProps = {
+interface ButtonProps extends ComponentCSSProps {
     label?: string;
     size?: 'regular' | 'small' | 'large';
     full?: boolean;
@@ -13,18 +14,13 @@ type ButtonProps = {
     mode?: 'error' | 'accent';
     rounded?: boolean;
     Icon?: ComponentType<IconProps>;
-    color?: boolean;
-    smallIcon?: boolean;
-    active?: boolean;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    allowPropagation?: boolean;
     link?: string;
     isLoading?: boolean;
-    customStyle?: string;
     disabled?: boolean;
     type?: 'button' | 'reset' | 'submit';
     form?: string;
-};
+}
 
 const Button: React.FC<ButtonProps> = ({
     label,
@@ -34,41 +30,36 @@ const Button: React.FC<ButtonProps> = ({
     mode,
     rounded = false,
     Icon,
-    color = false,
-    smallIcon = false,
-    active = false,
     onClick,
-    allowPropagation = false,
     link,
     isLoading = false,
-    customStyle,
     disabled = false,
     type = 'button',
-    form
+    form,
+    className,
+    cssProperties
 }) => {
-    const buttonClasses = classNames(style.button, {
-        [style.large]: size == 'large',
-        [style.small]: size == 'small',
-        [style.full]: full,
-        [style.ghost]: visual == 'ghost',
-        [style.outline]: visual == 'outline',
-        [style.filled]: visual == 'filled',
-        [style.rounded]: rounded,
-        [style.color]: color,
-        [style.hasLabel]: !!label,
-        //[style.hasIcon]: !!icon,
-        [style.smallIcon]: smallIcon,
-        [style.loading]: isLoading,
-        [style.active]: active,
-        [style.disabled]: disabled,
-        [customStyle ? customStyle : '']: !!customStyle
-    });
+    const buttonClasses = clsx(
+        style.button,
+        {
+            [style.link]: !!link,
+            [style.large]: size == 'large',
+            [style.small]: size == 'small',
+            [style.full]: full,
+            [style.ghost]: visual == 'ghost',
+            [style.outline]: visual == 'outline',
+            [style.filled]: visual == 'filled',
+            [style.rounded]: rounded,
+            [style.hasLabel]: !!label,
+            [style.loading]: isLoading,
+            [style.disabled]: disabled
+        },
+        className
+    );
 
     const handleMouseClick = useCallback(
         (e: MouseEvent<HTMLButtonElement>) => {
-            if (!allowPropagation) {
-                e.stopPropagation();
-            }
+            //e.stopPropagation();
 
             if (onClick != undefined) {
                 onClick(e);
@@ -79,9 +70,9 @@ const Button: React.FC<ButtonProps> = ({
 
     const visibility = useMemo(() => (isLoading ? ({ visibility: 'hidden' } as CSSProperties) : undefined), [isLoading]);
 
-    const props = { className: buttonClasses, 'data-mode': mode };
+    const props = { className: buttonClasses, 'data-mode': mode, style: cssProperties };
 
-    const renderChildren = (
+    const content = (
         <>
             {Icon && <Icon />}
             {label && <span style={visibility}>{label}</span>}
@@ -91,11 +82,11 @@ const Button: React.FC<ButtonProps> = ({
 
     return link ? (
         <Link to={link} {...props}>
-            {renderChildren}
+            {content}
         </Link>
     ) : (
         <button type={type} onClick={handleMouseClick} form={form} disabled={disabled} {...props}>
-            {renderChildren}
+            {content}
         </button>
     );
 };

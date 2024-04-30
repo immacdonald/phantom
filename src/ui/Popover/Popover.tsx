@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { PollingRate } from '../../types';
@@ -59,7 +59,7 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
         setHover(false);
     };
 
-    const popoverClasses = classNames(
+    const popoverClasses = clsx(
         style.popover,
         {
             [style.highlight]: highlight

@@ -8,3 +8,4 @@ export * from './Split';
 export * from './StyledImage';
 export * from './Anchor';
 export * from './Popover';
+export * from './Card';

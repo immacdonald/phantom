@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import style from './ModalController.module.scss';
 import { getModal } from './modals';
@@ -19,7 +19,7 @@ const ModalController: React.FC = () => {
         };
     }, []);
 
-    const controllerClasses = classNames(style.modals, {
+    const controllerClasses = clsx(style.modals, {
         [style.active]: !!modal
     });
 

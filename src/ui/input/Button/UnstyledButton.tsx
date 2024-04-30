@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './Button.module.scss';
 
-type ClearButtonProps = {
+type UnstyledButtonProps = {
     children: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const ClearButton: React.FC<ClearButtonProps> = ({ children, ...rest }) => {
+const UnstyledButton: React.FC<UnstyledButtonProps> = ({ children, ...rest }) => {
     return (
         <button className={style.clear} type="button" {...rest}>
             {children}
@@ -13,4 +13,4 @@ const ClearButton: React.FC<ClearButtonProps> = ({ children, ...rest }) => {
     );
 };
 
-export { ClearButton };
+export { UnstyledButton };

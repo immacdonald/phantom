@@ -1,22 +1,21 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
 import { Button } from '..';
 import { useInterval } from '../../hooks';
 import { Chevron } from '../../icons';
-import { Callback, PollingRate } from '../../types';
+import { Callback, ComponentCSSProps, PollingRate } from '../../types';
 import { IconProps } from '../Icon/Icon';
 import style from './Accordion.module.scss';
 
-interface AccordionProps {
+interface AccordionProps extends ComponentCSSProps {
     label: string;
     Icon?: ComponentType<IconProps>;
     defaultState?: boolean;
-    className?: string;
     onClick?: Callback<void>;
     children: ReactNode;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultState = false, className, onClick = () => {}, children }) => {
+const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultState = false, className, cssProperties, onClick = () => {}, children }) => {
     const [open, setState] = useState<boolean>(false);
     const [height, setHeight] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
@@ -33,7 +32,7 @@ const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultSta
         setState(defaultState);
     }, []);
 
-    const accordionClasses = classNames(
+    const accordionClasses = clsx(
         style.accordion,
         {
             [style.open]: open
@@ -42,7 +41,7 @@ const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultSta
     );
 
     return (
-        <div className={accordionClasses}>
+        <div className={accordionClasses} style={cssProperties}>
             <div className={style.toggle}>
                 <Button
                     label={label}
@@ -53,7 +52,7 @@ const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultSta
                     visual="ghost"
                     Icon={Icon}
                     full
-                    customStyle={style.button}
+                    className={style.button}
                 />
             </div>
             <div className={style.wrapper} style={{ height: `${height}px` }}>

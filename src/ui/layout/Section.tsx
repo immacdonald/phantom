@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { ReactNode } from 'react';
 import style from './Section.module.scss';
 
@@ -12,7 +12,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = false, background, className, children }) => {
-    const sectionClass = classNames(
+    const sectionClass = clsx(
         style.section,
         {
             [style.floating]: variant == 'floating',

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { CSSProperties, ReactNode } from 'react';
 import style from './Icon.module.scss';
 
@@ -32,7 +32,7 @@ const Icon: React.FC<FullIconProps> = ({ icon, size = 'medium', color, inline = 
     const colorProperty = color && (colorMap[color] ?? color);
     const properties = { '--v-icon-size': sizeMap[size], '--v-icon-color': colorProperty } as CSSProperties;
 
-    const classes = classNames(style.icon, {
+    const classes = clsx(style.icon, {
         [style.inline]: inline
     });
 

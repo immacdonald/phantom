@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { ReactElement, ReactNode, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useResponsiveContext } from '../../contexts';
@@ -145,7 +145,7 @@ const Anchor: React.FC<AnchorProps> = ({
         setComponentAnchoring({ ...componentAnchoring, ...desiredPosition, padding: directionalPadding, offsetX: offset.x, offsetY: offset.y, computed: true });
     };
 
-    const componentClasses = classNames(style.component, componentClassName);
+    const componentClasses = clsx(style.component, componentClassName);
     const offsetValues = {
         '--v-anchor-x': `${componentAnchoring.x}px`,
         '--v-anchor-y': `${componentAnchoring.y}px`,
@@ -154,7 +154,7 @@ const Anchor: React.FC<AnchorProps> = ({
         '--v-offset-y': `${componentAnchoring.offsetY}px`
     } as React.CSSProperties;
 
-    const anchorClasses = classNames(style.anchor, anchorClass);
+    const anchorClasses = clsx(style.anchor, anchorClass);
 
     return (
         <div className={anchorClasses} ref={anchorRef} {...anchorProps}>
