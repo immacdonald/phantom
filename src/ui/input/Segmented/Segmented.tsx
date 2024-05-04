@@ -1,35 +1,60 @@
 import clsx from 'clsx';
 import { FC, useState } from 'react';
-import { Callback, NullablePrimitive } from '../../../types';
-import { getKeyByValue } from '../../../utility';
+import { Callback, ComponentCSSProps, NullablePrimitive } from '../../../types';
 import { Button } from '../Button';
 import style from './Segmented.module.scss';
 
-interface SegmentedProps {
-    options?: Record<string, NullablePrimitive>;
-    defaultValue?: NullablePrimitive;
+export type Option = {
+    value: NullablePrimitive;
+    label: string;
+};
+
+interface SegmentedProps extends ComponentCSSProps {
+    options?: Option[];
+    defaultValue?: number;
     full?: boolean;
     disabled?: boolean;
     onChange?: Callback<NullablePrimitive>;
 }
 
-const Segmented: FC<SegmentedProps> = ({ options = { Default: 'Default' }, defaultValue, full = false, disabled = false, onChange = () => {} }) => {
-    const [selected, setSelection] = useState<string | null>(getKeyByValue(options, defaultValue) ?? null);
-    const handleChange = (key: string) => {
-        setSelection(key);
-        onChange(options[key]);
+const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full = false, disabled = false, onChange = () => {}, className, cssProperties }) => {
+    const [selected, setSelection] = useState<number | null>(defaultValue ?? null);
+    const handleChange = (index: number) => {
+        setSelection(index);
+        onChange(options[index].value);
     };
 
-    const segmentedClasses = clsx(style.segmented, {
-        [style.full]: full,
-        [style.disabled]: disabled
-    });
+    const segmentedClasses = clsx(
+        style.segmented,
+        {
+            [style.full]: full,
+            [style.disabled]: disabled
+        },
+        className
+    );
+
+    const properties: React.CSSProperties = {
+        '--v-count': options.length,
+        '--v-selected': selected,
+        ...cssProperties
+    } as React.CSSProperties;
 
     return (
         <div className={segmentedClasses}>
-            {Object.keys(options).map((option: string, index: number) => {
-                return <Button key={index} label={option} visual={selected == option ? 'filled' : 'ghost'} onClick={() => handleChange(option)} className={style.option} />;
+            {options.map((option: Option, index: number) => {
+                const isSelected = selected == index;
+                return (
+                    <Button
+                        key={index}
+                        label={option.label}
+                        visual="ghost"
+                        onClick={() => handleChange(index)}
+                        full={full}
+                        cssProperties={{ zIndex: '1', color: isSelected ? 'var(--color-text-on-primary)' : 'var(--context-color)' }}
+                    />
+                );
             })}
+            {selected != null && <div className={style.indicator} style={properties} />}
         </div>
     );
 };

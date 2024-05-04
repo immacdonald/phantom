@@ -1,17 +1,17 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
+import { ComponentCSSProps } from '../../types';
 import style from './Section.module.scss';
 
-interface SectionProps {
+interface SectionProps extends ComponentCSSProps {
     variant?: 'floating' | 'inset';
     alt?: boolean;
     highlight?: boolean;
     background?: string;
-    className?: string;
     children?: ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = false, background, className, children }) => {
+const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = false, background, children, className, cssProperties }) => {
     const sectionClass = clsx(
         style.section,
         {
@@ -24,12 +24,10 @@ const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = fal
         className
     );
 
-    const properties = {} as React.CSSProperties;
-
     const innerDiv = variant == 'floating' || variant == 'inset';
 
     return (
-        <section className={sectionClass} style={{ ...properties, backgroundImage: background ? `url(${background})` : undefined }}>
+        <section className={sectionClass} style={{ ...cssProperties, backgroundImage: background ? `url(${background})` : undefined }}>
             {innerDiv ? <div>{children}</div> : <>{children}</>}
         </section>
     );

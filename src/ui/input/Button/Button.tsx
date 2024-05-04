@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { ComponentType, CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ComponentCSSProps } from '../../../types';
+import { ComponentCSSProps, StyleContext } from '../../../types';
 import { IconProps } from '../../Icon';
 import Loading from '../../Loading';
 import style from './Button.module.scss';
@@ -10,8 +10,8 @@ interface ButtonProps extends ComponentCSSProps {
     label?: string;
     size?: 'regular' | 'small' | 'large';
     full?: boolean;
-    visual?: 'ghost' | 'outline' | 'filled';
-    mode?: 'error' | 'accent';
+    visual?: 'ghost' | 'outline' | 'filled' | 'clear';
+    context?: StyleContext;
     rounded?: boolean;
     Icon?: ComponentType<IconProps>;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
     size = 'regular',
     full = false,
     visual = 'ghost',
-    mode,
+    context,
     rounded = false,
     Icon,
     onClick,
@@ -50,7 +50,6 @@ const Button: React.FC<ButtonProps> = ({
             [style.outline]: visual == 'outline',
             [style.filled]: visual == 'filled',
             [style.rounded]: rounded,
-            [style.hasLabel]: !!label,
             [style.loading]: isLoading,
             [style.disabled]: disabled
         },
@@ -70,7 +69,7 @@ const Button: React.FC<ButtonProps> = ({
 
     const visibility = useMemo(() => (isLoading ? ({ visibility: 'hidden' } as CSSProperties) : undefined), [isLoading]);
 
-    const props = { className: buttonClasses, 'data-mode': mode, style: cssProperties };
+    const props = { className: buttonClasses, 'data-context': context, style: cssProperties };
 
     const content = (
         <>

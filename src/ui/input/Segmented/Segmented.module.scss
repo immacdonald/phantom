@@ -25,10 +25,6 @@
 }
 
 .segmented {
-    --v-width: auto;
-    --v-half: auto;
-    --v-padding: 4px;
-
     position: relative;
     width: fit-content;
     height: 3em;
@@ -36,8 +32,11 @@
     font-weight: bold;
     display: flex;
     align-items: center;
-    padding-inline: $xs;
-    gap: $xs;
+
+    $gap: $xs;
+
+    padding-inline: $gap;
+    gap: $gap;
 
     @include base-input;
     @include hide-scrollbar;
@@ -59,7 +58,17 @@
         filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
     }
 
-    .option {
-        flex: 1 0 auto;
+    .indicator {
+        position: absolute;
+
+        $total-width: #{calc(100% - var(--v-count) * $gap)};
+        $width: #{calc($total-width / var(--v-count))};
+
+        width: $width;
+        height: 40px;
+        background-color: var(--color-primary);
+        left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
+        transition: left var(--t-fast);
+        border-radius: $radius-sm;
     }
 }

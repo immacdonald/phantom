@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({
                         <Button
                             label={reject}
                             visual="outline"
-                            mode={swapColors ? undefined : 'error'}
+                            context={swapColors ? undefined : 'critical'}
                             onClick={() => {
                                 onReject();
                                 setModal(null);
@@ -55,7 +55,7 @@ const Modal: React.FC<ModalProps> = ({
                         <Button
                             label={accept}
                             visual="filled"
-                            mode={swapColors ? 'error' : undefined}
+                            context={swapColors ? 'critical' : undefined}
                             full={!reject}
                             type="submit"
                             form={form}

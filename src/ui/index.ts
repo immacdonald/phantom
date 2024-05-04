@@ -9,3 +9,4 @@ export * from './StyledImage';
 export * from './Anchor';
 export * from './Popover';
 export * from './Card';
+export * from './TabGroup';

@@ -14,11 +14,15 @@ export type ResponsiveObject<T> = {
 
 export type ResponsiveType<T> = T | ResponsiveObject<T>;
 
+// Styling
 export interface ComponentCSSProps {
     className?: string;
     cssProperties?: CSSProperties;
 }
 
+export type StyleContext = 'primary' | 'secondary' | 'accent' | 'success' | 'critical' | 'warning' | 'info';
+
+// Polling and updating
 export enum PollingRate {
     FPS120 = 8,
     FPS60 = 16,

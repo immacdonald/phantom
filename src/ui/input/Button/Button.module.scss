@@ -1,14 +1,28 @@
 @use '../../tokens' as *;
 
+@mixin dynamic-text($default, $hover, $active) {
+    color: $default;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.focus {
+            color: $hover;
+        }
+
+        &:active {
+            color: $active;
+        }
+    }
+}
+
 @mixin outline($border, $borderHover, $borderSelected) {
-    background-color: var(--c-bg-light);
+    background-color: var(--input-color-bg);
     border: 1px solid $border;
 
     &:not([disabled], .disabled) {
         &:hover,
         &.focus {
             border-color: $borderHover;
-            background-color: var(--c-bg-dim);
         }
 
         &:active {
@@ -97,7 +111,6 @@
     margin: 0;
     font-size: var(--v-font);
     font-weight: $semi;
-    border-radius: $radius-sm;
     transition:
         background var(--t-mid),
         transform var(--t-mid),
@@ -128,74 +141,43 @@
         text-decoration: none !important;
     }
 
-    --v-light: var(--color-primary);
-    --v-medium: var(--color-primary-hover);
-    --v-dark: var(--color-primary-active);
+    border-radius: $radius-sm;
 
-    &[data-mode='error'] {
-        --v-light: var(--color-critical);
-        --v-medium: var(--color-critical-hover);
-        --v-dark: var(--color-critical-active);
+    &.rounded {
+        border-radius: var(--v-size);
     }
 
-    &[data-mode='accent'] {
-        --v-light: var(--color-accent);
-        --v-medium: var(--color-accent-hover);
-        --v-dark: var(--color-accent-active);
-    }
+    --v-default: var(--color-text);
 
     &.filled {
-        @include filled(var(--v-medium), var(--v-dark), var(--v-dark));
+        @include filled(
+            var(--context-color, var(--input-color-bg-selected)),
+            var(--context-color-hover, var(--input-color-bg-selected)),
+            var(--context-color-active, varvar(--input-color-bg-selected))
+        );
 
-        --v-text: var(--c-fg-on-primary);
-        --v-text-hover: var(--c-fg-on-primary);
-        --v-text-active: var(--c-fg-on-primary);
+        color: var(--context-color-text, var(--v-default));
     }
 
     &.outline {
-        @include outline(var(--v-medium), var(--v-dark), var(--v-dark));
-
-        --v-text: var(--v-medium);
-        --v-text-hover: var(--v-medium);
-        --v-text-active: var(--v-dark);
+        @include outline(var(--context-color, var(--input-border-color)), var(--context-color-hover, var(--input-color-active)), var(--context-color-active, var(--input-color-active)));
+        @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
     }
 
     &.ghost {
         @include ghost(var(--a-faint));
-
-        --v-text: var(--color-text);
-        --v-text-hover: var(--color-text);
-        --v-text-active: var(--color-primary);
-    }
-
-    color: var(--v-text);
-
-    &.hasLabel {
-        padding: $sm $md;
-    }
-
-    &.rounded {
-        border-radius: var(--v-size);
+        @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
     }
 
     &:not([disabled], .disabled) {
         &:focus {
             outline: none;
         }
-
-        &:hover,
-        &.focus {
-            color: var(--v-text-hover);
-        }
-
-        &:active {
-            color: var(--v-text-active);
-        }
     }
 
     &.loading {
-        --v-color: var(--v-text);
-        --v-secondary-color: var(--v-text);
+        --v-color: var(--v-default);
+        --v-secondary-color: var(--v-default);
 
         display: grid;
         place-items: center;
