@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
-import { ComponentCSSProps } from '../../types';
+import { ComponentCSSProps } from '../../../types';
 import style from './Section.module.scss';
 
 interface SectionProps extends ComponentCSSProps {

@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
-import { ComponentCSSProps } from '../../types';
-import { validateElement } from '../../utility';
+import { ComponentCSSProps } from '../../../types';
+import { validateElement } from '../../../utility';
 import style from './Page.module.scss';
 
 interface PageSubheaderProps {
@@ -22,7 +22,11 @@ const PageRoot: React.FC<PageProps> = ({ title, subheader, children }: PageProps
 
     useEffect(() => {
         document.title = title;
-        window.scrollTo(0, 0);
+        document.documentElement.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant'
+        });
     }, []);
 
     return (

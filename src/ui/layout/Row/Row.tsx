@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
-import { useResponsiveContext } from '../../contexts';
-import { ComponentCSSProps, ResponsiveType } from '../../types';
+import { useResponsiveContext } from '../../../contexts';
+import { ComponentCSSProps, ResponsiveType } from '../../../types';
 import style from './Row.module.scss';
 
 interface RowProps extends ComponentCSSProps {
