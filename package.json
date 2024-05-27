@@ -1,6 +1,6 @@
 {
     "name": "@imacdonald/phantom",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "React Phantom Design and Component Library",
     "main": "./lib/index.js",
     "module": "./lib/index.js",
