@@ -84,15 +84,6 @@
 }
 
 *[data-context] {
-    /* Critical context styles */
-    &[data-context='critical'] {
-        --context-color: var(--color-critical);
-        --context-color-hover: var(--color-critical-hover);
-        --context-color-active: var(--color-critical-active);
-        --context-color-surface: var(--color-surface-critical);
-        --context-color-text: var(--color-text-on-critical);
-    }
-
     /* Primary context styles */
     &[data-context='primary'] {
         --context-color: var(--color-primary);
@@ -102,6 +93,15 @@
         --context-color-text: var(--color-text-on-primary);
     }
 
+    /* Accent context styles */
+    &[data-context='accent'] {
+        --context-color: var(--color-accent);
+        --context-color-hover: var(--color-accent-hover);
+        --context-color-active: var(--color-accent-active);
+        --context-color-surface: var(--color-surface-accent);
+        --context-color-text: var(--color-text-on-accent);
+    }
+
     /* Success context styles */
     &[data-context='success'] {
         --context-color: var(--color-success);
@@ -109,6 +109,15 @@
         --context-color-active: var(--color-success-active);
         --context-color-surface: var(--color-surface-success);
         --context-color-text: var(--color-text-on-success);
+    }
+
+    /* Critical context styles */
+    &[data-context='critical'] {
+        --context-color: var(--color-critical);
+        --context-color-hover: var(--color-critical-hover);
+        --context-color-active: var(--color-critical-active);
+        --context-color-surface: var(--color-surface-critical);
+        --context-color-text: var(--color-text-on-critical);
     }
 
     /* Warning context styles */

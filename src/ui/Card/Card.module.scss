@@ -12,6 +12,10 @@
     border: var(--border-light);
     overflow: hidden;
     box-shadow: var(--shadow-lifted);
+
+    &.fullHeight {
+        height: 100% !important;
+    }
 }
 
 .header {

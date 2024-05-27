@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon, IconProps } from './Icon';
 
 const withVectorIcon = (WrappedSVG: React.FC) => {

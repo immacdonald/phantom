@@ -14,6 +14,7 @@ import RecenterSVG from './recenter.svg?react';
 import SearchSVG from './search.svg?react';
 import SunFilledSVG from './sun_filled.svg?react';
 import SunSVG from './sun.svg?react';
+import UploadFileSVG from './upload_file.svg?react';
 import ZoomInSVG from './zoom_in.svg?react';
 import ZoomOutSVG from './zoom_out.svg?react';
 
@@ -25,6 +26,7 @@ export const PersonFilled = withVectorIcon(PersonFilledSVG);
 export const Plus = withVectorIcon(PlusSVG);
 export const Sun = withVectorIcon(SunSVG);
 export const SunFilled = withVectorIcon(SunFilledSVG);
+export const UploadFile = withVectorIcon(UploadFileSVG);
 
 // Navigation/control
 export const Cancel = withVectorIcon(CancelSVG);
