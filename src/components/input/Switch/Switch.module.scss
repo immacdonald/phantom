@@ -1,60 +1,62 @@
 @use '../../../style' as *;
 
-
 .switch {
-	$padding: 4px;
-	$height: 1em;
-	$fullHeight: calc($height + $padding + $padding);
-	$width: 40px;
+    $padding: 4px;
+    $height: 1em;
+    $full-height: calc($height + $padding + $padding);
+    $width: 40px;
 
-	width: $width;
-	display: inline-block;
-	position: relative;
-	top: calc($padding * 2);
+    width: $width;
+    display: inline-block;
+    position: relative;
+    top: calc($padding * 2);
 
-	&:hover > span {
-		border-color: var(--c-primary);
-	}
+    span {
+        display: flex;
+        align-items: center;
+        width: $width;
+        height: $full-height;
+        border-radius: $full-height;
+        background-color: var(--c-bg-dim);
+        position: relative;
+        transition: 0.15s ease;
+        pointer-events: none;
+        border: 1px solid var(--c-b-neutral);
 
-	span {
-		display: flex;
-		align-items: center;
-		width: $width;
-		height: $fullHeight;
-		border-radius: $fullHeight;
-		background-color: var(--c-bg-dim);
-		position: relative;
-		transition: 0.15s ease;
-		pointer-events: none;
-		border: 1px solid var(--c-b-neutral);
-		&:before {
-			content: '';
-			display: block;
-			position: absolute;
-			pointer-events: none;
-			height: $height;
-			width: $height;
-			background-color: var(--c-fg-inverse);
-			border-radius: 50%;
-			box-shadow: 0 1px 3px 0 rgba(#000, 0.15);
-			transition: 0.15s ease;
-			transform: translateX($padding);
-		}
-	}
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            pointer-events: none;
+            height: $height;
+            width: $height;
+            background-color: var(--c-fg-inverse);
+            border-radius: 50%;
+            box-shadow: 0 1px 3px 0 rgba(#000, 0.15);
+            transition: 0.15s ease;
+            transform: translateX($padding);
+        }
+    }
 
-	input {
-		width: $width;
-		height: $fullHeight;
-		font-size: inherit;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		opacity: 0;
-		&:checked + span {
-			background-color: var(--c-primary);
-			&:before {
-				transform: translateX(calc(100% + $padding));
-			}
-		}
-	}
+    &:hover > span {
+        border-color: var(--c-primary);
+    }
+
+    input {
+        width: $width;
+        height: $full-height;
+        font-size: inherit;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        opacity: 0;
+
+        &:checked + span {
+            background-color: var(--c-primary);
+
+            &::before {
+                transform: translateX(calc(100% + $padding));
+            }
+        }
+    }
 }

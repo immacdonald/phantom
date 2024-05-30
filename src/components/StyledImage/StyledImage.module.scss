@@ -6,7 +6,6 @@
 
     max-width: var(--v-max-width);
     max-height: var(--v-max-height);
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,17 +13,15 @@
     margin-bottom: $lg;
 
     .image {
-        width: 100%;
         height: 100%;
-    
         width: 100%;
         border-radius: $radius-md;
         user-select: none;
-    
+
         &.border {
             border: $sm solid var(--border-light);
         }
-    
+
         &.round {
             aspect-ratio: 1;
             border-radius: 100%;

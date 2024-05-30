@@ -1,5 +1,4 @@
 import { withVectorIcon } from '../../components';
-
 import BarChartSVG from './bar_chart.svg?react';
 import ChartSVG from './chart.svg?react';
 import DatasetSVG from './dataset.svg?react';

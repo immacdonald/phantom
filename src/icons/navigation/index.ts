@@ -1,5 +1,4 @@
 import { withVectorIcon } from '../../components';
-
 import CancelSVG from './cancel.svg?react';
 import ChevronSVG from './chevron.svg?react';
 import PauseSVG from './pause.svg?react';

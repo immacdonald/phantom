@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { CSSProperties, ReactNode } from 'react';
-import style from './Icon.module.scss';
 import { ComponentCSSProps, StyleContext } from '../../types';
+import style from './Icon.module.scss';
 
 const sizeMap: Record<string, string> = {
     small: '18px',
@@ -25,12 +25,16 @@ interface FullIconProps extends IconProps {
 const Icon: React.FC<FullIconProps> = ({ icon, size = 'medium', context, inline = false, tooltip, className, cssProperties }) => {
     const properties = { '--v-icon-size': sizeMap[size] } as CSSProperties;
 
-    const classes = clsx(style.icon, {
-        [style.inline]: inline
-    }, className);
+    const classes = clsx(
+        style.icon,
+        {
+            [style.inline]: inline
+        },
+        className
+    );
 
     return (
-        <span className={classes} style={{...properties, ...cssProperties}} data-tooltip={tooltip} data-context={context}>
+        <span className={classes} style={{ ...properties, ...cssProperties }} data-tooltip={tooltip} data-context={context}>
             {icon}
         </span>
     );

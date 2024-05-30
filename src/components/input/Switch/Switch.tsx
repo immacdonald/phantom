@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import style from './Switch.module.scss';
 import { Callback } from '../../../types';
+import style from './Switch.module.scss';
 
 interface SwitchProps {
-	state: boolean;
-	onChange?: Callback<boolean>;
+    state: boolean;
+    onChange?: Callback<boolean>;
 }
 
 const Switch: React.FC<SwitchProps> = ({ state, onChange = () => {} }) => {
@@ -14,12 +14,12 @@ const Switch: React.FC<SwitchProps> = ({ state, onChange = () => {} }) => {
         }
     }, []);
 
-	return (
-		<label className={style.switch}>
-			<input type="checkbox" onChange={handleChange} checked={state} />
-			<span/>
-		</label>
-	);
+    return (
+        <label className={style.switch}>
+            <input type="checkbox" onChange={handleChange} checked={state} />
+            <span />
+        </label>
+    );
 };
 
 export { Switch };

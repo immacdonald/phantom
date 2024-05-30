@@ -3,8 +3,8 @@ import React, { ComponentType, CSSProperties, MouseEvent, useCallback, useMemo }
 import { Link } from 'react-router-dom';
 import { ComponentCSSProps, StyleContext } from '../../../types';
 import { IconProps } from '../../Icon';
-import style from './Button.module.scss';
 import { Loading } from '../../Loading';
+import style from './Button.module.scss';
 
 interface ButtonProps extends ComponentCSSProps {
     label?: string;

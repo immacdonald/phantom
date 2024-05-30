@@ -6,7 +6,9 @@
 
 .inputWrapper {
     @include base-input;
+
     $height: 96px;
+
     width: 100%;
     height: $height;
     position: relative;
@@ -39,7 +41,6 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
     }
-    
 }
 
 .fileList {

@@ -16,7 +16,7 @@ const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round 
         [style.round]: round
     });
 
-    const properties = { '--v-max-width': maxWidth ? `${maxWidth}px` : undefined, '--v-max-height': maxHeight } as React.CSSProperties
+    const properties = { '--v-max-width': maxWidth ? `${maxWidth}px` : undefined, '--v-max-height': maxHeight } as React.CSSProperties;
 
     return (
         <figure className={style.figure} style={properties}>
