@@ -16,3 +16,34 @@ export const ordinalSuffix = (input: number | string): string => {
 export const formatNumber = (input: number): string => {
     return input.toLocaleString();
 };
+
+export const decimalPlaces = (value: number, places: number = 2): number => {
+    if (value == null) {
+        return 0;
+    }
+    const rounded = +value.toFixed(places);
+    return rounded;
+};
+
+export const formatLargeValue = (value: number): string => {
+    // Trillions
+    if (value >= 1e12) {
+        return (value / 1e12).toFixed(2) + 'T';
+    }
+    // Billions
+    else if (value >= 1e9) {
+        return (value / 1e9).toFixed(2) + 'B';
+    }
+    // Millions
+    else if (value >= 1e6) {
+        return (value / 1e6).toFixed(2) + 'M';
+    }
+    // Thousands
+    else if (value >= 1e3) {
+        return (value / 1e3).toFixed(2) + 'K';
+    }
+    // Less than 1,000
+    else {
+        return value.toFixed(2);
+    }
+};

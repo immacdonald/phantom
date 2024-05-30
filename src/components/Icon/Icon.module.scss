@@ -1,0 +1,19 @@
+.icon {
+    --v-icon-size: 24px;
+
+    width: var(--v-icon-size);
+    height: var(--v-icon-size);
+    display: inline-block;
+    vertical-align: middle;
+
+    > svg {
+        width: 100%;
+        height: 100%;
+        color: var(--context-color, inherit);
+    }
+
+    &.inline {
+        width: 1em;
+        height: auto;
+    }
+}

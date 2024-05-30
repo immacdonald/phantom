@@ -1,0 +1,50 @@
+@use '../../../style' as *;
+
+.segmented {
+    position: relative;
+    width: fit-content;
+    height: 3em;
+    overflow: scroll hidden;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+
+    $gap: $xs;
+
+    padding-inline: $gap;
+    gap: $gap;
+
+    @include base-input;
+    @include hide-scrollbar;
+
+    background-color: var(--color-surface-background);
+    outline-width: 0;
+    border-width: 0 !important;
+
+    &.full {
+        width: 100%;
+    }
+
+    &[disabled],
+    &.disabled {
+        background-color: var(--input-color-bg-disabled);
+        border: none;
+        color: var(--input-color-fg-disabled);
+        cursor: not-allowed;
+        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+    }
+
+    .indicator {
+        position: absolute;
+
+        $total-width: #{calc(100% - var(--v-count) * $gap)};
+        $width: #{calc($total-width / var(--v-count))};
+
+        width: $width;
+        height: 40px;
+        background-color: var(--color-primary);
+        left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
+        transition: left var(--t-fast);
+        border-radius: $radius-sm;
+    }
+}

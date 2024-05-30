@@ -1,0 +1,199 @@
+@use '../../../style' as *;
+
+@mixin dynamic-text($default, $hover, $active) {
+    color: $default;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.focus {
+            color: $hover;
+        }
+
+        &:active {
+            color: $active;
+        }
+    }
+}
+
+@mixin outline($border, $borderHover, $borderSelected) {
+    background-color: var(--input-color-bg);
+    border: 1px solid $border;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.focus {
+            border-color: $borderHover;
+        }
+
+        &:active {
+            border-color: $borderSelected;
+        }
+    }
+}
+
+@mixin ghost($hover) {
+    border: none;
+    background: transparent;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.focus {
+            background-color: $hover;
+        }
+
+        &:active {
+            background-color: var(--a-dark);
+        }
+    }
+}
+
+@mixin filled($background, $backgroundHover, $backgroundSelected) {
+    background-color: $background;
+
+    &:not([disabled], .disabled) {
+        &:hover,
+        &.focus {
+            background-color: $backgroundHover;
+        }
+
+        &:active {
+            background-color: $backgroundSelected;
+        }
+    }
+}
+
+// Remove regular button styling
+%clear {
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: $font-md;
+    font-family: var(--font-body);
+    padding: $sm;
+    border-radius: $radius-sm;
+}
+
+.clear {
+    @extend %clear;
+}
+
+.button {
+    @extend %clear;
+
+    --v-size: 40px;
+    --v-internal: 24px;
+    --v-font: #{$font-md};
+
+    &.large {
+        --v-size: 64px;
+        --v-internal: 40px;
+    }
+
+    &.small {
+        --v-size: 32px;
+        --v-internal: 12px;
+        --v-font: #{$font-xs};
+    }
+
+    width: auto;
+
+    &.full {
+        width: 100%;
+    }
+
+    height: var(--v-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $sm;
+    margin: 0;
+    font-size: var(--v-font);
+    font-weight: $semi;
+    transition:
+        background var(--t-mid),
+        transform var(--t-mid),
+        box-shadow var(--t-mid),
+        border-color var(--t-mid),
+        outline var(--t-mid),
+        color var(--t-mid);
+
+    span {
+        height: var(--v-internal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-wrap: nowrap;
+
+        &:not(:last-child) {
+            padding-right: $xs;
+        }
+    }
+
+    svg {
+        font-size: var(--v-size);
+        width: var(--v-internal);
+        height: var(--v-internal);
+    }
+
+    &.link {
+        text-decoration: none !important;
+    }
+
+    border-radius: $radius-sm;
+
+    &.rounded {
+        border-radius: var(--v-size);
+    }
+
+    --v-default: var(--color-text);
+
+    &.filled {
+        @include filled(
+            var(--context-color, var(--input-color-bg-selected)),
+            var(--context-color-hover, var(--input-color-bg-selected)),
+            var(--context-color-active, varvar(--input-color-bg-selected))
+        );
+
+        color: var(--context-color-text, var(--v-default));
+    }
+
+    &.outline {
+        @include outline(var(--context-color, var(--input-border-color)), var(--context-color-hover, var(--input-color-active)), var(--context-color-active, var(--input-color-active)));
+        @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
+    }
+
+    &.ghost {
+        @include ghost(var(--a-faint));
+        @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
+    }
+
+    &:not([disabled], .disabled) {
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &.loading {
+        --v-color: var(--v-default);
+        --v-secondary-color: var(--v-default);
+
+        display: grid;
+        place-items: center;
+
+        > * {
+            grid-row: 1;
+            grid-column: 1;
+        }
+    }
+
+    &[disabled],
+    &.disabled {
+        background-color: var(--input-color-bg-disabled);
+        border: none;
+        color: var(--input-color-fg-disabled);
+        cursor: not-allowed;
+        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+    }
+}

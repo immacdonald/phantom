@@ -24,7 +24,7 @@ export default defineConfig({
         copy({
             resolveFrom: 'cwd',
             assets: {
-                from: ['./src/ui/{tokens.scss,variables.module.scss}'],
+                from: ['./src/style/**'],
                 to: ['./lib/style/']
             },
             watch: true

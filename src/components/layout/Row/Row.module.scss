@@ -1,0 +1,21 @@
+@use '../../../style' as *;
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: $md;
+
+    @include respond-max($screen-xs) {
+        justify-content: center !important;
+    }
+
+    @include respond-max($screen-xxs) {
+        flex-direction: column;
+        justify-content: center;
+        gap: $sm;
+        margin-bottom: $sm;
+    }
+}

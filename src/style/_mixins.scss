@@ -1,0 +1,65 @@
+@use './tokens' as *;
+
+// Favor responding at a maximum breakpoint for consistency
+@mixin respond-max($breakpoint) {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin respond-min($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin respond-height-max($breakpoint) {
+    @media (max-height: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin base-input {
+    color: var(--input-color-fg);
+    background-color: var(--input-color-bg);
+    border-radius: $radius-md;
+    font-size: $font-md;
+    border: var(--input-border);
+    transition:
+        outline-color var(--t-fast),
+        border var(--t-mid);
+
+    &:hover {
+        border: var(--input-outline);
+    }
+}
+
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        width: $sm;
+        height: $sm;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--c-bg-dim);
+        border-radius: $sm;
+        border: $xs solid var(--c-bg-dim);
+    }
+
+    &::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+    }
+}
+
+@mixin hide-scrollbar {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}

@@ -1,0 +1,41 @@
+@use '../../style' as *;
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: fit-content;
+    min-height: 200px;
+    background-color: var(--color-surface-foreground);
+    border-radius: $radius-sm;
+    border: var(--border-light);
+    overflow: hidden;
+    box-shadow: var(--shadow-lifted);
+
+    &.fullHeight {
+        height: 100% !important;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: $sm;
+    padding: $lg;
+    color: var(--color-text);
+    background-color: var(--color-surface-foreground);
+    border-bottom: var(--border-light);
+}
+
+.body {
+    padding: $md $lg;
+
+    &.scrollable {
+        @include scrollbar;
+
+        max-height: 400px;
+        overflow: hidden auto;
+    }
+}
