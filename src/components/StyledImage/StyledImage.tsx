@@ -6,18 +6,23 @@ interface StyledImageProps {
     border?: boolean;
     round?: boolean;
     maxWidth?: number;
+    maxHeight?: string;
+    caption?: string;
 }
 
-const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round = false, maxWidth }) => {
+const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round = false, maxWidth, maxHeight, caption }) => {
     const imageStyle = clsx(style.image, {
         [style.border]: border,
         [style.round]: round
     });
 
+    const properties = { '--v-max-width': maxWidth ? `${maxWidth}px` : undefined, '--v-max-height': maxHeight } as React.CSSProperties
+
     return (
-        <div className={style.container}>
-            <img src={image} className={imageStyle} style={maxWidth ? ({ '--v-max-width': `${maxWidth}px` } as React.CSSProperties) : undefined} />
-        </div>
+        <figure className={style.figure} style={properties}>
+            <img src={image} className={imageStyle} />
+            {caption && <figcaption className={style.caption}>{caption}</figcaption>}
+        </figure>
     );
 };
 

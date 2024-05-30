@@ -1,27 +1,37 @@
 @use '../../style' as *;
 
-.container {
-    width: 100%;
+.figure {
+    --v-max-width: 100%;
+    --v-max-height: 100%;
+
+    max-width: var(--v-max-width);
+    max-height: var(--v-max-height);
+
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.image {
-    --v-max-width: 100%;
-
-    width: 100%;
-    border-radius: $radius-md;
-    user-select: none;
     margin-bottom: $lg;
-    max-width: var(--v-max-width);
 
-    &.border {
-        border: $sm solid var(--border-light);
+    .image {
+        width: 100%;
+        height: 100%;
+    
+        width: 100%;
+        border-radius: $radius-md;
+        user-select: none;
+    
+        &.border {
+            border: $sm solid var(--border-light);
+        }
+    
+        &.round {
+            aspect-ratio: 1;
+            border-radius: 100%;
+        }
     }
 
-    &.round {
-        aspect-ratio: 1;
-        border-radius: 100%;
+    .caption {
+        margin-top: $sm;
     }
 }
