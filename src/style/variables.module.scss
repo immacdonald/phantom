@@ -113,6 +113,15 @@
         --context-color-text: var(--color-text-on-accent);
     }
 
+    /* Secondary context styles */
+    &[data-context='secondary'] {
+        --context-color: var(--color-secondary);
+        --context-color-hover: var(--color-secondary-hover);
+        --context-color-active: var(--color-secondary-active);
+        --context-color-surface: var(--color-surface-secondary);
+        --context-color-text: var(--color-text-on-secondary);
+    }
+
     /* Success context styles */
     &[data-context='success'] {
         --context-color: var(--color-success);

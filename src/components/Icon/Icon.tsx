@@ -13,7 +13,6 @@ const sizeMap: Record<string, string> = {
 interface IconProps extends ComponentCSSProps {
     size?: 'small' | 'medium' | 'large' | 'full';
     context?: StyleContext;
-    color?: 'inverse' | 'primary' | 'secondary' | 'positive' | 'critical' | string;
     inline?: boolean;
     tooltip?: string;
 }
