@@ -46,9 +46,9 @@ export interface Position {
 }
 
 // Utility
-type CallbackOne<T> = (arg1: T) => void;
-type CallbackTwo<T, U> = (arg1: T, arg2: U) => void;
-type CallbackThree<T, U, V> = (arg1: T, arg2: U, arg3: V) => void;
-type CallbackFour<T, U, V, W> = (arg1: T, arg2: U, arg3: V, arg4: W) => void;
-type CallbackFive<T, U, V, W, X> = (arg1: T, arg2: U, arg3: V, arg4: W, arg5: X) => void;
-export type Callback<T, U = void, V = void, W = void, X = void> = CallbackOne<T> | CallbackTwo<T, U> | CallbackThree<T, U, V> | CallbackFour<T, U, V, W> | CallbackFive<T, U, V, W, X>;
+export type Callback<T> = (value: T) => void;
+type MultiCallbackTwo<T, U> = (arg1: T, arg2: U) => void;
+type MultiCallbackThree<T, U, V> = (arg1: T, arg2: U, arg3: V) => void;
+type MultiCallbackFour<T, U, V, W> = (arg1: T, arg2: U, arg3: V, arg4: W) => void;
+type MultiCallbackFive<T, U, V, W, X> = (arg1: T, arg2: U, arg3: V, arg4: W, arg5: X) => void;
+export type MultiCallback<T, U, V = void, W = void, X = void> = MultiCallbackTwo<T, U> | MultiCallbackThree<T, U, V> | MultiCallbackFour<T, U, V, W> | MultiCallbackFive<T, U, V, W, X>;

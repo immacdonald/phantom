@@ -1,6 +1,6 @@
 import { Callback } from '../types';
 
-export const fetchAsync = async <T, U>(base: string, path: string, method: 'GET' | 'POST', headers: Headers, body: U | null = null, successCallback: Callback<T>, failureCallback: Callback<Error>) => {
+export const fetchAsync = async <T, U>(base: string, path: string, method: 'GET' | 'POST', headers: Headers, body: U | null = null, successCallback: Callback<T>, failureCallback: Callback<Error>, json?: boolean) => {
     const url = base + path;
 
     const options: RequestInit = {
@@ -20,7 +20,11 @@ export const fetchAsync = async <T, U>(base: string, path: string, method: 'GET'
 
             response.text().then((data: string) => {
                 if (data) {
-                    successCallback(JSON.parse(data));
+                    if(json) {
+                        successCallback(JSON.parse(data));
+                    } else {
+                        (successCallback as Callback<string>)(data);
+                    }
                 } else {
                     (successCallback as Callback<void>)();
                 }
@@ -31,12 +35,12 @@ export const fetchAsync = async <T, U>(base: string, path: string, method: 'GET'
         });
 };
 
-export const getAsync = async <T>(base: string, path: string, headers: Headers, successCallback: Callback<T>, failureCallback: Callback<Error>) => {
-    fetchAsync<T, null>(base, path, 'GET', headers, null, successCallback, failureCallback);
+export const getAsync = async <T>(base: string, path: string, headers: Headers, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
+    fetchAsync<T, null>(base, path, 'GET', headers, null, successCallback, failureCallback, json);
 };
 
-export const postAsync = async <T, U>(base: string, path: string, headers: Headers, body: U, successCallback: Callback<T>, failureCallback: Callback<Error>) => {
-    fetchAsync<T, U>(base, path, 'POST', headers, body, successCallback, failureCallback);
+export const postAsync = async <T, U>(base: string, path: string, headers: Headers, body: U, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
+    fetchAsync<T, U>(base, path, 'POST', headers, body, successCallback, failureCallback, json);
 };
 
 export const genericSuccessCallback: Callback<unknown> = (response: unknown) => {

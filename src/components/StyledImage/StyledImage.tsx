@@ -7,7 +7,7 @@ interface StyledImageProps {
     round?: boolean;
     maxWidth?: number;
     maxHeight?: string;
-    caption?: string;
+    caption?: string | React.ReactNode;
 }
 
 const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round = false, maxWidth, maxHeight, caption }) => {
