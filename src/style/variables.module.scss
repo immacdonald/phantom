@@ -123,12 +123,12 @@
     }
 
     /* Success context styles */
-    &[data-context='success'] {
-        --context-color: var(--color-success);
-        --context-color-hover: var(--color-success-hover);
-        --context-color-active: var(--color-success-active);
-        --context-color-surface: var(--color-surface-success);
-        --context-color-text: var(--color-text-on-success);
+    &[data-context='positive'] {
+        --context-color: var(--color-positive);
+        --context-color-hover: var(--color-positive-hover);
+        --context-color-active: var(--color-positive-active);
+        --context-color-surface: var(--color-surface-positive);
+        --context-color-text: var(--color-text-on-positive);
     }
 
     /* Critical context styles */

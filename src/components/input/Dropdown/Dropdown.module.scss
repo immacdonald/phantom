@@ -26,7 +26,7 @@
         margin-bottom: 0;
         box-shadow: none;
         text-align: left;
-        height: 48px;
+        min-height: 48px;
 
         &:hover {
             border: var(--input-border-active);
@@ -45,6 +45,8 @@
     [class^='select__value-container'] {
         padding-inline: 8px;
         overflow: initial !important;
+        padding-block: 4px;
+        gap: 4px;
     }
 
     [class^='select__placeholder'] {
@@ -62,6 +64,11 @@
 
     [class^='select__input-container'] {
         color: var(--input-color-fg);
+        height: 2rem;
+
+        > input {
+            height: 100%;
+        }
     }
 
     [class^='select__multi-value'] {

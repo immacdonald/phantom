@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
+import Select, { MultiValue } from 'react-select';
 import { NullablePrimitive, Option } from '../../../types';
 import style from './Dropdown.module.scss';
 
-interface DropdownProps {
+interface MultiDropdownProps {
     options: Option[];
-    isMulti?: boolean;
     isClearable?: boolean;
-    defaultValue?: NullablePrimitive;
+    defaultValue?: NullablePrimitive[];
+    value?: NullablePrimitive[];
     placeholder?: string;
     disabled?: boolean;
-    onChange?: (selected: NullablePrimitive) => void;
+    onChange?: (selected: NullablePrimitive[]) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, defaultValue = null, placeholder, disabled = false, onChange = () => {} }) => {
-    const [internalValue, setInternalValue] = useState<Option | null>(null);
+const MultiDropdown: React.FC<MultiDropdownProps> = ({ options = [], isClearable = true, defaultValue = null, placeholder, disabled = false, onChange = () => {} }) => {
+    const [internalValue, setInternalValue] = useState<Option[] | null>();
 
-    const valueToOption = (input: NullablePrimitive): Option | null => {
-        return input ? options.find((option) => option.value === input) || null : null;
+    const valueToOption = (input: NullablePrimitive[] | null): Option[] | null => {
+        return input ? options.filter((option) => input.includes(option.value)) : null;
     };
 
     useEffect(() => {
         setInternalValue(valueToOption(defaultValue));
     }, [defaultValue]);
 
-    const handleChange = (selected: Option | null) => {
-        let selectedValue: NullablePrimitive = null;
+    const handleChange = (selected: MultiValue<Option | null>) => {
+        let selectedValue: (NullablePrimitive | null)[] = [];
 
         if (selected != null) {
-            selectedValue = (selected as Option).value;
+            selectedValue = selected.map((option) => option!.value);
         }
 
         setInternalValue(valueToOption(selectedValue));
@@ -40,7 +40,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, d
             className={style.select}
             classNamePrefix="select"
             options={options}
-            isMulti={false}
+            isMulti={true}
             isClearable={isClearable}
             value={internalValue}
             placeholder={placeholder || 'Select'}
@@ -52,6 +52,4 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, d
     );
 };
 
-
-
-export { Dropdown };
+export { MultiDropdown };

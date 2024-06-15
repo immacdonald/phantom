@@ -27,7 +27,7 @@ function getCurrentBreakpoint(width: number): Breakpoints | null {
 
 interface ResponsiveContextInterface {
     windowSize: Dimensions;
-    parse: <T>(responsiveType: ResponsiveType<T>) => T;
+    parse: <T>(responsiveType: ResponsiveType<T> | undefined) => T | undefined;
     isMobile: boolean;
 }
 
@@ -36,7 +36,10 @@ const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null)
 const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const windowSize = useWindowSize();
 
-    const parse = <T,>(responsiveType: ResponsiveType<T>): T => {
+    const parse = <T,>(responsiveType: ResponsiveType<T> | undefined): T | undefined => {
+        if(responsiveType == undefined) {
+            return undefined;
+        }
         // If responsiveType is just a static value return it
         if (!isResponsiveObject(responsiveType)) {
             return responsiveType as T;
@@ -49,7 +52,6 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
         if (breakpoint) {
             for (const key of breakpoints) {
                 if (breakpoints.indexOf(breakpoint) <= breakpoints.indexOf(key) && key in responsiveObject) {
-                    // @ts-expect-error even though the key is confirmed to exist
                     return responsiveObject[key];
                 }
             }

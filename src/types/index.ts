@@ -1,27 +1,3 @@
-import { CSSProperties } from 'react';
-
-// Responsive design and component system
-export type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-export type ResponsiveObject<T> = {
-    base: T;
-    xs?: T;
-    sm?: T;
-    md?: T;
-    lg?: T;
-    xl?: T;
-};
-
-export type ResponsiveType<T> = T | ResponsiveObject<T>;
-
-// Styling
-export interface ComponentCSSProps {
-    className?: string;
-    cssProperties?: CSSProperties;
-}
-
-export type StyleContext = 'primary' | 'secondary' | 'accent' | 'success' | 'critical' | 'warning' | 'info';
-
 // Polling and updating
 export enum PollingRate {
     FPS120 = 8,
@@ -40,6 +16,12 @@ export interface Dimensions {
     height: number;
 }
 
+export type Option = {
+    value: NullablePrimitive;
+    label: string;
+    disabled?: boolean;
+};
+
 export interface Position {
     x: number;
     y: number;
@@ -52,3 +34,5 @@ type MultiCallbackThree<T, U, V> = (arg1: T, arg2: U, arg3: V) => void;
 type MultiCallbackFour<T, U, V, W> = (arg1: T, arg2: U, arg3: V, arg4: W) => void;
 type MultiCallbackFive<T, U, V, W, X> = (arg1: T, arg2: U, arg3: V, arg4: W, arg5: X) => void;
 export type MultiCallback<T, U, V = void, W = void, X = void> = MultiCallbackTwo<T, U> | MultiCallbackThree<T, U, V> | MultiCallbackFour<T, U, V, W> | MultiCallbackFive<T, U, V, W, X>;
+
+export * from './styling';

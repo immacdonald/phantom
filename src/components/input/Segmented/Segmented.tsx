@@ -1,14 +1,8 @@
 import clsx from 'clsx';
 import { FC, useState } from 'react';
-import { Callback, ComponentCSSProps, NullablePrimitive } from '../../../types';
+import { Callback, ComponentCSSProps, NullablePrimitive, Option } from '../../../types';
 import { Button } from '../Button';
 import style from './Segmented.module.scss';
-
-export type Option = {
-    value: NullablePrimitive;
-    label: string;
-    disabled?: boolean;
-};
 
 interface SegmentedProps extends ComponentCSSProps {
     options?: Option[];
