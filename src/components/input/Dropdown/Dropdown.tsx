@@ -52,6 +52,4 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, d
     );
 };
 
-
-
 export { Dropdown };

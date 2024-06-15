@@ -1,6 +1,15 @@
 import { Callback } from '../types';
 
-export const fetchAsync = async <T, U>(base: string, path: string, method: 'GET' | 'POST', headers: Headers, body: U | null = null, successCallback: Callback<T>, failureCallback: Callback<Error>, json?: boolean) => {
+export const fetchAsync = async <T, U>(
+    base: string,
+    path: string,
+    method: 'GET' | 'POST',
+    headers: Headers,
+    body: U | null = null,
+    successCallback: Callback<T>,
+    failureCallback: Callback<Error>,
+    json?: boolean
+) => {
     const url = base + path;
 
     const options: RequestInit = {
@@ -20,7 +29,7 @@ export const fetchAsync = async <T, U>(base: string, path: string, method: 'GET'
 
             response.text().then((data: string) => {
                 if (data) {
-                    if(json) {
+                    if (json) {
                         successCallback(JSON.parse(data));
                     } else {
                         (successCallback as Callback<string>)(data);

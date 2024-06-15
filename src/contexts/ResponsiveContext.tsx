@@ -37,7 +37,7 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const windowSize = useWindowSize();
 
     const parse = <T,>(responsiveType: ResponsiveType<T> | undefined): T | undefined => {
-        if(responsiveType == undefined) {
+        if (responsiveType == undefined) {
             return undefined;
         }
         // If responsiveType is just a static value return it

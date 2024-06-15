@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
+import { useResponsiveContext } from '../../../contexts';
 import { ComponentCSSProps, FlexAlign, ResponsiveType } from '../../../types';
 import style from './Column.module.scss';
-import { useResponsiveContext } from '../../../contexts';
 
 interface ColumnProps extends ComponentCSSProps {
     children?: ReactNode;
@@ -20,7 +20,13 @@ const Column: React.FC<ColumnProps> = ({ children, align, verticalAlign, gap, re
     return (
         <div
             className={columnClasses}
-            style={{ alignItems: parse<FlexAlign>(align), justifyContent: parse<FlexAlign>(verticalAlign), gap: parse<React.CSSProperties['gap']>(gap), position: relative ? 'relative' : undefined, ...cssProperties }}
+            style={{
+                alignItems: parse<FlexAlign>(align),
+                justifyContent: parse<FlexAlign>(verticalAlign),
+                gap: parse<React.CSSProperties['gap']>(gap),
+                position: relative ? 'relative' : undefined,
+                ...cssProperties
+            }}
         >
             {children}
         </div>

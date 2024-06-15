@@ -22,4 +22,4 @@ export interface ComponentCSSProps {
 
 export type StyleContext = 'primary' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
 
-export type FlexAlign = 'start' | 'center' | 'end' |  'space-around' | 'space-between' | 'space-evenly';
+export type FlexAlign = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';

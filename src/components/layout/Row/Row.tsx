@@ -20,7 +20,13 @@ const Row: React.FC<RowProps> = ({ children, align, verticalAlign, gap, relative
     return (
         <div
             className={rowClasses}
-            style={{ justifyContent: parse<FlexAlign>(align), alignItems: parse<FlexAlign>(verticalAlign), gap: parse<React.CSSProperties['gap']>(gap), position: relative ? 'relative' : undefined, ...cssProperties }}
+            style={{
+                justifyContent: parse<FlexAlign>(align),
+                alignItems: parse<FlexAlign>(verticalAlign),
+                gap: parse<React.CSSProperties['gap']>(gap),
+                position: relative ? 'relative' : undefined,
+                ...cssProperties
+            }}
         >
             {children}
         </div>
