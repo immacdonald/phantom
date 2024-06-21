@@ -23,5 +23,7 @@ export const Sun = withVectorIcon(SunSVG);
 export const SunFilled = withVectorIcon(SunFilledSVG);
 export const UploadFile = withVectorIcon(UploadFileSVG);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export * from './charting';
+// eslint-disable-next-line react-refresh/only-export-components
 export * from './navigation';

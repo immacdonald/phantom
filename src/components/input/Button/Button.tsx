@@ -73,7 +73,7 @@ const Button: React.FC<ButtonProps> = ({
 
     const content = (
         <>
-            {Icon && <Icon size={size}/>}
+            {Icon && <Icon size={size} />}
             {label && <span style={visibility}>{label}</span>}
             {isLoading && <Loading size={24} thickness={3} color="inherit" secondaryColor="inherit" />}
         </>
