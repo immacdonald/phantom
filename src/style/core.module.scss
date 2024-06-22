@@ -1,16 +1,20 @@
 @use './tokens' as *;
-@forward 'elements';
+@forward 'core';
 
 :root {
     // Brand
+    // Primary
     --color-primary: var(--c-primary);
     --color-primary-hover: var(--color-primary-dark, var(--color-primary));
     --color-primary-active: var(--color-primary-darker, var(--color-primary));
     --color-surface-primary: var(--c-bg-tint);
     --color-text-on-primary: var(--c-fg-on-primary);
+    --color-primary-alpha: var(--c-primary);
 
+    // Secondary
     --color-secondary: var(--c-secondary);
 
+    // Accent
     --color-accent: var(--c-accent);
     --color-accent-hover: var(--color-accent-dark, var(--color-accent));
     --color-accent-active: var(--color-accent-darker, var(--color-accent));
@@ -30,12 +34,17 @@
     --color-surface-inverse: var(--c-bg-inverse);
 
     // Website
-    --color-selection: var(--color-primary);
+    --color-selection: var(--color-primary-alpha);
     --color-scrollbar: var(--color-surface-foreground);
 
     // Contexts
+    $positive: green;
+    $critical: red;
+    $info: blue;
+    $warning: yellow;
+
     // Positive
-    --color-positive: var(--c-positive);
+    --color-positive: var(--c-positive, $positive);
     --color-positive-hover: var(--c-positive);
     --color-positive-active: var(--c-positive);
     --color-surface-positive: var(--c-positive);
@@ -98,6 +107,12 @@
     --text-header-md: 1.5rem;
     --text-header-sm: 1.25rem;
     --text-header-xs: 1rem;
+
+    // Effects
+    // Transitions
+    --t-slow: 1s ease;
+    --t-mid: 0.5s ease;
+    --t-fast: 0.25s ease;
 }
 
 *[data-context] {

@@ -11,7 +11,7 @@
     "exports": {
         ".": "./lib/index.js",
         "./style/tokens": "./lib/style/index.scss",
-        "./style/variables": "./lib/style/variables.module.scss"
+        "./style/variables": "./lib/style/core.module.scss"
     },
     "scripts": {
         "prepare": "npm run build",
@@ -56,6 +56,7 @@
     "dependencies": {
         "clsx": "^2.1.1",
         "react": "^18.2.0",
+        "react-hook-form": "^7.52.0",
         "react-router-dom": "^6.22.3",
         "react-select": "^5.8.0"
     }

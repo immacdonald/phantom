@@ -1,4 +1,4 @@
-@use './tokens' as *;
+@use '../tokens' as *;
 
 table {
     color: var(--c-fg);
@@ -51,6 +51,6 @@ table {
     }
 
     &[data-interactive] tbody tr:hover td {
-                background-color: var(--c-bg-dim);
+        background-color: var(--c-bg-dim);
     }
 }

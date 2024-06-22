@@ -10,3 +10,5 @@ export * from './Popover';
 export * from './Card';
 export * from './HoverMark';
 export * from './Loading';
+export * from './Text';
+export * from './FormInput';

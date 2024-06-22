@@ -1,0 +1,35 @@
+@use '../../style' as *;
+
+.medium {
+    font-size: 1rem;
+
+    @include respond-max($screen-lg) {
+        font-size: 1rem;
+    }
+}
+
+.large {
+    font-size: 1.25rem;
+
+    @include respond-max($screen-lg) {
+        font-size: 1.05rem;
+    }
+}
+
+.xl {
+    font-size: 1.5rem;
+
+    @include respond-max($screen-lg) {
+        font-size: 1.1rem;
+    }
+}
+
+.padded {
+    padding-left: 25%;
+    padding-right: 25%;
+
+    @include respond-max($screen-md) {
+        padding-left: $xl;
+        padding-right: $xl;
+    }
+}

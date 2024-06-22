@@ -1,0 +1,34 @@
+@use '../tokens' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+::selection {
+    background: var(--color-primary-alpha);
+}
+
+body {
+    width: 100vw;
+    height: 100%;
+    font-family: var(--font-body);
+    font-size: $font-md;
+    line-height: 1.4;
+    color: var(--color-text);
+    background-color: var(--color-surface-page);
+    background-attachment: fixed;
+    overflow-x: hidden;
+}

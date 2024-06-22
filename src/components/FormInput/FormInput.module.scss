@@ -1,0 +1,25 @@
+@use '../../style' as *;
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: $sm;
+    padding: 2px;
+
+    input {
+        margin-bottom: 0 !important;
+    }
+
+    > p {
+        margin-left: $sm;
+    }
+
+    label {
+        margin-left: 12px;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
