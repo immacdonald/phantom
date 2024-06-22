@@ -1,3 +1,3 @@
 {
-    "extends": ["@immacdonald/phantom-config/stylelint"]
+    "extends": ["@imacdonald/phantom-config/stylelint"]
 }
