@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button, Row, Segmented } from '..';
-import { NullablePrimitive, Option } from '../../types';
+import { Button, Row, Segmented } from '../../';
+import { NullablePrimitive, Option } from '../../../types';
 import style from './TabGroup.module.scss';
 
 export type Tab = {

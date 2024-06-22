@@ -1,0 +1,56 @@
+@use './tokens' as *;
+
+table {
+    color: var(--c-fg);
+    width: 100%;
+    overflow-y: auto;
+    border-spacing: 0;
+    border-collapse: separate;
+
+    thead {
+        height: 48px;
+
+        tr {
+            th {
+                background-color: var(--c-bg-light);
+                color: var(--c-fg);
+                border-collapse: collapse;
+                text-align: center;
+                padding: 0 $sm;
+                border-bottom: 1px solid var(--c-bg-dim);
+
+                &:hover {
+                    background-color: var(--c-bg);
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            height: 52px;
+
+            td {
+                padding: $xxs $sm;
+
+                // background-color: var(--c-bg-light);
+                border-top: 1px solid var(--c-bg-dim);
+                text-align: center;
+            }
+
+            &:last-child {
+                td {
+                    border-bottom: 1px solid var(--c-bg-dim);
+                }
+            }
+
+            &:nth-child(odd) {
+                background-color: var(--c-bg-tint);
+            }
+        }
+    }
+
+    &[data-interactive] tbody tr:hover td {
+                background-color: var(--c-bg-dim);
+    }
+}

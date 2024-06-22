@@ -1,0 +1,42 @@
+@use './tokens' as *;
+
+// Misc.
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+*[data-tooltip]:not([disabled]) {
+    position: relative;
+
+    &:hover::after,
+    &:focus::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translate(-50%, -$md);
+        width: max-content;
+        max-width: 256px;
+        min-width: $xxl;
+        padding: $xs $md;
+        border-radius: $radius-sm;
+        background-color: var(--c-bg-dark);
+        text-align: center;
+        color: var(--c-fg-on-primary);
+        font-size: $font-md;
+        font-weight: 500;
+        white-space: pre-line;
+        z-index: 100;
+        opacity: 0;
+        animation: 0s ease-out 1s 1 appear;
+        animation-fill-mode: forwards;
+        box-shadow: var(--shadow-floating);
+        filter: none;
+    }
+}

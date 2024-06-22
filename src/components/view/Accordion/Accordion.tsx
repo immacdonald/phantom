@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
-import { Button } from '..';
-import { useInterval } from '../../hooks';
-import { Chevron } from '../../icons';
-import { Callback, ComponentCSSProps, PollingRate } from '../../types';
-import { IconProps } from '../Icon/Icon';
+import { Button } from '../../';
+import { useInterval } from '../../../hooks';
+import { Chevron } from '../../../icons';
+import { Callback, ComponentCSSProps, PollingRate } from '../../../types';
+import { IconProps } from '../../Icon/Icon';
 import style from './Accordion.module.scss';
 
 interface AccordionProps extends ComponentCSSProps {
