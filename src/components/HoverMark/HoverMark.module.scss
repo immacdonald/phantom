@@ -3,9 +3,9 @@
 .hoverMark {
     background-color: transparent;
     display: inline-block;
-    color: var(--c-fg);
+    color: var(--color-text);
 
     &:hover {
-        background-color: var(--c-primary-fade);
+        background-color: var(--color-selection);
     }
 }

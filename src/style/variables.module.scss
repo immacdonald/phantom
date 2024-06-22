@@ -4,14 +4,16 @@
 :root {
     // Brand
     --color-primary: var(--c-primary);
-    --color-primary-hover: var(--c-primary);
-    --color-primary-active: var(--c-primary);
+    --color-primary-hover: var(--color-primary-dark, var(--color-primary));
+    --color-primary-active: var(--color-primary-darker, var(--color-primary));
     --color-surface-primary: var(--c-bg-tint);
     --color-text-on-primary: var(--c-fg-on-primary);
+
     --color-secondary: var(--c-secondary);
+
     --color-accent: var(--c-accent);
-    --color-accent-hover: var(--c-accent);
-    --color-accent-active: var(--c-accent);
+    --color-accent-hover: var(--color-accent-dark, var(--color-accent));
+    --color-accent-active: var(--color-accent-darker, var(--color-accent));
     --color-surface-accent: var(--c-accent);
     --color-text-on-accent: var(--c-fg-on-primary);
 
@@ -26,6 +28,10 @@
     --color-surface-foreground: var(--c-bg-light);
     --color-surface-overlay: var(--color-surface-foreground);
     --color-surface-inverse: var(--c-bg-inverse);
+
+    // Website
+    --color-selection: var(--color-primary);
+    --color-scrollbar: var(--color-surface-foreground);
 
     // Contexts
     // Positive
@@ -66,7 +72,7 @@
 
     // Input
     --input-color-active: var(--color-primary);
-    --input-color-active-hover: var(--c-primary-light);
+    --input-color-active-hover: var(--color-primary-hover);
     --input-color-fg-active: var(--c-fg-on-primary);
     --input-border-color: var(--border-color-light);
     --input-border: var(--border-width-thin) solid var(--input-border-color);
