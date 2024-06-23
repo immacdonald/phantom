@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import style from './ModalController.module.scss';
+import clsx from 'clsx';
 import { getModal } from './modals';
+import style from './ModalController.module.scss';
 
 const ModalController: React.FC = () => {
     const [modal, setModal] = useState<JSX.Element | null>(null);

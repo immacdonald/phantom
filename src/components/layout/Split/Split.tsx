@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import clsx from 'clsx';
 import style from './Split.module.scss';
 
 interface SplitProps {

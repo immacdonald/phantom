@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { CSSProperties, FC, ReactNode } from 'react';
+import clsx from 'clsx';
 import style from './Text.module.scss';
 
 interface TextProps {

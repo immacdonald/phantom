@@ -1,6 +1,6 @@
+import type { Callback, Primitive } from '@types';
 import { useCallback, useEffect, useRef } from 'react';
-import { Callback, Primitive } from '../types';
-import { parsePrimitive } from '../utility';
+import { parsePrimitive } from '@utility';
 import useBackButton from './useBackButton';
 
 const useQueryParams = (whitelist?: string[], onUpdate?: Callback<Record<string, Primitive>>) => {

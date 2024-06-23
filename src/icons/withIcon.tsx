@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, IconProps } from '../components/Icon/Icon';
+import { Icon, IconProps } from '@components';
 
 const withVectorIcon = (WrappedSVG: React.FC) => {
     return function WithIcon(props: IconProps) {

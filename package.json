@@ -10,8 +10,8 @@
     ],
     "exports": {
         ".": "./lib/index.js",
-        "./style/tokens": "./lib/style/index.scss",
-        "./style/variables": "./lib/style/core.module.scss"
+        "./tokens": "./lib/styles/index.scss",
+        "./styles": "./lib/styles/core.module.scss"
     },
     "scripts": {
         "prepare": "npm run build",
@@ -40,7 +40,7 @@
     },
     "homepage": "https://github.com/immacdonald/phantom#readme",
     "devDependencies": {
-        "@imacdonald/phantom-config": "^0.2.2",
+        "@imacdonald/phantom-config": "^0.2.6",
         "@types/react": "^18.2.73",
         "@types/react-dom": "^18.2.25",
         "esbuild-plugin-copy": "^2.1.1",

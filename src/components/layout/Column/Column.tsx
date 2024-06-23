@@ -1,7 +1,7 @@
-import clsx from 'clsx';
+import type { ComponentCSSProps, FlexAlign, ResponsiveType } from '@types';
 import React, { ReactNode } from 'react';
-import { useResponsiveContext } from '../../../contexts';
-import { ComponentCSSProps, FlexAlign, ResponsiveType } from '../../../types';
+import clsx from 'clsx';
+import { useResponsiveContext } from '@contexts';
 import style from './Column.module.scss';
 
 interface ColumnProps extends ComponentCSSProps {

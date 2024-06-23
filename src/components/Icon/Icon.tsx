@@ -1,6 +1,6 @@
-import clsx from 'clsx';
+import type { ComponentCSSProps, StyleContext } from '@types';
 import React, { CSSProperties, ReactNode } from 'react';
-import { ComponentCSSProps, StyleContext } from '../../types';
+import clsx from 'clsx';
 import style from './Icon.module.scss';
 
 const sizeMap: Record<string, string> = {

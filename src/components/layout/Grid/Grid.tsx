@@ -1,8 +1,8 @@
-import clsx from 'clsx';
+import type { ComponentCSSProps } from '@types';
 import React, { ReactNode } from 'react';
-import { ComponentCSSProps } from '../../../types';
-import style from './Grid.module.scss';
+import clsx from 'clsx';
 import { GridItemSize } from './GridItemSize';
+import style from './Grid.module.scss';
 
 interface GridProps extends ComponentCSSProps {
     dense?: boolean;

@@ -1,6 +1,6 @@
+import type { ComponentCSSProps } from '@types';
 import React, { ReactNode, useEffect } from 'react';
-import { ComponentCSSProps } from '../../../types';
-import { validateElement } from '../../../utility';
+import { validateElement } from '@utility';
 import style from './Page.module.scss';
 
 interface PageSubheaderProps {

@@ -1,9 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Cancel, Column, UploadFile } from '../../..';
-import { Button } from '../Button';
+import { Button, Column } from '@components';
+import { Cancel, UploadFile } from '@icons';
 import style from './FileUploadPortal.module.scss';
-
-//import uploadFile from '../../../icons/upload_file.svg?url';
 
 interface FileUploadPortalProps {
     maxFiles?: number;

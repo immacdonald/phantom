@@ -1,6 +1,6 @@
+import type { Breakpoints, Dimensions, ResponsiveObject, ResponsiveType } from '@types';
 import { createContext, ReactNode } from 'react';
-import { useWindowSize } from '../hooks';
-import { Breakpoints, Dimensions, ResponsiveObject, ResponsiveType } from '../types';
+import { useWindowSize } from '@hooks';
 
 const breakpoints: Breakpoints[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 

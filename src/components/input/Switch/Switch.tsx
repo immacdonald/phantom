@@ -1,5 +1,5 @@
+import type { Callback } from '@types';
 import React, { useCallback } from 'react';
-import { Callback } from '../../../types';
 import style from './Switch.module.scss';
 
 interface SwitchProps {

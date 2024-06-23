@@ -12,11 +12,8 @@ export const getKeyByValue = (object: Record<string, unknown>, value: unknown): 
     return Object.keys(object).find((key) => object[key] === value);
 };
 
-export const capitalizeFirstLetter = (str: string | null): string | null => {
-    return str ? str.charAt(0).toUpperCase() + str.slice(1) : null;
-};
-
+export * from './dates';
 export * from './fetch';
 export * from './numbers';
 export * from './parse';
-export * from './dates';
+export * from './strings';

@@ -1,7 +1,7 @@
-import clsx from 'clsx';
+import type { Callback, ComponentCSSProps, NullablePrimitive, Option } from '@types';
 import { FC, useState } from 'react';
-import { Callback, ComponentCSSProps, NullablePrimitive, Option } from '../../../types';
-import { Button } from '../Button';
+import clsx from 'clsx';
+import { Button } from '@components';
 import style from './Segmented.module.scss';
 
 interface SegmentedProps extends ComponentCSSProps {

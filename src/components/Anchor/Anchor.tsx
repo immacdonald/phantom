@@ -1,9 +1,9 @@
-import clsx from 'clsx';
+import type { Dimensions, PollingRate, Position } from '@types';
 import React, { ReactElement, ReactNode, useRef, useState } from 'react';
+import clsx from 'clsx';
 import { createPortal } from 'react-dom';
-import { useResponsiveContext } from '../../contexts';
-import { useInterval } from '../../hooks';
-import { Dimensions, PollingRate, Position } from '../../types';
+import { useResponsiveContext } from '@contexts';
+import { useInterval } from '@hooks';
 import style from './Anchor.module.scss';
 
 type XYWH = Position & Dimensions;

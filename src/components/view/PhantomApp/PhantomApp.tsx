@@ -1,10 +1,8 @@
-import clsx from 'clsx';
+import type { ComponentCSSProps } from '@types';
 import React, { ReactNode } from 'react';
-import { ResponsiveContextProvider } from '../../../contexts';
-import { ComponentCSSProps } from '../../../types';
-import { AnchorController } from '../../Anchor';
-import { Banner } from '../../Banner';
-import { ModalController } from '../../Modal';
+import clsx from 'clsx';
+import { AnchorController, Banner, ModalController } from '@components';
+import { ResponsiveContextProvider } from '@contexts';
 import style from './PhantomApp.module.scss';
 
 interface PhantomAppProps extends ComponentCSSProps {

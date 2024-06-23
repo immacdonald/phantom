@@ -1,6 +1,6 @@
-import clsx from 'clsx';
+import type { ComponentCSSProps } from '@types';
 import React, { ReactNode } from 'react';
-import { ComponentCSSProps } from '../../../types';
+import clsx from 'clsx';
 import style from './Section.module.scss';
 
 interface SectionProps extends ComponentCSSProps {

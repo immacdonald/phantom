@@ -1,6 +1,6 @@
+import type { NullablePrimitive, Option } from '@types';
 import React, { useEffect, useState } from 'react';
 import Select, { MultiValue } from 'react-select';
-import { NullablePrimitive, Option } from '../../../types';
 import style from './Dropdown.module.scss';
 
 interface MultiDropdownProps {

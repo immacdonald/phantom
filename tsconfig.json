@@ -7,6 +7,15 @@
         "moduleResolution": "node",
         "outDir": "lib",
         "module": "ES2020",
+        "paths": {
+            "@components": ["./src/components"],
+            "@components/*": ["./src/components/*"],
+            "@contexts": ["./src/contexts"],
+            "@hooks": ["./src/hooks"],
+            "@icons": ["./src/icons"],
+            "@types": ["./src/types"],
+            "@utility": ["./src/utility"]
+        },
         "skipLibCheck": true,
         "rootDir": "src",
         "emitDeclarationOnly": true,

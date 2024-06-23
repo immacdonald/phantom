@@ -1,5 +1,5 @@
+import type { Callback } from '@types';
 import { RefObject, useEffect } from 'react';
-import { Callback } from '../types';
 
 const useOutsideClick = (ref: RefObject<HTMLElement>, callback: Callback<void>) => {
     useEffect(() => {

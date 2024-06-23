@@ -1,5 +1,5 @@
+import type { Callback } from '@types';
 import { useEffect, useRef } from 'react';
-import { Callback } from '../types';
 
 const useInterval = (callback: Callback<void>, delay: number | null) => {
     const savedCallback = useRef<Callback<void> | null>(null);

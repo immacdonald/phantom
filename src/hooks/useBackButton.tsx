@@ -1,5 +1,5 @@
+import type { Callback } from '@types';
 import { useEffect } from 'react';
-import { Callback } from '../types';
 
 const useBackButton = (callback: Callback<void>) => {
     const handleEvent = () => {

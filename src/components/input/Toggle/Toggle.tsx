@@ -1,6 +1,6 @@
-import clsx from 'clsx';
+import type { Callback } from '@types';
 import React, { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Callback } from '../../../types';
+import clsx from 'clsx';
 import style from './Toggle.module.scss';
 
 interface ToggleProps {

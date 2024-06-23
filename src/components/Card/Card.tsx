@@ -1,8 +1,8 @@
-import clsx from 'clsx';
+import type { ComponentCSSProps } from '@types';
+import type { IconProps } from '../Icon';
 import { ComponentType, FC, ReactNode } from 'react';
-import { ComponentCSSProps } from '../../types';
-import { IconProps } from '../Icon';
-import { Column } from '../layout';
+import clsx from 'clsx';
+import { Column } from '@components';
 import style from './Card.module.scss';
 
 interface CardProps extends ComponentCSSProps {

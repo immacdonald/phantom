@@ -1,5 +1,5 @@
+import type { Dimensions } from '@types';
 import { useEffect, useState } from 'react';
-import { Dimensions } from '../types';
 
 const useWindowSize = () => {
     // Use the ScreenSize type for the state

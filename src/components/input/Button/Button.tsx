@@ -1,9 +1,9 @@
-import clsx from 'clsx';
+import type { ComponentCSSProps, StyleContext } from '@types';
+import type { IconProps } from '../../Icon';
 import React, { ComponentType, CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import { ComponentCSSProps, StyleContext } from '../../../types';
-import { IconProps } from '../../Icon';
-import { Loading } from '../../Loading';
+import { Loading } from '@components';
 import style from './Button.module.scss';
 
 interface ButtonProps extends ComponentCSSProps {
