@@ -13,6 +13,7 @@
             "@contexts": ["./src/contexts"],
             "@hooks": ["./src/hooks"],
             "@icons": ["./src/icons"],
+            "@styles": ["./src/styles"],
             "@types": ["./src/types"],
             "@utility": ["./src/utility"]
         },

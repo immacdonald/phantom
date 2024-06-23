@@ -10,7 +10,7 @@
     ],
     "exports": {
         ".": "./lib/index.js",
-        "./tokens": "./lib/styles/index.scss",
+        "./tokens": "./lib/styles/_index.scss",
         "./styles": "./lib/styles/core.module.scss"
     },
     "scripts": {

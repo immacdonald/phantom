@@ -1,5 +1,3 @@
-@use '../../../styles' as *;
-
 @mixin base-input {
     color: var(--input-color-fg);
     background-color: var(--input-color-bg);

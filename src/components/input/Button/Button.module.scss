@@ -1,5 +1,3 @@
-@use '../../../styles' as *;
-
 @mixin dynamic-text($default, $hover, $active) {
     color: $default;
 
