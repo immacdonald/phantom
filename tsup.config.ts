@@ -22,7 +22,7 @@ export default defineConfig({
             precompile(source, pathname) {
                 const filePath = pathname.split('/').slice(-1)[0];
                 if (!filePath.startsWith('_')) {
-                    const prepend = `@use "${path.resolve(__dirname, './src/styles')}" as *;`;
+                    const prepend = `@use "${path.resolve(path.relative(__dirname, pathname), path.resolve(__dirname, './src/styles/tokens'))}" as *;`;
                     return prepend + '\n' + source;
                 } else {
                     return source;
