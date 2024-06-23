@@ -1,5 +1,4 @@
 @use '../tokens' as *;
-@use '../mixins' as *;
 
 @mixin input {
     @include base-input;
