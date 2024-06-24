@@ -60,4 +60,4 @@ const genericFailureCallback: Callback<Error> = (error: Error) => {
     console.error('Unhandled error', error);
 };
 
-export { fetchAsync, getAsync, postAsync, genericSuccessCallback, genericFailureCallback }
+export { fetchAsync, genericFailureCallback, genericSuccessCallback, getAsync, postAsync }

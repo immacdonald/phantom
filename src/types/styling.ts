@@ -1,9 +1,9 @@
 import { CSSProperties } from 'react';
 
 // Responsive design and component system
-export type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type ResponsiveObject<T> = {
+type ResponsiveObject<T> = {
     base: T;
     xs?: T;
     sm?: T;
@@ -12,14 +12,16 @@ export type ResponsiveObject<T> = {
     xl?: T;
 };
 
-export type ResponsiveType<T> = T | ResponsiveObject<T>;
+type ResponsiveType<T> = T | ResponsiveObject<T>;
 
 // Styling
-export interface ComponentCSSProps {
+interface ComponentCSSProps {
     className?: string;
     cssProperties?: CSSProperties;
 }
 
-export type StyleContext = 'primary' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
+type StyleContext = 'primary' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
 
-export type FlexAlign = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
+type FlexAlign = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
+
+export type { Breakpoints, ComponentCSSProps, FlexAlign, ResponsiveObject, ResponsiveType, StyleContext }

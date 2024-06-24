@@ -48,4 +48,4 @@ const formatLargeValue = (value: number): string => {
     }
 };
 
-export { ordinalSuffix, formatNumber, decimalPlaces, formatLargeValue }
+export { decimalPlaces, formatLargeValue, formatNumber, ordinalSuffix }

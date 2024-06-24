@@ -27,4 +27,4 @@ const popNotification = (): Notification | null => {
     return notifications.pop() || null;
 };
 
-export { pushSuccess, pushError, popNotification }
+export { popNotification, pushError, pushSuccess }

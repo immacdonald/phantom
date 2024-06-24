@@ -18,4 +18,4 @@ export * from './numbers';
 export * from './parse';
 export * from './strings';
 
-export { validateElement, getKeyByValue }
+export { getKeyByValue, validateElement }
