@@ -1,6 +1,6 @@
 @forward 'core';
 
-:root {
+:root, ::backdrop, ::selection {
     // Light
     --white: #fff;
     --grey-1: #f5f5f5;
@@ -44,7 +44,7 @@
 
     // Colors
     // Surface
-    --color-surface-page: var(--white: );
+    --color-surface-page: var(--white);
     --color-surface-background: var(--grey-2);
     --color-surface-foreground: var(--white);
     --color-surface-overlay: var(--color-surface-foreground);
@@ -145,6 +145,10 @@
     --text-header-md: 1.5rem;
     --text-header-sm: 1.25rem;
     --text-header-xs: 1rem;
+
+    // Typography
+    --font-body: 'Avenir Next', helvetica, arial, sans-serif;
+    --font-header: 'Avenir Next', helvetica, arial, sans-serif;
 
     // Effects
     // Transitions

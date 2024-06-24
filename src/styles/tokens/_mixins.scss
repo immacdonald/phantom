@@ -45,9 +45,10 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--color-scrollbar);
+        $scrollbar-color: rgba(0, 0, 0, 0.1);
+        background-color: $scrollbar-color;
         border-radius: $sm;
-        border: $xs solid var(--color-scrollbar);
+        border: $xs solid $scrollbar-color;
     }
 
     &::-webkit-scrollbar-track-piece {

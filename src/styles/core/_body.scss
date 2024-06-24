@@ -15,12 +15,32 @@ html {
     height: 100%;
     display: block;
     box-sizing: border-box;
-
-    @include scrollbar;
+    overflow-y: overlay;
 }
 
 ::selection {
     background: var(--color-primary-alpha);
+}
+
+::-webkit-scrollbar {
+    width: $sm;
+    height: $sm;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-left: var(--border-light)
+}
+
+::-webkit-scrollbar-thumb {
+    $scrollbar-color: rgba(0, 0, 0, 0.1);
+    background-color: $scrollbar-color;
+    border-radius: $sm;
+    border: $xs solid $scrollbar-color;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
 }
 
 body {
