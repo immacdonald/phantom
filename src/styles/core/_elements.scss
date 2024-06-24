@@ -3,7 +3,7 @@
 // Links
 a {
     text-decoration: none;
-    color: var(--c-primary);
+    color: var(--color-primary);
 
     &:hover {
         text-decoration: underline;
@@ -25,17 +25,13 @@ blockquote {
 }
 
 code {
-    background: var(--a-low);
+    background: var(--alpha-1);
     border-radius: $radius-sm;
-    border: var(--b-light);
+    border: var(--border-light);
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
     margin: 0 0.25em;
     padding: 0.3em 0.65em;
-
-    &::selection {
-        background-color: var(--c-primary-light);
-    }
 }
 
 pre {
@@ -53,6 +49,6 @@ pre {
 
 hr {
     border: 0;
-    border-bottom: solid 1px var(--a-mid);
+    border-bottom: solid var(--border-width-thin) var(--alpha-2);
     margin: $md 0;
 }

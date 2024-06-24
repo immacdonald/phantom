@@ -26,9 +26,9 @@
         min-width: $xxl;
         padding: $xs $md;
         border-radius: $radius-sm;
-        background-color: var(--c-bg-dark);
+        background-color: var(--color-surface-inverse);
         text-align: center;
-        color: var(--c-fg-on-primary);
+        color: var(--color-text-inverse);
         font-size: $font-md;
         font-weight: 500;
         white-space: pre-line;

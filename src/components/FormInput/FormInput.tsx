@@ -4,8 +4,8 @@ import style from './FormInput.module.scss';
 type InputProps = {
     name: string;
     type?: React.HTMLInputTypeAttribute;
-    register: any;
-    validationSchema?: any;
+    register: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    validationSchema?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     label?: string | React.ReactNode;
     error?: FieldError;
     id?: string;

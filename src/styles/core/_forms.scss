@@ -10,20 +10,20 @@
     font-family: var(--font-body);
 
     &::placeholder {
-        color: var(--c-fg);
+        color: var(--input-color-fg-light);
         opacity: 0.5;
     }
 
     &:focus {
-        outline: 1px solid var(--c-primary);
+        outline: var(--input-outline);
     }
 
     &[disabled] {
-        background-color: var(--c-bg-light);
+        background-color: var(--input-color-bg-disabled);
         border: none;
-        color: var(--c-fg-light);
+        color: var(--input-color-fg-disabled);
         cursor: not-allowed;
-        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+        filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
     }
 }
 
@@ -59,17 +59,17 @@ input[type='radio'] {
         top: calc((var(--v-size) - var(--v-box-size)) / -2);
         left: calc((var(--v-size) - var(--v-box-size)) / -2);
         content: '';
-        background-color: var(--c-bg-light);
-        border: var(--b-dark);
+        background-color: var(--input-color-bg);
+        border: var(--input-border);
         border-radius: 100%;
         transition:
-            background-color var(--t-fast),
-            border var(--t-mid);
+            background-color var(--transition-fast),
+            border var(--transition-mid);
     }
 
     &:checked {
         &::before {
-            background-color: var(--c-primary);
+            background-color: var(--input-color-active);
         }
 
         &::after {
@@ -79,7 +79,7 @@ input[type='radio'] {
             left: 2px;
             font-size: 14px;
             line-height: 14px;
-            color: var(--c-fg-on-primary);
+            color: var(--input-color-fg-active);
             text-align: center;
         }
     }
@@ -102,17 +102,17 @@ input[type='checkbox']:not([data-switch]) {
         top: calc((var(--v-size) - var(--v-box-size)) / -2);
         left: calc((var(--v-size) - var(--v-box-size)) / -2);
         content: '';
-        background-color: var(--c-bg-light);
-        border: var(--b-dark);
+        background-color: var(--input-color-bg);
+        border: var(--input-border);
         border-radius: $radius-sm;
         transition:
-            background-color var(--t-fast),
-            border var(--t-mid);
+            background-color var(--transition-fast),
+            border var(--transition-mid);
     }
 
     &:checked {
         &::before {
-            background-color: var(--c-primary);
+            background-color: var(--input-color-active);
         }
 
         &::after {
@@ -121,14 +121,14 @@ input[type='checkbox']:not([data-switch]) {
             top: -21px;
             font-size: 16px;
             line-height: 16px;
-            color: var(--c-fg-on-primary);
+            color: var(--input-color-fg-active);
             text-align: center;
         }
     }
 }
 
 p[role='alert'] {
-    color: var(--c-critical);
+    color: var(--color-critical);
     font-weight: $semi-bold;
     font-style: italic;
 }

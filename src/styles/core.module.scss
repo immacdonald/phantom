@@ -1,103 +1,142 @@
 @forward 'core';
 
 :root {
+    // Light
+    --white: #fff;
+    --grey-1: #f5f5f5;
+    --grey-2: #f2f3f5;
+    --grey-3: #e8eaec;
+
+    // Dark
+    --grey-4: #949ba0;
+    --grey-5: #333;
+    --grey-6: #222529;
+    --grey-7: #18191b;
+    --black: #010203;
+
+    // Text
+    --color-text: var(--grey-6);
+    --color-text-soft: var(--grey-4);
+    --color-text-inverse: var(--grey-1);
+    --color-text-on-dark: var(--grey-1);
+    --color-text-on-light: var(--grey-6);
+    --color-text-disabled: var(--grey-4);
+    --color-background-disabled: var(--grey-3);
+
     // Brand
     // Primary
-    --color-primary: var(--c-primary);
+    --color-primary: blue;
     --color-primary-hover: var(--color-primary-dark, var(--color-primary));
     --color-primary-active: var(--color-primary-darker, var(--color-primary));
-    --color-surface-primary: var(--c-bg-tint);
-    --color-text-on-primary: var(--c-fg-on-primary);
-    --color-primary-alpha: var(--c-primary);
+    --color-surface-primary: var(--color-primary);
+    --color-text-on-primary: var(--color-text-on-dark);
+    --color-primary-alpha: rgb(0 0 255 / 25%);
 
     // Secondary
-    --color-secondary: var(--c-secondary);
+    --color-secondary: lightblue;
 
     // Accent
-    --color-accent: var(--c-accent);
+    --color-accent: red;
     --color-accent-hover: var(--color-accent-dark, var(--color-accent));
     --color-accent-active: var(--color-accent-darker, var(--color-accent));
-    --color-surface-accent: var(--c-accent);
-    --color-text-on-accent: var(--c-fg-on-primary);
+    --color-surface-accent: var(--color-accent);
+    --color-text-on-accent: var(--color-text-on-dark);
 
     // Colors
-    // Text
-    --color-text: var(--c-fg);
-    --color-text-inverse: var(--c-fg-inverse);
-
     // Surface
-    --color-surface-page: var(--c-bg-light);
-    --color-surface-background: var(--c-bg);
-    --color-surface-foreground: var(--c-bg-light);
+    --color-surface-page: var(--white: );
+    --color-surface-background: var(--grey-2);
+    --color-surface-foreground: var(--white);
     --color-surface-overlay: var(--color-surface-foreground);
-    --color-surface-inverse: var(--c-bg-inverse);
+    --color-surface-inverse: var(--grey-6);
 
     // Website
     --color-selection: var(--color-primary-alpha);
-    --color-scrollbar: var(--c-bg-dim);
+    --color-scrollbar: var(--grey-4);
 
     // Contexts
-    $positive: green;
-    $critical: red;
-    $info: blue;
-    $warning: yellow;
+    $positive-light: rgb(141 222 133);
+    $positive: rgb(131 194 118);
+    $positive-dark: rgb(69 151 60);
+    $critical-light: rgb(251 123 129);
+    $critical: rgb(227 63 72);
+    $critical-dark: rgb(191 53 89);
+    $info-light: rgb(100 181 224);
+    $info: rgb(62 154 204);
+    $info-dark: rgb(42 127 172);
+    $warning-light: rgb(255 235 163);
+    $warning: rgb(250 219 107);
+    $warning-dark: rgb(202 177 85);
 
     // Positive
-    --color-positive: var(--c-positive, $positive);
-    --color-positive-hover: var(--c-positive);
-    --color-positive-active: var(--c-positive);
-    --color-surface-positive: var(--c-positive);
-    --color-text-on-positive: var(--c-fg-on-primary);
+    --color-positive: #{$positive};
+    --color-positive-hover: #{$positive-dark};
+    --color-positive-active: #{$positive-dark};
+    --color-surface-positive: #{$positive};
+    --color-text-on-positive: var(--color-text-on-dark);
 
     // Critical
-    --color-critical: var(--c-critical);
-    --color-critical-hover: var(--c-critical);
-    --color-critical-active: var(--c-critical);
-    --color-surface-critical: var(--c-critical);
-    --color-text-on-critical: var(--c-fg-on-primary);
+    --color-critical: #{$critical};
+    --color-critical-hover: #{$critical-dark};
+    --color-critical-active: #{$critical-dark};
+    --color-surface-critical: #{$critical};
+    --color-text-on-critical: var(--color-text-on-dark);
 
     // Info
-    --color-info: var(--c-info);
-    --color-info-hover: var(--c-info);
-    --color-info-active: var(--c-info);
-    --color-surface-info: var(--c-info);
-    --color-text-on-info: var(--c-fg-on-primary);
+    --color-info: #{$info};
+    --color-info-hover: #{$info-dark};
+    --color-info-active: #{$info-dark};
+    --color-surface-info: #{$info};
+    --color-text-on-info: var(--color-text-on-light);
 
     // Warning
-    --color-warning: var(--c-warning);
-    --color-warning-hover: var(--c-warning);
-    --color-warning-active: var(--c-warning);
-    --color-surface-warning: var(--c-warning);
-    --color-text-on-warning: var(--c-fg-on-primary);
+    --color-warning: #{$warning};
+    --color-warning-hover: #{$warning-dark};
+    --color-warning-active: #{$warning-dark};
+    --color-surface-warning: #{$warning};
+    --color-text-on-warning: var(--color-text-on-light);
+
+    // Alpha
+    $alpha-base: 144, 144, 144;
+    $alpha-base-dark: 26, 26, 26;
+
+    --alpha-1: rgba(#{$alpha-base}, 0.07);
+    --alpha-2: rgba(#{$alpha-base}, 0.2);
+    --alpha-3: rgba(#{$alpha-base}, 0.23);
+    --alpha-4: rgba(#{$alpha-base}, 0.27);
+    --alpha-dark-1: rgba(#{$alpha-base-dark}, 0.07);
+    --alpha-dark-2: rgba(#{$alpha-base-dark}, 0.2);
+    --alpha-dark-3: rgba(#{$alpha-base-dark}, 0.23);
+    --alpha-dark-4: rgba(#{$alpha-base-dark}, 0.27);
 
     // Border
     --border-width-thin: 1px;
     --border-width-thick: 2px;
-    --border-color-light: var(--c-bg-dim);
-    --border-color-dark: var(--c-bg-dark);
+    --border-color-light: var(--grey-3);
+    --border-color-dark: var(--grey-5);
     --border-light: var(--border-width-thin) solid var(--border-color-light);
     --border-dark: var(--border-width-thin) solid var(--border-color-dark);
 
     // Input
     --input-color-active: var(--color-primary);
     --input-color-active-hover: var(--color-primary-hover);
-    --input-color-fg-active: var(--c-fg-on-primary);
+    --input-color-fg-active: var(--color-text-on-primary);
     --input-border-color: var(--border-color-light);
     --input-border: var(--border-width-thin) solid var(--input-border-color);
     --input-border-active: var(--border-width-thin) solid var(--input-color-active);
     --input-outline: var(--border-width-thin) solid var(--input-color-active);
-    --input-color-fg: var(--c-fg);
-    --input-color-fg-light: var(--c-fg-light);
-    --input-color-fg-disabled: var(--c-fg-light);
-    --input-color-bg: var(--c-bg-light);
-    --input-color-bg-disabled: var(--c-bg-light);
-    --input-color-bg-selected: var(--c-bg);
+    --input-color-fg: var(--color-text);
+    --input-color-fg-light: var(--color-text-soft);
+    --input-color-fg-disabled: var(--color-text-disabled);
+    --input-color-bg: var(--color-grey-1);
+    --input-color-bg-disabled: var(--color-background-disabled);
+    --input-color-bg-selected: var(--color-grey-3);
 
     // Shadows
-    --shadow-subtle: 0px 3px 1px -1px rgb(26 26 26 / 7%);
-    --shadow-raised: 0px 4px 6px -2px rgb(26 26 26 / 20%);
-    --shadow-lifted: 0px 8px 16px -4px rgb(26 26 26 / 22%);
-    --shadow-floating: 0px 12px 20px -8px rgb(26 26 26 / 24%);
+    --shadow-subtle: 0px 3px 1px -1px var(--alpha-dark-1);
+    --shadow-raised: 0px 4px 6px -2px var(--alpha-dark-2);
+    --shadow-lifted: 0px 8px 16px -4px var(--alpha-dark-3);
+    --shadow-floating: 0px 12px 20px -8px var(--alpha-dark-4);
 
     // Text
     --text-header-xxl: 3rem;
@@ -109,9 +148,14 @@
 
     // Effects
     // Transitions
-    --t-slow: 1s ease;
-    --t-mid: 0.5s ease;
-    --t-fast: 0.25s ease;
+    --transition-slow: 1s ease;
+    --transition-mid: 0.5s ease;
+    --transition-fast: 0.25s ease;
+
+    // Filters
+    --filter-disabled-saturation: 60%;
+    --filter-disabled-brightness: 0.9;
+    --filter-hover-brightness: 1.1;
 }
 
 *[data-context] {

@@ -15,7 +15,7 @@
 
             svg {
                 transform: rotate(0deg);
-                transition: transform var(--t-mid);
+                transition: transform var(--transition-mid);
             }
         }
     }
@@ -34,7 +34,7 @@
         height: 0;
         margin: 0;
         overflow: hidden;
-        transition: height var(--t-fast);
+        transition: height var(--transition-fast);
         border-top-left-radius: 0;
         border-top-right-radius: 0;
 

@@ -5,8 +5,8 @@
     font-size: $font-md;
     border: var(--input-border);
     transition:
-        outline-color var(--t-fast),
-        border var(--t-mid);
+        outline-color var(--transition-fast),
+        border var(--transition-mid);
 
     &:hover {
         border: var(--input-outline);
@@ -32,7 +32,7 @@
         border: none;
         color: var(--input-color-fg-disabled);
         cursor: not-allowed;
-        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+        filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
     }
 }
 

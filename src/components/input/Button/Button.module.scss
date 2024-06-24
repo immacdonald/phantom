@@ -40,7 +40,7 @@
         }
 
         &:active {
-            background-color: var(--a-dark);
+            background-color: var(--alpha-dark-1);
         }
     }
 }
@@ -110,12 +110,12 @@
     font-size: var(--v-font);
     font-weight: $semi;
     transition:
-        background var(--t-mid),
-        transform var(--t-mid),
-        box-shadow var(--t-mid),
-        border-color var(--t-mid),
-        outline var(--t-mid),
-        color var(--t-mid);
+        background var(--transition-mid),
+        transform var(--transition-mid),
+        box-shadow var(--transition-mid),
+        border-color var(--transition-mid),
+        outline var(--transition-mid),
+        color var(--transition-mid);
 
     span {
         height: var(--v-internal);
@@ -163,7 +163,7 @@
     }
 
     &.ghost {
-        @include ghost(var(--a-faint));
+        @include ghost(var(--alpha-dark-1));
         @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
     }
 
@@ -192,6 +192,6 @@
         border: none;
         color: var(--input-color-fg-disabled);
         cursor: not-allowed;
-        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+        filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
     }
 }

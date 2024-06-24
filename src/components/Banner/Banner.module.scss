@@ -16,8 +16,8 @@
     opacity: 0;
     transform: translateY(-120%);
     transition:
-        transform var(--t-slow),
-        opacity var(--t-slow);
+        transform var(--transition-slow),
+        opacity var(--transition-slow);
 
     &[data-state='on'] {
         transform: translateY(0%);

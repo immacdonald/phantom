@@ -17,8 +17,8 @@
         border-radius: $radius-md;
         font-size: $font-md;
         transition:
-            outline-color var(--t-fast),
-            border var(--t-mid);
+            outline-color var(--transition-fast),
+            border var(--transition-mid);
         outline: 1px solid transparent;
         border: var(--input-border);
         margin-bottom: 0;
@@ -100,7 +100,7 @@
             background-color: var(--input-color-bg-disabled);
             color: var(--input-color-fg-disabled);
             border: none !important;
-            filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+            filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
         }
     }
 }

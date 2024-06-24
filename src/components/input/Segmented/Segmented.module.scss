@@ -29,7 +29,7 @@
         border: none;
         color: var(--input-color-fg-disabled);
         cursor: not-allowed;
-        filter: brightness(var(--f-disabled-brightness)) saturate(var(--f-disabled-saturation));
+        filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
     }
 
     .indicator {
@@ -42,7 +42,7 @@
         height: 40px;
         background-color: var(--color-primary);
         left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
-        transition: left var(--t-fast);
+        transition: left var(--transition-fast);
         border-radius: $radius-sm;
     }
 }
