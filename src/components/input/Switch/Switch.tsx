@@ -16,7 +16,7 @@ const Switch: React.FC<SwitchProps> = ({ state, onChange = () => {} }) => {
 
     return (
         <label className={style.switch}>
-            <input type="checkbox" onChange={handleChange} checked={state} />
+            <input type="checkbox" onChange={handleChange} checked={state} data-switch />
             <span />
         </label>
     );

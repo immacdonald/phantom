@@ -15,7 +15,7 @@
         width: $width;
         height: $full-height;
         border-radius: $full-height;
-        background-color: var(--input-color-bg);
+        background-color: var(--input-color-bg-selected);
         position: relative;
         transition: 0.15s ease;
         pointer-events: none;
@@ -50,7 +50,7 @@
         opacity: 0;
 
         &:checked + span {
-            background-color: var(--input-color-fg);
+            background-color: var(--color-primary);
 
             &::before {
                 transform: translateX(calc(100% + $padding));

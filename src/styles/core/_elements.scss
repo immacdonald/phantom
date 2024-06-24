@@ -2,38 +2,18 @@
 
 // Links
 a {
-    text-decoration: underline;
-    color: var(--c-primary-light);
+    text-decoration: none;
+    color: var(--c-primary);
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 // Lists
 ul {
     margin-left: $md;
     margin-bottom: 1em;
-}
-
-// Tables
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    line-height: normal;
-    text-align: left;
-    border: 1px solid var(--c-border-light);
-    border-radius: $sm;
-}
-
-th {
-    padding: $sm;
-    border-bottom: 1px solid var(--c-border-light);
-}
-
-td {
-    padding: $xs;
-}
-
-tr:nth-child(even) {
-    background-color: var(--c-background-light);
 }
 
 // Misc.
@@ -74,13 +54,5 @@ pre {
 hr {
     border: 0;
     border-bottom: solid 1px var(--a-mid);
-    margin: 2em 0;
-}
-
-em {
-    color: var(--c-fg-on-primary);
-    background-color: var(--c-primary);
-    padding: $xxs $sm;
-    border-radius: $radius-md;
-    font-style: normal;
+    margin: $md 0;
 }

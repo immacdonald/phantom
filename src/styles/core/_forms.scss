@@ -85,7 +85,7 @@ input[type='radio'] {
     }
 }
 
-input[type='checkbox'] {
+input[type='checkbox']:not([data-switch]) {
     --v-box-size: 12px;
     --v-size: 20px;
 
