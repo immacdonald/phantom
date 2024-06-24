@@ -9,7 +9,7 @@ const withVectorIcon = (WrappedSVG: React.FC) => {
 
 const withImageIcon = (wrappedImage: string) => {
     return function WithIcon(props: IconProps) {
-        return <Icon {...props} icon={<img src={wrappedImage} />} />;
+        return <Icon {...props} icon={<img src={wrappedImage} alt="Icon" />} />;
     };
 };
 

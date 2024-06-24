@@ -37,5 +37,5 @@ type MultiCallback<T, U, V = void, W = void, X = void> = MultiCallbackTwo<T, U> 
 
 export * from './styling';
 
-export type { Callback, Dimensions, MultiCallback, NullablePrimitive, Option, Position, Primitive }
-export { PollingRate }
+export type { Callback, Dimensions, MultiCallback, NullablePrimitive, Option, Position, Primitive };
+export { PollingRate };

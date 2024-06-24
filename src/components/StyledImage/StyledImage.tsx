@@ -3,6 +3,7 @@ import style from './StyledImage.module.scss';
 
 interface StyledImageProps {
     image: string;
+    alt: string;
     border?: boolean;
     round?: boolean;
     maxWidth?: number;
@@ -10,7 +11,7 @@ interface StyledImageProps {
     caption?: string | React.ReactNode;
 }
 
-const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round = false, maxWidth, maxHeight, caption }) => {
+const StyledImage: React.FC<StyledImageProps> = ({ image, alt, border = false, round = false, maxWidth, maxHeight, caption }) => {
     const imageStyle = clsx(style.image, {
         [style.border]: border,
         [style.round]: round
@@ -20,7 +21,7 @@ const StyledImage: React.FC<StyledImageProps> = ({ image, border = false, round 
 
     return (
         <figure className={style.figure} style={properties}>
-            <img src={image} className={imageStyle} />
+            <img src={image} className={imageStyle} alt={alt} />
             {caption && <figcaption className={style.caption}>{caption}</figcaption>}
         </figure>
     );

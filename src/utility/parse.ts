@@ -37,4 +37,4 @@ const parsePrimitive = (input: string | null): boolean | number | string | null 
     }
 };
 
-export { parseBool, parseNullableObject, parseNullableString, parsePrimitive }
+export { parseBool, parseNullableObject, parseNullableString, parsePrimitive };

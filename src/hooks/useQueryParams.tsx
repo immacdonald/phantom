@@ -1,7 +1,7 @@
 import type { Callback, Primitive } from '@types';
 import { useCallback, useEffect, useRef } from 'react';
+import { useBackButton } from '@hooks';
 import { parsePrimitive } from '@utility';
-import useBackButton from './useBackButton';
 
 const useQueryParams = (whitelist?: string[], onUpdate?: Callback<Record<string, Primitive>>) => {
     const search = useRef<string>(window.location.search);

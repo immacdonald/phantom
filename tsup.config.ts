@@ -4,6 +4,7 @@ import svgr from 'esbuild-plugin-svgr';
 import { postcssModules, sassPlugin } from 'esbuild-sass-plugin';
 import { defineConfig } from 'tsup';
 
+// eslint-disable-next-line import-x/no-default-export
 export default defineConfig({
     splitting: true,
     sourcemap: true,

@@ -14,4 +14,4 @@ const useBackButton = (callback: Callback<void>) => {
     return true;
 };
 
-export default useBackButton;
+export { useBackButton };

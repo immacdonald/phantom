@@ -9,7 +9,6 @@ const formatNumericDate = (input: Date | string | number): string => {
     });
 };
 
-
 // Formats a date as Month DD, YYYY with optional HH:MM:SS AM/PM
 const formatReadableDate = (input: Date | string | number, time: boolean = false): string => {
     const date = new Date(input);
@@ -26,4 +25,4 @@ const formatReadableDate = (input: Date | string | number, time: boolean = false
     });
 };
 
-export { formatNumericDate, formatReadableDate }
+export { formatNumericDate, formatReadableDate };

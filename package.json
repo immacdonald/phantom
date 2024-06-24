@@ -41,7 +41,7 @@
     },
     "homepage": "https://github.com/immacdonald/phantom#readme",
     "devDependencies": {
-        "@imacdonald/phantom-config": "^0.2.7",
+        "@imacdonald/phantom-config": "^0.3.0",
         "@types/react": "^18.2.73",
         "@types/react-dom": "^18.2.25",
         "esbuild": "^0.21.5",

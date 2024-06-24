@@ -9,4 +9,4 @@ const getModal = (): JSX.Element | null => {
     return current;
 };
 
-export { getModal, setModal }
+export { getModal, setModal };
