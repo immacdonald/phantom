@@ -1,5 +1,17 @@
+// Formats a date as YYYY-MM-DD
+const formatNumericDate = (input: Date | string | number): string => {
+    const date = new Date(input);
+
+    return date.toLocaleDateString('en-CA', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+};
+
+
 // Formats a date as Month DD, YYYY with optional HH:MM:SS AM/PM
-export const formatReadableDate = (input: Date | string | number, time: boolean = false): string => {
+const formatReadableDate = (input: Date | string | number, time: boolean = false): string => {
     const date = new Date(input);
 
     if (isNaN(date.getTime())) {
@@ -14,13 +26,4 @@ export const formatReadableDate = (input: Date | string | number, time: boolean 
     });
 };
 
-// Formats a date as YYYY-MM-DD
-export const formatNumericDate = (input: Date | string | number): string => {
-    const date = new Date(input);
-
-    return date.toLocaleDateString('en-CA', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-    });
-};
+export { formatNumericDate, formatReadableDate }

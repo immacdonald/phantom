@@ -1,5 +1,5 @@
 // Parsers for serialization
-export const parseBool = (input: string | null, defaultValue: boolean = false): boolean => {
+const parseBool = (input: string | null, defaultValue: boolean = false): boolean => {
     if (input == null) {
         return defaultValue;
     }
@@ -7,7 +7,7 @@ export const parseBool = (input: string | null, defaultValue: boolean = false): 
     return input === 'true';
 };
 
-export const parseNullableString = (input: string | null, allowEmpty = false): string | null => {
+const parseNullableString = (input: string | null, allowEmpty = false): string | null => {
     if (input == null || input === 'null' || (!allowEmpty && input == '')) {
         return null;
     }
@@ -15,7 +15,7 @@ export const parseNullableString = (input: string | null, allowEmpty = false): s
     return input;
 };
 
-export const parseNullableObject = <T>(input: string | null): T | null => {
+const parseNullableObject = <T>(input: string | null): T | null => {
     if (input == null) {
         return null;
     }
@@ -27,7 +27,7 @@ const isNumeric = (value: string | null): boolean => {
     return !isNaN(Number(value));
 };
 
-export const parsePrimitive = (input: string | null): boolean | number | string | null => {
+const parsePrimitive = (input: string | null): boolean | number | string | null => {
     if (input == 'true' || input == 'false') {
         return parseBool(input);
     } else if (isNumeric(input)) {
@@ -36,3 +36,5 @@ export const parsePrimitive = (input: string | null): boolean | number | string 
         return parseNullableString(input);
     }
 };
+
+export { parseBool, parseNullableString, parseNullableObject, parsePrimitive }

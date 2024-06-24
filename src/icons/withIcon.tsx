@@ -13,4 +13,4 @@ const withImageIcon = (wrappedImage: string) => {
     };
 };
 
-export { withVectorIcon, withImageIcon };
+export { withImageIcon, withVectorIcon };

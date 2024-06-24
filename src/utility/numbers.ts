@@ -1,4 +1,4 @@
-export const ordinalSuffix = (input: number | string): string => {
+const ordinalSuffix = (input: number | string): string => {
     input = input.toString();
     if (input.endsWith('11') || input.endsWith('12') || input.endsWith('13')) {
         return 'th';
@@ -13,11 +13,11 @@ export const ordinalSuffix = (input: number | string): string => {
     }
 };
 
-export const formatNumber = (input: number): string => {
+const formatNumber = (input: number): string => {
     return input.toLocaleString();
 };
 
-export const decimalPlaces = (value: number, places: number = 2): number => {
+const decimalPlaces = (value: number, places: number = 2): number => {
     if (value == null) {
         return 0;
     }
@@ -25,7 +25,7 @@ export const decimalPlaces = (value: number, places: number = 2): number => {
     return rounded;
 };
 
-export const formatLargeValue = (value: number): string => {
+const formatLargeValue = (value: number): string => {
     // Trillions
     if (value >= 1e12) {
         return (value / 1e12).toFixed(2) + 'T';
@@ -47,3 +47,5 @@ export const formatLargeValue = (value: number): string => {
         return value.toFixed(2);
     }
 };
+
+export { ordinalSuffix, formatNumber, decimalPlaces, formatLargeValue }

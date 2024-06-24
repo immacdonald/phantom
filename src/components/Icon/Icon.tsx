@@ -39,5 +39,5 @@ const Icon: React.FC<FullIconProps> = ({ icon, size = 'regular', context, inline
     );
 };
 
-export type { IconProps };
 export { Icon };
+export type { IconProps };

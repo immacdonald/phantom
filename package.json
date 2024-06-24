@@ -19,11 +19,12 @@
         "dev": "tsup --watch",
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit --emitDeclarationOnly false",
+        "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
         "prettier": "prettier ./ --check",
         "prettier:fix": "prettier ./ --write",
         "stylelint": "npx stylelint '**/*.{css,scss}'",
         "stylelint:fix": "npx stylelint '**/*.{css,scss}' --fix",
-        "format": "npm run lint && npm run stylelint:fix && npm run prettier:fix"
+        "format": "npm run lint:fix && npm run stylelint:fix && npm run prettier:fix"
     },
     "repository": {
         "type": "git",
@@ -47,6 +48,7 @@
         "esbuild-plugin-copy": "^2.1.1",
         "esbuild-plugin-svgr": "npm:@imacdonald/esbuild-plugin-svgr@^2.2.1",
         "esbuild-sass-plugin": "^3.2.0",
+        "eslint-plugin-sort-exports": "^0.9.1",
         "postcss-modules": "^6.0.0",
         "sass": "^1.72.0",
         "sass-loader": "^14.1.1",

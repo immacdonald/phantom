@@ -8,12 +8,12 @@ export interface Notification {
 const notifications: Notification[] = [];
 
 // Push success notifications
-export const pushSuccess = (message: string, name?: string, data?: string): void => {
+const pushSuccess = (message: string, name?: string, data?: string): void => {
     pushNotification({ type: 'success', name, message, data });
 };
 
 // Push error notifications
-export const pushError = (message: string, name?: string, data?: string): void => {
+const pushError = (message: string, name?: string, data?: string): void => {
     pushNotification({ type: 'error', name, message, data });
 };
 
@@ -23,6 +23,8 @@ const pushNotification = (notification: Notification): void => {
     notifications.push(notification);
 };
 
-export const popNotification = (): Notification | null => {
+const popNotification = (): Notification | null => {
     return notifications.pop() || null;
 };
+
+export { pushSuccess, pushError, popNotification }

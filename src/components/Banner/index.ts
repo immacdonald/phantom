@@ -1,2 +1,2 @@
-export * from './notifications';
 export * from './Banner';
+export * from './notifications';

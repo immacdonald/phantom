@@ -1,6 +1,6 @@
 import type { Callback } from '@types';
 
-export const fetchAsync = async <T, U>(
+const fetchAsync = async <T, U>(
     base: string,
     path: string,
     method: 'GET' | 'POST',
@@ -44,18 +44,20 @@ export const fetchAsync = async <T, U>(
         });
 };
 
-export const getAsync = async <T>(base: string, path: string, headers: Headers, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
+const getAsync = async <T>(base: string, path: string, headers: Headers, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
     fetchAsync<T, null>(base, path, 'GET', headers, null, successCallback, failureCallback, json);
 };
 
-export const postAsync = async <T, U>(base: string, path: string, headers: Headers, body: U, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
+const postAsync = async <T, U>(base: string, path: string, headers: Headers, body: U, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
     fetchAsync<T, U>(base, path, 'POST', headers, body, successCallback, failureCallback, json);
 };
 
-export const genericSuccessCallback: Callback<unknown> = (response: unknown) => {
+const genericSuccessCallback: Callback<unknown> = (response: unknown) => {
     console.warn('Unhandled success', response);
 };
 
-export const genericFailureCallback: Callback<Error> = (error: Error) => {
+const genericFailureCallback: Callback<Error> = (error: Error) => {
     console.error('Unhandled error', error);
 };
+
+export { fetchAsync, getAsync, postAsync, genericSuccessCallback, genericFailureCallback }
