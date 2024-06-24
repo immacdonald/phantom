@@ -156,6 +156,7 @@ const Anchor: React.FC<AnchorProps> = ({
 
     const anchorClasses = clsx(style.anchor, anchorClass);
 
+    /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
     return (
         <div className={anchorClasses} ref={anchorRef} {...anchorProps}>
             {children}
@@ -170,6 +171,10 @@ const Anchor: React.FC<AnchorProps> = ({
                             height: `${anchorBounds.height}px`,
                             visibility: componentAnchoring.computed ? 'visible' : 'hidden'
                         }}
+                        onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+                            event.stopPropagation();
+                        }}
+                        role="tooltip"
                     >
                         <div className={componentClasses} ref={componentRef} style={offsetValues} data-direction={direction} data-portal-visible="true">
                             {component}
