@@ -49,6 +49,6 @@ pre {
 
 hr {
     border: 0;
-    border-bottom: solid var(--border-width-thin) var(--alpha-2);
+    border-bottom: var(--border-width-thin) solid var(--alpha-2);
     margin: $md 0;
 }

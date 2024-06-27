@@ -3,7 +3,7 @@
 
     &:not([disabled], .disabled) {
         &:hover,
-        &.focus {
+        &:focus {
             color: $hover;
         }
 
@@ -19,7 +19,7 @@
 
     &:not([disabled], .disabled) {
         &:hover,
-        &.focus {
+        &:focus {
             border-color: $borderHover;
         }
 
@@ -35,7 +35,7 @@
 
     &:not([disabled], .disabled) {
         &:hover,
-        &.focus {
+        &:focus {
             background-color: $hover;
         }
 
@@ -50,7 +50,7 @@
 
     &:not([disabled], .disabled) {
         &:hover,
-        &.focus {
+        &:focus {
             background-color: $backgroundHover;
         }
 
@@ -165,6 +165,10 @@
     &.ghost {
         @include ghost(var(--alpha-dark-1));
         @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
+    }
+
+    &.text {
+        @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg-light)), var(--context-color-active, var(--input-color-fg-light)));
     }
 
     &:not([disabled], .disabled) {

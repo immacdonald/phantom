@@ -1,4 +1,4 @@
-import type { Callback, ComponentCSSProps } from '@types';
+import type { ButtonStyle, Callback, ComponentCSSProps } from '@types';
 import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Button, IconProps } from '@components';
@@ -9,13 +9,16 @@ import style from './Accordion.module.scss';
 
 interface AccordionProps extends ComponentCSSProps {
     label: string;
-    Icon?: ComponentType<IconProps>;
+    borderless?: boolean;
+    compact?: boolean;
+    buttonStyle?: ButtonStyle;
+    Icon?: ComponentType<IconProps> | null;
     defaultState?: boolean;
     onClick?: Callback<void>;
     children: ReactNode;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultState = false, className, cssProperties, onClick = () => {}, children }) => {
+const Accordion: React.FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = Chevron, defaultState = false, className, cssProperties, onClick = () => {}, children }) => {
     const [open, setState] = useState<boolean>(false);
     const [height, setHeight] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
@@ -35,7 +38,9 @@ const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultSta
     const accordionClasses = clsx(
         style.accordion,
         {
-            [style.open]: open
+            [style.open]: open,
+            [style.border]: !borderless,
+            [style.margins]: !compact
         },
         className
     );
@@ -49,8 +54,9 @@ const Accordion: React.FC<AccordionProps> = ({ label, Icon = Chevron, defaultSta
                         setState(!open);
                         onClick();
                     }}
-                    visual="ghost"
-                    Icon={Icon}
+                    visual={buttonStyle ?? 'ghost'}
+                    Icon={Icon ?? undefined}
+                    iconRight
                     full
                     className={style.button}
                 />

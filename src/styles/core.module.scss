@@ -1,6 +1,10 @@
 @forward 'core';
 
-:root, ::backdrop, ::selection {
+@mixin selection {
+    --color-selection: var(--color-primary-alpha);
+}
+
+:root {
     // Light
     --white: #fff;
     --grey-1: #f5f5f5;
@@ -9,14 +13,14 @@
 
     // Dark
     --grey-4: #949ba0;
-    --grey-5: #333;
+    --grey-5: #585858;
     --grey-6: #222529;
     --grey-7: #18191b;
     --black: #010203;
 
     // Text
     --color-text: var(--grey-6);
-    --color-text-soft: var(--grey-4);
+    --color-text-soft: var(--grey-5);
     --color-text-inverse: var(--grey-1);
     --color-text-on-dark: var(--grey-1);
     --color-text-on-light: var(--grey-6);
@@ -51,8 +55,10 @@
     --color-surface-inverse: var(--grey-6);
 
     // Website
-    --color-selection: var(--color-primary-alpha);
-    --color-scrollbar: var(--grey-4);
+    @include selection;
+
+    --scrollbar-color: var(--grey-4);
+    --scrollbar-background: var(--grey-3);
 
     // Contexts
     $positive-light: rgb(141 222 133);
@@ -160,6 +166,10 @@
     --filter-disabled-saturation: 60%;
     --filter-disabled-brightness: 0.9;
     --filter-hover-brightness: 1.1;
+}
+
+::selection {
+    @include selection;
 }
 
 *[data-context] {

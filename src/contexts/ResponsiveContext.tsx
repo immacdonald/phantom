@@ -1,6 +1,7 @@
-import type { Breakpoints, Dimensions, ResponsiveObject, ResponsiveType } from '@types';
+import type { Breakpoints, Callback, Dimensions, ResponsiveObject, ResponsiveType, Theme } from '@types';
 import { createContext, ReactNode } from 'react';
-import { useWindowSize } from '@hooks';
+import { useTheme, useWindowSize } from '@hooks';
+import tokens from '@styles/tokens.module.scss';
 
 const breakpoints: Breakpoints[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -12,21 +13,25 @@ function isResponsiveObject<T>(obj: ResponsiveType<T>): boolean {
     return ['base', ...breakpoints].some((key: string) => key in (obj as ResponsiveObject<T>));
 }
 
-/*function pxToInt(property: string): number {
+const pxToInt = (property: string): number => {
     const pixels = property.split('px')[0];
     return +pixels;
-}*/
+};
 
-function getCurrentBreakpoint(width: number): Breakpoints | null {
-    //if (width < pxToInt)
-    if (width) {
-        //
+const getCurrentBreakpoint = (width: number): Breakpoints | null => {
+    for (const breakpoint of breakpoints) {
+        if (width <= pxToInt(tokens[`screen-${breakpoint}`])) {
+            return breakpoint as Breakpoints;
+        }
     }
+
     return null;
-}
+};
 
 interface ResponsiveContextInterface {
     windowSize: Dimensions;
+    theme: Theme;
+    setTheme: Callback<Theme>;
     parse: <T>(responsiveType: ResponsiveType<T> | undefined) => T | undefined;
     isMobile: boolean;
 }
@@ -35,6 +40,7 @@ const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null)
 
 const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const windowSize = useWindowSize();
+    const [theme, setTheme] = useTheme();
 
     const parse = <T,>(responsiveType: ResponsiveType<T> | undefined): T | undefined => {
         if (responsiveType == undefined) {
@@ -60,9 +66,9 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
         return responsiveObject.base;
     };
 
-    const isMobile = false;
+    const isMobile = windowSize.width < pxToInt(tokens['screen-sm']);
 
-    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize }}>{children}</ResponsiveContext.Provider>;
+    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, theme, setTheme }}>{children}</ResponsiveContext.Provider>;
 };
 
 export { ResponsiveContext, ResponsiveContextProvider };

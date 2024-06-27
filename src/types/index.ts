@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 // Polling and updating
 enum PollingRate {
     FPS120 = 8,
@@ -27,6 +29,14 @@ interface Position {
     y: number;
 }
 
+type SetState<T> = Dispatch<SetStateAction<T>>;
+
+type LoadedImage = {
+    src: string;
+    width: number;
+    height: number;
+};
+
 // Utility
 type Callback<T> = (value: T) => void;
 type MultiCallbackTwo<T, U> = (arg1: T, arg2: U) => void;
@@ -37,5 +47,5 @@ type MultiCallback<T, U, V = void, W = void, X = void> = MultiCallbackTwo<T, U> 
 
 export * from './styling';
 
-export type { Callback, Dimensions, MultiCallback, NullablePrimitive, Option, Position, Primitive };
+export type { Callback, Dimensions, LoadedImage, MultiCallback, NullablePrimitive, Option, Position, Primitive, SetState };
 export { PollingRate };

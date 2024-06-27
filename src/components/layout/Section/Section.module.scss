@@ -1,11 +1,12 @@
 .section {
-    --v-min-padding: 3%;
+    --v-min-padding: max(5%, 48px);
+    --v-max-width: #{$screen-lg};
 
     width: 100%;
     min-height: 64px;
     background-color: var(--color-surface-foreground);
     padding-block: 96px;
-    padding-inline: max(calc((100% - $screen-lg) / 2), var(--v-min-padding));
+    padding-inline: max(calc((100% - var(--v-max-width)) / 2), var(--v-min-padding));
     flex-grow: 1;
     position: relative;
 
@@ -16,6 +17,10 @@
     &.highlight {
         background-color: var(--color-primary);
         color: var(--color-text-on-primary);
+    }
+
+    &.transparent {
+        background-color: transparent;
     }
 
     &.parallax {

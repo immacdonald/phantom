@@ -8,10 +8,11 @@ interface SectionProps extends ComponentCSSProps {
     alt?: boolean;
     highlight?: boolean;
     background?: string;
+    transparent?: boolean;
     children?: ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = false, background, children, className, cssProperties }) => {
+const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = false, background, transparent, children, className, cssProperties }) => {
     const sectionClass = clsx(
         style.section,
         {
@@ -19,7 +20,8 @@ const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = fal
             [style.inset]: variant == 'inset',
             [style.alt]: alt && !highlight,
             [style.highlight]: highlight,
-            [style.parallax]: !!background
+            [style.parallax]: !!background,
+            [style.transparent]: transparent
         },
         className
     );

@@ -24,4 +24,8 @@ type StyleContext = 'primary' | 'secondary' | 'accent' | 'positive' | 'critical'
 
 type FlexAlign = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 
-export type { Breakpoints, ComponentCSSProps, FlexAlign, ResponsiveObject, ResponsiveType, StyleContext };
+type ButtonStyle = 'ghost' | 'outline' | 'filled' | 'text' | 'clear';
+
+type Theme = 'light' | 'dark';
+
+export type { Breakpoints, ButtonStyle, ComponentCSSProps, FlexAlign, ResponsiveObject, ResponsiveType, StyleContext, Theme };

@@ -32,6 +32,10 @@ const AnchorController: React.FC<AnchorControllerProps> = ({ influenceOverscroll
                 document.body.style.overscrollBehaviorY = defaultOverscrollBehavior;
             };
         }
+
+        return () => {
+            document.body.style.overscrollBehaviorY = defaultOverscrollBehavior;
+        };
     }, [influenceOverscroll]);
 
     return <div className={style.anchors} id="anchors" ref={ref} />;

@@ -19,24 +19,22 @@ html {
 }
 
 ::selection {
-    background: var(--color-primary-alpha);
+    background: var(--color-selection);
 }
 
 ::-webkit-scrollbar {
-    width: $sm;
-    height: $sm;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
-    border-left: var(--border-light)
+    background-color: var(--scrollbar-background);
 }
 
 ::-webkit-scrollbar-thumb {
-    $scrollbar-color: rgba(0, 0, 0, 0.1);
-    background-color: $scrollbar-color;
-    border-radius: $sm;
-    border: $xs solid $scrollbar-color;
+    background-color: var(--scrollbar-color);
+    border-radius: 10px;
+    border: 3px solid var(--scrollbar-background);
 }
 
 ::-webkit-scrollbar-track-piece {

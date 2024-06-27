@@ -1,3 +1,5 @@
+import type { LoadedImage } from '@types';
+
 // Parsers for serialization
 const parseBool = (input: string | null, defaultValue: boolean = false): boolean => {
     if (input == null) {
@@ -37,4 +39,27 @@ const parsePrimitive = (input: string | null): boolean | number | string | null 
     }
 };
 
-export { parseBool, parseNullableObject, parseNullableString, parsePrimitive };
+const loadImageDimensions = (source: string): Promise<LoadedImage> => {
+    return new Promise((resolve) => {
+        const image = new Image();
+        image.src = source;
+
+        image.onload = () => {
+            resolve({
+                src: image.src,
+                width: image.width,
+                height: image.height
+            });
+        };
+
+        image.onerror = () => {
+            resolve({
+                src: image.src,
+                width: 0,
+                height: 0
+            });
+        };
+    });
+};
+
+export { loadImageDimensions, parseBool, parseNullableObject, parseNullableString, parsePrimitive };

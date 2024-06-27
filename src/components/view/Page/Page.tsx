@@ -1,5 +1,6 @@
 import type { ComponentCSSProps } from '@types';
 import React, { ReactNode, useEffect } from 'react';
+import clsx from 'clsx';
 import { validateElement } from '@utility';
 import style from './Page.module.scss';
 
@@ -12,16 +13,18 @@ const PageSubheader: React.FC<PageSubheaderProps> = ({ children }) => {
 };
 
 interface PageProps extends ComponentCSSProps {
-    title: string;
+    title?: string;
     subheader?: React.ReactElement<PageSubheaderProps>;
     children?: ReactNode;
 }
 
-const PageRoot: React.FC<PageProps> = ({ title, subheader, children }: PageProps) => {
+const PageRoot: React.FC<PageProps> = ({ title, subheader, children, className, cssProperties }: PageProps) => {
     validateElement('PageSubheader', subheader);
 
     useEffect(() => {
-        document.title = title;
+        if (title) {
+            document.title = title;
+        }
         document.documentElement.scrollTo({
             top: 0,
             left: 0,
@@ -32,7 +35,9 @@ const PageRoot: React.FC<PageProps> = ({ title, subheader, children }: PageProps
     return (
         <>
             {subheader}
-            <main className={style.page}>{children}</main>
+            <main className={clsx(style.page, className)} style={cssProperties}>
+                {children}
+            </main>
         </>
     );
 };
