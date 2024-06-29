@@ -105,7 +105,7 @@
     }
 }
 
-[class^='select__menu']:not([class*='portal'], [class*='list']) {
+[class^='select__menu']:not([class*='portal'], [class*='list'], [class*='no-options']) {
     background-color: var(--input-color-bg);
     margin-top: -2px;
     z-index: 50;

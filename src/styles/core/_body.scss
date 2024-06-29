@@ -16,6 +16,7 @@ html {
     display: block;
     box-sizing: border-box;
     overflow-y: overlay;
+    scroll-behavior: smooth;
 }
 
 ::selection {
@@ -23,22 +24,18 @@ html {
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--scrollbar-background);
+    background: var(--scrollbar-background-color);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-color);
-    border-radius: 10px;
-    border: 3px solid var(--scrollbar-background);
-}
-
-::-webkit-scrollbar-track-piece {
-    background-color: transparent;
+    background: var(--scrollbar-color);
+    border-radius: $sm;
+    border: 3px solid var(--scrollbar-background-color);
 }
 
 body {

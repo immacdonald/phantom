@@ -12,12 +12,11 @@ import SunSVG from './sun.svg?react';
 import UploadFileSVG from './upload_file.svg?react';
 import { withVectorIcon } from './withIcon';
 
-// eslint-disable-next-line react-refresh/only-export-components
+/* eslint-disable react-refresh/only-export-components */
 export * from './charting';
-// eslint-disable-next-line react-refresh/only-export-components
 export * from './navigation';
-// eslint-disable-next-line react-refresh/only-export-components
 export * from './withIcon';
+/* eslint-enable react-refresh/only-export-components */
 
 export const GroupFilled = withVectorIcon(GroupFilledSVG);
 export const Link = withVectorIcon(LinkSVG);

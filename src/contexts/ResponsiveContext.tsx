@@ -32,6 +32,7 @@ interface ResponsiveContextInterface {
     windowSize: Dimensions;
     theme: Theme;
     setTheme: Callback<Theme>;
+    toggleTheme: Callback<void>;
     parse: <T>(responsiveType: ResponsiveType<T> | undefined) => T | undefined;
     isMobile: boolean;
 }
@@ -41,6 +42,10 @@ const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null)
 const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
     const windowSize = useWindowSize();
     const [theme, setTheme] = useTheme();
+
+    const toggleTheme = () => {
+        setTheme(theme == 'light' ? 'dark' : 'light');
+    };
 
     const parse = <T,>(responsiveType: ResponsiveType<T> | undefined): T | undefined => {
         if (responsiveType == undefined) {
@@ -68,7 +73,7 @@ const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
 
     const isMobile = windowSize.width < pxToInt(tokens['screen-sm']);
 
-    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, theme, setTheme }}>{children}</ResponsiveContext.Provider>;
+    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, theme, setTheme, toggleTheme }}>{children}</ResponsiveContext.Provider>;
 };
 
 export { ResponsiveContext, ResponsiveContextProvider };

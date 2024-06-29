@@ -31,8 +31,6 @@
     padding: $md $lg;
 
     &.scrollable {
-        @include scrollbar;
-
         max-height: 400px;
         overflow: hidden auto;
     }

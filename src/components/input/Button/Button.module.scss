@@ -194,7 +194,7 @@
     &.disabled {
         background-color: var(--input-color-bg-disabled);
         border: none;
-        color: var(--input-color-fg-disabled);
+        color: var(--input-color-fg-disabled) !important;
         cursor: not-allowed;
         filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
     }

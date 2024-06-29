@@ -5,6 +5,7 @@
 }
 
 :root {
+    // Colors
     // Light
     --white: #fff;
     --grey-1: #f5f5f5;
@@ -25,7 +26,7 @@
     --color-text-on-dark: var(--grey-1);
     --color-text-on-light: var(--grey-6);
     --color-text-disabled: var(--grey-4);
-    --color-background-disabled: var(--grey-3);
+    --color-background-disabled: var(--grey-2);
 
     // Brand
     // Primary
@@ -52,13 +53,16 @@
     --color-surface-background: var(--grey-2);
     --color-surface-foreground: var(--white);
     --color-surface-overlay: var(--color-surface-foreground);
+    --color-surface-page-dark: var(--grey-7);
+    --color-surface-background-dark: var(--black);
+    --color-surface-foreground-dark: var(--grey-7);
     --color-surface-inverse: var(--grey-6);
 
     // Website
     @include selection;
 
-    --scrollbar-color: var(--grey-4);
-    --scrollbar-background: var(--grey-3);
+    --scrollbar-color: var(--grey-3);
+    --scrollbar-background-color: var(--grey-1);
 
     // Contexts
     $positive-light: rgb(141 222 133);
@@ -134,9 +138,9 @@
     --input-color-fg: var(--color-text);
     --input-color-fg-light: var(--color-text-soft);
     --input-color-fg-disabled: var(--color-text-disabled);
-    --input-color-bg: var(--color-grey-1);
+    --input-color-bg: var(--white);
     --input-color-bg-disabled: var(--color-background-disabled);
-    --input-color-bg-selected: var(--color-grey-3);
+    --input-color-bg-selected: var(--grey-3);
 
     // Shadows
     --shadow-subtle: 0px 3px 1px -1px var(--alpha-dark-1);
@@ -166,6 +170,7 @@
     --filter-disabled-saturation: 60%;
     --filter-disabled-brightness: 0.9;
     --filter-hover-brightness: 1.1;
+    --filter-inverse: 0;
 }
 
 ::selection {
@@ -173,16 +178,23 @@
 }
 
 :root[data-theme='dark'] {
+    color-scheme: dark;
+
     --color-text: var(--color-text-on-dark);
     --color-text-soft: var(--grey-4);
-    --color-surface-page: var(--grey-7);
-    --color-surface-foreground: var(--black);
-    --color-surface-background: var(--grey-7);
+    --color-surface-page: var(--color-surface-page-dark);
+    --color-surface-foreground: var(--color-surface-background-dark);
+    --color-surface-background: var(--color-surface-foreground-dark);
+    --color-surface-inverse: var(--grey-2);
+    --color-text-disabled: var(--grey-5);
+    --color-background-disabled: var(--grey-6);
+    --input-color-bg: var(--grey-7);
+    --input-color-bg-selected: var(--grey-6);
     --border-color-light: var(--grey-5);
     --border-color-dark: var(--grey-3);
-    --scrollbar-color: var(--grey-4);
-    --scrollbar-background: var(--grey-5);
-    --v-invert: 1;
+    --scrollbar-color: var(--grey-5);
+    --scrollbar-background-color: var(--grey-7);
+    --filter-inverse: 1;
 }
 
 *[data-context] {

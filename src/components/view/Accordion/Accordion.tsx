@@ -56,6 +56,7 @@ const Accordion: React.FC<AccordionProps> = ({ label, borderless, compact, butto
                     }}
                     visual={buttonStyle ?? 'ghost'}
                     Icon={Icon ?? undefined}
+                    align="space-between"
                     iconRight
                     full
                     className={style.button}
