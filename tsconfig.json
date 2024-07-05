@@ -1,17 +1,18 @@
 {
-    "extends": "@imacdonald/phantom-config/tsconfig",
+    "extends": "phantom-config/tsconfig",
     "compilerOptions": {
         "declaration": true,
         "outDir": "lib",
-        "skipLibCheck": true,
         "rootDir": "src",
         "emitDeclarationOnly": true,
+        "allowImportingTsExtensions": true,
+        "skipLibCheck": true,
         "paths": {
+            "@assets/*": ["./src/assets/*"],
             "@components": ["./src/components"],
             "@components/*": ["./src/components/*"],
             "@contexts": ["./src/contexts"],
             "@hooks": ["./src/hooks"],
-            "@icons": ["./src/icons"],
             "@styles": ["./src/styles"],
             "@styles/*": ["./src/styles/*"],
             "@types": ["./src/types"],

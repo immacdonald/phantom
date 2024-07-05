@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Cancel, UploadFile } from '@assets/icons';
 import { Button, Column } from '@components';
-import { Cancel, UploadFile } from '@icons';
 import style from './FileUploadPortal.module.scss';
 
 interface FileUploadPortalProps {

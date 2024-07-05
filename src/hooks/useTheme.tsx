@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { SetState, Theme } from '@types';
+import { useEffect, useState } from 'react';
 
 const useTheme = (): [Theme, SetState<Theme>] => {
     const [theme, setTheme] = useState<Theme>(() => {

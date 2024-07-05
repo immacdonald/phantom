@@ -1,9 +1,0 @@
-# Ignore builds
-**/lib
-**/dist
-
-# Ignore non-source files
-**/.git
-**/.svn
-**/.hg
-**/node_modules

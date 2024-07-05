@@ -1,5 +1,5 @@
-import type { ButtonStyle, ComponentCSSProps, FlexAlign, StyleContext } from '@types';
 import type { IconProps } from '../../Icon';
+import type { ButtonStyle, ComponentCSSProps, FlexAlign, StyleContext } from '@types';
 import React, { ComponentType, CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';

@@ -1,8 +1,8 @@
+import { PollingRate } from '@types';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Anchor } from '@components';
 import { useOutsideClick } from '@hooks';
-import { PollingRate } from '@types';
 import style from './Popover.module.scss';
 
 interface PopoverProps {

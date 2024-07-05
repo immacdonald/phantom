@@ -1,10 +1,10 @@
 import type { ButtonStyle, Callback, ComponentCSSProps } from '@types';
+import { PollingRate } from '@types';
 import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import { Chevron } from '@assets/icons';
 import { Button, IconProps } from '@components';
 import { useInterval } from '@hooks';
-import { Chevron } from '@icons';
-import { PollingRate } from '@types';
 import style from './Accordion.module.scss';
 
 interface AccordionProps extends ComponentCSSProps {

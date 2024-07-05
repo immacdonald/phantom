@@ -1,1 +1,1 @@
-module.exports = require('@imacdonald/phantom-config/prettier');
+module.exports = require('phantom-config/prettier');

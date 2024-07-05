@@ -68,7 +68,7 @@ const Anchor: React.FC<AnchorProps> = ({
     const lastBoundingBox = useRef<DOMRect | null>(null);
     const lastWindowSize = useRef<Dimensions>({ width: 0, height: 0 });
 
-    const pollBounds = () => {
+    const pollBounds = (): void => {
         const boundingBox = anchorRef.current!.getBoundingClientRect();
 
         if (
@@ -92,7 +92,7 @@ const Anchor: React.FC<AnchorProps> = ({
         visible && update ? pollingInterval : null
     );
 
-    const computeOffsetValues = (bounds: XYWH) => {
+    const computeOffsetValues = (bounds: XYWH): void => {
         const halfAnchor = { width: bounds.width / 2, height: bounds.height / 2 };
         const componentStyle = window.getComputedStyle(componentRef.current!);
         const paddingSide = parseFloat(componentStyle.paddingLeft) + parseFloat(componentStyle.paddingRight);
