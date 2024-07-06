@@ -3,9 +3,9 @@ import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider, useResponsiveContext } from '@contexts';
-import style from './PhantomApp.module.scss';
+import style from './StyledApp.module.scss';
 
-interface PhantomAppProps extends ComponentCSSProps {
+interface StyledAppProps extends ComponentCSSProps {
     anchors?: boolean;
     modals?: boolean;
     banners?: boolean;
@@ -14,7 +14,7 @@ interface PhantomAppProps extends ComponentCSSProps {
     children: ReactNode;
 }
 
-const PhantomApp: FC<PhantomAppProps> = ({ anchors = true, modals = false, banners = false, align, verticalAlign, children, className, cssProperties }) => {
+const StyledApp: FC<StyledAppProps> = ({ anchors = true, modals = false, banners = false, align, verticalAlign, children, className, cssProperties }) => {
     const { parse } = useResponsiveContext();
 
     return (
@@ -36,4 +36,4 @@ const PhantomApp: FC<PhantomAppProps> = ({ anchors = true, modals = false, banne
     );
 };
 
-export { PhantomApp };
+export { StyledApp };

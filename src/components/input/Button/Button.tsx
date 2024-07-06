@@ -1,4 +1,4 @@
-import type { IconProps } from '../../Icon';
+import type { IconProps } from '../../general/Icon';
 import type { ButtonStyle, ComponentCSSProps, FlexAlign, StyleContext } from '@types';
 import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
