@@ -1,8 +1,8 @@
-import type { IconProps } from '../../general/Icon';
 import type { ButtonStyle, ComponentCSSProps, FlexAlign, StyleContext } from '@types';
 import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import type { IconProps } from '@components';
 import { Loading } from '@components';
 import style from './Button.module.scss';
 

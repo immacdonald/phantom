@@ -1,7 +1,7 @@
-import type { IconProps } from '../Icon';
 import type { ComponentCSSProps } from '@types';
 import { ComponentType, FC, ReactNode } from 'react';
 import clsx from 'clsx';
+import type { IconProps } from '@components';
 import { Column } from '@components';
 import style from './Card.module.scss';
 

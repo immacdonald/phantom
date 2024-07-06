@@ -3,7 +3,8 @@ import { PollingRate } from '@types';
 import { ComponentType, FC, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Chevron } from '@assets/icons';
-import { Button, IconProps } from '@components';
+import type { IconProps } from '@components';
+import { Button } from '@components';
 import { useInterval } from '@hooks';
 import style from './Accordion.module.scss';
 
