@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { ResponsiveContext } from './ResponsiveContext';
+import { ResponsiveContext, ResponsiveContextInterface } from './ResponsiveContext';
 
-const useResponsiveContext = () => {
+const useResponsiveContext = (): ResponsiveContextInterface => {
     const context = useContext(ResponsiveContext);
 
     if (context === undefined) {

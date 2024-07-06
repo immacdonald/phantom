@@ -44,7 +44,7 @@ const loadImageDimensions = (source: string): Promise<LoadedImage> => {
         const image = new Image();
         image.src = source;
 
-        image.onload = () => {
+        image.onload = (): void => {
             resolve({
                 src: image.src,
                 width: image.width,
@@ -52,7 +52,7 @@ const loadImageDimensions = (source: string): Promise<LoadedImage> => {
             });
         };
 
-        image.onerror = () => {
+        image.onerror = (): void => {
             resolve({
                 src: image.src,
                 width: 0,

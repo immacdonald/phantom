@@ -1,5 +1,5 @@
 import type { Callback } from '@types';
-import React, { CSSProperties, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { CSSProperties, ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import style from './Toggle.module.scss';
 
@@ -11,8 +11,8 @@ interface ToggleProps {
     onChange?: Callback<boolean>;
 }
 
-const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultState = false, disabled = false, onChange = () => {} }: ToggleProps) => {
-    const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultState = false, disabled = false, onChange = (): void => {} }) => {
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
             onChange(event.target.checked);
         }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { popNotification } from './notifications';
 import style from './Banner.module.scss';
 
@@ -7,7 +7,7 @@ interface BannerProps {
     concurrentNotificationDelay?: number;
 }
 
-const Banner: React.FC<BannerProps> = ({ notificationLength = 5000, concurrentNotificationDelay = 750 }) => {
+const Banner: FC<BannerProps> = ({ notificationLength = 5000, concurrentNotificationDelay = 750 }) => {
     const [state, setState] = useState<boolean>(false);
     const [previousState, setPreviousState] = useState<boolean>(false);
 
@@ -18,7 +18,7 @@ const Banner: React.FC<BannerProps> = ({ notificationLength = 5000, concurrentNo
 
     useEffect(() => {
         // On a notification push set a useEffect trigger
-        const handleNotificationPush = () => {
+        const handleNotificationPush = (): void => {
             setNotificationChange(true);
         };
 

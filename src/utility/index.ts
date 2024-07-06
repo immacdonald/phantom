@@ -1,6 +1,6 @@
-import React, { isValidElement } from 'react';
+import { ReactElement, isValidElement } from 'react';
 
-const validateElement = (type: string, element?: React.ReactElement<unknown>, required: boolean = false): void => {
+const validateElement = (type: string, element?: ReactElement<unknown>, required: boolean = false): void => {
     if (required && !element) {
         console.warn(`Required element ${type} not found`);
     } else if (element && isValidElement(element) && element.type != type) {

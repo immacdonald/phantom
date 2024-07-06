@@ -1,10 +1,11 @@
+import { FC, HTMLAttributes, ReactNode } from 'react';
 import style from './HoverMark.module.scss';
 
-interface HoverMarkProps extends React.HTMLAttributes<HTMLElement> {
-    text: string | React.ReactNode;
+interface HoverMarkProps extends HTMLAttributes<HTMLElement> {
+    text: string | ReactNode;
 }
 
-const HoverMark: React.FC<HoverMarkProps> = ({ text, ...rest }) => {
+const HoverMark: FC<HoverMarkProps> = ({ text, ...rest }) => {
     return (
         <mark className={style.hoverMark} {...rest}>
             {text}

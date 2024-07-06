@@ -1,5 +1,5 @@
 import type { Callback } from '@types';
-import React, { useCallback } from 'react';
+import { ChangeEvent, FC, useCallback } from 'react';
 import style from './Switch.module.scss';
 
 interface SwitchProps {
@@ -7,8 +7,8 @@ interface SwitchProps {
     onChange?: Callback<boolean>;
 }
 
-const Switch: React.FC<SwitchProps> = ({ state, onChange = () => {} }) => {
-    const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+const Switch: FC<SwitchProps> = ({ state, onChange = (): void => {} }) => {
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
             onChange(event.target.checked);
         }

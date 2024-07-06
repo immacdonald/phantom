@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import style from './Anchor.module.scss';
 
 interface AnchorControllerProps {
@@ -6,7 +6,7 @@ interface AnchorControllerProps {
     defaultOverscrollBehavior?: 'auto' | 'contain' | 'none' | 'unset';
 }
 
-const AnchorController: React.FC<AnchorControllerProps> = ({ influenceOverscroll = true, defaultOverscrollBehavior = 'unset' }) => {
+const AnchorController: FC<AnchorControllerProps> = ({ influenceOverscroll = true, defaultOverscrollBehavior = 'unset' }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {

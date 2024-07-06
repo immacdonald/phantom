@@ -1,16 +1,23 @@
-import type { Callback, Primitive } from '@types';
+import type { Callback, MultiCallback, NullablePrimitive, Primitive } from '@types';
 import { useCallback, useEffect, useRef } from 'react';
 import { useBackButton } from '@hooks';
 import { parsePrimitive } from '@utility';
 
-const useQueryParams = (whitelist?: string[], onUpdate?: Callback<Record<string, Primitive>>) => {
+interface UseQueryParamsInterface {
+    readQueryParam: (param: string) => NullablePrimitive;
+    readAllQueryParams: () => Record<string, Primitive>;
+    setQueryParam: MultiCallback<string, string | null, boolean | undefined>;
+    onUpdate?: Callback<Record<string, Primitive>>;
+}
+
+const useQueryParams = (whitelist?: string[], onUpdate?: Callback<Record<string, Primitive>>): UseQueryParamsInterface => {
     const search = useRef<string>(window.location.search);
 
     useBackButton(() => {
         evaluate();
     });
 
-    const evaluate = () => {
+    const evaluate = (): void => {
         search.current = window.location.search;
         const searchParams = new URLSearchParams(search.current);
         if (whitelist) {

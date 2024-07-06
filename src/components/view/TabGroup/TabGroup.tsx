@@ -1,10 +1,10 @@
 import type { NullablePrimitive, Option } from '@types';
-import { useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import { Button, Row, Segmented } from '@components';
 import style from './TabGroup.module.scss';
 
 export type Tab = {
-    tab: React.ReactNode;
+    tab: ReactNode;
     label: string;
     disabled?: boolean;
 };
@@ -15,7 +15,7 @@ interface TabGroupProps {
     containerClass?: string;
 }
 
-const TabGroup: React.FC<TabGroupProps> = ({ tabs, variant = 'tabs', containerClass }) => {
+const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', containerClass }) => {
     const [selectedTab, setTab] = useState<number>(0);
 
     return (

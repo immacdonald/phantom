@@ -1,5 +1,5 @@
 import type { NullablePrimitive, Option } from '@types';
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
 import style from './Dropdown.module.scss';
 
@@ -13,7 +13,7 @@ interface DropdownProps {
     onChange?: (selected: NullablePrimitive) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, defaultValue = null, placeholder, disabled = false, onChange = () => {} }) => {
+const Dropdown: FC<DropdownProps> = ({ options = [], isClearable = true, defaultValue = null, placeholder, disabled = false, onChange = (): void => {} }) => {
     const [internalValue, setInternalValue] = useState<Option | null>(null);
 
     const valueToOption = (input: NullablePrimitive): Option | null => {
@@ -24,7 +24,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], isClearable = true, d
         setInternalValue(valueToOption(defaultValue));
     }, [defaultValue]);
 
-    const handleChange = (selected: Option | null) => {
+    const handleChange = (selected: Option | null): void => {
         let selectedValue: NullablePrimitive = null;
 
         if (selected != null) {

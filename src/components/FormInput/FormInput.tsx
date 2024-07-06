@@ -1,17 +1,18 @@
 import { FieldError } from 'react-hook-form';
+import { FC, HTMLInputTypeAttribute, InputHTMLAttributes, ReactNode } from 'react';
 import style from './FormInput.module.scss';
 
 type InputProps = {
     name: string;
-    type?: React.HTMLInputTypeAttribute;
+    type?: HTMLInputTypeAttribute;
     register: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     validationSchema?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-    label?: string | React.ReactNode;
+    label?: string | ReactNode;
     error?: FieldError;
     id?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-const FormInput: React.FC<InputProps> = ({ name, type = 'text', register, validationSchema, label, error, id, ...rest }) => {
+const FormInput: FC<InputProps> = ({ name, type = 'text', register, validationSchema, label, error, id, ...rest }) => {
     const Input = type == 'textarea' ? 'textarea' : 'input';
     return (
         <div className={style.input}>

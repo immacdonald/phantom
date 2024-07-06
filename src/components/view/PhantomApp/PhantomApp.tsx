@@ -1,5 +1,5 @@
 import type { ComponentCSSProps, FlexAlign, ResponsiveType } from '@types';
-import React, { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider, useResponsiveContext } from '@contexts';
@@ -14,7 +14,7 @@ interface PhantomAppProps extends ComponentCSSProps {
     children: ReactNode;
 }
 
-const PhantomApp: React.FC<PhantomAppProps> = ({ anchors = true, modals = false, banners = false, align, verticalAlign, children, className, cssProperties }) => {
+const PhantomApp: FC<PhantomAppProps> = ({ anchors = true, modals = false, banners = false, align, verticalAlign, children, className, cssProperties }) => {
     const { parse } = useResponsiveContext();
 
     return (

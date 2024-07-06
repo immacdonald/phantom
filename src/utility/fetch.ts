@@ -9,7 +9,7 @@ const fetchAsync = async <T, U>(
     successCallback: Callback<T>,
     failureCallback: Callback<Error>,
     json?: boolean
-) => {
+): Promise<void> => {
     const url = base + path;
 
     const options: RequestInit = {
@@ -44,11 +44,11 @@ const fetchAsync = async <T, U>(
         });
 };
 
-const getAsync = async <T>(base: string, path: string, headers: Headers, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
+const getAsync = async <T>(base: string, path: string, headers: Headers, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true): Promise<void> => {
     fetchAsync<T, null>(base, path, 'GET', headers, null, successCallback, failureCallback, json);
 };
 
-const postAsync = async <T, U>(base: string, path: string, headers: Headers, body: U, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true) => {
+const postAsync = async <T, U>(base: string, path: string, headers: Headers, body: U, successCallback: Callback<T>, failureCallback: Callback<Error>, json: boolean = true): Promise<void> => {
     fetchAsync<T, U>(base, path, 'POST', headers, body, successCallback, failureCallback, json);
 };
 

@@ -1,5 +1,5 @@
 import type { ComponentCSSProps } from '@types';
-import React, { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { GridItemSize } from './GridItemSize';
 import style from './Grid.module.scss';
@@ -9,7 +9,7 @@ interface GridProps extends ComponentCSSProps {
     children?: ReactNode;
 }
 
-const GridRoot: React.FC<GridProps> = ({ dense = false, children, className, cssProperties }) => {
+const GridRoot: FC<GridProps> = ({ dense = false, children, className, cssProperties }) => {
     const gridClasses = clsx(
         style.grid,
         {
@@ -30,7 +30,7 @@ interface GridItemProps extends ComponentCSSProps {
     children?: ReactNode;
 }
 
-const GridItem: React.FC<GridItemProps> = ({ size = GridItemSize.Normal, children, className, cssProperties }) => {
+const GridItem: FC<GridItemProps> = ({ size = GridItemSize.Normal, children, className, cssProperties }) => {
     return (
         <div className={clsx(style.item, className)} style={cssProperties} data-grid-item={size}>
             {children}

@@ -1,6 +1,6 @@
 import type { IconProps } from '../../Icon';
 import type { ButtonStyle, ComponentCSSProps, FlexAlign, StyleContext } from '@types';
-import React, { ComponentType, CSSProperties, MouseEvent, useCallback, useMemo } from 'react';
+import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { Loading } from '@components';
@@ -16,8 +16,8 @@ interface ButtonProps extends ComponentCSSProps {
     rounded?: boolean;
     Icon?: ComponentType<IconProps>;
     iconRight?: boolean;
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    onHover?: React.MouseEventHandler<HTMLElement>;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    onHover?: MouseEventHandler<HTMLElement>;
     link?: string;
     isLoading?: boolean;
     disabled?: boolean;
@@ -25,7 +25,7 @@ interface ButtonProps extends ComponentCSSProps {
     form?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
     label,
     size = 'regular',
     full = false,

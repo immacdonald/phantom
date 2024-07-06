@@ -1,5 +1,5 @@
 import type { Dimensions, PollingRate, Position } from '@types';
-import React, { ReactElement, ReactNode, useRef, useState } from 'react';
+import React, { CSSProperties, FC, HTMLAttributes, ReactElement, ReactNode, RefObject, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import { useResponsiveContext } from '@contexts';
@@ -16,10 +16,10 @@ interface AnchorProps {
     pollingInterval?: PollingRate;
     visible?: boolean;
     update?: boolean;
-    innerRef?: React.RefObject<HTMLDivElement>;
+    innerRef?: RefObject<HTMLDivElement>;
     children: ReactNode;
     anchorClass?: string;
-    anchorProps?: React.HTMLAttributes<HTMLDivElement>;
+    anchorProps?: HTMLAttributes<HTMLDivElement>;
     componentClassName?: string;
 }
 
@@ -32,7 +32,7 @@ interface ComputedAnchor extends Position {
 
 const edgeSafety = 8;
 
-const Anchor: React.FC<AnchorProps> = ({
+const Anchor: FC<AnchorProps> = ({
     component,
     direction = 'top',
     padding = 8,
@@ -152,7 +152,7 @@ const Anchor: React.FC<AnchorProps> = ({
         '--v-padding': `${componentAnchoring.padding.top}px ${componentAnchoring.padding.right}px ${componentAnchoring.padding.bottom}px ${componentAnchoring.padding.left}px`,
         '--v-offset-x': `${componentAnchoring.offsetX}px`,
         '--v-offset-y': `${componentAnchoring.offsetY}px`
-    } as React.CSSProperties;
+    } as CSSProperties;
 
     const anchorClasses = clsx(style.anchor, anchorClass);
 

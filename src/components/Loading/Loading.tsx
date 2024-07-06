@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { CSSProperties, FC } from 'react';
 import style from './Loading.module.scss';
 
 interface LoadingProps {
@@ -28,7 +28,7 @@ const Loading: FC<LoadingProps> = ({
         '--v-min-height': minHeight,
         '--v-color': color,
         '--v-secondary-color': secondaryColor
-    } as React.CSSProperties;
+    } as CSSProperties;
     return (
         <div className={style.loader} style={properties}>
             <div />

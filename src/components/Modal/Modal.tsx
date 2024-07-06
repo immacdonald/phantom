@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { Button, Icon } from '@components';
 import { setModal } from './modals';
 import style from './Modal.module.scss';
@@ -16,16 +16,16 @@ interface ModalProps {
     children: ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const Modal: FC<ModalProps> = ({
     icon = null,
     header,
     accept = 'Okay',
     reject = 'Cancel',
     swapColors = false,
-    onAccept = () => {},
+    onAccept = (): void => {},
     closeOnAccept = true,
-    onReject = () => {},
-    form = undefined,
+    onReject = (): void => {},
+    form,
     children
 }) => {
     return (

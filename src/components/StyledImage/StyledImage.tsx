@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { CSSProperties, FC, ReactNode } from 'react';
 import style from './StyledImage.module.scss';
 
 interface StyledImageProps {
@@ -8,16 +9,16 @@ interface StyledImageProps {
     round?: boolean;
     maxWidth?: number;
     maxHeight?: string;
-    caption?: string | React.ReactNode;
+    caption?: string | ReactNode;
 }
 
-const StyledImage: React.FC<StyledImageProps> = ({ image, alt, border = false, round = false, maxWidth, maxHeight, caption }) => {
+const StyledImage: FC<StyledImageProps> = ({ image, alt, border = false, round = false, maxWidth, maxHeight, caption }) => {
     const imageStyle = clsx(style.image, {
         [style.border]: border,
         [style.round]: round
     });
 
-    const properties = { '--v-max-width': maxWidth ? `${maxWidth}px` : undefined, '--v-max-height': maxHeight } as React.CSSProperties;
+    const properties = { '--v-max-width': maxWidth ? `${maxWidth}px` : undefined, '--v-max-height': maxHeight } as CSSProperties;
 
     return (
         <figure className={style.figure} style={properties}>

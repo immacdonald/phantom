@@ -1,5 +1,5 @@
 import type { Breakpoints, Callback, Dimensions, ResponsiveObject, ResponsiveType, Theme } from '@types';
-import { createContext, ReactNode } from 'react';
+import { createContext, FC, ReactElement, ReactNode } from 'react';
 import { useTheme, useWindowSize } from '@hooks';
 import tokens from '@styles/tokens.module.scss';
 
@@ -39,11 +39,15 @@ interface ResponsiveContextInterface {
 
 const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null);
 
-const ResponsiveContextProvider = ({ children }: { children: ReactNode }) => {
+interface ResponsiveContextProviderProps {
+    children: ReactNode;
+}
+
+const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ children }): ReactElement => {
     const windowSize = useWindowSize();
     const [theme, setTheme] = useTheme();
 
-    const toggleTheme = () => {
+    const toggleTheme = (): void => {
         setTheme(theme == 'light' ? 'dark' : 'light');
     };
 

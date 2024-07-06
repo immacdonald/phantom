@@ -1,7 +1,7 @@
 import type { Callback } from '@types';
 import { useEffect, useRef } from 'react';
 
-const useInterval = (callback: Callback<void>, delay: number | null) => {
+const useInterval = (callback: Callback<void>, delay: number | null): void => {
     const savedCallback = useRef<Callback<void> | null>(null);
 
     // Remember the latest callback.
@@ -11,7 +11,7 @@ const useInterval = (callback: Callback<void>, delay: number | null) => {
 
     // Set up the interval.
     useEffect(() => {
-        const tick = () => {
+        const tick = (): void => {
             if (savedCallback.current != null) {
                 savedCallback.current();
             }

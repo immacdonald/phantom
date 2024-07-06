@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { getModal } from './modals';
 import style from './ModalController.module.scss';
 
-const ModalController: React.FC = () => {
+const ModalController: FC = () => {
     const [modal, setModal] = useState<JSX.Element | null>(null);
 
     useEffect(() => {
         // On a modal change set a useEffect trigger
-        const handleModalChange = () => {
+        const handleModalChange = (): void => {
             setModal(getModal());
         };
 

@@ -1,9 +1,9 @@
 import type { Callback } from '@types';
 import { RefObject, useEffect } from 'react';
 
-const useOutsideClick = (ref: RefObject<HTMLElement>, callback: Callback<void>) => {
+const useOutsideClick = (ref: RefObject<HTMLElement>, callback: Callback<void>): void => {
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+        const handleClickOutside = (event: MouseEvent): void => {
             let targetElement = event.target as HTMLElement;
 
             // Traverse up the DOM tree
@@ -22,7 +22,7 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: Callback<void>) 
             }
         };
 
-        const handleEscapeKeyDown = (event: KeyboardEvent) => {
+        const handleEscapeKeyDown = (event: KeyboardEvent): void => {
             if (event.key === 'Escape') {
                 callback();
             }
@@ -30,7 +30,7 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: Callback<void>) 
 
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('keydown', handleEscapeKeyDown, false);
-        return () => {
+        return (): void => {
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('keydown', handleEscapeKeyDown, false);
         };

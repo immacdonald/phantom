@@ -1,6 +1,6 @@
 import type { ButtonStyle, Callback, ComponentCSSProps } from '@types';
 import { PollingRate } from '@types';
-import React, { ComponentType, ReactNode, useEffect, useRef, useState } from 'react';
+import { ComponentType, FC, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Chevron } from '@assets/icons';
 import { Button, IconProps } from '@components';
@@ -18,12 +18,12 @@ interface AccordionProps extends ComponentCSSProps {
     children: ReactNode;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = Chevron, defaultState = false, className, cssProperties, onClick = () => {}, children }) => {
+const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = Chevron, defaultState = false, className, cssProperties, onClick = (): void => {}, children }) => {
     const [open, setState] = useState<boolean>(false);
     const [height, setHeight] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
 
-    const poll = () => {
+    const poll = (): void => {
         setHeight((open && ref.current?.scrollHeight) || 0);
     };
 

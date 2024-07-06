@@ -1,24 +1,24 @@
 import type { ComponentCSSProps } from '@types';
-import React, { ReactNode, useEffect } from 'react';
+import { FC, ReactElement, ReactNode, useEffect } from 'react';
 import clsx from 'clsx';
 import { validateElement } from '@utility';
 import style from './Page.module.scss';
 
 interface PageSubheaderProps {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
-const PageSubheader: React.FC<PageSubheaderProps> = ({ children }) => {
+const PageSubheader: FC<PageSubheaderProps> = ({ children }) => {
     return <div className={style.subheader}>{children}</div>;
 };
 
 interface PageProps extends ComponentCSSProps {
     title?: string;
-    subheader?: React.ReactElement<PageSubheaderProps>;
+    subheader?: ReactElement<PageSubheaderProps>;
     children?: ReactNode;
 }
 
-const PageRoot: React.FC<PageProps> = ({ title, subheader, children, className, cssProperties }: PageProps) => {
+const PageRoot: FC<PageProps> = ({ title, subheader, children, className, cssProperties }) => {
     validateElement('PageSubheader', subheader);
 
     useEffect(() => {

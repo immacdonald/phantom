@@ -1,5 +1,5 @@
 import type { NullablePrimitive, Option } from '@types';
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Select, { MultiValue } from 'react-select';
 import style from './Dropdown.module.scss';
 
@@ -13,7 +13,7 @@ interface MultiDropdownProps {
     onChange?: (selected: NullablePrimitive[]) => void;
 }
 
-const MultiDropdown: React.FC<MultiDropdownProps> = ({ options = [], isClearable = true, defaultValue = null, placeholder, disabled = false, onChange = () => {} }) => {
+const MultiDropdown: FC<MultiDropdownProps> = ({ options = [], isClearable = true, defaultValue = null, placeholder, disabled = false, onChange = (): void => {} }) => {
     const [internalValue, setInternalValue] = useState<Option[] | null>();
 
     const valueToOption = (input: NullablePrimitive[] | null): Option[] | null => {
@@ -24,7 +24,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options = [], isClearable
         setInternalValue(valueToOption(defaultValue));
     }, [defaultValue]);
 
-    const handleChange = (selected: MultiValue<Option | null>) => {
+    const handleChange = (selected: MultiValue<Option | null>): void => {
         let selectedValue: (NullablePrimitive | null)[] = [];
 
         if (selected != null) {

@@ -1,5 +1,5 @@
 import { PollingRate } from '@types';
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import { FC, HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Anchor } from '@components';
 import { useOutsideClick } from '@hooks';
@@ -11,14 +11,14 @@ interface PopoverProps {
     highlight?: boolean;
     delay?: number;
     anchorClass?: string;
-    anchorProps?: React.HTMLAttributes<HTMLDivElement>;
+    anchorProps?: HTMLAttributes<HTMLDivElement>;
     customStyle?: string;
     canHover?: boolean;
     canClick?: boolean;
     children: ReactNode;
 }
 
-const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight = false, delay = 500, anchorClass, anchorProps, customStyle = null, canHover = true, canClick = false, children }) => {
+const Popover: FC<PopoverProps> = ({ content, direction = 'top', highlight = false, delay = 500, anchorClass, anchorProps, customStyle = null, canHover = true, canClick = false, children }) => {
     const [click, setClick] = useState<boolean>(false);
     const [hover, setHover] = useState<boolean>(false);
     const hoverTimeout = useRef<number | null>(null);
@@ -31,7 +31,7 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
         };
     }, []);
 
-    const hoverPopover = () => {
+    const hoverPopover = (): void => {
         // If hovering and not already hovering, start the hover delay timer to then display the popover
         if (!hover) {
             hoverTimeout.current = window.setTimeout(() => {
@@ -42,7 +42,7 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
         }
     };
 
-    const hoverExitPopover = () => {
+    const hoverExitPopover = (): void => {
         // If a hover delay timer exists upon exit, cancel it
         if (hoverTimeout.current) {
             clearTimeout(hoverTimeout.current);
@@ -54,7 +54,7 @@ const Popover: React.FC<PopoverProps> = ({ content, direction = 'top', highlight
     const ref = useRef<HTMLDivElement>(null);
     useOutsideClick(ref, () => onOutsideClick());
 
-    const onOutsideClick = () => {
+    const onOutsideClick = (): void => {
         setClick(false);
         setHover(false);
     };

@@ -1,5 +1,5 @@
 import type { Callback, ComponentCSSProps, NullablePrimitive, Option } from '@types';
-import { FC, useState } from 'react';
+import { CSSProperties, FC, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@components';
 import style from './Segmented.module.scss';
@@ -12,9 +12,9 @@ interface SegmentedProps extends ComponentCSSProps {
     onChange?: Callback<NullablePrimitive>;
 }
 
-const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full = false, disabled = false, onChange = () => {}, className, cssProperties }) => {
+const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full = false, disabled = false, onChange = (): void => {}, className, cssProperties }) => {
     const [selected, setSelection] = useState<number | null>(defaultValue ?? null);
-    const handleChange = (index: number) => {
+    const handleChange = (index: number): void => {
         setSelection(index);
         onChange(options[index].value);
     };
@@ -28,11 +28,11 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
         className
     );
 
-    const properties: React.CSSProperties = {
+    const properties: CSSProperties = {
         '--v-count': options.length,
         '--v-selected': selected,
         ...cssProperties
-    } as React.CSSProperties;
+    } as CSSProperties;
 
     return (
         <div className={segmentedClasses}>

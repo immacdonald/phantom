@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { CSSProperties, ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 import { Cancel, UploadFile } from '@assets/icons';
 import { Button, Column } from '@components';
 import style from './FileUploadPortal.module.scss';
@@ -8,11 +8,11 @@ interface FileUploadPortalProps {
     submit: (file: File[]) => void;
 }
 
-const FileUploadPortal: React.FC<FileUploadPortalProps> = ({ maxFiles = 4, submit }: FileUploadPortalProps) => {
+const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit }) => {
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
     const [fileLimit, setFileLimit] = useState<boolean>(false);
 
-    const handleUploadFiles = (files: File[]) => {
+    const handleUploadFiles = (files: File[]): void => {
         const uploaded: File[] = [...uploadedFiles];
         let limitExceeded = false;
         files.some((file) => {
@@ -39,14 +39,14 @@ const FileUploadPortal: React.FC<FileUploadPortalProps> = ({ maxFiles = 4, submi
         setFileLimit(uploadedFiles.length >= maxFiles);
     }, [uploadedFiles]);
 
-    const removeFile = (index: number) => {
+    const removeFile = (index: number): void => {
         // Copy array to prevent state mutability issues
         const remaining = [...uploadedFiles];
         remaining.splice(index, 1);
         setUploadedFiles(remaining);
     };
 
-    const handleFileEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileEvent = (e: ChangeEvent<HTMLInputElement>): void => {
         const chosenFiles = Array.from(e.target.files || []);
         handleUploadFiles(chosenFiles);
     };
@@ -63,7 +63,7 @@ const FileUploadPortal: React.FC<FileUploadPortalProps> = ({ maxFiles = 4, submi
     return (
         <div className={style.wrapper}>
             <div className={style.inputWrapper}>
-                <input type="file" multiple onChange={handleFileEvent} disabled={fileLimit} style={{ '--v-icon': `url("${'./icons/upload_file.svg?url'}")` } as React.CSSProperties} />
+                <input type="file" multiple onChange={handleFileEvent} disabled={fileLimit} style={{ '--v-icon': `url("${'./icons/upload_file.svg?url'}")` } as CSSProperties} />
                 <div className={style.visual} />
                 <UploadFile context="primary" size="large" className={style.icon} />
             </div>

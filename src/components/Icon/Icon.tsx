@@ -1,5 +1,5 @@
 import type { ComponentCSSProps, StyleContext } from '@types';
-import React, { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import style from './Icon.module.scss';
 
@@ -21,7 +21,7 @@ interface FullIconProps extends IconProps {
     icon: ReactNode;
 }
 
-const Icon: React.FC<FullIconProps> = ({ icon, size = 'regular', context, inline = false, tooltip, className, cssProperties }) => {
+const Icon: FC<FullIconProps> = ({ icon, size = 'regular', context, inline = false, tooltip, className, cssProperties }) => {
     const properties = { '--v-icon-size': sizeMap[size] } as CSSProperties;
 
     const classes = clsx(

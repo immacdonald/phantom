@@ -1,5 +1,5 @@
 import type { ComponentCSSProps } from '@types';
-import React, { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import style from './Section.module.scss';
 
@@ -12,7 +12,7 @@ interface SectionProps extends ComponentCSSProps {
     children?: ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ variant, alt = false, highlight = false, background, transparent, children, className, cssProperties }) => {
+const Section: FC<SectionProps> = ({ variant, alt = false, highlight = false, background, transparent, children, className, cssProperties }) => {
     const sectionClass = clsx(
         style.section,
         {

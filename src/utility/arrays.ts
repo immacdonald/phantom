@@ -21,6 +21,6 @@ const sumArray = <T>(array: T[], property?: keyof T, from?: number, to?: number)
     }
 };
 
-const range = (range: number) => [...Array(range).keys()];
+const range = (range: number): number[] => [...Array(range).keys()];
 
 export { getKeyByValue, range, sumArray };
