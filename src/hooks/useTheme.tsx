@@ -1,14 +1,16 @@
 import { SetState, Theme } from '@types';
 import { useEffect, useState } from 'react';
 
-const useTheme = (): [Theme, SetState<Theme>] => {
+const useTheme = (serialize: boolean = true): [Theme, SetState<Theme>] => {
     const [theme, setTheme] = useState<Theme>(() => {
-        const savedTheme = localStorage.getItem('theme') as Theme;
+        const savedTheme = serialize ? localStorage.getItem('theme') as Theme : null;
         return savedTheme || 'light';
     });
 
     useEffect(() => {
-        localStorage.setItem('theme', theme);
+        if(serialize) {
+            localStorage.setItem('theme', theme);
+        }
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme]);
 

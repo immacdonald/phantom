@@ -35,17 +35,19 @@ interface ResponsiveContextInterface {
     toggleTheme: Callback<void>;
     parse: <T>(responsiveType: ResponsiveType<T> | undefined) => T | undefined;
     isMobile: boolean;
+    isResponsiveContextLoaded: boolean;
 }
 
 const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null);
 
 interface ResponsiveContextProviderProps {
+    minimizeCookies?: boolean;
     children: ReactNode;
 }
 
-const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ children }): ReactElement => {
+const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimizeCookies = false, children }): ReactElement => {
     const windowSize = useWindowSize();
-    const [theme, setTheme] = useTheme();
+    const [theme, setTheme] = useTheme(!minimizeCookies);
 
     const toggleTheme = (): void => {
         setTheme(theme == 'light' ? 'dark' : 'light');
@@ -77,7 +79,7 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ childre
 
     const isMobile = windowSize.width < pxToInt(tokens['screen-sm']);
 
-    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, theme, setTheme, toggleTheme }}>{children}</ResponsiveContext.Provider>;
+    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, theme, setTheme, toggleTheme, isResponsiveContextLoaded: true }}>{children}</ResponsiveContext.Provider>;
 };
 
 export { ResponsiveContext, ResponsiveContextProvider };

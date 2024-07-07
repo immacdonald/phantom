@@ -1,29 +1,27 @@
-import type { ComponentCSSProps, FlexAlign, ResponsiveType } from '@types';
+import type { ComponentCSSProps, FlexAlign } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
-import { ResponsiveContextProvider, useResponsiveContext } from '@contexts';
+import { ResponsiveContextProvider } from '@contexts';
 import style from './StyledApp.module.scss';
 
 interface StyledAppProps extends ComponentCSSProps {
     anchors?: boolean;
     modals?: boolean;
     banners?: boolean;
-    align?: ResponsiveType<FlexAlign>;
-    verticalAlign?: ResponsiveType<FlexAlign>;
+    align?: FlexAlign;
+    verticalAlign?: FlexAlign;
     children: ReactNode;
 }
 
 const StyledApp: FC<StyledAppProps> = ({ anchors = true, modals = false, banners = false, align, verticalAlign, children, className, cssProperties }) => {
-    const { parse } = useResponsiveContext();
-
     return (
         <ResponsiveContextProvider>
             <div
                 className={clsx(style.app, className)}
                 style={{
-                    alignItems: parse<FlexAlign>(align),
-                    justifyContent: parse<FlexAlign>(verticalAlign),
+                    alignItems: align,
+                    justifyContent: verticalAlign,
                     ...cssProperties
                 }}
             >
