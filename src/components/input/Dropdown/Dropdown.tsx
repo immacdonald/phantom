@@ -17,7 +17,6 @@ const Dropdown: FC<DropdownProps> = ({ options = [], isClearable = true, default
     const [internalValue, setInternalValue] = useState<Option | null>(null);
 
     const valueToOption = (input: NullablePrimitive): Option | null => {
-        console.log('finding option for', input);
         return input != null ? options.find((option) => option.value === input) || null : null;
     };
 

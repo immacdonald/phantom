@@ -8,9 +8,8 @@ const useIsVisible = (ref: RefObject<HTMLElement>): boolean => {
 
         if (ref.current) {
             observer.observe(ref.current);
-        } else {
-            console.log('No current ref');
         }
+        
         return () => {
             observer.disconnect();
         };
