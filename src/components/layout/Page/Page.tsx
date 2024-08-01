@@ -1,26 +1,13 @@
 import type { ComponentCSSProps } from '@types';
-import { FC, ReactElement, ReactNode, useEffect } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import clsx from 'clsx';
-import { validateElement } from '@utility';
 import style from './Page.module.scss';
-
-interface PageSubheaderProps {
-    children: ReactNode;
-}
-
-const PageSubheader: FC<PageSubheaderProps> = ({ children }) => {
-    return <div className={style.subheader}>{children}</div>;
-};
-
 interface PageProps extends ComponentCSSProps {
     title?: string;
-    subheader?: ReactElement<PageSubheaderProps>;
     children?: ReactNode;
 }
 
-const PageRoot: FC<PageProps> = ({ title, subheader, children, className, cssProperties }) => {
-    validateElement('PageSubheader', subheader);
-
+const Page: FC<PageProps> = ({ title, children, className, cssProperties }) => {
     useEffect(() => {
         if (title) {
             document.title = title;
@@ -34,7 +21,6 @@ const PageRoot: FC<PageProps> = ({ title, subheader, children, className, cssPro
 
     return (
         <>
-            {subheader}
             <main className={clsx(style.page, className)} style={cssProperties}>
                 {children}
             </main>
@@ -42,8 +28,4 @@ const PageRoot: FC<PageProps> = ({ title, subheader, children, className, cssPro
     );
 };
 
-export const Page = PageRoot as typeof PageRoot & {
-    Subheader: typeof PageSubheader;
-};
-
-Page.Subheader = PageSubheader;
+export { Page }

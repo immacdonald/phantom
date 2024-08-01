@@ -62,7 +62,7 @@
     @include selection;
 
     --scrollbar-color: var(--grey-3);
-    --scrollbar-background-color: var(--grey-1);
+    --scrollbar-background-color: var(--white);
 
     // Contexts
     $positive-light: rgb(141 222 133);
@@ -171,6 +171,9 @@
     --filter-disabled-brightness: 0.9;
     --filter-hover-brightness: 1.1;
     --filter-inverse: 0;
+
+    // Elements
+    --header-height: 64px;
 }
 
 ::selection {

@@ -42,3 +42,10 @@
         height: 0;
     }
 }
+
+@mixin responsive-width {
+    $min-padding: max(5%, 8px);
+    $max-width: #{$screen-lg};
+    width: 100%;
+    padding-inline: max(calc((100% - #{$max-width}) / 2), #{$min-padding});
+}

@@ -1,12 +1,8 @@
 .section {
-    --v-min-padding: max(5%, 48px);
-    --v-max-width: #{$screen-lg};
-
-    width: 100%;
+    @include responsive-width;
     min-height: 64px;
     background-color: var(--color-surface-foreground);
     padding-block: 96px;
-    padding-inline: max(calc((100% - var(--v-max-width)) / 2), var(--v-min-padding));
     flex-grow: 1;
     position: relative;
 
