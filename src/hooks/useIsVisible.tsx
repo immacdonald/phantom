@@ -9,7 +9,7 @@ const useIsVisible = (ref: RefObject<HTMLElement>): boolean => {
         if (ref.current) {
             observer.observe(ref.current);
         }
-        
+
         return () => {
             observer.disconnect();
         };

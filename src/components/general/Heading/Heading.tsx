@@ -8,9 +8,10 @@ interface HeadingProps {
     align?: 'center' | 'left' | 'right';
     major?: boolean;
     minor?: boolean;
+    bold?: boolean;
 }
 
-const Heading: FC<HeadingProps> = ({ title, subtitle, align, major = false, minor = false }) => {
+const Heading: FC<HeadingProps> = ({ title, subtitle, align, major = false, minor = false, bold = true }) => {
     if (major && minor) {
         console.warn('Subheading cannot be major and minor');
         major = false;
@@ -18,7 +19,8 @@ const Heading: FC<HeadingProps> = ({ title, subtitle, align, major = false, mino
 
     const headerStyle = clsx(style.header, {
         [style.major]: major,
-        [style.minor]: minor
+        [style.minor]: minor,
+        [style.bold]: bold
     });
 
     const titleStyle = style.title;
