@@ -1,4 +1,4 @@
-import type { ButtonStyle, ComponentCSSProps, FlexAlign, StyleContext } from '@types';
+import type { ButtonStyle, ComponentProps, FlexAlign, StyleContext } from '@types';
 import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,7 @@ import type { IconProps } from '@components';
 import { Loading } from '@components';
 import style from './Button.module.scss';
 
-interface ButtonProps extends ComponentCSSProps {
+interface ButtonProps extends ComponentProps<HTMLButtonElement> {
     label?: string;
     size?: 'regular' | 'small' | 'large';
     full?: boolean;
@@ -43,7 +43,9 @@ const Button: FC<ButtonProps> = ({
     type = 'button',
     form,
     className,
-    cssProperties
+    cssProperties,
+    id,
+    forwardRef
 }) => {
     const buttonClasses = clsx(
         style.button,
@@ -76,7 +78,12 @@ const Button: FC<ButtonProps> = ({
 
     const visibility = useMemo(() => (isLoading ? ({ visibility: 'hidden' } as CSSProperties) : undefined), [isLoading]);
 
-    const props = { className: buttonClasses, 'data-context': context, style: { ...cssProperties, justifyContent: align } };
+    const props = {
+        className: buttonClasses,
+        'data-context': context,
+        style: { ...cssProperties, justifyContent: align },
+        id
+    };
 
     const content = (
         <>
@@ -92,7 +99,7 @@ const Button: FC<ButtonProps> = ({
             {content}
         </Link>
     ) : (
-        <button type={type} onClick={handleMouseClick} onMouseOver={onHover} onFocus={() => {}} form={form} disabled={disabled} {...props}>
+        <button type={type} onClick={handleMouseClick} onMouseOver={onHover} onFocus={() => {}} form={form} disabled={disabled} ref={forwardRef} {...props}>
             {content}
         </button>
     );

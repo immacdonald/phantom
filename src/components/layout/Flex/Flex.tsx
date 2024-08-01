@@ -1,4 +1,4 @@
-import type { ComponentCSSProps, FlexAlign, ResponsiveType } from '@types';
+import type { ComponentProps, FlexAlign, ResponsiveType } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
@@ -6,7 +6,7 @@ import style from './Flex.module.scss';
 
 type FlexDirection = 'row' | 'column';
 
-interface FlexProps extends ComponentCSSProps {
+interface FlexProps extends ComponentProps {
     children?: ReactNode;
     flex?: ResponsiveType<FlexDirection>;
     align?: ResponsiveType<FlexAlign>;
@@ -15,7 +15,7 @@ interface FlexProps extends ComponentCSSProps {
     relative?: boolean;
 }
 
-const Flex: FC<FlexProps> = ({ children, flex, align, verticalAlign, gap, relative = false, className, cssProperties }) => {
+const Flex: FC<FlexProps> = ({ children, flex, align, verticalAlign, gap, relative = false, className, cssProperties, id }) => {
     const { parse } = useResponsiveContext();
 
     const flexClasses = clsx(style.flex, className);
@@ -32,6 +32,7 @@ const Flex: FC<FlexProps> = ({ children, flex, align, verticalAlign, gap, relati
                 position: relative ? 'relative' : undefined,
                 ...cssProperties
             }}
+            id={id}
         >
             {children}
         </div>

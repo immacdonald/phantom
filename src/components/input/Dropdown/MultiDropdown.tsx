@@ -17,7 +17,7 @@ const MultiDropdown: FC<MultiDropdownProps> = ({ options = [], isClearable = tru
     const [internalValue, setInternalValue] = useState<Option[] | null>();
 
     const valueToOption = (input: NullablePrimitive[] | null): Option[] | null => {
-        return input ? options.filter((option) => input.includes(option.value)) : null;
+        return input != null ? options.filter((option) => input.includes(option.value)) : null;
     };
 
     useEffect(() => {

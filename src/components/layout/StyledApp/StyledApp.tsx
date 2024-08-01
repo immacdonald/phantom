@@ -1,11 +1,11 @@
-import type { ComponentCSSProps, FlexAlign } from '@types';
+import type { ComponentProps, FlexAlign } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider } from '@contexts';
 import style from './StyledApp.module.scss';
 
-interface StyledAppProps extends ComponentCSSProps {
+interface StyledAppProps extends ComponentProps {
     anchors?: boolean;
     modals?: boolean;
     banners?: boolean;
@@ -14,7 +14,7 @@ interface StyledAppProps extends ComponentCSSProps {
     children: ReactNode;
 }
 
-const StyledApp: FC<StyledAppProps> = ({ anchors = true, modals = false, banners = false, align, verticalAlign, children, className, cssProperties }) => {
+const StyledApp: FC<StyledAppProps> = ({ anchors = true, modals = false, banners = false, align, verticalAlign, children, className, cssProperties, id }) => {
     return (
         <ResponsiveContextProvider>
             <div
@@ -24,6 +24,7 @@ const StyledApp: FC<StyledAppProps> = ({ anchors = true, modals = false, banners
                     justifyContent: verticalAlign,
                     ...cssProperties
                 }}
+                id={id}
             >
                 {banners && <Banner />}
                 {anchors && <AnchorController />}

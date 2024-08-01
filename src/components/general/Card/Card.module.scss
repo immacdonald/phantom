@@ -5,7 +5,8 @@
     flex-grow: 1;
     height: fit-content;
     min-height: 200px;
-    background-color: var(--color-surface-foreground);
+    background-color: var(--context-color, var(--color-surface-foreground));
+    color: var(--context-color-text, var(--color-text));
     border-radius: $radius-sm;
     border: var(--border-light);
     overflow: hidden;

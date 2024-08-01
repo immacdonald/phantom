@@ -1,10 +1,10 @@
-import type { ComponentCSSProps, FlexAlign, ResponsiveType } from '@types';
+import type { ComponentProps, FlexAlign, ResponsiveType } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
 import style from './Row.module.scss';
 
-interface RowProps extends ComponentCSSProps {
+interface RowProps extends ComponentProps {
     children?: ReactNode;
     align?: ResponsiveType<FlexAlign>;
     verticalAlign?: ResponsiveType<FlexAlign>;
@@ -12,7 +12,7 @@ interface RowProps extends ComponentCSSProps {
     relative?: boolean;
 }
 
-const Row: FC<RowProps> = ({ children, align, verticalAlign, gap, relative = false, className, cssProperties }) => {
+const Row: FC<RowProps> = ({ children, align, verticalAlign, gap, relative = false, className, cssProperties, id }) => {
     const { parse } = useResponsiveContext();
 
     const rowClasses = clsx(style.row, className);
@@ -27,6 +27,7 @@ const Row: FC<RowProps> = ({ children, align, verticalAlign, gap, relative = fal
                 position: relative ? 'relative' : undefined,
                 ...cssProperties
             }}
+            id={id}
         >
             {children}
         </div>

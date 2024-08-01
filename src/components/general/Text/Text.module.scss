@@ -1,33 +1,33 @@
-.medium {
-    font-size: 1rem;
-
-    @include respond-max($screen-lg) {
+.text {
+    & p {
         font-size: 1rem;
+
+        @include respond-max($screen-lg) {
+            font-size: 1rem;
+        }
     }
-}
 
-.large {
-    font-size: 1.25rem;
+    &.large {
+        font-size: 1.25rem;
 
-    @include respond-max($screen-lg) {
-        font-size: 1.05rem;
+        @include respond-max($screen-lg) {
+            font-size: 1.05rem;
+        }
     }
-}
 
-.xl {
-    font-size: 1.5rem;
+    &.xl {
+        font-size: 1.5rem;
 
-    @include respond-max($screen-lg) {
-        font-size: 1.1rem;
+        @include respond-max($screen-lg) {
+            font-size: 1.1rem;
+        }
     }
-}
 
-.padded {
-    padding-left: 25%;
-    padding-right: 25%;
+    &.marginBottom {
+        margin-bottom: $lg;
+    }
 
-    @include respond-max($screen-md) {
-        padding-left: $xl;
-        padding-right: $xl;
+    &.newline {
+        display: block;
     }
 }

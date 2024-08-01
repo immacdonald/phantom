@@ -1,13 +1,13 @@
-import type { ComponentCSSProps } from '@types';
+import type { ComponentProps } from '@types';
 import { FC, ReactNode, useEffect } from 'react';
 import clsx from 'clsx';
 import style from './Page.module.scss';
-interface PageProps extends ComponentCSSProps {
+interface PageProps extends ComponentProps {
     title?: string;
     children?: ReactNode;
 }
 
-const Page: FC<PageProps> = ({ title, children, className, cssProperties }) => {
+const Page: FC<PageProps> = ({ title, children, className, cssProperties, id }) => {
     useEffect(() => {
         if (title) {
             document.title = title;
@@ -21,11 +21,11 @@ const Page: FC<PageProps> = ({ title, children, className, cssProperties }) => {
 
     return (
         <>
-            <main className={clsx(style.page, className)} style={cssProperties}>
+            <main className={clsx(style.page, className)} style={cssProperties} id={id}>
                 {children}
             </main>
         </>
     );
 };
 
-export { Page }
+export { Page };

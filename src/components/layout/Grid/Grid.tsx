@@ -1,15 +1,15 @@
-import type { ComponentCSSProps } from '@types';
+import type { ComponentProps } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { GridItemSize } from './GridItemSize';
 import style from './Grid.module.scss';
 
-interface GridProps extends ComponentCSSProps {
+interface GridProps extends ComponentProps {
     dense?: boolean;
     children?: ReactNode;
 }
 
-const GridRoot: FC<GridProps> = ({ dense = false, children, className, cssProperties }) => {
+const GridRoot: FC<GridProps> = ({ dense = false, children, className, cssProperties, id }) => {
     const gridClasses = clsx(
         style.grid,
         {
@@ -19,20 +19,20 @@ const GridRoot: FC<GridProps> = ({ dense = false, children, className, cssProper
     );
 
     return (
-        <div className={gridClasses} style={cssProperties}>
+        <div className={gridClasses} style={cssProperties} id={id}>
             {children}
         </div>
     );
 };
 
-interface GridItemProps extends ComponentCSSProps {
+interface GridItemProps extends ComponentProps {
     size?: GridItemSize;
     children?: ReactNode;
 }
 
-const GridItem: FC<GridItemProps> = ({ size = GridItemSize.Normal, children, className, cssProperties }) => {
+const GridItem: FC<GridItemProps> = ({ size = GridItemSize.Normal, children, className, cssProperties, id }) => {
     return (
-        <div className={clsx(style.item, className)} style={cssProperties} data-grid-item={size}>
+        <div className={clsx(style.item, className)} style={cssProperties} data-grid-item={size} id={id}>
             {children}
         </div>
     );

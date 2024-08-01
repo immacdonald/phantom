@@ -1,10 +1,10 @@
-import type { Callback, ComponentCSSProps, NullablePrimitive, Option } from '@types';
+import type { Callback, ComponentProps, NullablePrimitive, Option } from '@types';
 import { CSSProperties, FC, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@components';
 import style from './Segmented.module.scss';
 
-interface SegmentedProps extends ComponentCSSProps {
+interface SegmentedProps extends ComponentProps {
     options?: Option[];
     defaultValue?: number;
     full?: boolean;

@@ -1,5 +1,6 @@
 .section {
     @include responsive-width;
+
     min-height: 64px;
     background-color: var(--color-surface-foreground);
     padding-block: 96px;

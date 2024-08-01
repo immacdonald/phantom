@@ -1,9 +1,9 @@
-import type { ComponentCSSProps } from '@types';
+import type { ComponentProps } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import style from './Section.module.scss';
 
-interface SectionProps extends ComponentCSSProps {
+interface SectionProps extends ComponentProps {
     variant?: 'floating' | 'inset';
     alt?: boolean;
     highlight?: boolean;
@@ -12,7 +12,7 @@ interface SectionProps extends ComponentCSSProps {
     children?: ReactNode;
 }
 
-const Section: FC<SectionProps> = ({ variant, alt = false, highlight = false, background, transparent, children, className, cssProperties }) => {
+const Section: FC<SectionProps> = ({ variant, alt = false, highlight = false, background, transparent, children, className, cssProperties, id }) => {
     const sectionClass = clsx(
         style.section,
         {
@@ -29,7 +29,7 @@ const Section: FC<SectionProps> = ({ variant, alt = false, highlight = false, ba
     const innerDiv = variant == 'floating' || variant == 'inset';
 
     return (
-        <section className={sectionClass} style={{ ...cssProperties, backgroundImage: background ? `url(${background})` : undefined }}>
+        <section className={sectionClass} style={{ ...cssProperties, backgroundImage: background ? `url(${background})` : undefined }} id={id}>
             {innerDiv ? <div>{children}</div> : <>{children}</>}
         </section>
     );

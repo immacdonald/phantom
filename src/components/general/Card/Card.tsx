@@ -1,15 +1,17 @@
-import type { ComponentCSSProps } from '@types';
-import { ComponentType, FC, ReactNode } from 'react';
+import type { ComponentProps, StyleContext } from '@types';
+import { ComponentType, FC, forwardRef, LegacyRef, ReactNode } from 'react';
 import clsx from 'clsx';
 import type { IconProps } from '@components';
 import { Column } from '@components';
 import style from './Card.module.scss';
 
-interface CardProps extends ComponentCSSProps {
+interface CardProps extends ComponentProps {
     fullHeight?: boolean;
     children?: ReactNode;
+    context?: StyleContext;
+    ref?: LegacyRef<HTMLDivElement>;
 }
-const CardRoot: FC<CardProps> = ({ fullHeight = false, className, cssProperties, children }: CardProps) => {
+const CardRoot: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(({ fullHeight = false, className, cssProperties, context, children, id }, ref) => {
     const cardClasses = clsx(
         style.card,
         {
@@ -19,18 +21,18 @@ const CardRoot: FC<CardProps> = ({ fullHeight = false, className, cssProperties,
     );
 
     return (
-        <div className={cardClasses} style={cssProperties}>
+        <div className={cardClasses} style={cssProperties} data-context={context} id={id} ref={ref}>
             {children}
         </div>
     );
-};
+});
 
 interface CardHeaderProps {
     title?: string;
     subtitle?: string;
     Icon?: ComponentType<IconProps>;
 }
-const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, Icon }: CardHeaderProps) => {
+const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, Icon }) => {
     return (
         <div className={style.header}>
             {Icon && <Icon />}
@@ -47,7 +49,7 @@ interface CardBodyProps {
     children?: ReactNode;
     scrollable?: boolean;
 }
-const CardBody: FC<CardBodyProps> = ({ children, scrollable = false }: CardBodyProps) => {
+const CardBody: FC<CardBodyProps> = ({ children, scrollable = false }) => {
     const cardBodyClasses = clsx(style.body, {
         [style.scrollable]: scrollable
     });

@@ -1,0 +1,19 @@
+.header {
+    &:not(.minor) {
+        margin-bottom: $lg;
+    }
+
+    &.minor {
+        margin-bottom: $md;
+    }
+}
+
+.title {
+    margin-bottom: $sm;
+    font-weight: $bold;
+}
+
+.subtitle {
+    margin-bottom: $sm;
+    font-weight: $normal;
+}

@@ -6,24 +6,28 @@ interface TextProps {
     children: ReactNode;
     align?: 'center' | 'left' | 'right';
     size?: 'md' | 'lg' | 'xl';
-    as?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    padded?: boolean;
+    as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    marginBottom?: boolean;
+    newline?: boolean;
 }
 
-const Text: FC<TextProps> = ({ children, align = 'left', size = 'md', as = 'p', padded = false }) => {
+const Text: FC<TextProps> = ({ children, as = 'p', size = 'md', marginBottom = false, newline = false, align }) => {
     const As = as;
 
-    const classnames = clsx({
-        [style.medium]: size == 'md',
-        [style.large]: size == 'lg',
-        [style.xl]: size == 'xl',
-        [style.padded]: padded
-    });
+    const textClasses = clsx(
+        {
+            [style.large]: size == 'lg',
+            [style.xl]: size == 'xl',
+            [style.marginBottom]: marginBottom,
+            [style.newline]: newline
+        },
+        style.text
+    );
 
     const properties = { textAlign: align } as CSSProperties;
 
     return (
-        <As className={as == 'p' ? classnames : undefined} style={properties}>
+        <As className={textClasses} style={properties}>
             {children}
         </As>
     );

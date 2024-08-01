@@ -1,10 +1,10 @@
-import type { ComponentCSSProps, FlexAlign, ResponsiveType } from '@types';
+import type { ComponentProps, FlexAlign, ResponsiveType } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
 import style from './Column.module.scss';
 
-interface ColumnProps extends ComponentCSSProps {
+interface ColumnProps extends ComponentProps {
     children?: ReactNode;
     align?: ResponsiveType<FlexAlign>;
     verticalAlign?: ResponsiveType<FlexAlign>;

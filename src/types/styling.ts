@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, RefObject } from 'react';
 
 // Responsive design and component system
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -15,9 +15,11 @@ type ResponsiveObject<T> = {
 type ResponsiveType<T> = T | ResponsiveObject<T>;
 
 // Styling
-interface ComponentCSSProps {
+interface ComponentProps<ElementType = HTMLDivElement> {
     className?: string;
     cssProperties?: CSSProperties;
+    id?: string;
+    forwardRef?: RefObject<ElementType>;
 }
 
 type StyleContext = 'primary' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
@@ -28,4 +30,4 @@ type ButtonStyle = 'ghost' | 'outline' | 'filled' | 'text' | 'clear';
 
 type Theme = 'light' | 'dark';
 
-export type { Breakpoints, ButtonStyle, ComponentCSSProps, FlexAlign, ResponsiveObject, ResponsiveType, StyleContext, Theme };
+export type { Breakpoints, ButtonStyle, ComponentProps, FlexAlign, ResponsiveObject, ResponsiveType, StyleContext, Theme };

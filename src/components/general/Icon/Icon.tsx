@@ -1,4 +1,4 @@
-import type { ComponentCSSProps, StyleContext } from '@types';
+import type { ComponentProps, StyleContext } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import style from './Icon.module.scss';
@@ -10,7 +10,7 @@ const sizeMap: Record<string, string> = {
     full: '100%'
 };
 
-interface IconProps extends ComponentCSSProps {
+interface IconProps extends ComponentProps {
     size?: 'small' | 'regular' | 'large' | 'full';
     context?: StyleContext;
     inline?: boolean;
