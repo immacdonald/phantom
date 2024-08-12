@@ -18,13 +18,13 @@ export * from './navigation';
 export * from './withIcon';
 /* eslint-enable react-refresh/only-export-components */
 
-export const GroupFilled = withVectorIcon(GroupFilledSVG);
-export const Link = withVectorIcon(LinkSVG);
-export const Minus = withVectorIcon(MinusSVG);
-export const Moon = withVectorIcon(MoonSVG);
-export const MoonFilled = withVectorIcon(MoonFilledSVG);
-export const PersonFilled = withVectorIcon(PersonFilledSVG);
-export const Plus = withVectorIcon(PlusSVG);
-export const Sun = withVectorIcon(SunSVG);
-export const SunFilled = withVectorIcon(SunFilledSVG);
-export const UploadFile = withVectorIcon(UploadFileSVG);
+export const GroupFilledIcon = withVectorIcon(GroupFilledSVG);
+export const LinkIcon = withVectorIcon(LinkSVG);
+export const MinusIcon = withVectorIcon(MinusSVG);
+export const MoonFilledIcon = withVectorIcon(MoonFilledSVG);
+export const MoonIcon = withVectorIcon(MoonSVG);
+export const PersonFilledIcon = withVectorIcon(PersonFilledSVG);
+export const PlusIcon = withVectorIcon(PlusSVG);
+export const SunFilledIcon = withVectorIcon(SunFilledSVG);
+export const SunIcon = withVectorIcon(SunSVG);
+export const UploadFileIcon = withVectorIcon(UploadFileSVG);

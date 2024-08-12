@@ -7,10 +7,10 @@ import SearchSVG from './search.svg?react';
 import ZoomInSVG from './zoom_in.svg?react';
 import ZoomOutSVG from './zoom_out.svg?react';
 
-export const Cancel = withVectorIcon(CancelSVG);
-export const Chevron = withVectorIcon(ChevronSVG);
-export const Pause = withVectorIcon(PauseSVG);
-export const Recenter = withVectorIcon(RecenterSVG);
-export const Search = withVectorIcon(SearchSVG);
-export const ZoomIn = withVectorIcon(ZoomInSVG);
-export const ZoomOut = withVectorIcon(ZoomOutSVG);
+export const CancelIcon = withVectorIcon(CancelSVG);
+export const ChevronIcon = withVectorIcon(ChevronSVG);
+export const PauseIcon = withVectorIcon(PauseSVG);
+export const RecenterIcon = withVectorIcon(RecenterSVG);
+export const SearchIcon = withVectorIcon(SearchSVG);
+export const ZoomInIcon = withVectorIcon(ZoomInSVG);
+export const ZoomOutIcon = withVectorIcon(ZoomOutSVG);

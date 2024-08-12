@@ -90,7 +90,7 @@ const Button: FC<ButtonProps> = ({
             {Icon && !iconRight && <Icon size={size} />}
             {label && <span style={visibility}>{label}</span>}
             {Icon && iconRight && <Icon size={size} />}
-            {isLoading && <Loading size={24} thickness={3} color="inherit" secondaryColor="inherit" />}
+            {isLoading && <Loading size={24} thickness={3} color="inherit" />}
         </>
     );
 

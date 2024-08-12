@@ -1,5 +1,5 @@
 import { CSSProperties, ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
-import { Cancel, UploadFile } from '@assets/icons';
+import { CancelIcon, UploadFileIcon } from '@assets/icons';
 import { Button, Column } from '@components';
 import style from './FileUploadPortal.module.scss';
 
@@ -54,7 +54,7 @@ const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit }) =
     const fileList = useMemo(() => {
         return uploadedFiles.map((file: File, i: number) => (
             <div key={file.name} className={style.fileLabel}>
-                <Button Icon={Cancel} onClick={() => removeFile(i)} context="critical" rounded />
+                <Button Icon={CancelIcon} onClick={() => removeFile(i)} context="critical" rounded />
                 <span>{file.name}</span>
             </div>
         ));
@@ -65,7 +65,7 @@ const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit }) =
             <div className={style.inputWrapper}>
                 <input type="file" multiple onChange={handleFileEvent} disabled={fileLimit} style={{ '--v-icon': `url("${'./icons/upload_file.svg?url'}")` } as CSSProperties} />
                 <div className={style.visual} />
-                <UploadFile context="primary" size="large" className={style.icon} />
+                <UploadFileIcon context="primary" size="large" className={style.icon} />
             </div>
             {uploadedFiles.length > 0 && <div className={style.fileList}>{fileList}</div>}
             {uploadedFiles.length > 0 && (

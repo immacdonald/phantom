@@ -8,29 +8,20 @@ interface LoadingProps {
     height?: string;
     minHeight?: string;
     color?: string;
-    secondaryColor?: string;
 }
 
-const Loading: FC<LoadingProps> = ({
-    size = 64,
-    thickness = 8,
-    width = '100%',
-    height = '100%',
-    minHeight = 'var(--v-size)',
-    color = 'var(--color-primary)',
-    secondaryColor = 'var(--color-primary)'
-}) => {
+const Loading: FC<LoadingProps> = ({ size, thickness, width, height, minHeight, color }) => {
     const properties = {
-        '--v-size': `${size}px`,
-        '--v-thickness': `${thickness}px`,
+        '--v-size': size ? `${size}px` : undefined,
+        '--v-thickness': thickness ? `${thickness}px` : undefined,
         '--v-width': width,
         '--v-height': height,
         '--v-min-height': minHeight,
-        '--v-color': color,
-        '--v-secondary-color': secondaryColor
+        '--v-color': color
     } as CSSProperties;
+
     return (
-        <div className={style.loader} style={properties}>
+        <div className={style.loading} style={properties}>
             <div />
             <div />
             <div />

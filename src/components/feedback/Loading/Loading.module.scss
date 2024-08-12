@@ -1,11 +1,10 @@
-.loader {
+.loading {
     --v-width: 100%;
     --v-height: 100%;
     --v-size: 64px;
     --v-min-height: var(--v-size);
     --v-thickness: 8px;
     --v-color: var(--color-primary);
-    --v-secondary-color: var(--color-primary);
 
     width: var(--v-width);
     height: var(--v-height);
@@ -35,7 +34,6 @@
 
         &:nth-child(3) {
             animation-delay: 0s;
-            border-color: var(--v-secondary-color) transparent transparent transparent;
         }
     }
 

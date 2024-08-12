@@ -2,7 +2,7 @@ import type { ButtonStyle, Callback, ComponentProps } from '@types';
 import { PollingRate } from '@types';
 import { ComponentType, FC, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { Chevron } from '@assets/icons';
+import { ChevronIcon } from '@assets/icons';
 import type { IconProps } from '@components';
 import { Button } from '@components';
 import { useInterval } from '@hooks';
@@ -19,7 +19,7 @@ interface AccordionProps extends ComponentProps {
     children: ReactNode;
 }
 
-const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = Chevron, defaultState = false, className, cssProperties, onClick = (): void => {}, children }) => {
+const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = ChevronIcon, defaultState = false, className, cssProperties, onClick = (): void => {}, children }) => {
     const [open, setState] = useState<boolean>(false);
     const [height, setHeight] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);

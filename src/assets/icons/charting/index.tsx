@@ -5,8 +5,8 @@ import DatasetSVG from './dataset.svg?react';
 import HubSVG from './hub.svg?react';
 import TimelineSVG from './timeline.svg?react';
 
-export const BarChart = withVectorIcon(BarChartSVG);
-export const Chart = withVectorIcon(ChartSVG);
-export const Dataset = withVectorIcon(DatasetSVG);
-export const Hub = withVectorIcon(HubSVG);
-export const Timeline = withVectorIcon(TimelineSVG);
+export const BarChartIcon = withVectorIcon(BarChartSVG);
+export const ChartIcon = withVectorIcon(ChartSVG);
+export const DatasetIcon = withVectorIcon(DatasetSVG);
+export const HubIcon = withVectorIcon(HubSVG);
+export const TimelineIcon = withVectorIcon(TimelineSVG);
