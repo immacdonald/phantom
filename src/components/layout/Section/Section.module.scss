@@ -54,18 +54,10 @@
             gap: 12px;
         }
 
-        &:first-of-type {
-            @include respond-height-max($screen-height-md) {
-                padding-block: 1rem;
-                margin-top: 0;
-            }
-        }
     }
 
     &.inset {
         background-color: var(--color-surface-background);
-        padding-inline: $md;
-        padding-block: $xl;
 
         > div {
             @include responsive-width;
@@ -80,11 +72,6 @@
 
         &:first-of-type {
             @include respond-max($screen-xs) {
-                padding-top: $sm;
-                padding-inline: $sm;
-            }
-
-            @include respond-height-max($screen-height-md) {
                 padding-top: $sm;
                 padding-inline: $sm;
             }
