@@ -4,10 +4,13 @@ import clsx from 'clsx';
 import style from './Page.module.scss';
 interface PageProps extends ComponentProps {
     title?: string;
+    header?: ReactNode;
+    headerSpace?: 'pad' | 'overlap';
+    footer?: ReactNode;
     children?: ReactNode;
 }
 
-const Page: FC<PageProps> = ({ title, children, className, cssProperties, id }) => {
+const Page: FC<PageProps> = ({ title, header, headerSpace, footer, children, className, cssProperties, id }) => {
     useEffect(() => {
         if (title) {
             document.title = title;
@@ -19,11 +22,22 @@ const Page: FC<PageProps> = ({ title, children, className, cssProperties, id }) 
         });
     }, []);
 
+    const pageClasses = clsx(
+        style.page,
+        {
+            [style.padHeader]: headerSpace == 'pad',
+            [style.overlapHeader]: headerSpace == 'overlap'
+        },
+        className
+    );
+
     return (
         <>
-            <main className={clsx(style.page, className)} style={cssProperties} id={id}>
+            {header}
+            <main className={pageClasses} style={cssProperties} id={id}>
                 {children}
             </main>
+            {footer}
         </>
     );
 };

@@ -2,29 +2,16 @@
     @include responsive-width;
 
     min-height: 64px;
-    background-color: var(--color-surface-foreground);
-    padding-block: 96px;
+    padding-block: $layout-space-md;
     flex-grow: 1;
     position: relative;
-
-    &.alt {
-        background-color: var(--color-surface-primary);
-    }
-
-    &.highlight {
-        background-color: var(--color-primary);
-        color: var(--color-text-on-primary);
-    }
-
-    &.transparent {
-        background-color: transparent;
-    }
+    color: var(--context-color-text, inherit);
 
     &.parallax {
+        // Fallback color defaults to the primary color
         background-color: var(--color-primary);
         background-attachment: fixed;
         background-position: center center;
-        color: var(--color-text-on-primary);
         background-size: cover;
 
         @include respond-max($screen-sm) {
@@ -32,8 +19,18 @@
         }
     }
 
+    &.background {
+        &:not(.floating, .inset) {
+            background-color: var(--context-color-surface, --color-surface-foreground);
+        }
+
+        &.floating,
+        &.inset {
+            background-color: var(--color-surface-background);
+        }
+    }
+
     &.floating {
-        background-color: var(--color-surface-background);
         padding-inline: 0;
         display: flex;
         flex-direction: column;
@@ -42,7 +39,7 @@
 
         > div {
             width: min(600px, 95%);
-            background-color: var(--color-surface-foreground);
+            background-color: var(--context-color-surface, var(--color-surface-foreground));
             padding: $xl;
             border: var(--border-light);
             border-radius: $radius-md;
@@ -53,29 +50,17 @@
             align-items: center;
             gap: 12px;
         }
-
     }
 
-    &.inset {
-        background-color: var(--color-surface-background);
+    &.inset > div {
+        @include responsive-width;
 
-        > div {
-            @include responsive-width;
-
-            min-height: 128px;
-            background-color: var(--color-surface-foreground);
-            border: var(--border-light);
-            padding-block: $xl;
-            border-radius: $radius-md;
-            box-shadow: var(--shadow-lifted);
-        }
-
-        &:first-of-type {
-            @include respond-max($screen-xs) {
-                padding-top: $sm;
-                padding-inline: $sm;
-            }
-        }
+        min-height: 128px;
+        background-color: var(--context-color-surface, var(--color-surface-foreground));
+        border: var(--border-light);
+        padding-block: $xl;
+        border-radius: $radius-md;
+        box-shadow: var(--shadow-lifted);
     }
 
     @include respond-max($screen-md) {

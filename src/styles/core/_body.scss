@@ -24,18 +24,19 @@ html {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 14px;
     height: 8px;
 }
 
 ::-webkit-scrollbar-track {
     background: var(--scrollbar-background-color);
+    outline: 1px solid var(--scrollbar-color);
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-color);
     border-radius: $sm;
-    border: 3px solid var(--scrollbar-background-color);
+    border: 2px solid var(--scrollbar-background-color);
 }
 
 body {

@@ -6,7 +6,7 @@ import type { IconProps } from '@components';
 import { Loading } from '@components';
 import style from './Button.module.scss';
 
-interface ButtonProps extends ComponentProps<HTMLButtonElement> {
+interface ButtonProps extends ComponentProps {
     label?: string;
     size?: 'regular' | 'small' | 'large';
     full?: boolean;
@@ -44,8 +44,7 @@ const Button: FC<ButtonProps> = ({
     form,
     className,
     cssProperties,
-    id,
-    forwardRef
+    id
 }) => {
     const buttonClasses = clsx(
         style.button,
@@ -99,7 +98,7 @@ const Button: FC<ButtonProps> = ({
             {content}
         </Link>
     ) : (
-        <button type={type} onClick={handleMouseClick} onMouseOver={onHover} onFocus={() => {}} form={form} disabled={disabled} ref={forwardRef} {...props}>
+        <button type={type} onClick={handleMouseClick} onMouseOver={onHover} onFocus={() => {}} form={form} disabled={disabled} {...props}>
             {content}
         </button>
     );

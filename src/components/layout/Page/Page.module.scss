@@ -1,16 +1,25 @@
 .page {
     position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    width: 100%;
-    background-color: var(--color-surface-page);
     flex: 1 0 auto;
-    padding-top: var(--header-height) !important;
+    background-color: var(--color-surface-page);
+
+    &.padHeader {
+        padding-top: var(--header-height);
+    }
+
+    &.overlapHeader {
+        margin-top: calc(var(--header-height) * -1);
+    }
 
     > section {
-        flex: 0 0 auto;
+        &:not(:last-of-type) {
+            flex: 0 0 auto;
+        }
 
         &:last-of-type {
             flex: 1 0 auto;

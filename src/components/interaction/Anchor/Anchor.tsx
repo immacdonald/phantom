@@ -30,7 +30,7 @@ interface ComputedAnchor extends Position {
     computed: boolean;
 }
 
-const edgeSafety = 8;
+const edgeSafety = 20;
 
 const Anchor: FC<AnchorProps> = ({
     component,

@@ -14,7 +14,6 @@
 }
 
 @mixin outline($border, $borderHover, $borderSelected) {
-    background-color: var(--input-color-bg);
     border: 1px solid $border;
 
     &:not([disabled], .disabled) {
@@ -149,9 +148,9 @@
 
     &.filled {
         @include filled(
-            var(--context-color, var(--input-color-bg-selected)),
-            var(--context-color-hover, var(--input-color-bg-selected)),
-            var(--context-color-active, varvar(--input-color-bg-selected))
+            var(--context-color-surface, var(--input-color-bg)),
+            var(--context-color-surface, var(--input-color-bg-selected)),
+            var(--context-color-surface, var(--input-color-bg-selected))
         );
 
         color: var(--context-color-text, var(--v-default));

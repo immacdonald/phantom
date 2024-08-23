@@ -1,4 +1,4 @@
-import { CSSProperties, RefObject } from 'react';
+import { CSSProperties } from 'react';
 
 // Responsive design and component system
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -15,14 +15,13 @@ type ResponsiveObject<T> = {
 type ResponsiveType<T> = T | ResponsiveObject<T>;
 
 // Styling
-interface ComponentProps<ElementType = HTMLDivElement> {
+interface ComponentProps {
     className?: string;
     cssProperties?: CSSProperties;
     id?: string;
-    forwardRef?: RefObject<ElementType>;
 }
 
-type StyleContext = 'primary' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
+type StyleContext = 'primary' | 'dark' | 'light' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
 
 type FlexAlign = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 
