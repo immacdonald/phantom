@@ -1,26 +1,16 @@
 .section {
     @include responsive-width;
 
+    --background-image: none;
+
     min-height: 64px;
     padding-block: $layout-space-md;
     flex-grow: 1;
     position: relative;
     color: var(--context-color-text, inherit);
 
-    &.parallax {
-        // Fallback color defaults to the primary color
-        background-color: var(--color-primary);
-        background-attachment: fixed;
-        background-position: center center;
-        background-size: cover;
-
-        @include respond-max($screen-sm) {
-            background-attachment: local;
-        }
-    }
-
     &.background {
-        &:not(.floating, .inset) {
+        &.regular {
             background-color: var(--context-color-surface, --color-surface-foreground);
         }
 
@@ -61,6 +51,66 @@
         padding-block: $xl;
         border-radius: $radius-md;
         box-shadow: var(--shadow-lifted);
+    }
+
+    &.parallax {
+        @mixin parallax {
+            // Fallback color defaults to the primary color
+            background-image: var(--background-image);
+            background-color: var(--color-primary);
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        &.regular {
+            @include parallax;
+        }
+
+        &.floating,
+        &.inset {
+            > div {
+                @include parallax;
+            }
+        }
+    }
+
+    &[data-top-shape],
+    &[data-bottom-shape] {
+        $inset: 32px;
+        $outset: 32px;
+
+        --outset-top: 0px;
+        --outset-bottom: 0px;
+        --inset-top: 0px;
+        --inset-bottom: 0px;
+
+        &[data-top-shape='inset'] {
+            --inset-top: #{$inset};
+        }
+
+        &[data-top-shape='outset'] {
+            --outset-top: #{$outset};
+        }
+
+        &[data-bottom-shape='inset'] {
+            --inset-bottom: #{$inset};
+        }
+
+        &[data-bottom-shape='outset'] {
+            --outset-bottom: #{$outset};
+        }
+
+        clip-path: polygon(
+            0 var(--outset-top),
+            50% var(--inset-top),
+            100% var(--outset-top),
+            100% calc(100% - var(--outset-bottom)),
+            50% calc(100% - var(--inset-bottom)),
+            0 calc(100% - var(--outset-bottom))
+        );
+        padding-top: max(calc(3 * (var(--outset-top) + var(--inset-top))), $xxl);
+        padding-bottom: max(calc(2 * (var(--outset-bottom) + var(--inset-bottom))), $xxl);
     }
 
     @include respond-max($screen-md) {
