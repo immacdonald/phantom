@@ -1,4 +1,4 @@
-import type { ComponentProps, StyleContext } from '@types';
+import type { ComponentProps, VisualContext } from '@types';
 import { ComponentType, FC, forwardRef, LegacyRef, ReactNode } from 'react';
 import clsx from 'clsx';
 import type { IconProps } from '@components';
@@ -8,7 +8,7 @@ import style from './Card.module.scss';
 interface CardProps extends ComponentProps {
     fullHeight?: boolean;
     children?: ReactNode;
-    context?: StyleContext;
+    context?: VisualContext;
     ref?: LegacyRef<HTMLDivElement>;
 }
 const CardRoot: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(({ fullHeight = false, className, cssProperties, context, children, id }, ref) => {

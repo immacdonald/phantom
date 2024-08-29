@@ -9,7 +9,8 @@
     justify-content: space-evenly;
     align-items: start;
     padding-bottom: $sm;
-    background-color: var(--color-surface-foregound);
+    background-color: var(--context-color-surface, var(--color-surface-foregound));
+    color: var(--context-color-text, var(--color-text));
     font-size: $font-xs;
     margin-top: auto;
 
@@ -24,7 +25,7 @@
         margin-top: $md;
 
         a {
-            color: var(--color-text);
+            color: var(--context-color-text, var(--color-text));
             text-decoration: none;
         }
     }

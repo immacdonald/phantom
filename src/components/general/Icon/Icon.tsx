@@ -1,4 +1,4 @@
-import type { ComponentProps, StyleContext } from '@types';
+import type { ComponentProps, VisualContext } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import style from './Icon.module.scss';
@@ -12,7 +12,7 @@ const sizeMap: Record<string, string> = {
 
 interface IconProps extends ComponentProps {
     size?: 'small' | 'regular' | 'large' | 'full';
-    context?: StyleContext;
+    context?: VisualContext;
     inline?: boolean;
     tooltip?: string;
 }

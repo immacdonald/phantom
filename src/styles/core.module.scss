@@ -218,6 +218,7 @@
         --context-color-hover: var(--color-primary-hover);
         --context-color-active: var(--color-primary-active);
         --context-color-surface: var(--color-surface-primary);
+        --context-color-surface-background: var(--context-color-surface);
         --context-color-text: var(--color-text-on-primary);
     }
 
@@ -227,6 +228,9 @@
         --context-color-hover: var(--color-text-soft-on-dark);
         --context-color-active: var(--color-text-soft-on-dark);
         --context-color-surface: var(--color-surface-foreground-dark);
+        --context-color-surface-background: var(--color-surface-background-dark);
+        --border-color-light: var(--grey-5);
+        --border-color-dark: var(--grey-3);
         --context-color-text: var(--color-text-on-dark);
     }
 
@@ -236,6 +240,9 @@
         --context-color-hover: var(--color-text-soft-on-light);
         --context-color-active: var(--color-text-soft-on-light);
         --context-color-surface: var(--color-surface-foreground-light);
+        --context-color-surface-background: var(--color-surface-background-light);
+        --border-color-light: var(--grey-3);
+        --border-color-dark: var(--grey-5);
         --context-color-text: var(--color-text-on-light);
     }
 
@@ -245,6 +252,7 @@
         --context-color-hover: var(--color-accent-hover);
         --context-color-active: var(--color-accent-active);
         --context-color-surface: var(--color-surface-accent);
+        --context-color-surface-background: var(--context-color-surface);
         --context-color-text: var(--color-text-on-accent);
     }
 
@@ -254,6 +262,7 @@
         --context-color-hover: var(--color-secondary-hover);
         --context-color-active: var(--color-secondary-active);
         --context-color-surface: var(--color-surface-secondary);
+        --context-color-surface-background: var(--context-color-surface);
         --context-color-text: var(--color-text-on-secondary);
     }
 
@@ -263,6 +272,7 @@
         --context-color-hover: var(--color-positive-hover);
         --context-color-active: var(--color-positive-active);
         --context-color-surface: var(--color-surface-positive);
+        --context-color-surface-background: var(--context-color-surface);
         --context-color-text: var(--color-text-on-positive);
     }
 
@@ -272,6 +282,7 @@
         --context-color-hover: var(--color-critical-hover);
         --context-color-active: var(--color-critical-active);
         --context-color-surface: var(--color-surface-critical);
+        --context-color-surface-background: var(--context-color-surface);
         --context-color-text: var(--color-text-on-critical);
     }
 
@@ -281,6 +292,7 @@
         --context-color-hover: var(--color-warning-hover);
         --context-color-active: var(--color-warning-active);
         --context-color-surface: var(--color-surface-warning);
+        --context-color-surface-background: var(--context-color-surface);
         --context-color-text: var(--color-text-on-warning);
     }
 
@@ -290,6 +302,7 @@
         --context-color-hover: var(--color-info-hover);
         --context-color-active: var(--color-info-active);
         --context-color-surface: var(--color-surface-info);
+        --context-color-surface-background: var(--context-color-surface);
         --context-color-text: var(--color-text-on-info);
     }
 }

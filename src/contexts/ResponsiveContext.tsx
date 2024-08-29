@@ -42,12 +42,13 @@ const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null)
 
 interface ResponsiveContextProviderProps {
     minimizeCookies?: boolean;
+    initialTheme?: Theme;
     children: ReactNode;
 }
 
-const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimizeCookies = false, children }): ReactElement => {
+const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimizeCookies, initialTheme, children }): ReactElement => {
     const windowSize = useWindowSize();
-    const [theme, setTheme] = useTheme(!minimizeCookies);
+    const [theme, setTheme] = useTheme(initialTheme, !minimizeCookies);
 
     const toggleTheme = (): void => {
         setTheme(theme == 'light' ? 'dark' : 'light');

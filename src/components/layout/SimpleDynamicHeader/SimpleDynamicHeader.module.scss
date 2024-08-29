@@ -1,0 +1,33 @@
+.header {
+    @include responsive-width;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--header-height) !important;
+    z-index: $z-header;
+
+    &.inline {
+        background: none;
+        border: none;
+    }
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    &.overlapPage + main {
+        margin-top: calc(-1 * var(--header-height)) !important;
+    }
+
+    &.padPage + main {
+        padding-top: var(--header-height) !important;
+    }
+
+    &.background {
+        background-color: var(--color-surface-foreground);
+        border-bottom: var(--border-light);
+    }
+}

@@ -7,15 +7,17 @@ interface StyledImageProps {
     alt: string;
     border?: boolean;
     round?: boolean;
+    fit?: boolean;
     maxWidth?: number;
     maxHeight?: string;
     caption?: string | ReactNode;
 }
 
-const StyledImage: FC<StyledImageProps> = ({ image, alt, border = false, round = false, maxWidth, maxHeight, caption }) => {
+const StyledImage: FC<StyledImageProps> = ({ image, alt, border = false, round = false, fit = false, maxWidth, maxHeight, caption }) => {
     const imageStyle = clsx(style.image, {
         [style.border]: border,
-        [style.round]: round
+        [style.round]: round,
+        [style.fit]: fit
     });
 
     const properties = { '--v-max-width': maxWidth ? `${maxWidth}px` : undefined, '--v-max-height': maxHeight } as CSSProperties;

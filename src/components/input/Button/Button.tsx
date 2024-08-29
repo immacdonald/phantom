@@ -1,4 +1,4 @@
-import type { ButtonStyle, ComponentProps, FlexAlign, StyleContext } from '@types';
+import type { ButtonStyle, ComponentProps, FlexAlign, VisualContext } from '@types';
 import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ interface ButtonProps extends ComponentProps {
     full?: boolean;
     align?: FlexAlign;
     visual?: ButtonStyle;
-    context?: StyleContext;
+    context?: VisualContext;
     rounded?: boolean;
     Icon?: ComponentType<IconProps>;
     iconRight?: boolean;

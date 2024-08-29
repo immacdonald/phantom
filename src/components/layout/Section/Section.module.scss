@@ -11,12 +11,12 @@
 
     &.background {
         &.regular {
-            background-color: var(--context-color-surface, --color-surface-foreground);
+            background-color: var(--context-color-surface, var(--color-surface-background));
         }
 
         &.floating,
         &.inset {
-            background-color: var(--color-surface-background);
+            background-color: var(--context-color-surface-background, var(--color-surface-background));
         }
     }
 

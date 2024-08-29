@@ -11,7 +11,6 @@
     margin-bottom: $lg;
 
     .image {
-        height: 100%;
         width: 100%;
         border-radius: $radius-md;
         user-select: none;
@@ -23,6 +22,11 @@
         &.round {
             aspect-ratio: 1;
             border-radius: 100%;
+        }
+
+        &.fit {
+            height: 100%;
+            object-fit: cover;
         }
     }
 

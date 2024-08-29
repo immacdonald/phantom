@@ -21,7 +21,7 @@ interface ComponentProps {
     id?: string;
 }
 
-type StyleContext = 'primary' | 'dark' | 'light' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
+type VisualContext = 'primary' | 'dark' | 'light' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
 
 type FlexAlign = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 
@@ -29,4 +29,4 @@ type ButtonStyle = 'ghost' | 'outline' | 'filled' | 'text' | 'clear';
 
 type Theme = 'light' | 'dark';
 
-export type { Breakpoints, ButtonStyle, ComponentProps, FlexAlign, ResponsiveObject, ResponsiveType, StyleContext, Theme };
+export type { Breakpoints, ButtonStyle, ComponentProps, FlexAlign, ResponsiveObject, ResponsiveType, Theme, VisualContext };

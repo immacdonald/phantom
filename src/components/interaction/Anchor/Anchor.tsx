@@ -176,7 +176,7 @@ const Anchor: FC<AnchorProps> = ({
                         }}
                         role="tooltip"
                     >
-                        <div className={componentClasses} ref={componentRef} style={offsetValues} data-direction={direction} data-portal-visible="true">
+                        <div className={componentClasses} ref={componentRef} style={offsetValues} data-direction={direction} data-portal="true">
                             {component}
                         </div>
                     </div>,

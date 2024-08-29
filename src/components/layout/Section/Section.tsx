@@ -1,4 +1,4 @@
-import type { ComponentProps, StyleContext } from '@types';
+import type { ComponentProps, VisualContext } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import style from './Section.module.scss';
@@ -11,7 +11,7 @@ interface SectionEdges {
 
 interface SectionProps extends ComponentProps {
     variant?: 'regular' | 'floating' | 'inset';
-    context?: StyleContext;
+    context?: VisualContext;
     hasBackground?: boolean;
     backgroundImage?: string;
     edges?: SectionEdges;

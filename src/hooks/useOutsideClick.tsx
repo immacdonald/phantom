@@ -8,7 +8,7 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: Callback<void>):
 
             // Traverse up the DOM tree
             while (targetElement) {
-                if (targetElement.getAttribute('data-portal-visible') === 'true') {
+                if (targetElement.getAttribute('data-portal') === 'true') {
                     // Found a portal element that can be assumed to be the component
                     return;
                 }
