@@ -14,6 +14,7 @@
         width: 100%;
         border-radius: $radius-md;
         user-select: none;
+        object-fit: cover;
 
         &.border {
             border: $sm solid var(--border-light);
@@ -26,7 +27,6 @@
 
         &.fit {
             height: 100%;
-            object-fit: cover;
         }
     }
 

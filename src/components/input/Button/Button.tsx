@@ -93,11 +93,25 @@ const Button: FC<ButtonProps> = ({
         </>
     );
 
-    return link ? (
-        <Link to={link} onMouseOver={onHover} {...props}>
-            {content}
-        </Link>
-    ) : (
+    if (link) {
+        if (link.includes('#')) {
+            /* eslint-disable jsx-a11y/mouse-events-have-key-events */
+            return (
+                <a href={link} onMouseOver={onHover} {...props}>
+                    {content}
+                </a>
+            );
+            /* eslint-enable jsx-a11y/mouse-events-have-key-events */
+        } else {
+            return (
+                <Link to={link} onMouseOver={onHover} {...props}>
+                    {content}
+                </Link>
+            );
+        }
+    }
+
+    return (
         <button type={type} onClick={handleMouseClick} onMouseOver={onHover} onFocus={() => {}} form={form} disabled={disabled} {...props}>
             {content}
         </button>

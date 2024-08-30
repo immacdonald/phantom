@@ -13,7 +13,7 @@ interface StyledAppProps extends ComponentProps {
     align?: FlexAlign;
     verticalAlign?: FlexAlign;
     minimizeCookies?: boolean;
-    configuration: StyleConfiguration;
+    configuration?: StyleConfiguration;
     children: ReactNode;
 }
 

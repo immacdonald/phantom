@@ -10,17 +10,11 @@
     }
 
     .title {
-        margin-bottom: $sm;
+        margin-bottom: 0;
     }
 
     .subtitle {
         margin-bottom: $sm;
         font-weight: $normal;
-    }
-
-    &.bold {
-        .title {
-            font-weight: $bold;
-        }
     }
 }

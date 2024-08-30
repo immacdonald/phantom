@@ -1,8 +1,9 @@
+import { ComponentProps } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import style from './Text.module.scss';
 
-interface TextProps {
+interface TextProps extends ComponentProps {
     children: ReactNode;
     align?: 'center' | 'left' | 'right';
     size?: 'md' | 'lg' | 'xl';
@@ -11,7 +12,7 @@ interface TextProps {
     newline?: boolean;
 }
 
-const Text: FC<TextProps> = ({ children, as = 'p', size = 'md', marginBottom = false, newline = false, align }) => {
+const Text: FC<TextProps> = ({ children, as = 'p', size = 'md', marginBottom = false, newline = false, align, className, cssProperties, id }) => {
     const As = as;
 
     const textClasses = clsx(
@@ -21,13 +22,14 @@ const Text: FC<TextProps> = ({ children, as = 'p', size = 'md', marginBottom = f
             [style.marginBottom]: marginBottom,
             [style.newline]: newline
         },
-        style.text
+        style.text,
+        className
     );
 
-    const properties = { textAlign: align } as CSSProperties;
+    const properties = { textAlign: align, ...cssProperties } as CSSProperties;
 
     return (
-        <As className={textClasses} style={properties}>
+        <As className={textClasses} style={properties} id={id}>
             {children}
         </As>
     );
