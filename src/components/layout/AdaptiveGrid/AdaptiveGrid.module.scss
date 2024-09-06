@@ -4,7 +4,7 @@
     gap: $md $lg;
     width: 100%;
     min-height: 320px;
-    border-radius: $radius-md;
+    border-radius: var(--border-radius);
 
     &.dense {
         grid-auto-flow: dense;

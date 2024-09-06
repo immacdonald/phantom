@@ -1,8 +1,8 @@
 @mixin base-input {
     color: var(--input-color-fg);
     background-color: var(--input-color-bg);
-    border-radius: $radius-md;
-    font-size: $font-md;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
     border: var(--input-border);
     transition:
         outline-color var(--transition-fast),
@@ -61,7 +61,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: $radius-sm;
+    border-radius: var(--border-radius);
     width: var(--v-width);
     height: 100%;
     transition: 0.3s ease all;
@@ -72,7 +72,7 @@
 .indicator,
 .after {
     padding: var(--v-padding);
-    border-radius: $radius-sm;
+    border-radius: var(--border-radius);
     transition: 0.3s ease all;
 }
 

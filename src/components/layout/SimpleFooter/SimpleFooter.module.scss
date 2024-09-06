@@ -9,9 +9,10 @@
     justify-content: space-evenly;
     align-items: start;
     padding-bottom: $sm;
-    background-color: var(--context-color-surface, var(--color-surface-foregound));
+    background-color: var(--context-color-surface, var(--color-surface-foreground));
     color: var(--context-color-text, var(--color-text));
     font-size: $font-xs;
+    font-weight: 500;
     margin-top: auto;
 
     > div {

@@ -1,26 +1,36 @@
+import { Breakpoints } from '@types';
 import { FC, ReactNode } from 'react';
-import clsx from 'clsx';
+import { useResponsiveContext } from '@contexts';
+import { Column, ColumnProps } from '../Column';
 import style from './Split.module.scss';
 
+interface SplitColumnProps extends ColumnProps {
+    breakpoint: Breakpoints;
+}
+
 interface SplitProps {
-    main: 'left' | 'right';
-    verticalCenter?: boolean;
+    mainSide: 'left' | 'right';
+    asColumn: SplitColumnProps;
     children: ReactNode[];
 }
 
-const Split: FC<SplitProps> = ({ main, verticalCenter = false, children }) => {
+const Split: FC<SplitProps> = ({ mainSide, asColumn, children }) => {
+    const { atBreakpoint } = useResponsiveContext();
+
     if (children.length != 2) {
         console.warn('Cannot render Split component with more or less than 2 children');
         return false;
     }
 
-    const className = clsx(style.split, {
-        [style.left]: main == 'left',
-        [style.right]: main == 'right',
-        [style.verticalCenter]: verticalCenter
-    });
+    if (asColumn && atBreakpoint(asColumn.breakpoint)) {
+        return <Column {...asColumn}>{children}</Column>;
+    }
 
-    return <div className={className}>{children}</div>;
+    return (
+        <div className={style.split} data-split-side={mainSide}>
+            {children}
+        </div>
+    );
 };
 
 export { Split };

@@ -33,6 +33,7 @@ interface ResponsiveContextInterface {
     theme: Theme;
     setTheme: Callback<Theme>;
     toggleTheme: Callback<void>;
+    atBreakpoint: (breakpoint: Breakpoints) => boolean;
     parse: <T>(responsiveType: ResponsiveType<T> | undefined) => T | undefined;
     isMobile: boolean;
     isResponsiveContextLoaded: boolean;
@@ -52,6 +53,17 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimiz
 
     const toggleTheme = (): void => {
         setTheme(theme == 'light' ? 'dark' : 'light');
+    };
+
+    const atBreakpoint = (breakpoint: Breakpoints): boolean => {
+        const currentBreakpoint: Breakpoints | null = getCurrentBreakpoint(windowSize.width);
+        if (currentBreakpoint) {
+            if (breakpoints.indexOf(currentBreakpoint) <= breakpoints.indexOf(breakpoint)) {
+                return true;
+            }
+        }
+
+        return false;
     };
 
     const parse = <T,>(responsiveType: ResponsiveType<T> | undefined): T | undefined => {
@@ -80,7 +92,7 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimiz
 
     const isMobile = windowSize.width < pxToInt(tokens['screen-sm']);
 
-    return <ResponsiveContext.Provider value={{ parse, isMobile, windowSize, theme, setTheme, toggleTheme, isResponsiveContextLoaded: true }}>{children}</ResponsiveContext.Provider>;
+    return <ResponsiveContext.Provider value={{ parse, atBreakpoint, isMobile, windowSize, theme, setTheme, toggleTheme, isResponsiveContextLoaded: true }}>{children}</ResponsiveContext.Provider>;
 };
 
 export { ResponsiveContext, ResponsiveContextProvider };

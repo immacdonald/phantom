@@ -43,6 +43,6 @@
         background-color: var(--color-primary);
         left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
         transition: left var(--transition-fast);
-        border-radius: $radius-sm;
+        border-radius: var(--border-radius);
     }
 }

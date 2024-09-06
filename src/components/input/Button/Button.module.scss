@@ -66,10 +66,10 @@
     text-decoration: none;
     cursor: pointer;
     text-align: center;
-    font-size: $font-md;
+    font-size: var(--font-size);
     font-family: var(--font-body);
     padding: $sm;
-    border-radius: $radius-sm;
+    border-radius: var(--border-radius);
 }
 
 .clear {
@@ -81,7 +81,7 @@
 
     --v-size: 40px;
     --v-internal: 24px;
-    --v-font: #{$font-md};
+    --v-font: #{var(--font-size)};
 
     &.large {
         --v-size: 64px;
@@ -107,7 +107,7 @@
     padding: $sm;
     margin: 0;
     font-size: var(--v-font);
-    font-weight: $semi;
+    font-weight: 500;
     transition:
         background var(--transition-mid),
         transform var(--transition-mid),
@@ -138,7 +138,7 @@
         text-decoration: none !important;
     }
 
-    border-radius: $radius-sm;
+    border-radius: var(--border-radius);
 
     &.rounded {
         border-radius: var(--v-size);
@@ -147,11 +147,7 @@
     --v-default: var(--color-text);
 
     &.filled {
-        @include filled(
-            var(--context-color-surface, var(--input-color-bg)),
-            var(--context-color-surface, var(--input-color-bg-selected)),
-            var(--context-color-surface, var(--input-color-bg-selected))
-        );
+        @include filled(var(--context-color, var(--input-color-bg)), var(--context-color-hover, var(--input-color-bg-selected)), var(--context-color-active, var(--input-color-bg-selected)));
 
         color: var(--context-color-text, var(--v-default));
     }

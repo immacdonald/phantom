@@ -104,7 +104,7 @@ input[type='checkbox']:not([data-switch]) {
         content: '';
         background-color: var(--input-color-bg);
         border: var(--input-border);
-        border-radius: $radius-sm;
+        border-radius: var(--border-radius);
         transition:
             background-color var(--transition-fast),
             border var(--transition-mid);
@@ -129,6 +129,6 @@ input[type='checkbox']:not([data-switch]) {
 
 p[role='alert'] {
     color: var(--color-critical);
-    font-weight: $semi-bold;
+    font-weight: 500;
     font-style: italic;
 }

@@ -50,7 +50,6 @@ const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle
         <div className={accordionClasses} style={cssProperties}>
             <div className={style.toggle}>
                 <Button
-                    label={label}
                     onClick={() => {
                         setState(!open);
                         onClick();
@@ -61,7 +60,9 @@ const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle
                     iconRight
                     full
                     className={style.button}
-                />
+                >
+                    {label}
+                </Button>
             </div>
             <div className={style.wrapper} style={{ height: `${height}px` }}>
                 <div className={style.content} ref={ref}>

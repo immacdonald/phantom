@@ -25,11 +25,11 @@
         max-width: 256px;
         min-width: $xxl;
         padding: $xs $md;
-        border-radius: $radius-sm;
+        border-radius: var(--border-radius);
         background-color: var(--color-surface-foreground-dark);
         text-align: center;
         color: var(--color-text-on-dark);
-        font-size: $font-md;
+        font-size: var(--font-size);
         font-weight: 500;
         white-space: pre-line;
         z-index: 100;

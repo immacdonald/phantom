@@ -12,7 +12,7 @@
     }
 
     background: transparent;
-    font-size: $font-md;
+    font-size: var(--font-size);
     text-align: center;
     min-width: 192px;
     height: auto;
@@ -22,7 +22,7 @@
         color: var(--popover-text-color);
         background-color: var(--popover-background-color);
         padding: $xs $sm;
-        border-radius: $radius-sm;
+        border-radius: var(--border-radius);
         box-shadow: var(--shadow-floating);
         border: var(--popover-border-width) solid var(--popover-border-color);
         height: 100%;

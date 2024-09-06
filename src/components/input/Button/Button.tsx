@@ -1,5 +1,5 @@
 import type { ButtonStyle, ComponentProps, FlexAlign, VisualContext } from '@types';
-import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, useCallback, useMemo } from 'react';
+import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, ReactNode, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import type { IconProps } from '@components';
@@ -7,7 +7,6 @@ import { Loading } from '@components';
 import style from './Button.module.scss';
 
 interface ButtonProps extends ComponentProps {
-    label?: string;
     size?: 'regular' | 'small' | 'large';
     full?: boolean;
     align?: FlexAlign;
@@ -23,10 +22,10 @@ interface ButtonProps extends ComponentProps {
     disabled?: boolean;
     type?: 'button' | 'reset' | 'submit';
     form?: string;
+    children?: ReactNode;
 }
 
 const Button: FC<ButtonProps> = ({
-    label,
     size = 'regular',
     full = false,
     align,
@@ -42,6 +41,7 @@ const Button: FC<ButtonProps> = ({
     disabled = false,
     type = 'button',
     form,
+    children,
     className,
     cssProperties,
     id
@@ -87,7 +87,7 @@ const Button: FC<ButtonProps> = ({
     const content = (
         <>
             {Icon && !iconRight && <Icon size={size} />}
-            {label && <span style={visibility}>{label}</span>}
+            {children && <span style={visibility}>{children}</span>}
             {Icon && iconRight && <Icon size={size} />}
             {isLoading && <Loading size={24} thickness={3} color="inherit" />}
         </>

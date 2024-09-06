@@ -34,3 +34,4 @@ const Column: FC<ColumnProps> = ({ children, align, verticalAlign, gap, relative
 };
 
 export { Column };
+export type { ColumnProps };

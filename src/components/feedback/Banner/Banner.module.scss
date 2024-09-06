@@ -10,7 +10,7 @@
     justify-content: center;
     color: var(--color-text);
     background-color: var(--color-surface-overlay);
-    border-radius: $radius-md;
+    border-radius: var(--border-radius);
     border: 1px solid transparent;
     box-shadow: var(--shadow-floating);
     opacity: 0;
@@ -26,8 +26,8 @@
 
     .message {
         width: fit-content;
-        font-size: $font-md;
-        font-weight: $bold;
+        font-size: var(--font-size);
+        font-weight: bold;
     }
 
     &[data-mode='error'] {

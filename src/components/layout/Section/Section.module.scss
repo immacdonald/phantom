@@ -32,7 +32,7 @@
             background-color: var(--context-color-surface, var(--color-surface-foreground));
             padding: $xl;
             border: var(--border-light);
-            border-radius: $radius-md;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow-lifted);
             display: flex;
             flex-direction: column;
@@ -49,15 +49,27 @@
         background-color: var(--context-color-surface, var(--color-surface-foreground));
         border: var(--border-light);
         padding-block: $xl;
-        border-radius: $radius-md;
+        border-radius: var(--border-radius);
         box-shadow: var(--shadow-lifted);
+    }
+
+    &.image {
+        &.regular {
+            background-image: var(--background-image);
+        }
+
+        &.floating,
+        &.inset {
+            > div {
+                background-image: var(--background-image);
+            }
+        }
     }
 
     &.parallax {
         @mixin parallax {
             // Fallback color defaults to the primary color
-            background-image: var(--background-image);
-            background-color: var(--color-primary);
+            background-color: var(--color-surface-background);
             background-attachment: fixed;
             background-position: center center;
             background-size: cover;

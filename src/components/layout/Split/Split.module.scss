@@ -2,17 +2,13 @@
     width: 100%;
     display: grid;
     grid-auto-flow: column;
-    gap: $xs;
+    gap: $md;
 
-    &.left {
+    &[data-split-side='left'] {
         grid-template-columns: auto 1fr;
     }
 
-    &.right {
+    &[data-split-side='right'] {
         grid-template-columns: 1fr auto;
-    }
-
-    &.verticalCenter > :first-child {
-        align-self: center;
     }
 }

@@ -7,15 +7,15 @@
 
     * {
         color: var(--input-color-fg);
-        font-size: $font-md;
+        font-size: var(--font-size);
     }
 
     [class^='select__control'] {
         width: 100%;
         color: var(--input-color-fg);
         background-color: var(--input-color-bg);
-        border-radius: $radius-md;
-        font-size: $font-md;
+        border-radius: var(--border-radius);
+        font-size: var(--font-size);
         transition:
             outline-color var(--transition-fast),
             border var(--transition-mid);
@@ -37,7 +37,7 @@
 
     [class*='select__control--menu-is-open'] {
         border: var(--input-border-active);
-        border-radius: $radius-md $radius-md 0 0;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
 
     [class^='select__value-container'] {
@@ -115,14 +115,14 @@
     z-index: 50;
     border: var(--input-border-active);
     border-top: none;
-    border-radius: 0 0 $radius-md $radius-md;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
     overflow-y: auto;
     box-shadow: none;
 
     [class^='select__menu-list'] {
         border: none;
         border-top: var(--input-border);
-        border-radius: 0 0 $radius-md $radius-md;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
         padding: 0;
     }
 

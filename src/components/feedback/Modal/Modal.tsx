@@ -41,18 +41,18 @@ const Modal: FC<ModalProps> = ({
                 <div className={style.buttonGroup}>
                     {reject && (
                         <Button
-                            label={reject}
                             visual="outline"
                             context={swapColors ? undefined : 'critical'}
                             onClick={() => {
                                 onReject();
                                 setModal(null);
                             }}
-                        />
+                        >
+                            {reject}
+                        </Button>
                     )}
                     {accept && (
                         <Button
-                            label={accept}
                             visual="filled"
                             context={swapColors ? 'critical' : undefined}
                             full={!reject}
@@ -64,7 +64,9 @@ const Modal: FC<ModalProps> = ({
                                     setModal(null);
                                 }
                             }}
-                        />
+                        >
+                            {accept}
+                        </Button>
                     )}
                 </div>
             </div>

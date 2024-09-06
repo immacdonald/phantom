@@ -7,10 +7,10 @@
     min-height: 200px;
     background-color: var(--context-color, var(--color-surface-foreground));
     color: var(--context-color-text, var(--color-text));
-    border-radius: $radius-sm;
+    border-radius: var(--border-radius);
     border: var(--border-light);
     overflow: hidden;
-    box-shadow: var(--shadow-lifted);
+    box-shadow: var(--shadow-raised);
 
     &.fullHeight {
         height: 100% !important;

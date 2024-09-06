@@ -1,10 +1,8 @@
 .text {
-    & p {
-        font-size: 1rem;
+    font-size: 1rem;
 
-        @include respond-max($screen-lg) {
-            font-size: 1rem;
-        }
+    @include respond-max($screen-lg) {
+        font-size: 1rem;
     }
 
     &.large {
@@ -21,10 +19,6 @@
         @include respond-max($screen-lg) {
             font-size: 1.1rem;
         }
-    }
-
-    &.marginBottom {
-        margin-bottom: $lg;
     }
 
     &.newline {

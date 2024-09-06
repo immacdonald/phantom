@@ -11,6 +11,7 @@ const useResponsiveContext = (): ResponsiveContextInterface => {
         //throw new Error('useResponsiveContext is null');
         return {
             parse: () => undefined,
+            atBreakpoint: () => false,
             isMobile: false,
             windowSize: { width: window.innerWidth, height: window.innerHeight },
             theme: (localStorage.getItem('theme') as Theme) || 'light',

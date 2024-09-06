@@ -7,19 +7,14 @@ interface TextProps extends ComponentProps {
     children: ReactNode;
     align?: 'center' | 'left' | 'right';
     size?: 'md' | 'lg' | 'xl';
-    as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    marginBottom?: boolean;
     newline?: boolean;
 }
 
-const Text: FC<TextProps> = ({ children, as = 'p', size = 'md', marginBottom = false, newline = false, align, className, cssProperties, id }) => {
-    const As = as;
-
+const Text: FC<TextProps> = ({ children, size, align, newline, className, cssProperties, id }) => {
     const textClasses = clsx(
         {
             [style.large]: size == 'lg',
             [style.xl]: size == 'xl',
-            [style.marginBottom]: marginBottom,
             [style.newline]: newline
         },
         style.text,
@@ -29,10 +24,11 @@ const Text: FC<TextProps> = ({ children, as = 'p', size = 'md', marginBottom = f
     const properties = { textAlign: align, ...cssProperties } as CSSProperties;
 
     return (
-        <As className={textClasses} style={properties} id={id}>
+        <span className={textClasses} style={properties} id={id}>
             {children}
-        </As>
+        </span>
     );
 };
 
 export { Text };
+export type { TextProps };

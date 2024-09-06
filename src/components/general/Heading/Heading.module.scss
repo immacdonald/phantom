@@ -9,12 +9,16 @@
         margin-bottom: $sm;
     }
 
+    &.noMargin {
+        margin-bottom: 0;
+    }
+
     .title {
         margin-bottom: 0;
     }
 
     .subtitle {
         margin-bottom: $sm;
-        font-weight: $normal;
+        font-weight: normal;
     }
 }

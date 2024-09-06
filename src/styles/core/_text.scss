@@ -1,9 +1,7 @@
 @use '../tokens' as *;
 
 p {
-    &:not(:last-child) {
-        margin-bottom: $sm;
-    }
+    line-height: 2;
 }
 
 // Headers
@@ -13,9 +11,10 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-header, var(--font-body));
-    font-weight: 500;
-    line-height: 1.05em;
+    font-family: var(--font-heading, var(--font-body));
+    font-weight: bold;
+    line-height: 1.5em;
+    letter-spacing: 0.015em;
     text-wrap: balance;
 
     a {
@@ -27,19 +26,22 @@ h6 {
 h1 {
     font-size: var(--text-header-xxl);
     margin-bottom: 1rem;
-    letter-spacing: 0.025rem;
+
+    // letter-spacing: 0.025rem;
 }
 
 h2 {
     font-size: var(--text-header-xl);
     margin-bottom: 0.9rem;
-    letter-spacing: 0.015rem;
+
+    // letter-spacing: 0.015rem;
 }
 
 h3 {
     font-size: var(--text-header-lg);
     margin-bottom: 0.85rem;
-    letter-spacing: 0.01rem;
+
+    // letter-spacing: 0.01rem;
 }
 
 h4 {

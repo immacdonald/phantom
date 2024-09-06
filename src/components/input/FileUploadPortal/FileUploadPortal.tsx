@@ -70,7 +70,9 @@ const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit }) =
             {uploadedFiles.length > 0 && <div className={style.fileList}>{fileList}</div>}
             {uploadedFiles.length > 0 && (
                 <Column>
-                    <Button onClick={() => submit(uploadedFiles)} disabled={!uploadedFiles.length} label="Upload Files" visual="filled" context="primary" />
+                    <Button onClick={() => submit(uploadedFiles)} disabled={!uploadedFiles.length} visual="filled" context="primary">
+                        Upload Files
+                    </Button>
                 </Column>
             )}
         </div>

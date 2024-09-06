@@ -6,18 +6,32 @@
 
 :root {
     // Colors
+    // To Consider
+    --s-grey-1: rgb(250 250 250);
+    --s-grey-2: rgb(244 244 244);
+    --s-grey-3: rgb(235 235 235);
+    --s-grey-4: rgb(221 221 221);
+    --s-grey-5: rgb(202 202 202);
+    --s-grey-6: rgb(155 155 155);
+    --s-grey-7: rgb(117 117 117);
+    --s-grey-8: rgb(83 83 83);
+    --s-grey-9: rgb(61 61 61);
+    --s-grey-10: rgb(41 41 41);
+    --s-grey-11: rgb(31 31 31);
+    --s-grey-12: rgb(20 20 20);
+
     // Light
-    --white: #fff;
-    --grey-1: #f5f5f5;
-    --grey-2: #f2f3f5;
-    --grey-3: #e8eaec;
+    --white: rgb(255 255 255);
+    --grey-1: rgb(245 245 245);
+    --grey-2: rgb(242 243 245);
+    --grey-3: rgb(232 234 236);
 
     // Dark
-    --grey-4: #949ba0;
-    --grey-5: #585858;
-    --grey-6: #222529;
-    --grey-7: #18191b;
-    --black: #010203;
+    --grey-4: rgb(148 155 160);
+    --grey-5: rgb(88 88 88);
+    --grey-6: rgb(34 37 41);
+    --grey-7: rgb(24 25 27);
+    --black: rgb(1 2 3);
 
     // Text
     --color-text-on-light: var(--grey-6);
@@ -124,6 +138,7 @@
     --border-color-dark: var(--grey-5);
     --border-light: var(--border-width-thin) solid var(--border-color-light);
     --border-dark: var(--border-width-thin) solid var(--border-color-dark);
+    --border-radius: 8px;
 
     // Input
     --input-color-active: var(--color-primary);
@@ -147,16 +162,37 @@
     --shadow-floating: 0px 12px 20px -8px var(--alpha-dark-4);
 
     // Text
-    --text-header-xxl: 3rem;
-    --text-header-xl: 2.5rem;
-    --text-header-lg: 2rem;
-    --text-header-md: 1.5rem;
-    --text-header-sm: 1.25rem;
-    --text-header-xs: 1rem;
+    --text-header-xxl: 64px;
+    --text-header-xl: 44px;
+    --text-header-lg: 28px;
+    --text-header-md: 22px;
+    --text-header-sm: 18px;
+    --text-header-xs: 14px;
+
+    @include respond-max($screen-lg) {
+        --text-header-xxl: 56px;
+        --text-header-xl: 36px;
+        --text-header-lg: 24px;
+        --text-header-md: 20px;
+        --text-header-sm: 14px;
+        --text-header-xs: 12px;
+    }
+
+    @include respond-max($screen-md) {
+        --text-header-xxl: 48px;
+        --text-header-xl: 28px;
+        --text-header-lg: 22px;
+        --text-header-md: 18px;
+    }
 
     // Typography
     --font-body: 'Avenir Next', helvetica, arial, sans-serif;
-    --font-header: 'Avenir Next', helvetica, arial, sans-serif;
+    --font-heading: 'Avenir Next', helvetica, arial, sans-serif;
+    --font-size: var(--font-size);
+
+    @include respond-max($screen-md) {
+        font-size: $font-sm;
+    }
 
     // Effects
     // Transitions

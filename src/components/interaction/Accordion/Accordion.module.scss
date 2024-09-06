@@ -15,7 +15,7 @@
     }
 
     &.border {
-        border-radius: $radius-sm;
+        border-radius: var(--border-radius);
         border-top: var(--border-light);
         border-bottom: var(--border-light);
     }
@@ -46,7 +46,7 @@
         .content {
             height: auto;
             padding: $sm;
-            border-radius: $radius-sm;
+            border-radius: var(--border-radius);
             overflow-y: visible;
         }
     }

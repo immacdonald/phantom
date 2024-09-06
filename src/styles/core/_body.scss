@@ -42,7 +42,7 @@ html {
 body {
     width: 100%;
     font-family: var(--font-body);
-    font-size: $font-md;
+    font-size: var(--font-size);
     line-height: 1.4;
     color: var(--color-text);
     background-color: var(--color-surface-page);

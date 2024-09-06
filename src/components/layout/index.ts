@@ -1,6 +1,6 @@
+export * from './AdaptiveGrid';
 export * from './Column';
 export * from './Flex';
-export * from './Grid';
 export * from './Page';
 export * from './Row';
 export * from './Section';

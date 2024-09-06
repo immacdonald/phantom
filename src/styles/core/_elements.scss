@@ -3,7 +3,9 @@
 // Links
 a {
     text-decoration: none;
-    color: var(--context-color-text, var(--color-primary));
+
+    // color: var(--context-color-text, var(--color-primary));
+    color: var(--color-primary);
 
     &:hover {
         text-decoration: underline;
@@ -26,7 +28,7 @@ blockquote {
 
 code {
     background: var(--alpha-1);
-    border-radius: $radius-sm;
+    border-radius: var(--border-radius);
     border: var(--border-light);
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
@@ -48,7 +50,8 @@ pre {
 }
 
 hr {
+    width: min(1280px, 90%);
     border: 0;
     border-bottom: var(--border-width-thin) solid var(--alpha-2);
-    margin: $md 0;
+    margin-block: $xxl;
 }

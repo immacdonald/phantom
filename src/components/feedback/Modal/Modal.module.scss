@@ -4,7 +4,7 @@
     width: 25%;
     min-width: 480px;
     max-height: 90%;
-    border-radius: $radius-lg;
+    border-radius: var(--border-radius);
     background-color: var(--color-surface-overlay);
     box-shadow: var(--shadow-floating);
 }

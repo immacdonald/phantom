@@ -38,13 +38,14 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', containerClass })
                             <Button
                                 key={index}
                                 full
-                                label={tab.label}
                                 visual={selected ? 'filled' : 'outline'}
                                 context={selected ? 'primary' : undefined}
                                 onClick={() => setTab(index)}
                                 className={style.tabButton}
                                 disabled={tab.disabled}
-                            />
+                            >
+                                {tab.label}
+                            </Button>
                         );
                     })}
                 </Row>

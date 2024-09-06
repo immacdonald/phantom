@@ -14,11 +14,12 @@ interface SectionProps extends ComponentProps {
     context?: VisualContext;
     hasBackground?: boolean;
     backgroundImage?: string;
+    parallax?: boolean;
     edges?: SectionEdges;
     children?: ReactNode;
 }
 
-const Section: FC<SectionProps> = ({ variant = 'regular', context, hasBackground = false, backgroundImage, edges, children, className, cssProperties, id }) => {
+const Section: FC<SectionProps> = ({ variant = 'regular', context, hasBackground = false, backgroundImage, parallax, edges, children, className, cssProperties, id }) => {
     const sectionClass = clsx(
         style.section,
         {
@@ -26,7 +27,8 @@ const Section: FC<SectionProps> = ({ variant = 'regular', context, hasBackground
             [style.floating]: variant == 'floating',
             [style.inset]: variant == 'inset',
             [style.background]: hasBackground,
-            [style.parallax]: !!backgroundImage
+            [style.image]: !!backgroundImage,
+            [style.parallax]: parallax
         },
         className
     );
@@ -46,7 +48,7 @@ const Section: FC<SectionProps> = ({ variant = 'regular', context, hasBackground
     };
 
     return (
-        <section className={sectionClass} style={{ ...cssProperties, '--background-image': backgroundImage ? `url(${backgroundImage})` : undefined } as CSSProperties} id={id} {...sectionData}>
+        <section className={sectionClass} style={{ '--background-image': backgroundImage ? `url(${backgroundImage})` : undefined, ...cssProperties } as CSSProperties} id={id} {...sectionData}>
             {innerDiv ? <div>{children}</div> : <>{children}</>}
         </section>
     );

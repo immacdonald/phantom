@@ -29,4 +29,6 @@ type ButtonStyle = 'ghost' | 'outline' | 'filled' | 'text' | 'clear';
 
 type Theme = 'light' | 'dark';
 
-export type { Breakpoints, ButtonStyle, ComponentProps, FlexAlign, ResponsiveObject, ResponsiveType, Theme, VisualContext };
+type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export type { Breakpoints, ButtonStyle, ComponentProps, FlexAlign, HeadingTag, ResponsiveObject, ResponsiveType, Theme, VisualContext };

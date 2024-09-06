@@ -28,7 +28,7 @@
         top: 0;
         left: 0;
         background-color: var(--input-color-bg);
-        border-radius: $radius-md;
+        border-radius: var(--border-radius);
         pointer-events: none;
     }
 

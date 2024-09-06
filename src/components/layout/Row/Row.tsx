@@ -35,3 +35,4 @@ const Row: FC<RowProps> = ({ children, align, verticalAlign, gap, relative = fal
 };
 
 export { Row };
+export type { RowProps };

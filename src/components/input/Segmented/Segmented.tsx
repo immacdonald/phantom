@@ -41,13 +41,14 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
                 return (
                     <Button
                         key={index}
-                        label={option.label}
                         visual="ghost"
                         onClick={() => handleChange(index)}
                         full={full}
                         cssProperties={{ zIndex: '1', color: isSelected ? 'var(--color-text-on-primary)' : 'var(--context-color)' }}
                         disabled={option.disabled}
-                    />
+                    >
+                        {option.label}
+                    </Button>
                 );
             })}
             {selected != null && <div className={style.indicator} style={properties} />}
