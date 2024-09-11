@@ -37,7 +37,7 @@
     --color-text-on-light: var(--grey-6);
     --color-text-soft-on-light: var(--grey-5);
     --color-text-on-dark: var(--grey-1);
-    --color-text-soft-on-dark: var(--grey-4);
+    --color-text-soft-on-dark: var(--grey-3);
     --color-text-disabled: var(--grey-4);
     --color-background-disabled: var(--grey-2);
 
@@ -188,7 +188,7 @@
     // Typography
     --font-body: 'Avenir Next', helvetica, arial, sans-serif;
     --font-heading: 'Avenir Next', helvetica, arial, sans-serif;
-    --font-size: var(--font-size);
+    --font-size: 1rem;
 
     @include respond-max($screen-md) {
         font-size: $font-sm;
@@ -214,7 +214,7 @@
     @include selection;
 }
 
-:root:not([data-theme='dark']) {
+[data-theme='light'] {
     color-scheme: light;
 
     --color-text: var(--color-text-on-light);
@@ -226,7 +226,7 @@
     --color-surface-inverse: var(--color-surface-background-dark);
 }
 
-:root[data-theme='dark'] {
+[data-theme='dark'] {
     color-scheme: dark;
 
     --color-text: var(--color-text-on-dark);

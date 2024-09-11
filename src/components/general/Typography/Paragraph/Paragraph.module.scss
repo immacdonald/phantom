@@ -2,4 +2,8 @@
     &:not(:last-child) {
         margin-bottom: $lg;
     }
+
+    &.links > a {
+        color: var(--color-primary);
+    }
 }

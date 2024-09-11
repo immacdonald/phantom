@@ -1,10 +1,4 @@
 .text {
-    font-size: 1rem;
-
-    @include respond-max($screen-lg) {
-        font-size: 1rem;
-    }
-
     &.large {
         font-size: 1.25rem;
 
@@ -21,7 +15,15 @@
         }
     }
 
+    &.soft {
+        color: var(--color-text-soft);
+    }
+
     &.newline {
         display: block;
+    }
+
+    &.links > a {
+        color: var(--color-primary);
     }
 }

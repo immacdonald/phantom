@@ -2,17 +2,15 @@
     @include responsive-width;
 
     --footer-height: 64px;
-
     min-height: var(--footer-height);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: start;
     padding-bottom: $sm;
-    background-color: var(--context-color-surface, var(--color-surface-foreground));
-    color: var(--context-color-text, var(--color-text));
+    background-color: var(--color-surface-foreground);
+    color: var(--color-text);
     font-size: $font-xs;
-    font-weight: 500;
     margin-top: auto;
 
     > div {
@@ -22,16 +20,11 @@
         gap: $md;
         flex-direction: column;
         align-items: center;
-        padding-top: $md;
-        margin-top: $md;
-
-        a {
-            color: var(--context-color-text, var(--color-text));
-            text-decoration: none;
-        }
+        margin-block: $md;
     }
 
     &.topBorder > div {
+        padding-top: $md;
         border-top: var(--border-light);
     }
 }

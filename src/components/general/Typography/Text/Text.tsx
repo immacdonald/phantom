@@ -7,15 +7,19 @@ interface TextProps extends ComponentProps {
     children: ReactNode;
     align?: 'center' | 'left' | 'right';
     size?: 'md' | 'lg' | 'xl';
+    styleLinks?: boolean;
+    soft?: boolean;
     newline?: boolean;
 }
 
-const Text: FC<TextProps> = ({ children, size, align, newline, className, cssProperties, id }) => {
+const Text: FC<TextProps> = ({ children, size, styleLinks = true, align, soft, newline, className, cssProperties, id }) => {
     const textClasses = clsx(
         {
             [style.large]: size == 'lg',
             [style.xl]: size == 'xl',
-            [style.newline]: newline
+            [style.soft]: soft,
+            [style.newline]: newline,
+            [style.links]: styleLinks
         },
         style.text,
         className

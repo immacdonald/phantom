@@ -5,11 +5,14 @@ import style from './Paragraph.module.scss';
 
 interface ParagraphProps extends ComponentProps {
     children: ReactNode;
+    styleLinks?: boolean;
     align?: 'center' | 'left' | 'right';
 }
 
-const Paragraph: FC<ParagraphProps> = ({ children, align, className, cssProperties, id }) => {
-    const paragraphClasses = clsx(style.paragraph, className);
+const Paragraph: FC<ParagraphProps> = ({ children, align, styleLinks = true, className, cssProperties, id }) => {
+    const paragraphClasses = clsx(style.paragraph, {
+        [style.links]: styleLinks
+    }, className);
 
     const properties = { textAlign: align, ...cssProperties } as CSSProperties;
 
