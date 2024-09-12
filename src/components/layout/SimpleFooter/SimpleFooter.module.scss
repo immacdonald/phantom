@@ -2,6 +2,7 @@
     @include responsive-width;
 
     --footer-height: 64px;
+
     min-height: var(--footer-height);
     display: flex;
     flex-direction: row;

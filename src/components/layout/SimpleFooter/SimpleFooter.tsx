@@ -11,8 +11,6 @@ interface SimpleFooterProps extends ComponentProps {
     theme?: Theme;
 }
 
-
-
 const SimpleFooter: FC<SimpleFooterProps> = ({ theme, height, topBorder = false, context, children, className, id, cssProperties }) => {
     const styleProps: CSSProperties = height ? ({ '--footer-height': height } as CSSProperties) : {};
 

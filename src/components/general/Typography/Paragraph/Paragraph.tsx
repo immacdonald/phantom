@@ -10,9 +10,13 @@ interface ParagraphProps extends ComponentProps {
 }
 
 const Paragraph: FC<ParagraphProps> = ({ children, align, styleLinks = true, className, cssProperties, id }) => {
-    const paragraphClasses = clsx(style.paragraph, {
-        [style.links]: styleLinks
-    }, className);
+    const paragraphClasses = clsx(
+        style.paragraph,
+        {
+            [style.links]: styleLinks
+        },
+        className
+    );
 
     const properties = { textAlign: align, ...cssProperties } as CSSProperties;
 
