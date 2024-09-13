@@ -38,7 +38,7 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', containerClass })
                             <Button
                                 key={index}
                                 full
-                                visual={selected ? 'filled' : 'outline'}
+                                visual={selected ? 'filled' : 'filled'}
                                 context={selected ? 'primary' : undefined}
                                 onClick={() => setTab(index)}
                                 className={style.tabButton}
