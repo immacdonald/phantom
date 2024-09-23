@@ -1,19 +1,22 @@
-import type { ComponentProps } from '@types';
+import type { CommonComponentProps } from '@types';
 import { FC, ReactNode, useEffect } from 'react';
-import clsx from 'clsx';
+import { withCommonProps } from '@components/hoc';
 import { useStyleContext } from '../../../contexts/useStyleContext';
 import style from './Page.module.scss';
-interface PageProps extends ComponentProps {
+interface PageProps extends CommonComponentProps {
     title?: string;
     header?: ReactNode;
     footer?: ReactNode;
     children?: ReactNode;
 }
 
-const Page: FC<PageProps> = ({ title, header, footer, children, className, cssProperties, id }) => {
+const PageComponent: FC<PageProps> = ({ title, header, footer, children, className, ...rest }) => {
+    const { config, computeClasses } = useStyleContext();
+    const computedTitle = title || config?.page?.defaultTitle;
+
     useEffect(() => {
-        if (title) {
-            document.title = title;
+        if (computedTitle) {
+            document.title = computedTitle;
         }
         document.documentElement.scrollTo({
             top: 0,
@@ -22,19 +25,19 @@ const Page: FC<PageProps> = ({ title, header, footer, children, className, cssPr
         });
     }, []);
 
-    const { page } = useStyleContext();
-
-    const pageClasses = clsx(style.page, className);
+    const pageClasses = computeClasses(style.page, 'page', className);
 
     return (
         <>
-            {header || page?.defaultHeader}
-            <main className={pageClasses} style={cssProperties} id={id}>
+            {header || config?.page?.defaultHeader}
+            <main className={pageClasses} {...rest}>
                 {children}
             </main>
-            {footer || page?.defaultFooter}
+            {footer || config?.page?.defaultFooter}
         </>
     );
 };
+
+const Page = withCommonProps(PageComponent);
 
 export { Page };

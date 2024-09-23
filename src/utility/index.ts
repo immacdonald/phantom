@@ -17,6 +17,10 @@ const scrollToId = (id: string, offset: number = 128): void => {
     });
 };
 
+const orUndefined = <T>(condition: boolean | undefined, result: T) => {
+    return condition ? result : undefined;
+};
+
 export * from './arrays';
 export * from './dates';
 export * from './fetch';
@@ -24,4 +28,4 @@ export * from './numbers';
 export * from './parse';
 export * from './strings';
 
-export { scrollToId, validateElement };
+export { orUndefined, scrollToId, validateElement };

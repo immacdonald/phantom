@@ -1,12 +1,12 @@
-import type { ComponentProps, FlexAlign, ResponsiveType } from '@types';
+import type { CommonComponentProps, FlexAlign, ResponsiveType } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
-import style from './Flex.module.scss';
+import styles from './Flex.module.scss';
 
 type FlexDirection = 'row' | 'column';
 
-interface FlexProps extends ComponentProps {
+interface FlexProps extends CommonComponentProps {
     children?: ReactNode;
     flex?: ResponsiveType<FlexDirection>;
     align?: ResponsiveType<FlexAlign>;
@@ -15,10 +15,10 @@ interface FlexProps extends ComponentProps {
     relative?: boolean;
 }
 
-const Flex: FC<FlexProps> = ({ children, flex, align, verticalAlign, gap, relative = false, className, cssProperties, id }) => {
+const Flex: FC<FlexProps> = ({ children, flex, align, verticalAlign, gap, relative = false, className, style, id }) => {
     const { parse } = useResponsiveContext();
 
-    const flexClasses = clsx(style.flex, className);
+    const flexClasses = clsx(styles.flex, className);
     const flexDirection = parse<FlexDirection>(flex);
 
     return (
@@ -30,7 +30,7 @@ const Flex: FC<FlexProps> = ({ children, flex, align, verticalAlign, gap, relati
                 justifyContent: parse<FlexAlign>(flexDirection == 'column' ? verticalAlign : align),
                 gap: parse<CSSProperties['gap']>(gap),
                 position: relative ? 'relative' : undefined,
-                ...cssProperties
+                ...style
             }}
             id={id}
         >

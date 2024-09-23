@@ -1,9 +1,9 @@
-import { ComponentProps, Theme, VisualContext } from '@types';
+import { CommonComponentProps, Theme, VisualContext } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
-import style from './SimpleFooter.module.scss';
+import styles from './SimpleFooter.module.scss';
 
-interface SimpleFooterProps extends ComponentProps {
+interface SimpleFooterProps extends CommonComponentProps {
     height?: string;
     topBorder?: boolean;
     context?: VisualContext;
@@ -11,20 +11,20 @@ interface SimpleFooterProps extends ComponentProps {
     theme?: Theme;
 }
 
-const SimpleFooter: FC<SimpleFooterProps> = ({ theme, height, topBorder = false, context, children, className, id, cssProperties }) => {
+const SimpleFooter: FC<SimpleFooterProps> = ({ theme, height, topBorder = false, context, children, className, id, style }) => {
     const styleProps: CSSProperties = height ? ({ '--footer-height': height } as CSSProperties) : {};
 
     const footerStyle = clsx(
-        style.footer,
+        styles.footer,
         {
-            [style.topBorder]: topBorder
+            [styles.topBorder]: topBorder
         },
         className
     );
 
     return (
-        <footer className={footerStyle} style={{ ...styleProps, ...cssProperties }} data-context={context} data-theme={theme} id={id}>
-            <div className={style.content}>{children}</div>
+        <footer className={footerStyle} style={{ ...styleProps, ...style }} data-context={context} data-theme={theme} id={id}>
+            <div className={styles.content}>{children}</div>
         </footer>
     );
 };

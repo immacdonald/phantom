@@ -1,9 +1,12 @@
+import { CommonComponentProps } from '@types';
 import { FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { useStyleContext } from '@contexts';
 import { getModal } from './modals';
 import style from './ModalController.module.scss';
 
-const ModalController: FC = () => {
+const ModalController: FC<CommonComponentProps> = ({ className, ...rest }) => {
+    const { config } = useStyleContext();
     const [modal, setModal] = useState<JSX.Element | null>(null);
 
     useEffect(() => {
@@ -19,11 +22,20 @@ const ModalController: FC = () => {
         };
     }, []);
 
-    const controllerClasses = clsx(style.modals, {
-        [style.active]: !!modal
-    });
+    const controllerClasses = clsx(
+        style.modals,
+        {
+            [style.active]: !!modal
+        },
+        config?.modal?.controller?.defaultClassName,
+        className
+    );
 
-    return <div className={controllerClasses}>{modal}</div>;
+    return (
+        <div className={controllerClasses} {...rest}>
+            {modal}
+        </div>
+    );
 };
 
 export { ModalController };

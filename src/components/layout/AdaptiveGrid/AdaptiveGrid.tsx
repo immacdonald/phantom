@@ -1,38 +1,38 @@
-import type { ComponentProps } from '@types';
+import type { CommonComponentProps } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { AdaptiveGridItemSize } from './AdaptiveGridItemSize';
-import style from './AdaptiveGrid.module.scss';
+import styles from './AdaptiveGrid.module.scss';
 
-interface AdaptiveGridProps extends ComponentProps {
+interface AdaptiveGridProps extends CommonComponentProps {
     dense?: boolean;
     children?: ReactNode;
 }
 
-const AdaptiveGridRoot: FC<AdaptiveGridProps> = ({ dense = false, children, className, cssProperties, id }) => {
+const AdaptiveGridRoot: FC<AdaptiveGridProps> = ({ dense = false, children, className, style, id }) => {
     const gridClasses = clsx(
-        style.grid,
+        styles.grid,
         {
-            [style.dense]: dense
+            [styles.dense]: dense
         },
         className
     );
 
     return (
-        <div className={gridClasses} style={cssProperties} id={id}>
+        <div className={gridClasses} style={style} id={id}>
             {children}
         </div>
     );
 };
 
-interface AdaptiveGridItemProps extends ComponentProps {
+interface AdaptiveGridItemProps extends CommonComponentProps {
     size?: AdaptiveGridItemSize;
     children?: ReactNode;
 }
 
-const AdaptiveGridItem: FC<AdaptiveGridItemProps> = ({ size = AdaptiveGridItemSize.Normal, children, className, cssProperties, id }) => {
+const AdaptiveGridItem: FC<AdaptiveGridItemProps> = ({ size = AdaptiveGridItemSize.Normal, children, className, style, id }) => {
     return (
-        <div className={clsx(style.item, className)} style={cssProperties} data-grid-item={size} id={id}>
+        <div className={clsx(styles.item, className)} style={style} data-grid-item={size} id={id}>
             {children}
         </div>
     );

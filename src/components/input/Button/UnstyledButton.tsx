@@ -1,17 +1,14 @@
-import type { ComponentProps } from '@types';
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, FC } from 'react';
 import clsx from 'clsx';
-import style from './Button.module.scss';
+import styles from './Button.module.scss';
 
-interface UnstyledButtonProps extends ComponentProps, ButtonHTMLAttributes<HTMLButtonElement> {
-    children: ReactNode;
-}
+interface UnstyledButtonProps extends ComponentPropsWithoutRef<'button'> {}
 
-const UnstyledButton: FC<UnstyledButtonProps> = ({ className, cssProperties, children, id, ...rest }) => {
-    const buttonClasses = clsx(style.clear, className);
+const UnstyledButton: FC<UnstyledButtonProps> = ({ className, children, ...rest }) => {
+    const buttonClasses = clsx(styles.clear, className);
 
     return (
-        <button className={buttonClasses} style={cssProperties} type="button" id={id} {...rest}>
+        <button className={buttonClasses} type="button" {...rest}>
             {children}
         </button>
     );

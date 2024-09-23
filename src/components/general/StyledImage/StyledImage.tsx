@@ -1,8 +1,10 @@
+import { CommonComponentProps } from '@types';
 import clsx from 'clsx';
 import { CSSProperties, FC, ReactNode } from 'react';
-import style from './StyledImage.module.scss';
+import { withCommonProps } from '@components/hoc';
+import styles from './StyledImage.module.scss';
 
-interface StyledImageProps {
+interface StyledImageProps extends CommonComponentProps {
     image: string;
     alt: string;
     border?: boolean;
@@ -13,21 +15,23 @@ interface StyledImageProps {
     caption?: string | ReactNode;
 }
 
-const StyledImage: FC<StyledImageProps> = ({ image, alt, border = false, round = false, fit = false, maxWidth, maxHeight, caption }) => {
-    const imageStyle = clsx(style.image, {
-        [style.border]: border,
-        [style.round]: round,
-        [style.fit]: fit
+const StyledImageComponent: FC<StyledImageProps> = ({ image, alt, border, round, fit, maxWidth, maxHeight, caption, ...rest }) => {
+    const imageStyle = clsx(styles.image, {
+        [styles.border]: border,
+        [styles.round]: round,
+        [styles.fit]: fit
     });
 
     const properties = { '--v-max-width': maxWidth ? `${maxWidth}px` : undefined, '--v-max-height': maxHeight } as CSSProperties;
 
     return (
-        <figure className={style.figure} style={properties}>
+        <figure className={styles.figure} style={properties} {...rest}>
             <img src={image} className={imageStyle} alt={alt} />
-            {caption && <figcaption className={style.caption}>{caption}</figcaption>}
+            {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
         </figure>
     );
 };
+
+const StyledImage = withCommonProps(StyledImageComponent);
 
 export { StyledImage };

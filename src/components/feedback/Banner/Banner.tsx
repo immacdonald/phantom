@@ -1,13 +1,16 @@
-import { FC, useEffect, useState } from 'react';
+import { CommonComponentProps } from '@types';
+import { FC, forwardRef, useEffect, useState } from 'react';
+import { useStyleContext } from '@contexts';
 import { popNotification } from './notifications';
 import style from './Banner.module.scss';
 
-interface BannerProps {
+interface BannerProps extends CommonComponentProps {
     notificationLength?: number;
     concurrentNotificationDelay?: number;
 }
 
-const Banner: FC<BannerProps> = ({ notificationLength = 5000, concurrentNotificationDelay = 750 }) => {
+const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notificationLength = 5000, concurrentNotificationDelay = 750, className, ...rest }, ref) => {
+    const { computeClasses } = useStyleContext();
     const [state, setState] = useState<boolean>(false);
     const [previousState, setPreviousState] = useState<boolean>(false);
 
@@ -63,10 +66,11 @@ const Banner: FC<BannerProps> = ({ notificationLength = 5000, concurrentNotifica
     }, [state, notificationChange]);
 
     return (
-        <div className={style.banner} data-mode={type} data-state={state ? 'on' : 'off'}>
+        <div className={computeClasses(style.banner, 'banner', className)} data-mode={type} data-state={state ? 'on' : 'off'} ref={ref} {...rest}>
             <span className={style.message}>{message}</span>
         </div>
     );
-};
+});
 
 export { Banner };
+export type { BannerProps };

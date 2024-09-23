@@ -1,10 +1,10 @@
-import type { ComponentProps, FlexAlign, ResponsiveType } from '@types';
+import type { CommonComponentProps, FlexAlign, ResponsiveType } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
-import style from './Column.module.scss';
+import styles from './Column.module.scss';
 
-interface ColumnProps extends ComponentProps {
+interface ColumnProps extends CommonComponentProps {
     children?: ReactNode;
     align?: ResponsiveType<FlexAlign>;
     verticalAlign?: ResponsiveType<FlexAlign>;
@@ -12,10 +12,10 @@ interface ColumnProps extends ComponentProps {
     relative?: boolean;
 }
 
-const Column: FC<ColumnProps> = ({ children, align, verticalAlign, gap, relative = false, className, cssProperties }) => {
+const Column: FC<ColumnProps> = ({ children, align, verticalAlign, gap, relative = false, className, style }) => {
     const { parse } = useResponsiveContext();
 
-    const columnClasses = clsx(style.column, className);
+    const columnClasses = clsx(styles.column, className);
 
     return (
         <div
@@ -25,7 +25,7 @@ const Column: FC<ColumnProps> = ({ children, align, verticalAlign, gap, relative
                 justifyContent: parse<FlexAlign>(verticalAlign),
                 gap: parse<CSSProperties['gap']>(gap),
                 position: relative ? 'relative' : undefined,
-                ...cssProperties
+                ...style
             }}
         >
             {children}

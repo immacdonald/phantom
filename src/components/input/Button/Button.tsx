@@ -1,12 +1,13 @@
-import type { ButtonStyle, ComponentProps, FlexAlign, VisualContext } from '@types';
+import type { ButtonStyle, CommonComponentProps, FlexAlign, VisualContext } from '@types';
 import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, ReactNode, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import type { IconProps } from '@components';
 import { Loading } from '@components';
-import style from './Button.module.scss';
+import { orUndefined } from '@utility';
+import styles from './Button.module.scss';
 
-interface ButtonProps extends ComponentProps {
+interface ButtonProps extends CommonComponentProps<HTMLButtonElement> {
     size?: 'regular' | 'small' | 'large';
     full?: boolean;
     align?: FlexAlign;
@@ -15,7 +16,6 @@ interface ButtonProps extends ComponentProps {
     rounded?: boolean;
     Icon?: ComponentType<IconProps>;
     iconRight?: boolean;
-    onClick?: MouseEventHandler<HTMLButtonElement>;
     onHover?: MouseEventHandler<HTMLElement>;
     link?: string;
     isLoading?: boolean;
@@ -43,23 +43,23 @@ const Button: FC<ButtonProps> = ({
     form,
     children,
     className,
-    cssProperties,
+    style,
     id
 }) => {
     const buttonClasses = clsx(
-        style.button,
+        styles.button,
         {
-            [style.link]: !!link,
-            [style.large]: size == 'large',
-            [style.small]: size == 'small',
-            [style.full]: full,
-            [style.ghost]: visual == 'ghost',
-            [style.outline]: visual == 'outline',
-            [style.filled]: visual == 'filled',
-            [style.text]: visual == 'text',
-            [style.rounded]: rounded,
-            [style.loading]: isLoading,
-            [style.disabled]: disabled
+            [styles.link]: !!link,
+            [styles.large]: size == 'large',
+            [styles.small]: size == 'small',
+            [styles.full]: full,
+            [styles.ghost]: visual == 'ghost',
+            [styles.outline]: visual == 'outline',
+            [styles.filled]: visual == 'filled',
+            [styles.text]: visual == 'text',
+            [styles.rounded]: rounded,
+            [styles.loading]: isLoading,
+            [styles.disabled]: disabled
         },
         className
     );
@@ -75,12 +75,12 @@ const Button: FC<ButtonProps> = ({
         [onClick]
     );
 
-    const visibility = useMemo(() => (isLoading ? ({ visibility: 'hidden' } as CSSProperties) : undefined), [isLoading]);
+    const visibility = useMemo(() => orUndefined(isLoading, { visibility: 'hidden' } as CSSProperties), [isLoading]);
 
     const props = {
         className: buttonClasses,
         'data-context': context,
-        style: { ...cssProperties, justifyContent: align },
+        style: { justifyContent: align, ...style },
         id
     };
 

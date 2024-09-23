@@ -1,51 +1,25 @@
-import type { ComponentProps, FlexAlign, Theme } from '@types';
+import type { CommonComponentProps } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider, StyleConfiguration, StyleContextProvider } from '@contexts';
-import style from './StyledApp.module.scss';
+import styles from './StyledApp.module.scss';
 
-interface StyledAppProps extends ComponentProps {
-    anchors?: boolean;
-    modals?: boolean;
-    banners?: boolean;
-    initialTheme?: Theme;
-    align?: FlexAlign;
-    verticalAlign?: FlexAlign;
-    minimizeCookies?: boolean;
+interface StyledAppProps extends CommonComponentProps {
     configuration?: StyleConfiguration;
+    anchors?: boolean;
+    minimizeCookies?: boolean;
     children: ReactNode;
 }
 
-const StyledApp: FC<StyledAppProps> = ({
-    anchors = true,
-    modals = false,
-    banners = false,
-    initialTheme,
-    align,
-    verticalAlign,
-    minimizeCookies,
-    configuration,
-    children,
-    className,
-    cssProperties,
-    id
-}) => {
+const StyledApp: FC<StyledAppProps> = ({ configuration, anchors = true, minimizeCookies, children, className, ...rest }) => {
     return (
         <StyleContextProvider {...configuration}>
-            <ResponsiveContextProvider initialTheme={initialTheme} minimizeCookies={minimizeCookies}>
-                <div
-                    className={clsx(style.app, className)}
-                    style={{
-                        alignItems: align,
-                        justifyContent: verticalAlign,
-                        ...cssProperties
-                    }}
-                    id={id}
-                >
-                    {banners && <Banner />}
+            <ResponsiveContextProvider initialTheme={configuration?.config?.initialTheme} minimizeCookies={minimizeCookies}>
+                <div className={clsx(styles.app, className)} {...rest}>
+                    {configuration?.config?.banner?.enabled && <Banner />}
                     {anchors && <AnchorController />}
-                    {modals && <ModalController />}
+                    {configuration?.config?.modal?.enabled && <ModalController />}
                     {children}
                 </div>
             </ResponsiveContextProvider>

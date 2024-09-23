@@ -1,7 +1,7 @@
-import type { ComponentProps, VisualContext } from '@types';
+import type { CommonComponentProps, VisualContext } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
-import style from './Icon.module.scss';
+import styles from './Icon.module.scss';
 
 const sizeMap: Record<string, string> = {
     small: '18px',
@@ -10,7 +10,7 @@ const sizeMap: Record<string, string> = {
     full: '100%'
 };
 
-interface IconProps extends ComponentProps {
+interface IconProps extends CommonComponentProps {
     size?: 'small' | 'regular' | 'large' | 'full';
     context?: VisualContext;
     inline?: boolean;
@@ -21,19 +21,19 @@ interface FullIconProps extends IconProps {
     icon: ReactNode;
 }
 
-const Icon: FC<FullIconProps> = ({ icon, size = 'regular', context, inline = false, tooltip, className, cssProperties }) => {
+const Icon: FC<FullIconProps> = ({ icon, size = 'regular', context, inline = false, tooltip, className, style }) => {
     const properties = { '--v-icon-size': sizeMap[size] } as CSSProperties;
 
     const classes = clsx(
-        style.icon,
+        styles.icon,
         {
-            [style.inline]: inline
+            [styles.inline]: inline
         },
         className
     );
 
     return (
-        <span className={classes} style={{ ...properties, ...cssProperties }} data-tooltip={tooltip} data-context={context}>
+        <span className={classes} style={{ ...properties, ...style }} data-tooltip={tooltip} data-context={context}>
             {icon}
         </span>
     );

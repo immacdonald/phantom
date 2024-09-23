@@ -8,8 +8,10 @@ const useStyleContext = (): StyleContextInterface => {
         throw new Error('useStyleContext was used outside of its Provider');
     } else if (!context) {
         //throw new Error('useStyleContext is null');
+        console.warn('useStyleContext is null');
         return {
-            page: undefined
+            config: undefined,
+            computeClasses: () => ''
         };
     }
 

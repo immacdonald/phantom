@@ -1,4 +1,4 @@
-import type { ButtonStyle, Callback, ComponentProps } from '@types';
+import type { ButtonStyle, Callback, CommonComponentProps } from '@types';
 import { PollingRate } from '@types';
 import { ComponentType, FC, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
@@ -6,9 +6,9 @@ import { ChevronIcon } from '@assets/icons';
 import type { IconProps } from '@components';
 import { Button } from '@components';
 import { useInterval } from '@hooks';
-import style from './Accordion.module.scss';
+import styles from './Accordion.module.scss';
 
-interface AccordionProps extends ComponentProps {
+interface AccordionProps extends Omit<CommonComponentProps, 'onClick'> {
     label: string;
     borderless?: boolean;
     compact?: boolean;
@@ -19,7 +19,7 @@ interface AccordionProps extends ComponentProps {
     children: ReactNode;
 }
 
-const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = ChevronIcon, defaultState = false, className, cssProperties, onClick = (): void => {}, children }) => {
+const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = ChevronIcon, defaultState = false, className, style, onClick = (): void => {}, children }) => {
     const [open, setState] = useState<boolean>(false);
     const [height, setHeight] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
@@ -37,18 +37,18 @@ const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle
     }, []);
 
     const accordionClasses = clsx(
-        style.accordion,
+        styles.accordion,
         {
-            [style.open]: open,
-            [style.border]: !borderless,
-            [style.margins]: !compact
+            [styles.open]: open,
+            [styles.border]: !borderless,
+            [styles.margins]: !compact
         },
         className
     );
 
     return (
-        <div className={accordionClasses} style={cssProperties}>
-            <div className={style.toggle}>
+        <div className={accordionClasses} style={style}>
+            <div className={styles.toggle}>
                 <Button
                     onClick={() => {
                         setState(!open);
@@ -59,13 +59,13 @@ const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle
                     align="space-between"
                     iconRight
                     full
-                    className={style.button}
+                    className={styles.button}
                 >
                     {label}
                 </Button>
             </div>
-            <div className={style.wrapper} style={{ height: `${height}px` }}>
-                <div className={style.content} ref={ref}>
+            <div className={styles.wrapper} style={{ height: `${height}px` }}>
+                <div className={styles.content} ref={ref}>
                     {children}
                 </div>
             </div>

@@ -5,9 +5,9 @@ interface HoverMarkProps extends HTMLAttributes<HTMLElement> {
     text: string | ReactNode;
 }
 
-const HoverMark: FC<HoverMarkProps> = ({ text, ...rest }) => {
+const HoverMark: FC<HoverMarkProps> = ({ text, ...props }) => {
     return (
-        <mark className={style.hoverMark} {...rest}>
+        <mark className={style.hoverMark} {...props}>
             {text}
         </mark>
     );

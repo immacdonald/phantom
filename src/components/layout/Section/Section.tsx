@@ -1,7 +1,7 @@
-import type { ComponentProps, VisualContext } from '@types';
+import type { CommonComponentProps, VisualContext } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
-import style from './Section.module.scss';
+import styles from './Section.module.scss';
 
 type EdgeShape = 'inset' | 'outset';
 interface SectionEdges {
@@ -9,7 +9,7 @@ interface SectionEdges {
     bottom?: EdgeShape;
 }
 
-interface SectionProps extends ComponentProps {
+interface SectionProps extends CommonComponentProps {
     variant?: 'regular' | 'floating' | 'inset';
     context?: VisualContext;
     hasBackground?: boolean;
@@ -19,16 +19,16 @@ interface SectionProps extends ComponentProps {
     children?: ReactNode;
 }
 
-const Section: FC<SectionProps> = ({ variant = 'regular', context, hasBackground = false, backgroundImage, parallax, edges, children, className, cssProperties, id }) => {
+const Section: FC<SectionProps> = ({ variant = 'regular', context, hasBackground = false, backgroundImage, parallax, edges, children, className, style, id }) => {
     const sectionClass = clsx(
-        style.section,
+        styles.section,
         {
-            [style.regular]: variant == 'regular' || !variant,
-            [style.floating]: variant == 'floating',
-            [style.inset]: variant == 'inset',
-            [style.background]: hasBackground,
-            [style.image]: !!backgroundImage,
-            [style.parallax]: parallax
+            [styles.regular]: variant == 'regular' || !variant,
+            [styles.floating]: variant == 'floating',
+            [styles.inset]: variant == 'inset',
+            [styles.background]: hasBackground,
+            [styles.image]: !!backgroundImage,
+            [styles.parallax]: parallax
         },
         className
     );
@@ -48,7 +48,7 @@ const Section: FC<SectionProps> = ({ variant = 'regular', context, hasBackground
     };
 
     return (
-        <section className={sectionClass} style={{ '--background-image': backgroundImage ? `url(${backgroundImage})` : undefined, ...cssProperties } as CSSProperties} id={id} {...sectionData}>
+        <section className={sectionClass} style={{ '--background-image': backgroundImage ? `url(${backgroundImage})` : undefined, ...style } as CSSProperties} id={id} {...sectionData}>
             {innerDiv ? <div>{children}</div> : <>{children}</>}
         </section>
     );

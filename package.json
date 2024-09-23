@@ -18,13 +18,10 @@
         "build": "tsup",
         "dev": "tsup --watch",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives && tsc --noEmit --emitDeclarationOnly false",
-        "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
-        "prettier": "prettier ./ --check --ignore-path ./node_modules/phantom-config/.prettierignore",
-        "prettier:fix": "prettier ./ --write --ignore-path ./node_modules/phantom-config/.prettierignore",
-        "stylelint": "npx stylelint '**/*.{css,scss}'",
-        "stylelint:fix": "npx stylelint '**/*.{css,scss}' --fix",
-        "format": "npm run lint:fix && npm run stylelint:fix && npm run prettier:fix"
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
+        "prettier": "prettier ./ --write --ignore-path ./node_modules/phantom-config/.prettierignore",
+        "stylelint": "npx stylelint '**/*.{css,scss}' --fix",
+        "format": "npm run lint && npm run stylelint && npm run prettier"
     },
     "repository": {
         "type": "git",

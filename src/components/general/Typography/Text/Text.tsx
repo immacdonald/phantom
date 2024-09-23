@@ -1,9 +1,9 @@
-import { ComponentProps } from '@types';
+import { CommonComponentProps } from '@types';
 import { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
-import style from './Text.module.scss';
+import styles from './Text.module.scss';
 
-interface TextProps extends ComponentProps {
+interface TextProps extends CommonComponentProps {
     children: ReactNode;
     align?: 'center' | 'left' | 'right';
     size?: 'md' | 'lg' | 'xl';
@@ -12,20 +12,20 @@ interface TextProps extends ComponentProps {
     newline?: boolean;
 }
 
-const Text: FC<TextProps> = ({ children, size, styleLinks = true, align, soft, newline, className, cssProperties, id }) => {
+const Text: FC<TextProps> = ({ children, size, styleLinks = true, align, soft, newline, className, style, id }) => {
     const textClasses = clsx(
+        styles.text,
         {
-            [style.large]: size == 'lg',
-            [style.xl]: size == 'xl',
-            [style.soft]: soft,
-            [style.newline]: newline,
-            [style.links]: styleLinks
+            [styles.large]: size == 'lg',
+            [styles.xl]: size == 'xl',
+            [styles.soft]: soft,
+            [styles.newline]: newline,
+            [styles.links]: styleLinks
         },
-        style.text,
         className
     );
 
-    const properties = { textAlign: align, ...cssProperties } as CSSProperties;
+    const properties = { textAlign: align, ...style } as CSSProperties;
 
     return (
         <span className={textClasses} style={properties} id={id}>

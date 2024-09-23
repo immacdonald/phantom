@@ -13,12 +13,11 @@ interface PopoverProps {
     anchorClass?: string;
     anchorProps?: HTMLAttributes<HTMLDivElement>;
     customStyle?: string;
-    canHover?: boolean;
-    canClick?: boolean;
+    clickToToggle?: boolean;
     children: ReactNode;
 }
 
-const Popover: FC<PopoverProps> = ({ content, direction = 'top', highlight = false, delay = 500, anchorClass, anchorProps, customStyle = null, canHover = true, canClick = false, children }) => {
+const Popover: FC<PopoverProps> = ({ content, direction = 'top', highlight = false, delay = 500, anchorClass, anchorProps, customStyle = null, clickToToggle = false, children }) => {
     const [click, setClick] = useState<boolean>(false);
     const [hover, setHover] = useState<boolean>(false);
     const hoverTimeout = useRef<number | null>(null);
@@ -68,8 +67,8 @@ const Popover: FC<PopoverProps> = ({ content, direction = 'top', highlight = fal
     );
 
     const fullAnchorProps = {
-        ...(canHover ? { onMouseEnter: hoverPopover, onMouseLeave: hoverExitPopover } : {}),
-        ...(canClick ? { onClick: () => setClick(!click) } : {}),
+        ...(!clickToToggle ? { onMouseEnter: hoverPopover, onMouseLeave: hoverExitPopover } : {}),
+        ...(clickToToggle ? { onClick: () => setClick(!click) } : {}),
         ...anchorProps
     };
 

@@ -1,10 +1,10 @@
-import type { Callback, ComponentProps, NullablePrimitive, Option } from '@types';
+import type { Callback, CommonComponentProps, NullablePrimitive, Option } from '@types';
 import { CSSProperties, FC, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@components';
-import style from './Segmented.module.scss';
+import styles from './Segmented.module.scss';
 
-interface SegmentedProps extends ComponentProps {
+interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
     options?: Option[];
     defaultValue?: number;
     full?: boolean;
@@ -12,7 +12,7 @@ interface SegmentedProps extends ComponentProps {
     onChange?: Callback<NullablePrimitive>;
 }
 
-const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full = false, disabled = false, onChange = (): void => {}, className, cssProperties }) => {
+const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full = false, disabled = false, onChange = (): void => {}, className, style }) => {
     const [selected, setSelection] = useState<number | null>(defaultValue ?? null);
     const handleChange = (index: number): void => {
         setSelection(index);
@@ -20,10 +20,10 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
     };
 
     const segmentedClasses = clsx(
-        style.segmented,
+        styles.segmented,
         {
-            [style.full]: full,
-            [style.disabled]: disabled
+            [styles.full]: full,
+            [styles.disabled]: disabled
         },
         className
     );
@@ -31,7 +31,7 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
     const properties: CSSProperties = {
         '--v-count': options.length,
         '--v-selected': selected,
-        ...cssProperties
+        ...style
     } as CSSProperties;
 
     return (
@@ -44,14 +44,14 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
                         visual="ghost"
                         onClick={() => handleChange(index)}
                         full={full}
-                        cssProperties={{ zIndex: '1', color: isSelected ? 'var(--color-text-on-primary)' : 'var(--context-color)' }}
+                        style={{ zIndex: '1', color: isSelected ? 'var(--color-text-on-primary)' : 'var(--context-color)' }}
                         disabled={option.disabled}
                     >
                         {option.label}
                     </Button>
                 );
             })}
-            {selected != null && <div className={style.indicator} style={properties} />}
+            {selected != null && <div className={styles.indicator} style={properties} />}
         </div>
     );
 };

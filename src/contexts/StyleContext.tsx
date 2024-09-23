@@ -1,20 +1,51 @@
-import { createContext, FC, ReactElement, ReactNode } from 'react';
+import { Theme } from '@types';
+import clsx from 'clsx';
+import { createContext, FC, ReactElement, ReactNode, useCallback } from 'react';
+
+interface ComponentDefaultConfig {
+    defaultClassName?: string;
+}
 
 interface StyleContextInterface {
-    page?: {
-        defaultHeader?: ReactNode;
-        defaultFooter?: ReactNode;
+    config?: {
+        initialTheme?: Theme;
+        // Feedback
+        banner?: {
+            enabled: boolean;
+        } & ComponentDefaultConfig;
+        loading?: ComponentDefaultConfig;
+        modal?: {
+            enabled: boolean;
+            controller?: ComponentDefaultConfig;
+        } & ComponentDefaultConfig;
+        // General
+
+        // Layout
+        page?: {
+            defaultHeader?: ReactNode;
+            defaultFooter?: ReactNode;
+            defaultTitle?: string;
+        } & ComponentDefaultConfig;
+        row?: ComponentDefaultConfig;
     };
+    computeClasses: (style: string, component: string, className?: string) => string;
 }
 
 const StyleContext = createContext<StyleContextInterface | null>(null);
 
-interface StyleContextProviderProps extends StyleContextInterface {
+interface StyleContextProviderProps extends Omit<StyleContextInterface, 'computeClasses'> {
     children: ReactNode;
 }
 
-const StyleContextProvider: FC<StyleContextProviderProps> = ({ page, children }): ReactElement => {
-    return <StyleContext.Provider value={{ page }}>{children}</StyleContext.Provider>;
+const StyleContextProvider: FC<StyleContextProviderProps> = ({ config, children }): ReactElement => {
+    const computeClasses = useCallback(
+        (style: string, component: string, className?: string) => {
+            return clsx(style, (config as Record<string, ComponentDefaultConfig>)[component]?.defaultClassName, className);
+        },
+        [config]
+    );
+
+    return <StyleContext.Provider value={{ config, computeClasses }}>{children}</StyleContext.Provider>;
 };
 
 export type { StyleContextInterface as StyleConfiguration, StyleContextInterface };

@@ -1,43 +1,40 @@
-import type { ComponentProps, VisualContext } from '@types';
-import { ComponentType, FC, forwardRef, LegacyRef, ReactNode } from 'react';
+import type { CommonComponentProps, VisualContext } from '@types';
+import { ComponentType, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import type { IconProps } from '@components';
-import { Column } from '@components';
-import style from './Card.module.scss';
+import { Column, withCommonProps } from '@components';
+import { useStyleContext } from '@contexts';
+import styles from './Card.module.scss';
 
-interface CardProps extends ComponentProps {
+interface CardProps extends CommonComponentProps {
     fullHeight?: boolean;
-    children?: ReactNode;
     context?: VisualContext;
-    ref?: LegacyRef<HTMLDivElement>;
+    children?: ReactNode;
 }
-const CardRoot: FC<CardProps> = forwardRef<HTMLDivElement, CardProps>(({ fullHeight = false, className, cssProperties, context, children, id }, ref) => {
-    const cardClasses = clsx(
-        style.card,
-        {
-            [style.fullHeight]: fullHeight
-        },
-        className
-    );
+const CardRootComponent: FC<CardProps> = ({ fullHeight, context, children, className, ...rest }) => {
+    const { computeClasses } = useStyleContext();
+    const cardClasses = computeClasses(clsx(styles.card, { [styles.fullHeight]: fullHeight }), 'card', className);
 
     return (
-        <div className={cardClasses} style={cssProperties} data-context={context} id={id} ref={ref}>
+        <div className={cardClasses} data-context={context} {...rest}>
             {children}
         </div>
     );
-});
+};
 
-interface CardHeaderProps {
+interface CardHeaderProps extends CommonComponentProps {
     title?: string;
     subtitle?: string;
     Icon?: ComponentType<IconProps>;
 }
-const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, Icon }) => {
+const CardHeaderComponent: FC<CardHeaderProps> = ({ title, subtitle, Icon, className, ...rest }) => {
+    const { computeClasses } = useStyleContext();
+
     return (
-        <div className={style.header}>
+        <div className={computeClasses(styles.header, 'cardHeader', className)} {...rest}>
             {Icon && <Icon />}
             {title && (
-                <Column cssProperties={{ alignItems: 'start', gap: '0' }}>
+                <Column style={{ alignItems: 'start', gap: '0' }}>
                     <span>{title}</span>
                     {subtitle && <i style={{ fontSize: '0.875rem' }}>{subtitle}</i>}
                 </Column>
@@ -45,16 +42,26 @@ const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, Icon }) => {
         </div>
     );
 };
-interface CardBodyProps {
+
+interface CardBodyProps extends CommonComponentProps {
     children?: ReactNode;
     scrollable?: boolean;
 }
-const CardBody: FC<CardBodyProps> = ({ children, scrollable = false }) => {
-    const cardBodyClasses = clsx(style.body, {
-        [style.scrollable]: scrollable
-    });
-    return <div className={cardBodyClasses}>{children}</div>;
+
+const CardBodyComponent: FC<CardBodyProps> = ({ children, scrollable, className, ...rest }) => {
+    const { computeClasses } = useStyleContext();
+    const cardBodyClasses = computeClasses(clsx(styles.body, { [styles.scrollable]: scrollable }), 'cardBody', className);
+
+    return (
+        <div className={cardBodyClasses} {...rest}>
+            {children}
+        </div>
+    );
 };
+
+const CardRoot = withCommonProps(CardRootComponent);
+const CardHeader = withCommonProps(CardHeaderComponent);
+const CardBody = withCommonProps(CardBodyComponent);
 
 export const Card = CardRoot as typeof CardRoot & {
     Header: typeof CardHeader;
