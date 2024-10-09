@@ -2,7 +2,7 @@ import type { CommonComponentProps, VisualContext } from '@types';
 import { ComponentType, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import type { IconProps } from '@components';
-import { Column, withCommonProps } from '@components';
+import { Column } from '@components';
 import { useStyleContext } from '@contexts';
 import styles from './Card.module.scss';
 
@@ -11,7 +11,7 @@ interface CardProps extends CommonComponentProps {
     context?: VisualContext;
     children?: ReactNode;
 }
-const CardRootComponent: FC<CardProps> = ({ fullHeight, context, children, className, ...rest }) => {
+const CardRoot: FC<CardProps> = ({ fullHeight, context, children, className, ...rest }) => {
     const { computeClasses } = useStyleContext();
     const cardClasses = computeClasses(clsx(styles.card, { [styles.fullHeight]: fullHeight }), 'card', className);
 
@@ -27,7 +27,7 @@ interface CardHeaderProps extends CommonComponentProps {
     subtitle?: string;
     Icon?: ComponentType<IconProps>;
 }
-const CardHeaderComponent: FC<CardHeaderProps> = ({ title, subtitle, Icon, className, ...rest }) => {
+const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, Icon, className, ...rest }) => {
     const { computeClasses } = useStyleContext();
 
     return (
@@ -48,7 +48,7 @@ interface CardBodyProps extends CommonComponentProps {
     scrollable?: boolean;
 }
 
-const CardBodyComponent: FC<CardBodyProps> = ({ children, scrollable, className, ...rest }) => {
+const CardBody: FC<CardBodyProps> = ({ children, scrollable, className, ...rest }) => {
     const { computeClasses } = useStyleContext();
     const cardBodyClasses = computeClasses(clsx(styles.body, { [styles.scrollable]: scrollable }), 'cardBody', className);
 
@@ -58,10 +58,6 @@ const CardBodyComponent: FC<CardBodyProps> = ({ children, scrollable, className,
         </div>
     );
 };
-
-const CardRoot = withCommonProps(CardRootComponent);
-const CardHeader = withCommonProps(CardHeaderComponent);
-const CardBody = withCommonProps(CardBodyComponent);
 
 export const Card = CardRoot as typeof CardRoot & {
     Header: typeof CardHeader;

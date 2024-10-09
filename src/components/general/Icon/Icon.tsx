@@ -1,5 +1,5 @@
 import type { CommonComponentProps, VisualContext } from '@types';
-import { CSSProperties, FC, ReactNode } from 'react';
+import { cloneElement, CSSProperties, FC, ReactElement } from 'react';
 import clsx from 'clsx';
 import styles from './Icon.module.scss';
 
@@ -18,7 +18,7 @@ interface IconProps extends CommonComponentProps {
 }
 
 interface FullIconProps extends IconProps {
-    icon: ReactNode;
+    icon: ReactElement;
 }
 
 const Icon: FC<FullIconProps> = ({ icon, size = 'regular', context, inline = false, tooltip, className, style }) => {
@@ -33,9 +33,7 @@ const Icon: FC<FullIconProps> = ({ icon, size = 'regular', context, inline = fal
     );
 
     return (
-        <span className={classes} style={{ ...properties, ...style }} data-tooltip={tooltip} data-context={context}>
-            {icon}
-        </span>
+        cloneElement(icon, {className: classes, style: { ...properties, ...style }, "data-tooltip": tooltip, "data-context": context})
     );
 };
 

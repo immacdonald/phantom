@@ -1,3 +1,4 @@
+@use 'tokens' as *;
 @forward 'core';
 
 @mixin selection {
@@ -185,15 +186,6 @@
         --text-header-md: 18px;
     }
 
-    // Typography
-    --font-body: 'Avenir Next', helvetica, arial, sans-serif;
-    --font-heading: 'Avenir Next', helvetica, arial, sans-serif;
-    --font-size: 1rem;
-
-    @include respond-max($screen-md) {
-        font-size: $font-sm;
-    }
-
     // Effects
     // Transitions
     --transition-slow: 1s ease;
@@ -208,6 +200,15 @@
 
     // Elements
     --header-height: 64px;
+
+    // Typography
+    --font-body: 'Avenir Next', helvetica, arial, sans-serif;
+    --font-heading: 'Avenir Next', helvetica, arial, sans-serif;
+    --font-size: 1rem;
+
+    @include respond-max($screen-md) {
+        font-size: $font-sm;
+    }
 }
 
 ::selection {
@@ -248,6 +249,7 @@
 }
 
 *[data-context] {
+
     /* Primary context styles */
     &[data-context='primary'] {
         --context-color: var(--color-primary);

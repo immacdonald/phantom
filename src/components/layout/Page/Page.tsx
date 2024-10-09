@@ -7,10 +7,11 @@ interface PageProps extends CommonComponentProps {
     title?: string;
     header?: ReactNode;
     footer?: ReactNode;
+    aside?: ReactNode;
     children?: ReactNode;
 }
 
-const PageComponent: FC<PageProps> = ({ title, header, footer, children, className, ...rest }) => {
+const PageComponent: FC<PageProps> = ({ title, header, footer, aside, children, className, ...rest }) => {
     const { config, computeClasses } = useStyleContext();
     const computedTitle = title || config?.page?.defaultTitle;
 
@@ -31,9 +32,12 @@ const PageComponent: FC<PageProps> = ({ title, header, footer, children, classNa
         <>
             {header || config?.page?.defaultHeader}
             <main className={pageClasses} {...rest}>
-                {children}
+                <article>
+                    {children}
+                </article>
+                {aside}
+                {footer || config?.page?.defaultFooter}
             </main>
-            {footer || config?.page?.defaultFooter}
         </>
     );
 };

@@ -15,8 +15,12 @@ html {
     height: 100%;
     display: block;
     box-sizing: border-box;
-    overflow-y: overlay;
     scroll-behavior: smooth;
+
+    &[data-noscroll] body {
+        overflow-y: hidden;
+        padding-right: 14px;
+    }
 }
 
 ::selection {
@@ -30,7 +34,7 @@ html {
 
 ::-webkit-scrollbar-track {
     background: var(--scrollbar-background-color);
-    outline: 1px solid var(--scrollbar-color);
+    //outline: 1px solid var(--scrollbar-color);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -43,9 +47,13 @@ body {
     width: 100%;
     font-family: var(--font-body);
     font-size: var(--font-size);
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--color-text);
     background-color: var(--color-surface-page);
     background-attachment: fixed;
     overflow-x: hidden;
+}
+
+[id] {
+    scroll-margin-top: 128px;
 }

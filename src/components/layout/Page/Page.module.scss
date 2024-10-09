@@ -2,18 +2,38 @@
     position: relative;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    flex: 1 0 auto;
+    flex-direction: row-reverse;
 
-    > section {
-        &:not(:last-of-type) {
-            flex: 0 0 auto;
-        }
+    >article {
+        width: calc(100% - 256px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        grid-area: article;
 
-        &:last-of-type {
-            flex: 1 0 auto;
+        >section {
+            &:not(:last-of-type) {
+                flex: 0 0 auto;
+            }
+
+            &:last-of-type {
+                flex: 1 0 auto;
+            }
         }
+    }
+
+    >aside {
+        width: 256px;
+        position: sticky;
+        top: var(--header-height);
+        left: 0;
+        height: calc(100% - var(--header-height));
+        border-right: var(--border-light);
+        grid-area: aside;
+        height: calc(100vh - var(--header-height));
+        padding: $sm;
+        overflow-y: scroll;
     }
 }

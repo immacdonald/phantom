@@ -21,7 +21,7 @@
         margin: var(--v-thickness);
         border: var(--v-thickness) solid var(--v-color);
         border-radius: 50%;
-        animation: loading-ring 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        animation: loading-ring 1.5s ease(0.5, 0, 0.5, 1) infinite;
         border-color: var(--v-color) transparent transparent transparent;
 
         &:nth-child(1) {

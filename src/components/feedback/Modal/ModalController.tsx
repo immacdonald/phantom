@@ -22,6 +22,14 @@ const ModalController: FC<CommonComponentProps> = ({ className, ...rest }) => {
         };
     }, []);
 
+    useEffect(() => {
+        if(modal) {
+            document.documentElement.setAttribute('data-noscroll', '');
+        } else {
+            document.documentElement.removeAttribute('data-noscroll');
+        }
+    }, [modal])
+
     const controllerClasses = clsx(
         style.modals,
         {
@@ -32,7 +40,7 @@ const ModalController: FC<CommonComponentProps> = ({ className, ...rest }) => {
     );
 
     return (
-        <div className={controllerClasses} {...rest}>
+        <div className={controllerClasses} onScroll={(event) => {event.preventDefault()}} {...rest}>
             {modal}
         </div>
     );

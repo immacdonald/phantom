@@ -1,4 +1,4 @@
-import { VisualContext } from '@types';
+import { CommonComponentProps, VisualContext } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useScrollDistance } from '@hooks';
@@ -20,13 +20,13 @@ interface DynamicHeaderProps extends DynamicHeader {
     dynamicSettings?: DynamicHeaderSettings;
 }
 
-interface SimpleDynamicHeaderProps extends DynamicHeaderProps {
+interface SimpleDynamicHeaderProps extends DynamicHeaderProps, CommonComponentProps {
     children: ReactNode;
 }
 
 const DEFAULT_SCROLL_DISTANCE = 400;
 
-const SimpleDynamicHeader: FC<SimpleDynamicHeaderProps> = ({ inline = false, pageSpace, hasBackground, context, dynamicSettings, children }) => {
+const SimpleDynamicHeader: FC<SimpleDynamicHeaderProps> = ({ inline = false, pageSpace, hasBackground, context, dynamicSettings, children, className, ...rest }) => {
     const scroll = useScrollDistance();
     const scrolled = dynamicSettings?.enabled && scroll > (dynamicSettings!.scrollDistance || DEFAULT_SCROLL_DISTANCE);
 
@@ -43,10 +43,10 @@ const SimpleDynamicHeader: FC<SimpleDynamicHeaderProps> = ({ inline = false, pag
         [style.overlapPage]: currentSettings.pageSpace == 'overlap',
         [style.padPage]: currentSettings.pageSpace == 'pad',
         [style.background]: currentSettings.hasBackground
-    });
+    }, className);
 
     return (
-        <header className={headerClasses} data-context={currentSettings.context}>
+        <header className={headerClasses} data-context={currentSettings.context} {...rest}>
             {children}
         </header>
     );

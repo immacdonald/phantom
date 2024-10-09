@@ -8,7 +8,7 @@ const useResponsiveContext = (): ResponsiveContextInterface => {
     if (context === undefined) {
         throw new Error('useResponsiveContext was used outside of its Provider');
     } else if (!context) {
-        //throw new Error('useResponsiveContext is null');
+        throw new Error('useResponsiveContext is null');
         console.warn('useResponsiveContext is null');
         return {
             parse: () => undefined,

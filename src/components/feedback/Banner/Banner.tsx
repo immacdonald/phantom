@@ -3,6 +3,7 @@ import { FC, forwardRef, useEffect, useState } from 'react';
 import { useStyleContext } from '@contexts';
 import { popNotification } from './notifications';
 import style from './Banner.module.scss';
+import { createPortal } from 'react-dom';
 
 interface BannerProps extends CommonComponentProps {
     notificationLength?: number;
@@ -66,9 +67,11 @@ const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notif
     }, [state, notificationChange]);
 
     return (
-        <div className={computeClasses(style.banner, 'banner', className)} data-mode={type} data-state={state ? 'on' : 'off'} ref={ref} {...rest}>
-            <span className={style.message}>{message}</span>
-        </div>
+        createPortal((
+            <div className={computeClasses(style.banner, 'banner', className)} data-mode={type} data-state={state ? 'on' : 'off'} ref={ref} {...rest}>
+                <span className={style.message}>{message}</span>
+            </div>
+        ), document.getElementById("root")!)
     );
 });
 

@@ -33,14 +33,16 @@ interface StyleContextInterface {
 
 const StyleContext = createContext<StyleContextInterface | null>(null);
 
-interface StyleContextProviderProps extends Omit<StyleContextInterface, 'computeClasses'> {
+interface StyleConfiguration extends Omit<StyleContextInterface, 'computeClasses'> {};
+
+interface StyleContextProviderProps extends StyleConfiguration {
     children: ReactNode;
 }
 
 const StyleContextProvider: FC<StyleContextProviderProps> = ({ config, children }): ReactElement => {
     const computeClasses = useCallback(
         (style: string, component: string, className?: string) => {
-            return clsx(style, (config as Record<string, ComponentDefaultConfig>)[component]?.defaultClassName, className);
+            return clsx(style, ((config || {}) as Record<string, ComponentDefaultConfig>)[component]?.defaultClassName, className);
         },
         [config]
     );
@@ -48,5 +50,5 @@ const StyleContextProvider: FC<StyleContextProviderProps> = ({ config, children 
     return <StyleContext.Provider value={{ config, computeClasses }}>{children}</StyleContext.Provider>;
 };
 
-export type { StyleContextInterface as StyleConfiguration, StyleContextInterface };
+export type { StyleConfiguration, StyleContextInterface };
 export { StyleContext, StyleContextProvider };

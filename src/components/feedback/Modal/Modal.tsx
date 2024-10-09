@@ -1,12 +1,12 @@
 import { CommonComponentProps } from '@types';
-import { FC, forwardRef, ReactNode } from 'react';
+import { FC, forwardRef, ReactElement, ReactNode } from 'react';
 import { Button, Heading, Icon } from '@components';
 import { useStyleContext } from '@contexts';
 import { setModal } from './modals';
 import style from './Modal.module.scss';
 
 interface ModalProps extends CommonComponentProps {
-    icon?: ReactNode;
+    icon?: ReactElement;
     header: string;
     accept?: string | null;
     reject?: string | null;

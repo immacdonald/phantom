@@ -1,6 +1,7 @@
 .banner {
-    position: absolute;
+    position: fixed;
     top: $sm;
+    left: 50%;
     min-width: min(max(50%, 320px), 95%);
     min-height: 48px;
     z-index: 200;
@@ -14,13 +15,13 @@
     border: 1px solid transparent;
     box-shadow: var(--shadow-floating);
     opacity: 0;
-    transform: translateY(-120%);
+    transform: translate(-50%, -120%);
     transition:
         transform var(--transition-slow),
         opacity var(--transition-slow);
 
     &[data-state='on'] {
-        transform: translateY(0%);
+        transform: translate(-50%, 0%);
         opacity: 1;
     }
 

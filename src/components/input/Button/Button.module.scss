@@ -7,7 +7,7 @@
             color: $hover;
         }
 
-        &:active {
+        &:focus::active {
             color: $active;
         }
     }
@@ -22,7 +22,7 @@
             border-color: $borderHover;
         }
 
-        &:active {
+        &:focus::active {
             border-color: $borderSelected;
         }
     }
@@ -38,7 +38,7 @@
             background-color: $hover;
         }
 
-        &:active {
+        &:focus::active {
             background-color: var(--alpha-dark-1);
         }
     }
@@ -53,7 +53,7 @@
             background-color: $backgroundHover;
         }
 
-        &:active {
+        &:focus::active {
             background-color: $backgroundSelected;
         }
     }
@@ -108,6 +108,7 @@
     margin: 0;
     font-size: var(--v-font);
     font-weight: 500;
+    gap: $xs;
     transition:
         background var(--transition-mid),
         transform var(--transition-mid),
@@ -122,10 +123,6 @@
         align-items: center;
         justify-content: center;
         text-wrap: nowrap;
-
-        &:not(:last-child) {
-            padding-right: $xs;
-        }
     }
 
     svg {
@@ -153,6 +150,7 @@
     }
 
     &.outline {
+        @include filled(var(--input-color-bg), var(--input-color-bg), var(--input-color-bg));
         @include outline(var(--context-color, var(--input-border-color)), var(--context-color-hover, var(--input-color-active)), var(--context-color-active, var(--input-color-active)));
         @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
     }

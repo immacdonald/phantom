@@ -7,7 +7,7 @@ const useStyleContext = (): StyleContextInterface => {
     if (context === undefined) {
         throw new Error('useStyleContext was used outside of its Provider');
     } else if (!context) {
-        //throw new Error('useStyleContext is null');
+        throw new Error('useStyleContext is null');
         console.warn('useStyleContext is null');
         return {
             config: undefined,

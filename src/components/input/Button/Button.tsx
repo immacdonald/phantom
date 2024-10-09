@@ -1,5 +1,5 @@
-import type { ButtonStyle, CommonComponentProps, FlexAlign, VisualContext } from '@types';
-import { ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, ReactNode, useCallback, useMemo } from 'react';
+import type { FlexAlign, VisualContext } from '@types';
+import { ComponentPropsWithoutRef, ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, ReactNode, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import type { IconProps } from '@components';
@@ -7,7 +7,9 @@ import { Loading } from '@components';
 import { orUndefined } from '@utility';
 import styles from './Button.module.scss';
 
-interface ButtonProps extends CommonComponentProps<HTMLButtonElement> {
+export type ButtonStyle = 'ghost' | 'outline' | 'filled' | 'text';
+
+interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
     size?: 'regular' | 'small' | 'large';
     full?: boolean;
     align?: FlexAlign;
@@ -20,7 +22,6 @@ interface ButtonProps extends CommonComponentProps<HTMLButtonElement> {
     link?: string;
     isLoading?: boolean;
     disabled?: boolean;
-    type?: 'button' | 'reset' | 'submit';
     form?: string;
     children?: ReactNode;
 }
@@ -39,12 +40,12 @@ const Button: FC<ButtonProps> = ({
     link,
     isLoading = false,
     disabled = false,
-    type = 'button',
     form,
     children,
     className,
+    id,
     style,
-    id
+    ...rest
 }) => {
     const buttonClasses = clsx(
         styles.button,
@@ -77,11 +78,12 @@ const Button: FC<ButtonProps> = ({
 
     const visibility = useMemo(() => orUndefined(isLoading, { visibility: 'hidden' } as CSSProperties), [isLoading]);
 
-    const props = {
+    const commonProps = {
         className: buttonClasses,
         'data-context': context,
         style: { justifyContent: align, ...style },
-        id
+        onMouseOver: onHover,
+        id,
     };
 
     const content = (
@@ -97,14 +99,14 @@ const Button: FC<ButtonProps> = ({
         if (link.includes('#')) {
             /* eslint-disable jsx-a11y/mouse-events-have-key-events */
             return (
-                <a href={link} onMouseOver={onHover} {...props}>
+                <a href={link} {...commonProps}>
                     {content}
                 </a>
             );
             /* eslint-enable jsx-a11y/mouse-events-have-key-events */
         } else {
             return (
-                <Link to={link} onMouseOver={onHover} {...props}>
+                <Link to={link} {...commonProps}>
                     {content}
                 </Link>
             );
@@ -112,7 +114,7 @@ const Button: FC<ButtonProps> = ({
     }
 
     return (
-        <button type={type} onClick={handleMouseClick} onMouseOver={onHover} onFocus={() => {}} form={form} disabled={disabled} {...props}>
+        <button onClick={handleMouseClick} onFocus={() => {}} form={form} disabled={disabled} {...commonProps} {...rest}>
             {content}
         </button>
     );

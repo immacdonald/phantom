@@ -9,5 +9,7 @@ node_modules
 /lib
 /build
 
+/phantom-website
+
 # Additional
 .DS_STORE
