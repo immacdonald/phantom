@@ -1,10 +1,10 @@
 import { Breakpoints } from '@types';
 import { FC, ReactNode } from 'react';
 import { useResponsiveContext } from '@contexts';
-import { Column, ColumnProps } from '../Column';
+import { FlexProps, Column } from '../Flex';
 import style from './Split.module.scss';
 
-interface SplitColumnProps extends ColumnProps {
+interface SplitColumnProps extends Omit<FlexProps, 'flex'> {
     breakpoint: Breakpoints;
 }
 

@@ -2,19 +2,17 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: $sm;
-    padding: 2px;
+    margin-bottom: var(--space-sm);
+    padding-inline: var(--space-sm);
+    border: none;
 
-    input {
-        margin-bottom: 0 !important;
+    > input {
+        margin-block: var(--space-sm);
     }
 
-    > p {
-        margin-left: $sm;
-    }
-
-    label {
-        margin-left: 12px;
+    > [role='alert'] {
+        color: var(--color-critical);
+        font-weight: bold;
     }
 
     &:last-child {

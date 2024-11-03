@@ -5,7 +5,7 @@
     min-width: 480px;
     max-height: 90%;
     border-radius: var(--border-radius);
-    background-color: var(--color-surface-overlay);
+    background-color: var(--color-background-overlay);
     box-shadow: var(--shadow-floating);
 }
 
@@ -13,14 +13,14 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: $md;
+    padding: var(--space);
 }
 
 .buttonGroup {
     display: flex;
     justify-self: flex-end;
-    margin-top: $md;
-    gap: $sm;
+    margin-top: var(--space);
+    gap: var(--space-sm);
     justify-content: center;
     align-items: center;
 }
@@ -37,13 +37,12 @@
 .header {
     display: flex;
     width: 100%;
-    margin-top: $sm;
-    margin-bottom: $xs;
+    margin-block: var(--space-sm);
     align-self: flex-start;
     align-items: center;
 }
 
 .message {
-    margin: $xs;
+    margin: var(--space-sm);
     width: 100%;
 }

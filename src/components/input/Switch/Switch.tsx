@@ -1,22 +1,13 @@
-import type { Callback } from '@types';
-import { ChangeEvent, FC } from 'react';
+import type { CommonComponentProps } from '@types';
+import { FC } from 'react';
 import style from './Switch.module.scss';
 
-interface SwitchProps {
-    state: boolean;
-    onChange?: Callback<boolean>;
-}
+interface SwitchProps extends CommonComponentProps<HTMLInputElement> {}
 
-const Switch: FC<SwitchProps> = ({ state, onChange = (): void => {} }) => {
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (onChange) {
-            onChange(event.target.checked);
-        }
-    }
-
+const Switch: FC<SwitchProps> = ({ ...props }) => {
     return (
         <div className={style.switch}>
-            <input type="checkbox" onChange={handleChange} checked={state} data-switch />
+            <input type="checkbox" data-switch {...props} />
             <span />
         </div>
     );

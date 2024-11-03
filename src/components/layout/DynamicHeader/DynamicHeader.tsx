@@ -2,7 +2,7 @@ import { CommonComponentProps, VisualContext } from '@types';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useScrollDistance } from '@hooks';
-import style from './SimpleDynamicHeader.module.scss';
+import style from './DynamicHeader.module.scss';
 
 interface DynamicHeader {
     inline?: boolean;
@@ -16,17 +16,17 @@ interface DynamicHeaderSettings extends DynamicHeader {
     scrollDistance?: number;
 }
 
-interface DynamicHeaderProps extends DynamicHeader {
+interface BaseDynamicHeaderProps extends DynamicHeader {
     dynamicSettings?: DynamicHeaderSettings;
 }
 
-interface SimpleDynamicHeaderProps extends DynamicHeaderProps, CommonComponentProps {
+interface DynamicHeaderProps extends BaseDynamicHeaderProps, CommonComponentProps {
     children: ReactNode;
 }
 
 const DEFAULT_SCROLL_DISTANCE = 400;
 
-const SimpleDynamicHeader: FC<SimpleDynamicHeaderProps> = ({ inline = false, pageSpace, hasBackground, context, dynamicSettings, children, className, ...rest }) => {
+const DynamicHeader: FC<DynamicHeaderProps> = ({ inline = false, pageSpace, hasBackground, context, dynamicSettings, children, className, ...rest }) => {
     const scroll = useScrollDistance();
     const scrolled = dynamicSettings?.enabled && scroll > (dynamicSettings!.scrollDistance || DEFAULT_SCROLL_DISTANCE);
 
@@ -37,13 +37,17 @@ const SimpleDynamicHeader: FC<SimpleDynamicHeaderProps> = ({ inline = false, pag
         context: scrolled ? dynamicSettings!.context : context
     };
 
-    const headerClasses = clsx(style.header, {
-        [style.inline]: currentSettings.inline,
-        [style.fixed]: !currentSettings.inline,
-        [style.overlapPage]: currentSettings.pageSpace == 'overlap',
-        [style.padPage]: currentSettings.pageSpace == 'pad',
-        [style.background]: currentSettings.hasBackground
-    }, className);
+    const headerClasses = clsx(
+        style.header,
+        {
+            [style.inline]: currentSettings.inline,
+            [style.fixed]: !currentSettings.inline,
+            [style.overlapPage]: currentSettings.pageSpace == 'overlap',
+            [style.padPage]: currentSettings.pageSpace == 'pad',
+            [style.background]: currentSettings.hasBackground
+        },
+        className
+    );
 
     return (
         <header className={headerClasses} data-context={currentSettings.context} {...rest}>
@@ -52,5 +56,5 @@ const SimpleDynamicHeader: FC<SimpleDynamicHeaderProps> = ({ inline = false, pag
     );
 };
 
-export type { DynamicHeaderProps };
-export { SimpleDynamicHeader };
+export type { BaseDynamicHeaderProps as DynamicHeaderProps };
+export { DynamicHeader };

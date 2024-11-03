@@ -1,9 +1,9 @@
+import type { IconProps } from '@components';
 import type { Callback, CommonComponentProps } from '@types';
 import { PollingRate } from '@types';
 import { ComponentType, FC, ReactNode, useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
 import { ChevronIcon } from '@assets/icons';
-import type { ButtonStyle, IconProps } from '@components';
+import clsx from 'clsx';
 import { Button } from '@components';
 import { useInterval } from '@hooks';
 import styles from './Accordion.module.scss';
@@ -12,14 +12,13 @@ interface AccordionProps extends Omit<CommonComponentProps, 'onClick'> {
     label: string;
     borderless?: boolean;
     compact?: boolean;
-    buttonStyle?: ButtonStyle;
     Icon?: ComponentType<IconProps> | null;
     defaultState?: boolean;
     onClick?: Callback<void>;
     children: ReactNode;
 }
 
-const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle, Icon = ChevronIcon, defaultState = false, className, style, onClick = (): void => {}, children }) => {
+const Accordion: FC<AccordionProps> = ({ label, borderless, compact, Icon = ChevronIcon, defaultState = false, className, style, onClick = (): void => {}, children }) => {
     const [open, setState] = useState<boolean>(false);
     const [height, setHeight] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
@@ -54,7 +53,7 @@ const Accordion: FC<AccordionProps> = ({ label, borderless, compact, buttonStyle
                         setState(!open);
                         onClick();
                     }}
-                    visual={buttonStyle ?? 'ghost'}
+                    variant="ghost"
                     Icon={Icon ?? undefined}
                     align="space-between"
                     iconRight

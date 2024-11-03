@@ -1,6 +1,7 @@
 import type { NullablePrimitive, Option } from '@types';
-import { FC, ReactNode, useState } from 'react';
+import { CSSProperties, FC, ReactNode, useState } from 'react';
 import { Button, Row, Segmented } from '@components';
+import { orUndefined } from '@utility';
 import style from './TabGroup.module.scss';
 
 export type Tab = {
@@ -12,10 +13,11 @@ export type Tab = {
 interface TabGroupProps {
     tabs: Tab[];
     variant?: 'tabs' | 'segmented';
-    containerClass?: string;
+    innerClassName?: string;
+    innerStyle?: CSSProperties;
 }
 
-const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', containerClass }) => {
+const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', innerClassName, innerStyle }) => {
     const [selectedTab, setTab] = useState<number>(0);
 
     return (
@@ -36,10 +38,10 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', containerClass })
                         const selected = index == selectedTab;
                         return (
                             <Button
+                                type={orUndefined(selected, 'primary')}
+                                variant={orUndefined(!selected, 'ghost')}
                                 key={index}
                                 full
-                                visual={selected ? 'filled' : 'filled'}
-                                context={selected ? 'primary' : undefined}
                                 onClick={() => setTab(index)}
                                 className={style.tabButton}
                                 disabled={tab.disabled}
@@ -50,7 +52,9 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', containerClass })
                     })}
                 </Row>
             )}
-            <div className={containerClass}>{tabs[selectedTab].tab}</div>
+            <div className={innerClassName} style={innerStyle}>
+                {tabs[selectedTab].tab}
+            </div>
         </>
     );
 };

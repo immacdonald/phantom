@@ -4,3 +4,4 @@ export * from './contexts';
 export * from './hooks';
 export * from './types';
 export * from './utility';
+export * from './styles/tokens';

@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: $lg;
+    margin-bottom: var(--space);
 
     .image {
         width: 100%;
@@ -17,7 +17,7 @@
         object-fit: cover;
 
         &.border {
-            border: $sm solid var(--border-light);
+            border: 1px solid var(--border-light);
         }
 
         &.round {
@@ -31,7 +31,7 @@
     }
 
     .caption {
-        margin-top: $sm;
+        margin-top: var(--space-sm);
         color: var(--color-text-soft);
     }
 }

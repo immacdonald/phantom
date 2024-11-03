@@ -1,12 +1,11 @@
 import { CommonComponentProps } from '@types';
 import { FC, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import clsx from 'clsx';
-import { useStyleContext } from '@contexts';
 import { getModal } from './modals';
 import style from './ModalController.module.scss';
 
-const ModalController: FC<CommonComponentProps> = ({ className, ...rest }) => {
-    const { config } = useStyleContext();
+const ModalController: FC<CommonComponentProps> = ({ className, ...props }) => {
     const [modal, setModal] = useState<JSX.Element | null>(null);
 
     useEffect(() => {
@@ -23,26 +22,32 @@ const ModalController: FC<CommonComponentProps> = ({ className, ...rest }) => {
     }, []);
 
     useEffect(() => {
-        if(modal) {
+        if (modal) {
             document.documentElement.setAttribute('data-noscroll', '');
         } else {
             document.documentElement.removeAttribute('data-noscroll');
         }
-    }, [modal])
+    }, [modal]);
 
     const controllerClasses = clsx(
         style.modals,
         {
             [style.active]: !!modal
         },
-        config?.modal?.controller?.defaultClassName,
         className
     );
 
-    return (
-        <div className={controllerClasses} onScroll={(event) => {event.preventDefault()}} {...rest}>
+    return createPortal(
+        <div
+            className={controllerClasses}
+            onScroll={(event) => {
+                event.preventDefault();
+            }}
+            {...props}
+        >
             {modal}
-        </div>
+        </div>,
+        document.getElementById('root')!
     );
 };
 

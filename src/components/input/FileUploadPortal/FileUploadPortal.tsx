@@ -1,3 +1,4 @@
+import { Callback } from '@types';
 import { CSSProperties, ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 import { CancelIcon, UploadFileIcon } from '@assets/icons';
 import { Button, Column } from '@components';
@@ -5,7 +6,7 @@ import style from './FileUploadPortal.module.scss';
 
 interface FileUploadPortalProps {
     maxFiles?: number;
-    submit: (file: File[]) => void;
+    submit: Callback<File[]>;
 }
 
 const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit }) => {
@@ -70,7 +71,7 @@ const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit }) =
             {uploadedFiles.length > 0 && <div className={style.fileList}>{fileList}</div>}
             {uploadedFiles.length > 0 && (
                 <Column>
-                    <Button onClick={() => submit(uploadedFiles)} disabled={!uploadedFiles.length} visual="filled" context="primary">
+                    <Button onClick={() => submit(uploadedFiles)} disabled={!uploadedFiles.length} type="primary">
                         Upload Files
                     </Button>
                 </Column>

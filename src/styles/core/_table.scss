@@ -1,71 +1,73 @@
 @use '../tokens' as *;
 
-// Tables
-table {
-    color: var(--color-text);
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    line-height: normal;
-    text-align: left;
-    border-radius: $sm;
+@layer base {
+    // Tables
+    table {
+        color: var(--color-text);
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        line-height: normal;
+        text-align: left;
+        border-radius: var(--space-sm);
 
-    th {
-        padding: $xs;
-        border-bottom: var(--border-light);
-    }
+        th {
+            padding: var(--space-xs);
+            border-bottom: var(--border-light);
+        }
 
-    td {
-        padding: $xs;
-    }
+        td {
+            padding: var(--space-xs);
+        }
 
-    tr:nth-child(even) {
-        background-color: var(--color-surface-background);
-    }
-}
-
-table[data-interactive] {
-    overflow-y: auto;
-    border-collapse: separate;
-    border-spacing: 0;
-
-    thead {
-        height: 48px;
-
-        tr {
-            th {
-                background-color: var(--color-surface-foreground);
-                border-collapse: collapse;
-                text-align: center;
-                padding: 0 $sm;
-                border-bottom: var(--border-light);
-
-                &:hover {
-                    background-color: var(--color-surface-background);
-                }
-            }
+        tr:nth-child(even) {
+            background-color: var(--color-background);
         }
     }
 
-    tbody {
-        tr {
-            height: 52px;
+    table[data-interactive] {
+        overflow-y: auto;
+        border-collapse: separate;
+        border-spacing: 0;
 
-            td {
-                padding: $xxs $sm;
-                border-top: var(--border-light);
-                text-align: center;
-            }
+        thead {
+            height: 48px;
 
-            &:last-child {
-                td {
+            tr {
+                th {
+                    background-color: var(--color-background-foreground);
+                    border-collapse: collapse;
+                    text-align: center;
+                    padding: 0 var(--space-sm);
                     border-bottom: var(--border-light);
+
+                    &:hover {
+                        background-color: var(--color-background);
+                    }
                 }
             }
         }
-    }
 
-    &[data-interactive] tbody tr:hover td {
-        background-color: var(--color-surface-background);
+        tbody {
+            tr {
+                height: 52px;
+
+                td {
+                    padding: var(--space-xs) var(--space-sm);
+                    border-top: var(--border-light);
+                    text-align: center;
+                }
+
+                &:last-child {
+                    td {
+                        border-bottom: var(--border-light);
+                    }
+                }
+            }
+        }
+
+        &[data-interactive] tbody tr:hover td {
+            background-color: var(--color-background);
+        }
     }
 }

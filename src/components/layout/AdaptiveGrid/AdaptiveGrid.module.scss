@@ -1,7 +1,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: $md $lg;
+    gap: var(--space);
     width: 100%;
     min-height: 320px;
     border-radius: var(--border-radius);

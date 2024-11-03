@@ -7,3 +7,4 @@ export * from './useQueryParams';
 export * from './useScrollDistance';
 export * from './useTheme';
 export * from './useWindowSize';
+export * from './useNoScroll';

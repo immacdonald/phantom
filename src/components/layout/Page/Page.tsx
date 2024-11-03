@@ -1,7 +1,7 @@
 import type { CommonComponentProps } from '@types';
 import { FC, ReactNode, useEffect } from 'react';
-import { withCommonProps } from '@components/hoc';
-import { useStyleContext } from '../../../contexts/useStyleContext';
+import clsx from 'clsx';
+import { Row } from '../Flex';
 import style from './Page.module.scss';
 interface PageProps extends CommonComponentProps {
     title?: string;
@@ -11,9 +11,8 @@ interface PageProps extends CommonComponentProps {
     children?: ReactNode;
 }
 
-const PageComponent: FC<PageProps> = ({ title, header, footer, aside, children, className, ...rest }) => {
-    const { config, computeClasses } = useStyleContext();
-    const computedTitle = title || config?.page?.defaultTitle;
+const Page: FC<PageProps> = ({ title, header, footer, aside, children, className, ...rest }) => {
+    const computedTitle = title;
 
     useEffect(() => {
         if (computedTitle) {
@@ -26,22 +25,28 @@ const PageComponent: FC<PageProps> = ({ title, header, footer, aside, children, 
         });
     }, []);
 
-    const pageClasses = computeClasses(style.page, 'page', className);
+    const pageClasses = clsx(style.page, className);
+
+    /*useEffect(() => {
+        Children.toArray(children).forEach((child, index: number) => {
+            if (isValidElement(child) && child.type === Section) {
+                console.log(`Child ${index} is a section`);
+            }
+        });
+    });*/
 
     return (
         <>
-            {header || config?.page?.defaultHeader}
-            <main className={pageClasses} {...rest}>
-                <article>
-                    {children}
-                </article>
+            {header}
+            <Row>
                 {aside}
-                {footer || config?.page?.defaultFooter}
-            </main>
+                <main className={pageClasses} {...rest}>
+                    <article>{children}</article>
+                    {footer}
+                </main>
+            </Row>
         </>
     );
 };
-
-const Page = withCommonProps(PageComponent);
 
 export { Page };

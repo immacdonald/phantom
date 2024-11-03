@@ -1,9 +1,7 @@
 import { CommonComponentProps } from '@types';
+import { FC, forwardRef, ReactNode } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import clsx from 'clsx';
-import { FC, ReactNode } from 'react';
-import { withCommonProps } from '@components/hoc';
-import { useStyleContext } from '@contexts';
 import { orUndefined } from '@utility';
 import styles from './StyledLink.module.scss';
 
@@ -13,26 +11,16 @@ interface StyledLinkProps extends LinkProps, CommonComponentProps<HTMLAnchorElem
     children: ReactNode;
 }
 
-const StyledLinkComponent: FC<StyledLinkProps> = ({ to, inherit, external, className, children, ...rest }) => {
-    const { computeClasses } = useStyleContext();
-
-    const linkClasses = computeClasses(
-        clsx(styles.link, {
-            [styles.styled]: !inherit
-        }),
-        'styledLink',
-        className
-    );
+const StyledLink: FC<StyledLinkProps> = forwardRef<HTMLAnchorElement, StyledLinkProps>(({ to, inherit, external, className, children, ...props }, ref) => {
+    const linkClasses = clsx(styles.link, { [styles.styled]: !inherit }, className);
 
     const externalProps = orUndefined(external, { target: '_blank', rel: 'noopener noreferrer' });
 
     return (
-        <Link to={to} className={linkClasses} {...externalProps} {...rest}>
+        <Link to={to} className={linkClasses} ref={ref} {...externalProps} {...props}>
             {children}
         </Link>
     );
-};
-
-const StyledLink = withCommonProps(StyledLinkComponent);
+});
 
 export { StyledLink };

@@ -15,11 +15,11 @@
         width: $width;
         height: $full-height;
         border-radius: $full-height;
-        background-color: var(--input-color-bg);
         position: relative;
         transition: 0.15s ease;
         pointer-events: none;
         border: var(--input-border);
+        background-color: var(--input-color-bg-selected);
 
         &::before {
             content: '';

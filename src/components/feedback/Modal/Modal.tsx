@@ -1,11 +1,11 @@
 import { CommonComponentProps } from '@types';
 import { FC, forwardRef, ReactElement, ReactNode } from 'react';
+import clsx from 'clsx';
 import { Button, Heading, Icon } from '@components';
-import { useStyleContext } from '@contexts';
 import { setModal } from './modals';
 import style from './Modal.module.scss';
 
-interface ModalProps extends CommonComponentProps {
+interface ModalProps extends CommonComponentProps<HTMLDivElement> {
     icon?: ReactElement;
     header: string;
     accept?: string | null;
@@ -20,13 +20,24 @@ interface ModalProps extends CommonComponentProps {
 
 const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
     (
-        { icon = null, header, accept = 'Okay', reject = 'Cancel', swapColors = false, onAccept = (): void => {}, closeOnAccept = true, onReject = (): void => {}, form, children, className, ...rest },
+        {
+            icon = null,
+            header,
+            accept = 'Okay',
+            reject = 'Cancel',
+            swapColors = false,
+            onAccept = (): void => {},
+            closeOnAccept = true,
+            onReject = (): void => {},
+            form,
+            children,
+            className,
+            ...props
+        },
         ref
     ) => {
-        const { computeClasses } = useStyleContext();
-
         return (
-            <div className={computeClasses(style.modal, 'modal', className)} ref={ref} {...rest}>
+            <div className={clsx(style.modal, className)} ref={ref} {...props}>
                 <div className={style.container}>
                     <div className={style.content}>
                         <div className={style.header}>
@@ -38,7 +49,7 @@ const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
                     <div className={style.buttonGroup}>
                         {reject && (
                             <Button
-                                visual="outline"
+                                variant="outline"
                                 context={swapColors ? undefined : 'critical'}
                                 onClick={() => {
                                     onReject();
@@ -50,10 +61,10 @@ const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
                         )}
                         {accept && (
                             <Button
-                                visual="filled"
+                                type="primary"
                                 context={swapColors ? 'critical' : undefined}
                                 full={!reject}
-                                type="submit"
+                                htmlType="submit"
                                 form={form}
                                 onClick={() => {
                                     onAccept();

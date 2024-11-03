@@ -1,37 +1,27 @@
-import { FieldError } from 'react-hook-form';
-import { FC, HTMLInputTypeAttribute, InputHTMLAttributes, ReactNode } from 'react';
+import { CommonComponentProps } from '@types';
+import { FC, forwardRef, HTMLInputTypeAttribute, ReactNode } from 'react';
+import { Typography } from '@components/general';
 import style from './FormInput.module.scss';
 
-type InputProps = {
+interface InputProps extends CommonComponentProps<HTMLInputElement> {
     name: string;
     type?: HTMLInputTypeAttribute;
-    register: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-    validationSchema?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     label?: string | ReactNode;
-    error?: FieldError;
-    id?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+    error?: string;
+}
 
-const FormInput: FC<InputProps> = ({ name, type = 'text', register, validationSchema, label, error, id, ...rest }) => {
-    const Input = type == 'textarea' ? 'textarea' : 'input';
+const FormInput: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(({ name, type = 'text', label, error, id, ...props }, ref) => {
     return (
-        <div className={style.input}>
-            <div className={style.inputRow}>
-                <Input id={id || name} name={name} type={type} {...register(name, validationSchema)} aria-invalid={error ? 'true' : 'false'} {...rest} />
-                {label && <label htmlFor={id || name}>{label}</label>}
-            </div>
-            {error && error.type == 'required' && (
-                <p role="alert" className="error">
-                    {error.message || 'Required'}
-                </p>
+        <fieldset className={style.input}>
+            {label && <label htmlFor={id || name}>{label}</label>}
+            <input id={id || name} name={name} type={type} aria-invalid={error ? 'true' : 'false'} ref={ref} {...props} />
+            {error && (
+                <Typography.Text role="alert" className="error">
+                    {error}
+                </Typography.Text>
             )}
-            {error && error.type != 'required' && (
-                <p role="alert" className="error">
-                    {error.message || 'Invalid value'}
-                </p>
-            )}
-        </div>
+        </fieldset>
     );
-};
+});
 
 export { FormInput };

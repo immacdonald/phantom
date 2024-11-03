@@ -1,6 +1,6 @@
 .popover {
     --popover-text-color: var(--color-text);
-    --popover-background-color: var(--color-surface-overlay);
+    --popover-background-color: var(--color-background-overlay);
     --popover-border-color: var(--border-color-light);
     --popover-border-width: 1px;
     --popover-arrow-size: 8px;
@@ -21,7 +21,7 @@
     .popoverInner {
         color: var(--popover-text-color);
         background-color: var(--popover-background-color);
-        padding: $xs $sm;
+        padding: var(--space-xs) var(--space-sm);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow-floating);
         border: var(--popover-border-width) solid var(--popover-border-color);

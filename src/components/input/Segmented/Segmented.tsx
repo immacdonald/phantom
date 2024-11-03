@@ -12,7 +12,7 @@ interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
     onChange?: Callback<NullablePrimitive>;
 }
 
-const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full = false, disabled = false, onChange = (): void => {}, className, style }) => {
+const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full, disabled, onChange = (): void => {}, className, style }) => {
     const [selected, setSelection] = useState<number | null>(defaultValue ?? null);
     const handleChange = (index: number): void => {
         setSelection(index);
@@ -41,7 +41,7 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
                 return (
                     <Button
                         key={index}
-                        visual="ghost"
+                        variant="ghost"
                         onClick={() => handleChange(index)}
                         full={full}
                         style={{ zIndex: '1', color: isSelected ? 'var(--color-text-on-primary)' : 'var(--context-color)' }}

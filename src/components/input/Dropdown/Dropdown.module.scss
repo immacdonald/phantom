@@ -57,7 +57,7 @@
     }
 
     [class^='select__indicator'] {
-        margin-right: $sm;
+        margin-right: var(--space-sm);
     }
 
     [class^='select__single-value'] {

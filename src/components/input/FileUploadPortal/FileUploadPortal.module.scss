@@ -1,5 +1,5 @@
 .wrapper {
-    margin-top: $lg;
+    margin-top: var(--space);
 }
 
 .inputWrapper {
@@ -10,7 +10,7 @@
     width: 100%;
     height: $height;
     position: relative;
-    padding: $xxs;
+    padding: var(--space-xs);
 
     input[type='file'] {
         width: 100%;
@@ -42,13 +42,13 @@
 }
 
 .fileList {
-    font-size: $font-sm;
+    font-size: var(--font-size-sm);
     display: flex;
     flex-direction: column;
 
     .fileLabel {
         display: inline-flex;
         align-items: center;
-        gap: $sm;
+        gap: var(--space-sm);
     }
 }

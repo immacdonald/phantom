@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
 
-    $gap: $xs;
+    $gap: var(--space-xs);
 
     padding-inline: $gap;
     gap: $gap;
@@ -15,7 +15,7 @@
     @include base-input;
     @include hide-scrollbar;
 
-    background-color: var(--color-surface-background);
+    background-color: var(--color-background);
     outline-width: 0;
     border-width: 0 !important;
 

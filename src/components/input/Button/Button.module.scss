@@ -2,12 +2,11 @@
     color: $default;
 
     &:not([disabled], .disabled) {
-        &:hover,
-        &:focus {
+        &:hover {
             color: $hover;
         }
 
-        &:focus::active {
+        &:active {
             color: $active;
         }
     }
@@ -17,12 +16,11 @@
     border: 1px solid $border;
 
     &:not([disabled], .disabled) {
-        &:hover,
-        &:focus {
+        &:hover {
             border-color: $borderHover;
         }
 
-        &:focus::active {
+        &:active {
             border-color: $borderSelected;
         }
     }
@@ -33,12 +31,11 @@
     background: transparent;
 
     &:not([disabled], .disabled) {
-        &:hover,
-        &:focus {
+        &:hover {
             background-color: $hover;
         }
 
-        &:focus::active {
+        &:active {
             background-color: var(--alpha-dark-1);
         }
     }
@@ -48,12 +45,11 @@
     background-color: $background;
 
     &:not([disabled], .disabled) {
-        &:hover,
-        &:focus {
+        &:hover {
             background-color: $backgroundHover;
         }
 
-        &:focus::active {
+        &:active {
             background-color: $backgroundSelected;
         }
     }
@@ -68,7 +64,7 @@
     text-align: center;
     font-size: var(--font-size);
     font-family: var(--font-body);
-    padding: $sm;
+    padding: var(--space-sm);
     border-radius: var(--border-radius);
 }
 
@@ -81,7 +77,7 @@
 
     --v-size: 40px;
     --v-internal: 24px;
-    --v-font: #{var(--font-size)};
+    --v-font: #{var(--font-size-sm)};
 
     &.large {
         --v-size: 64px;
@@ -91,7 +87,7 @@
     &.small {
         --v-size: 32px;
         --v-internal: 12px;
-        --v-font: #{$font-xs};
+        --v-font: var(--font-size-xs);
     }
 
     width: auto;
@@ -104,11 +100,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $sm;
+    padding: var(--space-sm);
     margin: 0;
     font-size: var(--v-font);
-    font-weight: 500;
-    gap: $xs;
+    font-weight: normal;
+    gap: var(--space-xs);
     transition:
         background var(--transition-mid),
         transform var(--transition-mid),

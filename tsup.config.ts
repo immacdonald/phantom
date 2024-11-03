@@ -1,10 +1,9 @@
+import path from 'path';
 import { copy } from 'esbuild-plugin-copy';
 import svgr from 'esbuild-plugin-svgr';
 import { postcssModules, sassPlugin } from 'esbuild-sass-plugin';
 import { defineConfig } from 'tsup';
-import path from 'path';
 
-// eslint-disable-next-line import-x/no-default-export
 export default defineConfig({
     splitting: true,
     sourcemap: true,
@@ -29,7 +28,9 @@ export default defineConfig({
                     return source;
                 }
             },
-            transform: postcssModules({})
+            transform: postcssModules({
+                generateScopedName: 'phantom-[local]_[hash:base64:5]'
+            })
         }),
         svgr(),
         copy({

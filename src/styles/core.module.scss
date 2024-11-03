@@ -1,13 +1,16 @@
 @use 'tokens' as *;
 @forward 'core';
 
-@mixin selection {
-    --color-selection: var(--color-primary-alpha);
-}
+@layer tokens {
+    @mixin selection {
+        --color-selection: var(--color-primary-alpha);
+    }
 
-:root {
-    // Colors
-    // To Consider
+    :root {
+        // Colors
+        // To Consider
+
+        /*
     --s-grey-1: rgb(250 250 250);
     --s-grey-2: rgb(244 244 244);
     --s-grey-3: rgb(235 235 235);
@@ -20,327 +23,350 @@
     --s-grey-10: rgb(41 41 41);
     --s-grey-11: rgb(31 31 31);
     --s-grey-12: rgb(20 20 20);
+    */
 
-    // Light
-    --white: rgb(255 255 255);
-    --grey-1: rgb(245 245 245);
-    --grey-2: rgb(242 243 245);
-    --grey-3: rgb(232 234 236);
+        // Light
+        --white: rgb(255 255 255);
+        --grey-1: rgb(245 245 245);
+        --grey-2: rgb(242 243 245);
+        --grey-3: rgb(232 234 236);
 
-    // Dark
-    --grey-4: rgb(148 155 160);
-    --grey-5: rgb(88 88 88);
-    --grey-6: rgb(34 37 41);
-    --grey-7: rgb(24 25 27);
-    --black: rgb(1 2 3);
+        // Dark
+        --grey-4: rgb(148 155 160);
+        --grey-5: rgb(88 88 88);
+        --grey-6: rgb(34 37 41);
+        --grey-7: rgb(24 25 27);
+        --black: rgb(1 2 3);
 
-    // Text
-    --color-text-on-light: var(--grey-6);
-    --color-text-soft-on-light: var(--grey-5);
-    --color-text-on-dark: var(--grey-1);
-    --color-text-soft-on-dark: var(--grey-3);
-    --color-text-disabled: var(--grey-4);
-    --color-background-disabled: var(--grey-2);
+        // Text
+        $text-rgb: 0, 0, 0;
+        $light-text-rgb: 255, 255, 255;
 
-    // Brand
-    // Primary
-    --color-primary: blue;
-    --color-primary-hover: var(--color-primary-dark, var(--color-primary));
-    --color-primary-active: var(--color-primary-darker, var(--color-primary));
-    --color-surface-primary: var(--color-primary);
-    --color-text-on-primary: var(--color-text-on-dark);
-    --color-primary-alpha: rgb(0 0 255 / 25%);
+        --color-text-on-light: rgba(#{$text-rgb}, 0.88);
+        --color-text-soft-on-light: rgba(#{$text-rgb}, 0.6);
+        --color-text-on-dark: rgba(#{$light-text-rgb}, 0.88);
+        --color-text-soft-on-dark: rgba(#{$light-text-rgb}, 0.6);
+        --color-text-disabled: rgba(#{$text-rgb}, 0.3);
+        --color-background-disabled: var(--grey-2);
 
-    // Secondary
-    --color-secondary: lightblue;
+        // Brand
+        // Primary
+        --color-primary: #a490c3;
+        --color-primary-hover: var(--color-primary-dark, var(--color-primary));
+        --color-primary-active: var(--color-primary-darker, var(--color-primary));
+        --color-background-primary: var(--color-primary);
+        --color-text-on-primary: var(--color-text-on-dark);
+        --color-primary-alpha: #bfacdb40;
 
-    // Accent
-    --color-accent: red;
-    --color-accent-hover: var(--color-accent-dark, var(--color-accent));
-    --color-accent-active: var(--color-accent-darker, var(--color-accent));
-    --color-surface-accent: var(--color-accent);
-    --color-text-on-accent: var(--color-text-on-dark);
+        // Secondary
+        --color-secondary: lightblue;
 
-    // Colors
-    // Surface
-    --color-surface-page-light: var(--white);
-    --color-surface-background-light: var(--grey-2);
-    --color-surface-foreground-light: var(--white);
-    --color-surface-page-dark: var(--grey-7);
-    --color-surface-background-dark: var(--grey-6);
-    --color-surface-foreground-dark: var(--grey-7);
-    --color-surface-overlay: var(--color-surface-foreground);
+        // Accent
+        --color-accent: red;
+        --color-accent-hover: var(--color-accent-dark, var(--color-accent));
+        --color-accent-active: var(--color-accent-darker, var(--color-accent));
+        --color-background-accent: var(--color-accent);
+        --color-text-on-accent: var(--color-text-on-dark);
 
-    // Website
-    @include selection;
+        // Colors
+        // Surface
+        --color-background-page-light: var(--white);
+        --color-background-light: var(--grey-2);
+        --color-background-foreground-light: var(--white);
+        --color-background-page-dark: var(--grey-7);
+        --color-background-dark: var(--grey-6);
+        --color-background-foreground-dark: var(--grey-7);
+        --color-background-overlay: var(--color-background-foreground);
 
-    --scrollbar-color: var(--grey-3);
-    --scrollbar-background-color: var(--white);
+        // Website
+        @include selection;
 
-    // Contexts
-    $positive-light: rgb(141 222 133);
-    $positive: rgb(131 194 118);
-    $positive-dark: rgb(69 151 60);
-    $critical-light: rgb(251 123 129);
-    $critical: rgb(227 63 72);
-    $critical-dark: rgb(191 53 89);
-    $info-light: rgb(100 181 224);
-    $info: rgb(62 154 204);
-    $info-dark: rgb(42 127 172);
-    $warning-light: rgb(255 235 163);
-    $warning: rgb(250 219 107);
-    $warning-dark: rgb(202 177 85);
+        --scrollbar-color: var(--grey-3);
+        --scrollbar-background-color: var(--white);
 
-    // Positive
-    --color-positive: #{$positive};
-    --color-positive-hover: #{$positive-dark};
-    --color-positive-active: #{$positive-dark};
-    --color-surface-positive: #{$positive};
-    --color-text-on-positive: var(--color-text-on-dark);
+        // Contexts
+        $positive-light: rgb(141 222 133);
+        $positive: rgb(131 194 118);
+        $positive-dark: rgb(69 151 60);
+        $critical-light: rgb(251 123 129);
+        $critical: rgb(227 63 72);
+        $critical-dark: rgb(191 53 89);
+        $info-light: rgb(100 181 224);
+        $info: rgb(62 154 204);
+        $info-dark: rgb(42 127 172);
+        $warning-light: rgb(250 219 107);
+        $warning: rgb(250 203 34);
+        $warning-dark: rgb(202 177 85);
 
-    // Critical
-    --color-critical: #{$critical};
-    --color-critical-hover: #{$critical-dark};
-    --color-critical-active: #{$critical-dark};
-    --color-surface-critical: #{$critical};
-    --color-text-on-critical: var(--color-text-on-dark);
+        // Positive
+        --color-positive: #{$positive};
+        --color-positive-hover: #{$positive-dark};
+        --color-positive-active: #{$positive-dark};
+        --color-background-positive: #{$positive};
+        --color-text-on-positive: var(--color-text-on-dark);
 
-    // Info
-    --color-info: #{$info};
-    --color-info-hover: #{$info-dark};
-    --color-info-active: #{$info-dark};
-    --color-surface-info: #{$info};
-    --color-text-on-info: var(--color-text-on-light);
+        // Critical
+        --color-critical: #{$critical};
+        --color-critical-hover: #{$critical-dark};
+        --color-critical-active: #{$critical-dark};
+        --color-background-critical: #{$critical};
+        --color-text-on-critical: var(--color-text-on-dark);
 
-    // Warning
-    --color-warning: #{$warning};
-    --color-warning-hover: #{$warning-dark};
-    --color-warning-active: #{$warning-dark};
-    --color-surface-warning: #{$warning};
-    --color-text-on-warning: var(--color-text-on-light);
+        // Info
+        --color-info: #{$info};
+        --color-info-hover: #{$info-dark};
+        --color-info-active: #{$info-dark};
+        --color-background-info: #{$info};
+        --color-text-on-info: var(--color-text-on-dark);
 
-    // Alpha
-    $alpha-base: 144, 144, 144;
-    $alpha-base-dark: 26, 26, 26;
+        // Warning
+        --color-warning: #{$warning};
+        --color-warning-hover: #{$warning-dark};
+        --color-warning-active: #{$warning-dark};
+        --color-background-warning: #{$warning};
+        --color-text-on-warning: var(--color-text-on-dark);
 
-    --alpha-1: rgba(#{$alpha-base}, 0.07);
-    --alpha-2: rgba(#{$alpha-base}, 0.2);
-    --alpha-3: rgba(#{$alpha-base}, 0.23);
-    --alpha-4: rgba(#{$alpha-base}, 0.27);
-    --alpha-dark-1: rgba(#{$alpha-base-dark}, 0.07);
-    --alpha-dark-2: rgba(#{$alpha-base-dark}, 0.2);
-    --alpha-dark-3: rgba(#{$alpha-base-dark}, 0.23);
-    --alpha-dark-4: rgba(#{$alpha-base-dark}, 0.27);
+        // Alpha
+        $alpha-base: 144, 144, 144;
+        $alpha-base-dark: 26, 26, 26;
 
-    // Border
-    --border-width-thin: 1px;
-    --border-width-thick: 2px;
-    --border-color-light: var(--grey-3);
-    --border-color-dark: var(--grey-5);
-    --border-light: var(--border-width-thin) solid var(--border-color-light);
-    --border-dark: var(--border-width-thin) solid var(--border-color-dark);
-    --border-radius: 8px;
+        --alpha-1: rgba(#{$alpha-base}, 0.07);
+        --alpha-2: rgba(#{$alpha-base}, 0.2);
+        --alpha-3: rgba(#{$alpha-base}, 0.23);
+        --alpha-4: rgba(#{$alpha-base}, 0.27);
+        --alpha-dark-1: rgba(#{$alpha-base-dark}, 0.07);
+        --alpha-dark-2: rgba(#{$alpha-base-dark}, 0.2);
+        --alpha-dark-3: rgba(#{$alpha-base-dark}, 0.23);
+        --alpha-dark-4: rgba(#{$alpha-base-dark}, 0.27);
 
-    // Input
-    --input-color-active: var(--color-primary);
-    --input-color-active-hover: var(--color-primary-hover);
-    --input-color-fg-active: var(--color-text-on-primary);
-    --input-border-color: var(--border-color-light);
-    --input-border: var(--border-width-thin) solid var(--input-border-color);
-    --input-border-active: var(--border-width-thin) solid var(--input-color-active);
-    --input-outline: var(--border-width-thin) solid var(--input-color-active);
-    --input-color-fg: var(--color-text);
-    --input-color-fg-light: var(--color-text-soft);
-    --input-color-fg-disabled: var(--color-text-disabled);
-    --input-color-bg: var(--white);
-    --input-color-bg-disabled: var(--color-background-disabled);
-    --input-color-bg-selected: var(--grey-3);
-
-    // Shadows
-    --shadow-subtle: 0px 3px 1px -1px var(--alpha-dark-1);
-    --shadow-raised: 0px 4px 6px -2px var(--alpha-dark-2);
-    --shadow-lifted: 0px 8px 16px -4px var(--alpha-dark-3);
-    --shadow-floating: 0px 12px 20px -8px var(--alpha-dark-4);
-
-    // Text
-    --text-header-xxl: 64px;
-    --text-header-xl: 44px;
-    --text-header-lg: 28px;
-    --text-header-md: 22px;
-    --text-header-sm: 18px;
-    --text-header-xs: 14px;
-
-    @include respond-max($screen-lg) {
-        --text-header-xxl: 56px;
-        --text-header-xl: 36px;
-        --text-header-lg: 24px;
-        --text-header-md: 20px;
-        --text-header-sm: 14px;
-        --text-header-xs: 12px;
-    }
-
-    @include respond-max($screen-md) {
-        --text-header-xxl: 48px;
-        --text-header-xl: 28px;
-        --text-header-lg: 22px;
-        --text-header-md: 18px;
-    }
-
-    // Effects
-    // Transitions
-    --transition-slow: 1s ease;
-    --transition-mid: 0.5s ease;
-    --transition-fast: 0.25s ease;
-
-    // Filters
-    --filter-disabled-saturation: 60%;
-    --filter-disabled-brightness: 0.9;
-    --filter-hover-brightness: 1.1;
-    --filter-inverse: 0;
-
-    // Elements
-    --header-height: 64px;
-
-    // Typography
-    --font-body: 'Avenir Next', helvetica, arial, sans-serif;
-    --font-heading: 'Avenir Next', helvetica, arial, sans-serif;
-    --font-size: 1rem;
-
-    @include respond-max($screen-md) {
-        font-size: $font-sm;
-    }
-}
-
-::selection {
-    @include selection;
-}
-
-[data-theme='light'] {
-    color-scheme: light;
-
-    --color-text: var(--color-text-on-light);
-    --color-text-soft: var(--color-text-soft-on-light);
-    --color-text-inverse: var(--color-text-on-dark);
-    --color-surface-page: var(--color-surface-page-light);
-    --color-surface-background: var(--color-surface-background-light);
-    --color-surface-foreground: var(--color-surface-foreground-light);
-    --color-surface-inverse: var(--color-surface-background-dark);
-}
-
-[data-theme='dark'] {
-    color-scheme: dark;
-
-    --color-text: var(--color-text-on-dark);
-    --color-text-soft: var(--color-text-soft-on-dark);
-    --color-text-inverse: var(--color-text-on-light);
-    --color-surface-page: var(--color-surface-page-dark);
-    --color-surface-foreground: var(--color-surface-background-dark);
-    --color-surface-background: var(--color-surface-foreground-dark);
-    --color-surface-inverse: var(--color-surface-background-light);
-    --color-text-disabled: var(--grey-5);
-    --color-background-disabled: var(--grey-6);
-    --input-color-bg: var(--grey-7);
-    --input-color-bg-selected: var(--grey-6);
-    --border-color-light: var(--grey-5);
-    --border-color-dark: var(--grey-3);
-    --scrollbar-color: var(--grey-5);
-    --scrollbar-background-color: var(--black);
-    --filter-inverse: 1;
-}
-
-*[data-context] {
-
-    /* Primary context styles */
-    &[data-context='primary'] {
-        --context-color: var(--color-primary);
-        --context-color-hover: var(--color-primary-hover);
-        --context-color-active: var(--color-primary-active);
-        --context-color-surface: var(--color-surface-primary);
-        --context-color-surface-background: var(--context-color-surface);
-        --context-color-text: var(--color-text-on-primary);
-    }
-
-    /* Dark context styles */
-    &[data-context='dark'] {
-        --context-color: var(--color-text-on-dark);
-        --context-color-hover: var(--color-text-soft-on-dark);
-        --context-color-active: var(--color-text-soft-on-dark);
-        --context-color-surface: var(--color-surface-foreground-dark);
-        --context-color-surface-background: var(--color-surface-background-dark);
-        --border-color-light: var(--grey-5);
-        --border-color-dark: var(--grey-3);
-        --context-color-text: var(--color-text-on-dark);
-    }
-
-    /* Light context styles */
-    &[data-context='light'] {
-        --context-color: var(--color-text-on-light);
-        --context-color-hover: var(--color-text-soft-on-light);
-        --context-color-active: var(--color-text-soft-on-light);
-        --context-color-surface: var(--color-surface-foreground-light);
-        --context-color-surface-background: var(--color-surface-background-light);
+        // Border
+        --border-width-thin: 1px;
+        --border-width-thick: 2px;
         --border-color-light: var(--grey-3);
         --border-color-dark: var(--grey-5);
-        --context-color-text: var(--color-text-on-light);
+        --border-light: var(--border-width-thin) solid var(--border-color-light);
+        --border-dark: var(--border-width-thin) solid var(--border-color-dark);
+        --border-radius: 8px;
+
+        // Input
+        --input-color-active: var(--color-primary);
+        --input-color-active-hover: var(--color-primary-hover);
+        --input-color-fg-active: var(--color-text-on-primary);
+        --input-border-color: var(--border-color-light);
+        --input-border: var(--border-width-thin) solid var(--input-border-color);
+        --input-border-active: var(--border-width-thin) solid var(--input-color-active);
+        --input-outline: var(--border-width-thin) solid var(--input-color-active);
+        --input-color-fg: var(--color-text);
+        --input-color-fg-light: var(--color-text-soft);
+        --input-color-fg-disabled: var(--color-text-disabled);
+        --input-color-bg: var(--white);
+        --input-color-bg-disabled: var(--color-background-disabled);
+        --input-color-bg-selected: var(--grey-3);
+
+        // Shadows
+        --shadow-subtle: 0px 3px 1px -1px var(--alpha-dark-1);
+        --shadow-raised: 0px 4px 6px -2px var(--alpha-dark-2);
+        --shadow-lifted: 0px 8px 16px -4px var(--alpha-dark-3);
+        --shadow-floating: 0px 12px 20px -8px var(--alpha-dark-4);
+
+        // Spacing
+        --space-xxs: 0.125rem;
+        --space-xs: 0.25rem;
+        --space-sm: 0.5rem;
+        --space: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+        --layout-space-xs: 3rem;
+        --layout-space-sm: 4rem;
+        --layout-space-md: 6rem;
+        --layout-space-lg: 8rem;
+        --layout-space-xl: 12rem;
+        --layout-space-xxl: 16rem;
+
+        // Effects
+        // Transitions
+        --transition-slow: 1s ease;
+        --transition-mid: 0.5s ease;
+        --transition-fast: 0.25s ease;
+
+        // Filters
+        --filter-disabled-saturation: 60%;
+        --filter-disabled-brightness: 0.9;
+        --filter-hover-brightness: 1.1;
+        --filter-inverse: 0;
+
+        // Elements
+        --header-height: 64px;
+
+        // Typography
+        --font-body: 'Helvetica Neue', helvetica, arial, sans-serif;
+        --font-heading: 'Helvetica Neue', helvetica, arial, sans-serif;
+
+        // Font
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size: 1rem;
+        --font-size-lg: 1.125rem;
+
+        // Text
+        --text-header-xxl: 64px;
+        --text-header-xl: 44px;
+        --text-header-lg: 28px;
+        --text-header-md: 22px;
+        --text-header-sm: 18px;
+        --text-header-xs: 14px;
+
+        @include respond-max($screen-md) {
+            font-size: 0.875rem;
+        }
+
+        @include respond-max($screen-lg) {
+            --text-header-xxl: 56px;
+            --text-header-xl: 36px;
+            --text-header-lg: 24px;
+            --text-header-md: 20px;
+            --text-header-sm: 14px;
+            --text-header-xs: 12px;
+        }
+
+        @include respond-max($screen-md) {
+            --text-header-xxl: 48px;
+            --text-header-xl: 28px;
+            --text-header-lg: 22px;
+            --text-header-md: 18px;
+        }
     }
 
-    /* Accent context styles */
-    &[data-context='accent'] {
-        --context-color: var(--color-accent);
-        --context-color-hover: var(--color-accent-hover);
-        --context-color-active: var(--color-accent-active);
-        --context-color-surface: var(--color-surface-accent);
-        --context-color-surface-background: var(--context-color-surface);
-        --context-color-text: var(--color-text-on-accent);
+    ::selection {
+        @include selection;
     }
 
-    /* Secondary context styles */
-    &[data-context='secondary'] {
-        --context-color: var(--color-secondary);
-        --context-color-hover: var(--color-secondary-hover);
-        --context-color-active: var(--color-secondary-active);
-        --context-color-surface: var(--color-surface-secondary);
-        --context-color-surface-background: var(--context-color-surface);
-        --context-color-text: var(--color-text-on-secondary);
+    [data-theme='light'] {
+        color-scheme: light;
+
+        --color-text: var(--color-text-on-light);
+        --color-text-soft: var(--color-text-soft-on-light);
+        --color-text-inverse: var(--color-text-on-dark);
+        --color-background-page: var(--color-background-page-light);
+        --color-background: var(--color-background-light);
+        --color-background-foreground: var(--color-background-foreground-light);
+        --color-background-inverse: var(--color-background-dark);
     }
 
-    /* Success context styles */
-    &[data-context='positive'] {
-        --context-color: var(--color-positive);
-        --context-color-hover: var(--color-positive-hover);
-        --context-color-active: var(--color-positive-active);
-        --context-color-surface: var(--color-surface-positive);
-        --context-color-surface-background: var(--context-color-surface);
-        --context-color-text: var(--color-text-on-positive);
+    [data-theme='dark'] {
+        color-scheme: dark;
+
+        --color-text: var(--color-text-on-dark);
+        --color-text-soft: var(--color-text-soft-on-dark);
+        --color-text-inverse: var(--color-text-on-light);
+        --color-background-page: var(--color-background-page-dark);
+        --color-background-foreground: var(--color-background-dark);
+        --color-background: var(--color-background-foreground-dark);
+        --color-background-inverse: var(--color-background-light);
+        --color-text-disabled: var(--grey-5);
+        --color-background-disabled: var(--grey-6);
+        --input-color-bg: var(--grey-7);
+        --input-color-bg-selected: var(--grey-6);
+        --border-color-light: var(--grey-5);
+        --border-color-dark: var(--grey-3);
+        --scrollbar-color: var(--grey-5);
+        --scrollbar-background-color: var(--black);
+        --filter-inverse: 1;
     }
 
-    /* Critical context styles */
-    &[data-context='critical'] {
-        --context-color: var(--color-critical);
-        --context-color-hover: var(--color-critical-hover);
-        --context-color-active: var(--color-critical-active);
-        --context-color-surface: var(--color-surface-critical);
-        --context-color-surface-background: var(--context-color-surface);
-        --context-color-text: var(--color-text-on-critical);
-    }
+    *[data-context] {
+        /* Primary context styles */
+        &[data-context='primary'] {
+            --context-color: var(--color-primary);
+            --context-color-hover: var(--color-primary-hover);
+            --context-color-active: var(--color-primary-active);
+            --context-color-surface: var(--color-background-primary);
+            --context-color-background: var(--context-color-surface);
+            --context-color-text: var(--color-text-on-primary);
+        }
 
-    /* Warning context styles */
-    &[data-context='warning'] {
-        --context-color: var(--color-warning);
-        --context-color-hover: var(--color-warning-hover);
-        --context-color-active: var(--color-warning-active);
-        --context-color-surface: var(--color-surface-warning);
-        --context-color-surface-background: var(--context-color-surface);
-        --context-color-text: var(--color-text-on-warning);
-    }
+        /* Dark context styles */
+        &[data-context='dark'] {
+            --context-color: var(--color-text-on-dark);
+            --context-color-hover: var(--color-text-soft-on-dark);
+            --context-color-active: var(--color-text-soft-on-dark);
+            --context-color-surface: var(--color-background-foreground-dark);
+            --context-color-background: var(--color-background-dark);
+            --border-color-light: var(--grey-5);
+            --border-color-dark: var(--grey-3);
+            --context-color-text: var(--color-text-on-dark);
+        }
 
-    /* Info context styles */
-    &[data-context='info'] {
-        --context-color: var(--color-info);
-        --context-color-hover: var(--color-info-hover);
-        --context-color-active: var(--color-info-active);
-        --context-color-surface: var(--color-surface-info);
-        --context-color-surface-background: var(--context-color-surface);
-        --context-color-text: var(--color-text-on-info);
+        /* Light context styles */
+        &[data-context='light'] {
+            --context-color: var(--color-text-on-light);
+            --context-color-hover: var(--color-text-soft-on-light);
+            --context-color-active: var(--color-text-soft-on-light);
+            --context-color-surface: var(--color-background-foreground-light);
+            --context-color-background: var(--color-background-light);
+            --border-color-light: var(--grey-3);
+            --border-color-dark: var(--grey-5);
+            --context-color-text: var(--color-text-on-light);
+        }
+
+        /* Accent context styles */
+        &[data-context='accent'] {
+            --context-color: var(--color-accent);
+            --context-color-hover: var(--color-accent-hover);
+            --context-color-active: var(--color-accent-active);
+            --context-color-surface: var(--color-background-accent);
+            --context-color-background: var(--context-color-surface);
+            --context-color-text: var(--color-text-on-accent);
+        }
+
+        /* Secondary context styles */
+        &[data-context='secondary'] {
+            --context-color: var(--color-secondary);
+            --context-color-hover: var(--color-secondary-hover);
+            --context-color-active: var(--color-secondary-active);
+            --context-color-surface: var(--color-background-secondary);
+            --context-color-background: var(--context-color-surface);
+            --context-color-text: var(--color-text-on-secondary);
+        }
+
+        /* Success context styles */
+        &[data-context='positive'] {
+            --context-color: var(--color-positive);
+            --context-color-hover: var(--color-positive-hover);
+            --context-color-active: var(--color-positive-active);
+            --context-color-surface: var(--color-background-positive);
+            --context-color-background: var(--context-color-surface);
+            --context-color-text: var(--color-text-on-positive);
+        }
+
+        /* Critical context styles */
+        &[data-context='critical'] {
+            --context-color: var(--color-critical);
+            --context-color-hover: var(--color-critical-hover);
+            --context-color-active: var(--color-critical-active);
+            --context-color-surface: var(--color-background-critical);
+            --context-color-background: var(--context-color-surface);
+            --context-color-text: var(--color-text-on-critical);
+        }
+
+        /* Warning context styles */
+        &[data-context='warning'] {
+            --context-color: var(--color-warning);
+            --context-color-hover: var(--color-warning-hover);
+            --context-color-active: var(--color-warning-active);
+            --context-color-surface: var(--color-background-warning);
+            --context-color-background: var(--context-color-surface);
+            --context-color-text: var(--color-text-on-warning);
+        }
+
+        /* Info context styles */
+        &[data-context='info'] {
+            --context-color: var(--color-info);
+            --context-color-hover: var(--color-info-hover);
+            --context-color-active: var(--color-info-active);
+            --context-color-surface: var(--color-background-info);
+            --context-color-background: var(--context-color-surface);
+            --context-color-text: var(--color-text-on-info);
+        }
     }
 }

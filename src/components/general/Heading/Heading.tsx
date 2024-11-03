@@ -1,8 +1,6 @@
 import { CommonComponentProps, FlexAlignSimple, HeadingTag } from '@types';
-import { CSSProperties, FC, ReactNode } from 'react';
+import { CSSProperties, FC, forwardRef, ReactNode } from 'react';
 import clsx from 'clsx';
-import { withCommonProps } from '@components/hoc';
-import { useStyleContext } from '@contexts';
 import styles from './Heading.module.scss';
 
 type Heading = { heading: HeadingTag; subheading: HeadingTag };
@@ -36,7 +34,7 @@ interface HeadingProps extends CommonComponentProps {
     children?: ReactNode;
 }
 
-const HeadingComponent: FC<HeadingProps> = ({ subheading, align, hero, major, minor, noMargin, children, className, style, ...rest }) => {
+const Heading: FC<HeadingProps> = forwardRef<HTMLElement, HeadingProps>(({ subheading, align, hero, major, minor, noMargin, children, className, style, ...props }, ref) => {
     if ((major && minor) || (major && hero) || (minor && hero)) {
         console.warn('Subheading cannot be multiple of major, minor, and hero');
         major = false;
@@ -44,16 +42,14 @@ const HeadingComponent: FC<HeadingProps> = ({ subheading, align, hero, major, mi
         hero = false;
     }
 
-    const { computeClasses } = useStyleContext();
-
-    const headerStyle = computeClasses(
-        clsx(styles.header, {
+    const headerStyle = clsx(
+        styles.header,
+        {
             [styles.hero]: hero,
             [styles.major]: major,
             [styles.minor]: minor,
             [styles.noMargin]: noMargin
-        }),
-        'heading',
+        },
         className
     );
 
@@ -63,14 +59,15 @@ const HeadingComponent: FC<HeadingProps> = ({ subheading, align, hero, major, mi
 
     const properties = { textAlign: align, ...style } as CSSProperties;
 
-    return (
-        <header className={headerStyle} style={properties} {...rest}>
+    // To-Do: Fix ref on heading and restructure heading component
+    return subheading ? (
+        <header className={headerStyle} style={properties} ref={ref} {...props}>
             {children && <HeadingAs className={styles.title}>{children}</HeadingAs>}
             {subheading && <SubheadingAs className={styles.subheading}>{subheading}</SubheadingAs>}
         </header>
+    ) : (
+        <HeadingAs className={clsx(headerStyle, styles.title)}>{children}</HeadingAs>
     );
-};
-
-const Heading = withCommonProps(HeadingComponent);
+});
 
 export { Heading };

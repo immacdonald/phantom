@@ -1,134 +1,130 @@
 @use '../tokens' as *;
 
-@mixin input {
-    @include base-input;
+@layer base {
+    @mixin input {
+        @include base-input;
 
-    width: 100%;
-    height: 3rem;
-    padding: $md;
-    outline: 1px solid transparent;
-    font-family: var(--font-body);
+        width: 100%;
+        height: 3rem;
+        padding: var(--space);
+        outline: 1px solid transparent;
+        font-family: var(--font-body);
 
-    &::placeholder {
-        color: var(--input-color-fg-light);
-        opacity: 0.5;
+        &::placeholder {
+            color: var(--input-color-fg-light);
+            opacity: 0.5;
+        }
+
+        &:focus {
+            outline: var(--input-outline);
+        }
+
+        &[disabled] {
+            background-color: var(--input-color-bg-disabled);
+            border: none;
+            color: var(--input-color-fg-disabled);
+            cursor: not-allowed;
+            filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
+        }
     }
 
-    &:focus {
-        outline: var(--input-outline);
+    input:not([type='radio'], [type='checkbox']),
+    textarea {
+        @include input;
     }
 
-    &[disabled] {
-        background-color: var(--input-color-bg-disabled);
-        border: none;
-        color: var(--input-color-fg-disabled);
-        cursor: not-allowed;
-        filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
+    form {
+        width: 100%;
+        margin-bottom: var(--space);
     }
-}
 
-input:not([type='radio'], [type='checkbox']),
-textarea {
-    @include input;
-}
+    textarea {
+        resize: none;
+        min-height: 6rem;
+    }
 
-form {
-    width: 100%;
-    margin-bottom: $xs;
-}
+    input[type='radio'] {
+        --v-box-size: 16px;
 
-textarea {
-    resize: none;
-    min-height: 6rem;
-}
+        width: var(--v-box-size);
+        height: var(--v-box-size);
+        margin-top: 4px;
 
-input[type='radio'] {
-    --v-box-size: 16px;
+        &::before {
+            --v-size: 20px;
 
-    width: var(--v-box-size);
-    height: var(--v-box-size);
-    margin-top: 4px;
+            width: var(--v-size);
+            height: var(--v-size);
+            position: relative;
+            display: block;
+            top: calc((var(--v-size) - var(--v-box-size)) / -2);
+            left: calc((var(--v-size) - var(--v-box-size)) / -2);
+            content: '';
+            background-color: var(--input-color-bg);
+            border: var(--input-border);
+            border-radius: 100%;
+            transition:
+                background-color var(--transition-fast),
+                border var(--transition-mid);
+        }
 
-    &::before {
+        &:checked {
+            &::before {
+                background-color: var(--input-color-active);
+            }
+
+            &::after {
+                position: relative;
+                content: '\2713';
+                top: -18px;
+                left: 2px;
+                font-size: 14px;
+                line-height: 14px;
+                color: var(--input-color-fg-active);
+                text-align: center;
+            }
+        }
+    }
+
+    input[type='checkbox']:not([data-switch]) {
+        --v-box-size: 12px;
         --v-size: 20px;
 
-        width: var(--v-size);
-        height: var(--v-size);
+        width: var(--v-box-size);
+        height: var(--v-box-size);
         position: relative;
-        display: block;
-        top: calc((var(--v-size) - var(--v-box-size)) / -2);
-        left: calc((var(--v-size) - var(--v-box-size)) / -2);
-        content: '';
-        background-color: var(--input-color-bg);
-        border: var(--input-border);
-        border-radius: 100%;
-        transition:
-            background-color var(--transition-fast),
-            border var(--transition-mid);
-    }
+        left: calc((var(--v-size) - var(--v-box-size)) / 2);
 
-    &:checked {
         &::before {
-            background-color: var(--input-color-active);
-        }
-
-        &::after {
+            width: var(--v-size);
+            height: var(--v-size);
             position: relative;
-            content: '\2713';
-            top: -18px;
-            left: 2px;
-            font-size: 14px;
-            line-height: 14px;
-            color: var(--input-color-fg-active);
-            text-align: center;
-        }
-    }
-}
-
-input[type='checkbox']:not([data-switch]) {
-    --v-box-size: 12px;
-    --v-size: 20px;
-
-    width: var(--v-box-size);
-    height: var(--v-box-size);
-    position: relative;
-    left: calc((var(--v-size) - var(--v-box-size)) / 2);
-
-    &::before {
-        width: var(--v-size);
-        height: var(--v-size);
-        position: relative;
-        display: block;
-        top: calc((var(--v-size) - var(--v-box-size)) / -2);
-        left: calc((var(--v-size) - var(--v-box-size)) / -2);
-        content: '';
-        background-color: var(--input-color-bg);
-        border: var(--input-border);
-        border-radius: var(--border-radius);
-        transition:
-            background-color var(--transition-fast),
-            border var(--transition-mid);
-    }
-
-    &:checked {
-        &::before {
-            background-color: var(--input-color-active);
+            display: block;
+            top: calc((var(--v-size) - var(--v-box-size)) / -2);
+            left: calc((var(--v-size) - var(--v-box-size)) / -2);
+            content: '';
+            background-color: var(--input-color-bg);
+            border: var(--input-border);
+            border-radius: var(--border-radius);
+            transition:
+                background-color var(--transition-fast),
+                border var(--transition-mid);
         }
 
-        &::after {
-            position: relative;
-            content: '\2713';
-            top: -21px;
-            font-size: 16px;
-            line-height: 16px;
-            color: var(--input-color-fg-active);
-            text-align: center;
+        &:checked {
+            &::before {
+                background-color: var(--input-color-active);
+            }
+
+            &::after {
+                position: relative;
+                content: '\2713';
+                top: -21px;
+                font-size: 16px;
+                line-height: 16px;
+                color: var(--input-color-fg-active);
+                text-align: center;
+            }
         }
     }
-}
-
-p[role='alert'] {
-    color: var(--color-critical);
-    font-weight: 500;
-    font-style: italic;
 }

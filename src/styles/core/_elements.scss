@@ -1,58 +1,59 @@
 @use '../tokens' as *;
 
-// Links
-a {
-    text-decoration: none;
+@layer base {
+    // Links
+    a {
+        text-decoration: none;
 
-    // color: var(--context-color-text, var(--color-primary));
-    // color: var(--color-primary);
-    color: inherit;
+        // color: var(--context-color-text, var(--color-primary));
+        // color: var(--color-primary);
+        color: inherit;
 
-    &:hover {
-        text-decoration: underline;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-}
 
-// Lists
-ul {
-    margin-left: $md;
-    margin-bottom: 1em;
-}
+    // Lists
+    ul {
+        margin-left: var(--space);
+        margin-bottom: 1em;
+    }
 
-// Misc.
-blockquote {
-    border-left: solid 4px;
-    font-style: italic;
-    margin: 0 0 2em;
-    padding: 0.5em 0 0.5em 2em;
-}
-
-code {
-    background: var(--alpha-1);
-    border-radius: var(--border-radius);
-    border: var(--border-light);
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-    margin: 0 0.25em;
-    padding: 0.3em 0.65em;
-}
-
-pre {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-    margin: 0 0 2em;
+    // Misc.
+    blockquote {
+        border-left: solid 4px;
+        font-style: italic;
+        margin: 0 0 2em;
+        padding: 0.5em 0 0.5em 2em;
+    }
 
     code {
-        display: block;
-        line-height: 1.75;
-        padding: 1em 1.5em;
-        overflow-x: auto;
+        background: var(--alpha-1);
+        border-radius: var(--border-radius);
+        border: var(--border-light);
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+        margin: 0 0.25em;
+        padding: 0.3em 0.65em;
     }
-}
 
-hr {
-    width: min(1280px, 90%);
-    border: 0;
-    border-bottom: var(--border-width-thin) solid var(--alpha-2);
-    margin-block: $xxl;
+    pre {
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+
+        code {
+            display: block;
+            line-height: 1.75;
+            padding: 1em 1.5em;
+            overflow-x: auto;
+        }
+    }
+
+    hr {
+        width: 100%;
+        border: 0;
+        border-bottom: var(--border-width-thin) solid var(--alpha-2);
+        margin-block: var(--space-lg);
+    }
 }

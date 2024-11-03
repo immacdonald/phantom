@@ -1,12 +1,12 @@
 .header {
-    margin-bottom: $md;
+    margin-bottom: var(--space);
 
     &.major {
-        margin-bottom: $lg;
+        margin-bottom: var(--space-lg);
     }
 
     &.minor {
-        margin-bottom: $sm;
+        margin-bottom: var(--space-sm);
     }
 
     &.noMargin {
@@ -18,7 +18,8 @@
     }
 
     .subheading {
-        margin-bottom: $sm;
+        margin-bottom: var(--space-sm);
         font-weight: normal;
+        color: var(--color-text-soft);
     }
 }

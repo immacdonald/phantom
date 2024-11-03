@@ -1,54 +1,56 @@
 @use '../tokens' as *;
 
-p {
-    line-height: 2;
-}
-
-// Headers
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-heading, var(--font-body));
-    font-weight: bold;
-    line-height: 1.5em;
-    letter-spacing: 0.015em;
-    text-wrap: balance;
-
-    a {
-        color: inherit;
-        text-decoration: none;
+@layer base {
+    p {
+        line-height: 2;
     }
-}
 
-h1 {
-    font-size: var(--text-header-xxl);
-    margin-bottom: 1rem;
-}
+    // Headers
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-heading, var(--font-body));
+        font-weight: bold;
+        line-height: 1.5em;
+        letter-spacing: 0.015em;
+        text-wrap: balance;
 
-h2 {
-    font-size: var(--text-header-xl);
-    margin-bottom: 0.9rem;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
 
-h3 {
-    font-size: var(--text-header-lg);
-    margin-bottom: 0.85rem;
-}
+    h1 {
+        font-size: var(--text-header-xxl);
+        margin-bottom: 1rem;
+    }
 
-h4 {
-    font-size: var(--text-header-md);
-    margin-bottom: 0.8rem;
-}
+    h2 {
+        font-size: var(--text-header-xl);
+        margin-bottom: 0.9rem;
+    }
 
-h5 {
-    font-size: var(--text-header-sm);
-    margin-bottom: 0.7rem;
-}
+    h3 {
+        font-size: var(--text-header-lg);
+        margin-bottom: 0.85rem;
+    }
 
-h6 {
-    font-size: var(--text-header-xs);
-    margin-bottom: 0.5rem;
+    h4 {
+        font-size: var(--text-header-md);
+        margin-bottom: 0.8rem;
+    }
+
+    h5 {
+        font-size: var(--text-header-sm);
+        margin-bottom: 0.7rem;
+    }
+
+    h6 {
+        font-size: var(--text-header-xs);
+        margin-bottom: 0.5rem;
+    }
 }

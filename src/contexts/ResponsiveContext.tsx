@@ -1,16 +1,22 @@
 import type { Breakpoints, Callback, Dimensions, ResponsiveObject, ResponsiveType, Theme } from '@types';
 import { createContext, FC, ReactElement, ReactNode } from 'react';
 import { useTheme, useWindowSize } from '@hooks';
-import tokens from '@styles/tokens.module.scss';
+import { designTokens } from '../styles/tokens';
 
-const breakpoints: Breakpoints[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+const breakpoints: Record<Breakpoints, string> = {
+    xs: designTokens.screen.xs,
+    sm: designTokens.screen.sm,
+    md: designTokens.screen.md,
+    lg: designTokens.screen.lg,
+    xl: designTokens.screen.xl
+};
 
 function isResponsiveObject<T>(obj: ResponsiveType<T>): boolean {
     if (typeof obj != 'object') {
         return false;
     }
 
-    return ['base', ...breakpoints].some((key: string) => key in (obj as ResponsiveObject<T>));
+    return ['base', ...Object.keys(breakpoints)].some((key: string) => key in (obj as ResponsiveObject<T>));
 }
 
 const pxToInt = (property: string): number => {
@@ -19,8 +25,8 @@ const pxToInt = (property: string): number => {
 };
 
 const getCurrentBreakpoint = (width: number): Breakpoints | null => {
-    for (const breakpoint of breakpoints) {
-        if (width <= pxToInt(tokens[`screen-${breakpoint}`])) {
+    for (const [breakpoint, token] of Object.entries(breakpoints)) {
+        if (width <= pxToInt(token)) {
             return breakpoint as Breakpoints;
         }
     }
@@ -58,7 +64,7 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimiz
     const atBreakpoint = (breakpoint: Breakpoints): boolean => {
         const currentBreakpoint: Breakpoints | null = getCurrentBreakpoint(windowSize.width);
         if (currentBreakpoint) {
-            if (breakpoints.indexOf(currentBreakpoint) <= breakpoints.indexOf(breakpoint)) {
+            if (Object.keys(breakpoints).indexOf(currentBreakpoint) <= Object.keys(breakpoints).indexOf(breakpoint)) {
                 return true;
             }
         }
@@ -80,8 +86,9 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimiz
         // If it's a ResponsiveObject find the value for the breakpoint
         const breakpoint: Breakpoints | null = getCurrentBreakpoint(windowSize.width);
         if (breakpoint) {
-            for (const key of breakpoints) {
-                if (breakpoints.indexOf(breakpoint) <= breakpoints.indexOf(key) && key in responsiveObject) {
+            const breakpointTokens: Breakpoints[] = Object.keys(breakpoints) as Breakpoints[];
+            for (const key of breakpointTokens) {
+                if (breakpointTokens.indexOf(breakpoint) <= breakpointTokens.indexOf(key) && key in responsiveObject) {
                     return responsiveObject[key];
                 }
             }
@@ -90,7 +97,7 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimiz
         return responsiveObject.base;
     };
 
-    const isMobile = windowSize.width < pxToInt(tokens['screen-sm']);
+    const isMobile = windowSize.width < pxToInt(designTokens.screen.sm);
 
     return <ResponsiveContext.Provider value={{ parse, atBreakpoint, isMobile, windowSize, theme, setTheme, toggleTheme, isResponsiveContextLoaded: true }}>{children}</ResponsiveContext.Provider>;
 };

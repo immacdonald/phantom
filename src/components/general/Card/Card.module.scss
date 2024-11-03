@@ -5,7 +5,7 @@
     flex-grow: 1;
     height: fit-content;
     min-height: 200px;
-    background-color: var(--context-color, var(--color-surface-foreground));
+    background-color: var(--context-color, var(--color-background-foreground));
     color: var(--context-color-text, var(--color-text));
     border-radius: var(--border-radius);
     border: var(--border-light);
@@ -21,15 +21,15 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: $sm;
-    padding: $lg;
+    gap: var(--space-sm);
+    padding: var(--space);
     color: var(--color-text);
-    background-color: var(--color-surface-foreground);
+    background-color: var(--color-background-foreground);
     border-bottom: var(--border-light);
 }
 
 .body {
-    padding: $md $lg;
+    padding: var(--space);
 
     &.scrollable {
         max-height: 400px;

@@ -4,19 +4,27 @@
     --background-image: none;
 
     min-height: 64px;
-    padding-block: $layout-space-md;
+    padding-block: var(--layout-space-xs);
     flex-grow: 1;
     position: relative;
     color: var(--context-color-text, inherit);
 
+    &:not(:last-of-type) {
+        flex: 0 0 auto;
+    }
+
+    &:last-of-type {
+        flex: 1 0 auto;
+    }
+
     &.background {
         &.regular {
-            background-color: var(--context-color-surface, var(--color-surface-background));
+            background-color: var(--context-color-surface, var(--color-background));
         }
 
         &.floating,
         &.inset {
-            background-color: var(--context-color-surface-background, var(--color-surface-background));
+            background-color: var(--context-color-background, var(--color-background));
         }
     }
 
@@ -29,8 +37,8 @@
 
         > div {
             width: min(600px, 95%);
-            background-color: var(--context-color-surface, var(--color-surface-foreground));
-            padding: $xl;
+            background-color: var(--context-color-surface, var(--color-background-foreground));
+            padding: var(--space-lg);
             border: var(--border-light);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-lifted);
@@ -46,9 +54,9 @@
         @include responsive-width;
 
         min-height: 128px;
-        background-color: var(--context-color-surface, var(--color-surface-foreground));
+        background-color: var(--context-color-surface, var(--color-background-foreground));
         border: var(--border-light);
-        padding-block: $xl;
+        padding-block: var(--space-lg);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow-lifted);
     }
@@ -69,7 +77,7 @@
     &.parallax {
         @mixin parallax {
             // Fallback color defaults to the primary color
-            background-color: var(--color-surface-background);
+            background-color: var(--color-background);
             background-attachment: fixed;
             background-position: center center;
             background-size: cover;
@@ -121,15 +129,15 @@
             50% calc(100% - var(--inset-bottom)),
             0 calc(100% - var(--outset-bottom))
         );
-        padding-top: max(calc(3 * (var(--outset-top) + var(--inset-top))), $xxl);
-        padding-bottom: max(calc(2 * (var(--outset-bottom) + var(--inset-bottom))), $xxl);
+        padding-top: max(calc(3 * (var(--outset-top) + var(--inset-top))), var(--layout-space-xs));
+        padding-bottom: max(calc(2 * (var(--outset-bottom) + var(--inset-bottom))), var(--layout-space-xs));
     }
 
     @include respond-max($screen-md) {
-        padding-block: 72px;
+        padding-block: var(--space-xl);
     }
 
     @include respond-max($screen-sm) {
-        padding-block: 48px;
+        padding-block: var(--space-lg);
     }
 }

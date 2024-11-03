@@ -14,12 +14,10 @@
         "./styles": "./lib/styles/core.module.scss"
     },
     "scripts": {
-        "prepare": "npm run build",
         "build": "tsup",
         "dev": "tsup --watch",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
-        "prettier": "prettier ./ --write --ignore-path ./node_modules/phantom-config/.prettierignore",
+        "lint": "npx eslint . --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
+        "prettier": "prettier ./ --write --ignore-path .gitignore",
         "stylelint": "npx stylelint '**/*.{css,scss}' --fix",
         "format": "npm run lint && npm run stylelint && npm run prettier"
     },
@@ -44,8 +42,7 @@
         "esbuild-plugin-copy": "^2.1.1",
         "esbuild-plugin-svgr": "npm:@imacdonald/esbuild-plugin-svgr@^2.2.1",
         "esbuild-sass-plugin": "^3.2.0",
-        "eslint-plugin-sort-exports": "^0.9.1",
-        "phantom-config": "^0.5.1",
+        "eslint": "^9.12.0",
         "postcss-modules": "^6.0.0",
         "sass": "^1.72.0",
         "sass-loader": "^14.1.1",
@@ -55,9 +52,9 @@
     },
     "dependencies": {
         "clsx": "^2.1.1",
+        "phantom-config": "^1.0.1",
         "react": "^18.2.0",
-        "react-hook-form": "^7.52.0",
         "react-router-dom": "^6.22.3",
-        "react-select": "^5.8.0"
+        "react-select": "^5.8.2"
     }
 }

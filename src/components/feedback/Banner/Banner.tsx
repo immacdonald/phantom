@@ -1,17 +1,16 @@
-import { CommonComponentProps } from '@types';
+import type { CommonComponentProps } from '@types';
 import { FC, forwardRef, useEffect, useState } from 'react';
-import { useStyleContext } from '@contexts';
+import { createPortal } from 'react-dom';
+import clsx from 'clsx';
 import { popNotification } from './notifications';
 import style from './Banner.module.scss';
-import { createPortal } from 'react-dom';
 
 interface BannerProps extends CommonComponentProps {
     notificationLength?: number;
     concurrentNotificationDelay?: number;
 }
 
-const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notificationLength = 5000, concurrentNotificationDelay = 750, className, ...rest }, ref) => {
-    const { computeClasses } = useStyleContext();
+const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notificationLength = 5000, concurrentNotificationDelay = 750, className, ...props }, ref) => {
     const [state, setState] = useState<boolean>(false);
     const [previousState, setPreviousState] = useState<boolean>(false);
 
@@ -66,12 +65,11 @@ const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notif
         setNotificationChange(false);
     }, [state, notificationChange]);
 
-    return (
-        createPortal((
-            <div className={computeClasses(style.banner, 'banner', className)} data-mode={type} data-state={state ? 'on' : 'off'} ref={ref} {...rest}>
-                <span className={style.message}>{message}</span>
-            </div>
-        ), document.getElementById("root")!)
+    return createPortal(
+        <div className={clsx(style.banner, className)} data-mode={type} data-state={state ? 'on' : 'off'} ref={ref} {...props}>
+            <span className={style.message}>{message}</span>
+        </div>,
+        document.getElementById('root')!
     );
 });
 

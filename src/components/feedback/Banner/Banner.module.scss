@@ -1,6 +1,6 @@
 .banner {
     position: fixed;
-    top: $sm;
+    top: var(--space-sm);
     left: 50%;
     min-width: min(max(50%, 320px), 95%);
     min-height: 48px;
@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     color: var(--color-text);
-    background-color: var(--color-surface-overlay);
+    background-color: var(--color-background-overlay);
     border-radius: var(--border-radius);
     border: 1px solid transparent;
     box-shadow: var(--shadow-floating);
@@ -32,13 +32,13 @@
     }
 
     &[data-mode='error'] {
-        background-color: var(--color-surface-critical);
+        background-color: var(--color-background-critical);
         color: var(--color-text-on-critical);
         border-color: var(--color-critical);
     }
 
     &[data-mode='success'] {
-        background-color: var(--color-surface-positive);
+        background-color: var(--color-background-positive);
         color: var(--color-text-on-positive);
         border-color: var(--color-positive);
     }

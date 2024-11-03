@@ -1,6 +1,6 @@
-import { CommonComponentProps } from '@types';
+import type { CommonComponentProps } from '@types';
 import { CSSProperties, FC, forwardRef, useMemo } from 'react';
-import { useStyleContext } from '@contexts';
+import clsx from 'clsx';
 import styles from './Loading.module.scss';
 
 interface LoadingProps extends CommonComponentProps {
@@ -13,8 +13,6 @@ interface LoadingProps extends CommonComponentProps {
 }
 
 const Loading: FC<LoadingProps> = forwardRef<HTMLDivElement, LoadingProps>(({ size, thickness, width, height, minHeight, color, className, style, ...rest }, ref) => {
-    const { computeClasses } = useStyleContext();
-
     const properties: CSSProperties = useMemo(
         () => ({
             '--v-size': size ? `${size}px` : undefined,
@@ -29,7 +27,7 @@ const Loading: FC<LoadingProps> = forwardRef<HTMLDivElement, LoadingProps>(({ si
     );
 
     return (
-        <div className={computeClasses(styles.loading, 'loading', className)} style={properties} ref={ref} {...rest}>
+        <div className={clsx(styles.loading, className)} style={properties} ref={ref} {...rest}>
             <div />
             <div />
             <div />

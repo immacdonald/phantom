@@ -1,5 +1,5 @@
 import { CommonComponentProps } from '@types';
-import { CSSProperties, FC, ReactNode } from 'react';
+import { CSSProperties, FC, forwardRef, ReactNode } from 'react';
 import clsx from 'clsx';
 import styles from './Text.module.scss';
 
@@ -7,20 +7,18 @@ interface TextProps extends CommonComponentProps {
     children: ReactNode;
     align?: 'center' | 'left' | 'right';
     size?: 'md' | 'lg' | 'xl';
-    styleLinks?: boolean;
     soft?: boolean;
     newline?: boolean;
 }
 
-const Text: FC<TextProps> = ({ children, size, styleLinks = true, align, soft, newline, className, style, id }) => {
+const Text: FC<TextProps> = forwardRef<HTMLSpanElement, TextProps>(({ children, size, align, soft, newline, className, style, ...props }, ref) => {
     const textClasses = clsx(
         styles.text,
         {
             [styles.large]: size == 'lg',
             [styles.xl]: size == 'xl',
             [styles.soft]: soft,
-            [styles.newline]: newline,
-            [styles.links]: styleLinks
+            [styles.newline]: newline
         },
         className
     );
@@ -28,11 +26,11 @@ const Text: FC<TextProps> = ({ children, size, styleLinks = true, align, soft, n
     const properties = { textAlign: align, ...style } as CSSProperties;
 
     return (
-        <span className={textClasses} style={properties} id={id}>
+        <span className={textClasses} style={properties} ref={ref} {...props}>
             {children}
         </span>
     );
-};
+});
 
 export { Text };
 export type { TextProps };

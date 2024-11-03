@@ -20,8 +20,7 @@
     }
 
     &.margins {
-        margin-top: $xs;
-        margin-bottom: $md;
+        margin-block: var(--space);
     }
 
     &.open {
@@ -44,7 +43,7 @@
 
         .content {
             height: auto;
-            padding: $sm;
+            padding: var(--space-sm);
             border-radius: var(--border-radius);
             overflow-y: visible;
         }

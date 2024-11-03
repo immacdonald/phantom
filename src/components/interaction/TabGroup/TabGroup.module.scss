@@ -1,11 +1,11 @@
 .tabs {
     border-bottom: var(--border-light);
-    margin-bottom: $sm;
+    margin-bottom: var(--space-sm);
 }
 
 .tabsSegmented {
     background-color: transparent !important;
-    margin-bottom: $sm;
+    margin-bottom: var(--space-sm);
 }
 
 .tabButton {

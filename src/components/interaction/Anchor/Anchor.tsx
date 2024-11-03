@@ -1,7 +1,7 @@
 import type { Dimensions, PollingRate, Position } from '@types';
 import React, { CSSProperties, FC, HTMLAttributes, ReactElement, ReactNode, RefObject, useRef, useState } from 'react';
-import clsx from 'clsx';
 import { createPortal } from 'react-dom';
+import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
 import { useInterval } from '@hooks';
 import style from './Anchor.module.scss';
