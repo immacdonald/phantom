@@ -7,7 +7,10 @@ interface InputProps extends CommonComponentProps<HTMLInputElement> {
     name: string;
     type?: HTMLInputTypeAttribute;
     label?: string | ReactNode;
+    placeholder?: string;
     error?: string;
+    register?: unknown;
+    validationSchema?: unknown;
 }
 
 const FormInput: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(({ name, type = 'text', label, error, id, ...props }, ref) => {
