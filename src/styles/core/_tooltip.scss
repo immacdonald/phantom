@@ -1,7 +1,6 @@
 @use '../tokens' as *;
 
 @layer base {
-    // Misc.
     @keyframes appear {
         0% {
             opacity: 0;
@@ -21,7 +20,7 @@
             position: absolute;
             top: -50%;
             left: 50%;
-            transform: translate(-50%, -var(--space));
+            transform: translate(-50%, calc(-1 * var(--space-sm)));
             width: max-content;
             max-width: 256px;
             min-width: var(--layout-space-sm);

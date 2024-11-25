@@ -1,4 +1,3 @@
-export * from './AdaptiveGrid';
 export * from './Flex';
 export * from './Page';
 export * from './Section';

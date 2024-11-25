@@ -1,4 +1,3 @@
-export * from './Card';
 export * from './Divider';
 export * from './Heading';
 export * from './Icon';
