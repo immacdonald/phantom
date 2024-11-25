@@ -1,6 +1,6 @@
 {
     "name": "phantom-library",
-    "version": "1.0.0-alpha.2",
+    "version": "1.0.0-alpha.3",
     "description": "Phantom Design and Component Library for React",
     "main": "./lib/index.js",
     "module": "./lib/index.js",
