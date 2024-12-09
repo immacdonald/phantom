@@ -10,7 +10,7 @@ const useIsVisible = (ref: RefObject<HTMLElement>): boolean => {
             observer.observe(ref.current);
         }
 
-        return () => {
+        return (): void => {
             observer.disconnect();
         };
     }, [ref]);

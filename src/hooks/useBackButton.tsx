@@ -8,7 +8,7 @@ const useBackButton = (callback: Callback<void>): boolean => {
 
     useEffect(() => {
         window.addEventListener('popstate', handleEvent);
-        return () => window.removeEventListener('popstate', handleEvent);
+        return (): void => window.removeEventListener('popstate', handleEvent);
     });
 
     return true;

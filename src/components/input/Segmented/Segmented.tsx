@@ -1,5 +1,5 @@
 import type { Callback, CommonComponentProps, NullablePrimitive, Option } from '@types';
-import { CSSProperties, FC, useState } from 'react';
+import { CSSProperties, FC, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@components';
 import styles from './Segmented.module.scss';
@@ -7,13 +7,14 @@ import styles from './Segmented.module.scss';
 interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
     options?: Option[];
     defaultValue?: number;
+    value?: number;
     full?: boolean;
     disabled?: boolean;
     onChange?: Callback<NullablePrimitive>;
 }
 
-const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, full, disabled, onChange = (): void => {}, className, style }) => {
-    const [selected, setSelection] = useState<number | null>(defaultValue ?? null);
+const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, value, full, disabled, onChange = (): void => {}, className, style }) => {
+    const [selected, setSelection] = useState<number | null>(value ?? defaultValue ?? null);
     const handleChange = (index: number): void => {
         setSelection(index);
         onChange(options[index].value);
@@ -33,6 +34,12 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
         '--v-selected': selected,
         ...style
     } as CSSProperties;
+
+    useEffect(() => {
+        if (value) {
+            setSelection(value);
+        }
+    }, [value]);
 
     return (
         <div className={segmentedClasses}>

@@ -27,7 +27,7 @@ const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notif
 
         window.addEventListener('notification-change', handleNotificationPush);
 
-        return () => {
+        return (): void => {
             window.removeEventListener('notification-change', handleNotificationPush);
         };
     }, []);

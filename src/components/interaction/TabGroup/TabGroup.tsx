@@ -1,5 +1,5 @@
 import type { NullablePrimitive, Option } from '@types';
-import { CSSProperties, FC, ReactNode, useState } from 'react';
+import { CSSProperties, FC, ReactNode, useEffect, useState } from 'react';
 import { Button, Row, Segmented } from '@components';
 import { orUndefined } from '@utility';
 import style from './TabGroup.module.scss';
@@ -12,13 +12,20 @@ export type Tab = {
 
 interface TabGroupProps {
     tabs: Tab[];
+    selectedIndex?: number;
     variant?: 'tabs' | 'segmented';
     innerClassName?: string;
     innerStyle?: CSSProperties;
 }
 
-const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', innerClassName, innerStyle }) => {
-    const [selectedTab, setTab] = useState<number>(0);
+const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, innerClassName, innerStyle }) => {
+    const [selectedTab, setTab] = useState<number>(selectedIndex || 0);
+
+    useEffect(() => {
+        if (selectedIndex) {
+            setTab(selectedIndex);
+        }
+    }, [selectedIndex]);
 
     return (
         <>
@@ -28,7 +35,7 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', innerClassName, i
                         return { label: tab.label, value: index, disabled: tab.disabled } as Option;
                     })}
                     full
-                    defaultValue={0}
+                    value={selectedTab}
                     onChange={(value: NullablePrimitive) => setTab(value as number)}
                     className={style.tabsSegmented}
                 />

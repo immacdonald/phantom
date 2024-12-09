@@ -16,7 +16,7 @@ const ModalController: FC<CommonComponentProps> = ({ className, ...props }) => {
 
         window.addEventListener('modal-change', handleModalChange);
 
-        return () => {
+        return (): void => {
             window.removeEventListener('modal-change', handleModalChange);
         };
     }, []);

@@ -25,7 +25,7 @@ const Popover: FC<PopoverProps> = ({ content, direction = 'top', highlight = fal
     const isMounted = useRef<boolean>(false);
     useEffect(() => {
         isMounted.current = true;
-        return () => {
+        return (): void => {
             isMounted.current = false;
         };
     }, []);
@@ -68,7 +68,7 @@ const Popover: FC<PopoverProps> = ({ content, direction = 'top', highlight = fal
 
     const fullAnchorProps = {
         ...(!clickToToggle ? { onMouseEnter: hoverPopover, onMouseLeave: hoverExitPopover } : {}),
-        ...(clickToToggle ? { onClick: () => setClick(!click) } : {}),
+        ...(clickToToggle ? { onClick: (): void => setClick(!click) } : {}),
         ...anchorProps
     };
 

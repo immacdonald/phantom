@@ -17,7 +17,7 @@ const scrollToId = (id: string, offset: number = 128): void => {
     });
 };
 
-const orUndefined = <T>(condition: boolean | undefined, result: T) => {
+const orUndefined = <T>(condition: boolean | undefined, result: T): T | undefined => {
     return condition ? result : undefined;
 };
 
