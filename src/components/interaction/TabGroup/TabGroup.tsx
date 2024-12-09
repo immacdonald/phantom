@@ -1,4 +1,4 @@
-import type { NullablePrimitive, Option } from '@types';
+import type { Callback, NullablePrimitive, Option } from '@types';
 import { CSSProperties, FC, ReactNode, useEffect, useState } from 'react';
 import { Button, Row, Segmented } from '@components';
 import { orUndefined } from '@utility';
@@ -13,12 +13,13 @@ export type Tab = {
 interface TabGroupProps {
     tabs: Tab[];
     selectedIndex?: number;
+    onChange?: Callback<number>;
     variant?: 'tabs' | 'segmented';
     innerClassName?: string;
     innerStyle?: CSSProperties;
 }
 
-const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, innerClassName, innerStyle }) => {
+const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, innerClassName, innerStyle, onChange = (): void => {} }) => {
     const [selectedTab, setTab] = useState<number>(selectedIndex || 0);
 
     useEffect(() => {
@@ -26,6 +27,10 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, in
             setTab(selectedIndex);
         }
     }, [selectedIndex]);
+
+    useEffect(() => {
+        onChange(selectedTab);
+    }, [selectedTab])
 
     return (
         <>
