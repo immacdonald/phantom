@@ -20,8 +20,9 @@
         "prettier": "prettier ./ --write --ignore-path .gitignore",
         "stylelint": "npx stylelint '**/*.{css,scss}' --fix",
         "format": "npm run lint && npm run stylelint && npm run prettier",
-        "publish": "npm run dev && npm publish",
-        "publish-alpha": "npm run dev && npm publish --tag alpha"
+        "prepublishOnly": "npm run dev",
+        "release": "npm publish",
+        "release-alpha": "npm publish --tag alpha"
     },
     "repository": {
         "type": "git",
