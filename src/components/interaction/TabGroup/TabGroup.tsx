@@ -23,7 +23,7 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, in
     const [selectedTab, setTab] = useState<number>(selectedIndex || 0);
 
     useEffect(() => {
-        if (selectedIndex) {
+        if (selectedIndex !== undefined) {
             setTab(selectedIndex);
         }
     }, [selectedIndex]);

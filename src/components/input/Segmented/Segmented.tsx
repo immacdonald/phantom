@@ -36,7 +36,7 @@ const Segmented: FC<SegmentedProps> = ({ options = [{ value: 'Default', label: '
     } as CSSProperties;
 
     useEffect(() => {
-        if (value) {
+        if (value !== undefined) {
             setSelection(value);
         }
     }, [value]);
