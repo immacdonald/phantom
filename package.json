@@ -19,7 +19,9 @@
         "lint": "npx eslint . --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
         "prettier": "prettier ./ --write --ignore-path .gitignore",
         "stylelint": "npx stylelint '**/*.{css,scss}' --fix",
-        "format": "npm run lint && npm run stylelint && npm run prettier"
+        "format": "npm run lint && npm run stylelint && npm run prettier",
+        "publish": "npm run dev && npm publish",
+        "publish-alpha": "npm run dev && npm publish --tag alpha"
     },
     "repository": {
         "type": "git",
