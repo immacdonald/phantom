@@ -2,16 +2,17 @@
     "name": "phantom-library",
     "version": "1.0.0-alpha.8",
     "description": "Phantom Design and Component Library for React",
-    "main": "./lib/index.js",
     "module": "./lib/index.js",
     "type": "module",
+    "sideEffects": false,
+    "types": "lib/index.d.ts",
     "files": [
         "lib"
     ],
     "exports": {
         ".": "./lib/index.js",
         "./tokens": "./lib/styles/tokens/_index.scss",
-        "./styles": "./lib/styles/core.module.scss"
+        "./styles": "./lib/styles/styles.css"
     },
     "scripts": {
         "build": "tsup",
@@ -47,6 +48,8 @@
         "esbuild-sass-plugin": "^3.2.0",
         "eslint": "^9.12.0",
         "postcss-modules": "^6.0.0",
+        "react": "^18.2.0",
+        "react-router-dom": "^6.22.3",
         "sass": "^1.72.0",
         "sass-loader": "^14.1.1",
         "ts-node": "^10.9.2",
@@ -56,8 +59,11 @@
     "dependencies": {
         "clsx": "^2.1.1",
         "phantom-config": "^1.0.1",
-        "react": "^18.2.0",
-        "react-router-dom": "^6.22.3",
         "react-select": "^5.8.2"
+    },
+    "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18",
+        "react-router-dom": "^6.22.3"
     }
 }

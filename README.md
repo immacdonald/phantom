@@ -1,12 +1,26 @@
-# Phantom UI & Component Library
+# Phantom Library
+**React Components, Hooks, Utilities, and Design Systems**
 
-The Phantom Design and Component Library for React is a versatile and powerful package designed to streamline your development workflow by providing a comprehensive collection of modular, reusable React components. Each component is built with flexibility in mind, allowing for easy customization using modern SCSS styling practices. Whether you're building a complex application or a simple interface, Phantom enables you to maintain consistency and efficiency across your projects by leveraging a well-structured design system. With its focus on modularity and reusability, Phantom empowers developers to create visually appealing, responsive, and maintainable UIs with minimal effort.
+The Phantom Library for React is a versatile and powerful package designed to streamline your workflow for any sort of web development project by providing a collection of cohesive, modular React components. Each component is built with flexibility in mind, allowing for easy customization using React props and modern CSS styling practices. Whether you're building a complex application or a simple interface, Phantom enables you to maintain consistency and efficiency across your projects by leveraging a well-structured design system.
+
+### Installation
+To setup and use `phantom-library` in any React project just follow three simple steps:
+1. Install the library:
+```bash
+npm install phantom-library
+```
+
+2. Then, add a `<StyledApp>` component in the root of your component hierarchy. The StyledApp maintains the React contexts for responsive functionality as well as theming.
+   
+3. In your index or main file for the website, import the CSS styling from the library with `import 'phantom-library/styles'`.
+
+All done!
 
 ### Components & More
 
 #### Responsive Design
 
-Through the use of CSS variables and React contexts which span the entire app, it is simple and easy to develop a consistent design style for your websites. Phantom also includes integration with SASS for easily utilizing design tokens such as colors.
+Through the use of CSS variables and React contexts which span the entire app, it is simple and easy to develop a consistent design style for your websites. Phantom also includes integration with SASS for easily utilizing design tokens for attributes such as colors and sizes.
 
 #### General Components
 

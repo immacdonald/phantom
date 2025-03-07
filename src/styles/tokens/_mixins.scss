@@ -30,7 +30,7 @@
         border var(--transition-mid);
 
     &:hover {
-        border: var(--input-outline);
+        border-color: var(--input-color-active);
     }
 }
 

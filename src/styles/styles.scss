@@ -203,10 +203,10 @@
         --font-heading: 'Helvetica Neue', helvetica, arial, sans-serif;
 
         // Font
-        --font-size-xs: 0.75rem;
-        --font-size-sm: 0.875rem;
         --font-size: 1rem;
-        --font-size-lg: 1.125rem;
+        --font-size-xs: calc(var(--font-size) * 0.75) --font-size-sm: calc(var(--font-size) * 0.875);
+        --font-size-lg: calc(var(--font-size) * 1.2);
+        --font-size-xl: calc(var(--font-size) * 1.5);
 
         // Text
         --text-header-xxl: 64px;
@@ -215,10 +215,6 @@
         --text-header-md: 22px;
         --text-header-sm: 18px;
         --text-header-xs: 14px;
-
-        @include respond-max($screen-md) {
-            font-size: 0.875rem;
-        }
 
         @include respond-max($screen-lg) {
             --text-header-xxl: 56px;
@@ -234,6 +230,7 @@
             --text-header-xl: 28px;
             --text-header-lg: 22px;
             --text-header-md: 18px;
+            --font-size: 0.875rem;
         }
     }
 

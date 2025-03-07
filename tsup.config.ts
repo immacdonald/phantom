@@ -5,20 +5,37 @@ import { postcssModules, sassPlugin } from 'esbuild-sass-plugin';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-    splitting: true,
-    sourcemap: true,
     clean: true,
-    dts: true,
-    format: ['cjs', 'esm'],
+    sourcemap: true,
     minify: true,
-    bundle: true,
     skipNodeModulesBundle: true,
-    entry: ['src/index.ts'],
+    tsconfig: path.resolve(__dirname, "./tsconfig.json"),
+    dts: true,
+    entry: [
+        "./src/index.ts",
+        "./src/components/index.ts?(x)",
+        "./src/contexts/*.ts?(x)",
+        "./src/assets/**/index.ts?(x)",
+        "./src/components/**/**/!(index).ts?(x)",
+        "./src/hooks/*.ts?(x)",
+        "./src/types/*.ts?(x)",
+        "./src/utility/*.ts?(x)",
+        "./src/styles/styles.scss"
+    ],
+    format: ["esm"],
+    outDir: "lib/",
     target: 'es2020',
-    outDir: 'lib',
+    bundle: true,
+    platform: "browser",
+    external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime"
+    ],
     esbuildPlugins: [
         sassPlugin({
             type: 'style',
+            filter: /\.module\.scss$/,
             precompile(source, pathname) {
                 const filePath = pathname.split('/').slice(-1)[0];
                 if (!filePath.startsWith('_')) {
@@ -31,6 +48,10 @@ export default defineConfig({
             transform: postcssModules({
                 generateScopedName: 'phantom-[local]_[hash:base64:5]'
             })
+        }),
+        sassPlugin({
+            type: 'css',
+            filter: /^[^_][^.]*\.scss$/,
         }),
         svgr(),
         copy({

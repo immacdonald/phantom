@@ -4,27 +4,29 @@
     @mixin input {
         @include base-input;
 
-        width: 100%;
-        height: 3rem;
-        padding: var(--space);
-        outline: 1px solid transparent;
-        font-family: var(--font-body);
+        & {
+            width: 100%;
+            height: 3rem;
+            padding: var(--space);
+            outline: 1px solid transparent;
+            font-family: var(--font-body);
 
-        &::placeholder {
-            color: var(--input-color-fg-light);
-            opacity: 0.5;
-        }
+            &::placeholder {
+                color: var(--input-color-fg-light);
+                opacity: 0.5;
+            }
 
-        &:focus {
-            outline: var(--input-outline);
-        }
+            &:focus {
+                outline: var(--input-outline);
+            }
 
-        &[disabled] {
-            background-color: var(--input-color-bg-disabled);
-            border: none;
-            color: var(--input-color-fg-disabled);
-            cursor: not-allowed;
-            filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
+            &[disabled] {
+                background-color: var(--input-color-bg-disabled);
+                border: none;
+                color: var(--input-color-fg-disabled);
+                cursor: not-allowed;
+                filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
+            }
         }
     }
 
