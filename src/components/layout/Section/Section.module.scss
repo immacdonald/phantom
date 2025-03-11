@@ -1,143 +1,145 @@
-.section {
-    @include responsive-width;
+@layer components {
+    .section {
+        @include responsive-width;
 
-    --background-image: none;
+        --background-image: none;
 
-    min-height: 64px;
-    padding-block: var(--layout-space-xs);
-    flex-grow: 1;
-    position: relative;
-    color: var(--context-color-text, inherit);
+        min-height: 64px;
+        padding-block: var(--layout-space-xs);
+        flex-grow: 1;
+        position: relative;
+        color: var(--context-color-text, inherit);
 
-    &:not(:last-of-type) {
-        flex: 0 0 auto;
-    }
-
-    &:last-of-type {
-        flex: 1 0 auto;
-    }
-
-    &.background {
-        &.regular {
-            background-color: var(--context-color-surface, var(--color-background));
+        &:not(:last-of-type) {
+            flex: 0 0 auto;
         }
 
-        &.floating,
-        &.inset {
-            background-color: var(--context-color-background, var(--color-background));
+        &:last-of-type {
+            flex: 1 0 auto;
         }
-    }
 
-    &.floating {
-        padding-inline: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: center;
+        &.background {
+            &.regular {
+                background-color: var(--context-color-surface, var(--color-background));
+            }
 
-        > div {
-            width: min(600px, 95%);
-            background-color: var(--context-color-surface, var(--color-background-foreground));
-            padding: var(--space-lg);
-            border: var(--border-light);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lifted);
+            &.floating,
+            &.inset {
+                background-color: var(--context-color-background, var(--color-background));
+            }
+        }
+
+        &.floating {
+            padding-inline: 0;
             display: flex;
             flex-direction: column;
             justify-content: start;
             align-items: center;
-            gap: 12px;
-        }
-    }
 
-    &.inset > div {
-        @include responsive-width;
-
-        min-height: 128px;
-        background-color: var(--context-color-surface, var(--color-background-foreground));
-        border: var(--border-light);
-        padding-block: var(--space-lg);
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow-lifted);
-    }
-
-    &.image {
-        &.regular {
-            background-image: var(--background-image);
-        }
-
-        &.floating,
-        &.inset {
             > div {
+                width: min(600px, 95%);
+                background-color: var(--context-color-surface, var(--color-background-foreground));
+                padding: var(--space-lg);
+                border: var(--border-light);
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow-lifted);
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                gap: 12px;
+            }
+        }
+
+        &.inset > div {
+            @include responsive-width;
+
+            min-height: 128px;
+            background-color: var(--context-color-surface, var(--color-background-foreground));
+            border: var(--border-light);
+            padding-block: var(--space-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lifted);
+        }
+
+        &.image {
+            &.regular {
                 background-image: var(--background-image);
             }
-        }
-    }
 
-    &.parallax {
-        @mixin parallax {
-            // Fallback color defaults to the primary color
-            background-color: var(--color-background);
-            background-attachment: fixed;
-            background-position: center center;
-            background-size: cover;
-        }
-
-        &.regular {
-            @include parallax;
-        }
-
-        &.floating,
-        &.inset {
-            > div {
-                @include parallax;
+            &.floating,
+            &.inset {
+                > div {
+                    background-image: var(--background-image);
+                }
             }
         }
-    }
 
-    &[data-top-shape],
-    &[data-bottom-shape] {
-        $inset: 32px;
-        $outset: 32px;
+        &.parallax {
+            @mixin parallax {
+                // Fallback color defaults to the primary color
+                background-color: var(--color-background);
+                background-attachment: fixed;
+                background-position: center center;
+                background-size: cover;
+            }
 
-        --outset-top: 0px;
-        --outset-bottom: 0px;
-        --inset-top: 0px;
-        --inset-bottom: 0px;
+            &.regular {
+                @include parallax;
+            }
 
-        &[data-top-shape='inset'] {
-            --inset-top: #{$inset};
+            &.floating,
+            &.inset {
+                > div {
+                    @include parallax;
+                }
+            }
         }
 
-        &[data-top-shape='outset'] {
-            --outset-top: #{$outset};
+        &[data-top-shape],
+        &[data-bottom-shape] {
+            $inset: 32px;
+            $outset: 32px;
+
+            --outset-top: 0px;
+            --outset-bottom: 0px;
+            --inset-top: 0px;
+            --inset-bottom: 0px;
+
+            &[data-top-shape='inset'] {
+                --inset-top: #{$inset};
+            }
+
+            &[data-top-shape='outset'] {
+                --outset-top: #{$outset};
+            }
+
+            &[data-bottom-shape='inset'] {
+                --inset-bottom: #{$inset};
+            }
+
+            &[data-bottom-shape='outset'] {
+                --outset-bottom: #{$outset};
+            }
+
+            clip-path: polygon(
+                0 var(--outset-top),
+                50% var(--inset-top),
+                100% var(--outset-top),
+                100% calc(100% - var(--outset-bottom)),
+                50% calc(100% - var(--inset-bottom)),
+                0 calc(100% - var(--outset-bottom))
+            );
+            padding-top: max(calc(3 * (var(--outset-top) + var(--inset-top))), var(--layout-space-xs));
+            padding-bottom: max(calc(2 * (var(--outset-bottom) + var(--inset-bottom))), var(--layout-space-xs));
         }
 
-        &[data-bottom-shape='inset'] {
-            --inset-bottom: #{$inset};
+        @include respond-max($screen-md) {
+            padding-block: var(--space-xl);
         }
 
-        &[data-bottom-shape='outset'] {
-            --outset-bottom: #{$outset};
+        @include respond-max($screen-sm) {
+            padding-block: var(--space-lg);
         }
-
-        clip-path: polygon(
-            0 var(--outset-top),
-            50% var(--inset-top),
-            100% var(--outset-top),
-            100% calc(100% - var(--outset-bottom)),
-            50% calc(100% - var(--inset-bottom)),
-            0 calc(100% - var(--outset-bottom))
-        );
-        padding-top: max(calc(3 * (var(--outset-top) + var(--inset-top))), var(--layout-space-xs));
-        padding-bottom: max(calc(2 * (var(--outset-bottom) + var(--inset-bottom))), var(--layout-space-xs));
-    }
-
-    @include respond-max($screen-md) {
-        padding-block: var(--space-xl);
-    }
-
-    @include respond-max($screen-sm) {
-        padding-block: var(--space-lg);
     }
 }

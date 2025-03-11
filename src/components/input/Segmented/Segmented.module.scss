@@ -1,48 +1,50 @@
-.segmented {
-    position: relative;
-    width: fit-content;
-    height: 3em;
-    overflow: scroll hidden;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
+@layer components {
+    .segmented {
+        position: relative;
+        width: fit-content;
+        height: 3em;
+        overflow: scroll hidden;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
 
-    $gap: var(--space-xs);
+        $gap: var(--space-xs);
 
-    padding-inline: $gap;
-    gap: $gap;
+        padding-inline: $gap;
+        gap: $gap;
 
-    @include base-input;
-    @include hide-scrollbar;
+        @include base-input;
+        @include hide-scrollbar;
 
-    background-color: var(--color-background);
-    outline-width: 0;
-    border-width: 0 !important;
+        background-color: var(--color-background);
+        outline-width: 0;
+        border-width: 0 !important;
 
-    &.full {
-        width: 100%;
-    }
+        &.full {
+            width: 100%;
+        }
 
-    &[disabled],
-    &.disabled {
-        background-color: var(--input-color-bg-disabled);
-        border: none;
-        color: var(--input-color-fg-disabled);
-        cursor: not-allowed;
-        filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
-    }
+        &[disabled],
+        &.disabled {
+            background-color: var(--input-color-bg-disabled);
+            border: none;
+            color: var(--input-color-fg-disabled);
+            cursor: not-allowed;
+            filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
+        }
 
-    .indicator {
-        position: absolute;
+        .indicator {
+            position: absolute;
 
-        $total-width: #{calc(100% - var(--v-count) * $gap)};
-        $width: #{calc($total-width / var(--v-count))};
+            $total-width: #{calc(100% - var(--v-count) * $gap)};
+            $width: #{calc($total-width / var(--v-count))};
 
-        width: $width;
-        height: 40px;
-        background-color: var(--color-primary);
-        left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
-        transition: left var(--transition-fast);
-        border-radius: var(--border-radius);
+            width: $width;
+            height: 40px;
+            background-color: var(--color-primary);
+            left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
+            transition: left var(--transition-fast);
+            border-radius: var(--border-radius);
+        }
     }
 }

@@ -6,10 +6,21 @@ import { popNotification } from './notifications';
 import style from './Banner.module.scss';
 
 interface BannerProps extends CommonComponentProps {
+    /**
+     * Duration (in milliseconds) for which the notification is displayed before disappearing.
+     */
     notificationLength?: number;
+
+    /**
+     * Delay (in milliseconds) before showing a new notification when another notification is already present.
+     */
     concurrentNotificationDelay?: number;
 }
 
+/**
+ * A floating notification banner that displays error or success messages.
+ * It listens for notification changes and automatically updates its state to show new notifications.
+ */
 const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notificationLength = 5000, concurrentNotificationDelay = 750, className, ...props }, ref) => {
     const [state, setState] = useState<boolean>(false);
     const [previousState, setPreviousState] = useState<boolean>(false);
@@ -20,7 +31,9 @@ const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notif
     const [notificationChange, setNotificationChange] = useState<boolean>(false);
 
     useEffect(() => {
-        // On a notification push set a useEffect trigger
+        /**
+         * Handles notification push events and triggers a state change.
+         */
         const handleNotificationPush = (): void => {
             setNotificationChange(true);
         };
@@ -66,7 +79,7 @@ const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notif
     }, [state, notificationChange]);
 
     return createPortal(
-        <div className={clsx(style.banner, className)} data-mode={type} data-state={state ? 'on' : 'off'} ref={ref} {...props}>
+        <div className={clsx(style.banner, className)} data-mode={type} data-state={state ? 'on' : 'off'} ref={ref} role="banner" {...props}>
             <span className={style.message}>{message}</span>
         </div>,
         document.getElementById('root')!

@@ -1,43 +1,65 @@
-import type { Callback } from '@types';
-import { CSSProperties, ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { Callback, CommonComponentProps } from '@types';
+import { CSSProperties, ChangeEvent, FC, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import style from './Toggle.module.scss';
 
-interface ToggleProps {
+interface ToggleProps extends Omit<CommonComponentProps, 'onChange'> {
+    /** The label displayed when the toggle is in the "on" position. */
     checked?: string;
+
+    /** The label displayed when the toggle is in the "off" position. */
     notChecked?: string;
+
+    /** The default state of the toggle when it mounts. */
     defaultState?: boolean;
+
+    /** Disables the toggle, preventing user interaction. */
     disabled?: boolean;
+
+    /** Callback function triggered when the toggle state changes. */
     onChange?: Callback<boolean>;
 }
 
-const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultState = false, disabled = false, onChange = (): void => {} }) => {
-    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        if (onChange) {
-            onChange(event.target.checked);
-        }
-    }, []);
+/** A customizable toggle switch component with labeled states. */
+const Toggle: FC<ToggleProps> = forwardRef<HTMLInputElement, ToggleProps>(({ checked = 'Yes', notChecked = 'No', defaultState = false, disabled = false, onChange, ...props }, ref) => {
+    /** Handles state changes and triggers the `onChange` callback. */
+    const handleChange = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            if (onChange) {
+                onChange(event.target.checked);
+            }
+        },
+        [onChange]
+    );
 
     const before = useRef<HTMLSpanElement>(null);
     const after = useRef<HTMLSpanElement>(null);
-
     const [width, setWidth] = useState<number | null>(null);
 
     useEffect(() => {
         if (!width && before.current && after.current) {
             setWidth(2 * Math.max(before.current?.clientWidth, after.current?.clientWidth));
         }
-    }, [before, after]);
+    }, [width]);
 
-    const properties = useMemo(() => (width ? ({ '--v-width': `calc(${width}px + 2 * var(--v-padding))`, '--v-half': 'calc(50% - var(--v-padding))' } as CSSProperties) : undefined), [width]);
+    const properties = useMemo(
+        () =>
+            width
+                ? ({
+                      '--v-width': `calc(${width}px + 2 * var(--v-padding))`,
+                      '--v-half': 'calc(50% - var(--v-padding))'
+                  } as CSSProperties)
+                : undefined,
+        [width]
+    );
 
     const toggleClasses = clsx(style.toggle, {
         [style.disabled]: disabled
     });
 
     return (
-        <div className={toggleClasses} style={properties}>
-            <input type="checkbox" className={style.checkbox} defaultChecked={defaultState} onChange={handleChange} disabled={disabled} />
+        <div className={toggleClasses} style={properties} role="switch" aria-checked={defaultState} aria-disabled={disabled} {...props}>
+            <input type="checkbox" className={style.checkbox} defaultChecked={defaultState} onChange={handleChange} disabled={disabled} ref={ref} />
             <div className={style.states} style={width ? undefined : { visibility: 'hidden' }}>
                 <span ref={before} className={style.before}>
                     {notChecked}
@@ -49,6 +71,6 @@ const Toggle: FC<ToggleProps> = ({ checked = 'Yes', notChecked = 'No', defaultSt
             </div>
         </div>
     );
-};
+});
 
 export { Toggle };

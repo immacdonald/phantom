@@ -1,16 +1,18 @@
 import type { CommonComponentProps } from '@types';
-import { FC } from 'react';
-import style from './Switch.module.scss';
+import { FC, forwardRef } from 'react';
+import clsx from 'clsx';
+import styles from './Switch.module.scss';
 
 interface SwitchProps extends CommonComponentProps<HTMLInputElement> {}
 
-const Switch: FC<SwitchProps> = ({ ...props }) => {
+/** A toggle switch component that acts as a styled checkbox. */
+const Switch: FC<SwitchProps> = forwardRef<HTMLInputElement, SwitchProps>(({ className, style, ...props }, ref) => {
     return (
-        <div className={style.switch}>
-            <input type="checkbox" data-switch {...props} />
+        <div className={clsx(styles.switch, className)} style={style}>
+            <input type="checkbox" data-switch ref={ref} role="switch" {...props} />
             <span />
         </div>
     );
-};
+});
 
 export { Switch };

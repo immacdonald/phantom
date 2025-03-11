@@ -1,15 +1,17 @@
-.page {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    > article {
+@layer components {
+    .page {
+        position: relative;
         width: 100%;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: start;
-        align-items: center;
+
+        > article {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+        }
     }
 }

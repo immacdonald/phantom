@@ -1,0 +1,9 @@
+@layer components {
+    .icon {
+        --icon-size: 1rem;
+
+        display: inline-block;
+        font-size: var(--icon-size);
+        height: 1em;
+    }
+}

@@ -204,7 +204,8 @@
 
         // Font
         --font-size: 1rem;
-        --font-size-xs: calc(var(--font-size) * 0.75) --font-size-sm: calc(var(--font-size) * 0.875);
+        --font-size-xs: calc(var(--font-size) * 0.75);
+        --font-size-sm: calc(var(--font-size) * 0.875);
         --font-size-lg: calc(var(--font-size) * 1.2);
         --font-size-xl: calc(var(--font-size) * 1.5);
 

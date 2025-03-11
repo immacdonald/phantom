@@ -1,0 +1,40 @@
+@layer components {
+    .figure {
+        --v-max-width: 100%;
+        --v-max-height: 100%;
+
+        max-width: var(--v-max-width);
+        max-height: var(--v-max-height);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--space);
+
+        .image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            user-select: none;
+            object-fit: cover;
+
+            &.border {
+                border: 1px solid var(--border-light);
+            }
+
+            &.round {
+                aspect-ratio: 1;
+                border-radius: 100%;
+            }
+
+            &.fit {
+                height: 100%;
+            }
+        }
+
+        .caption {
+            margin-top: var(--space-sm);
+            color: var(--color-text-soft);
+            font-size: var(--font-size-sm);
+        }
+    }
+}

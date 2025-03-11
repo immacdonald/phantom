@@ -1,7 +1,8 @@
+// Layers must be forwarded first so that no CSS is loaded before it
+@forward 'layers';
 @forward 'body';
 @forward 'elements';
 @forward 'forms';
-@forward 'layers';
 @forward 'table';
 @forward 'text';
 @forward 'tooltip';

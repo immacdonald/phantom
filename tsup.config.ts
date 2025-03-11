@@ -9,29 +9,25 @@ export default defineConfig({
     sourcemap: true,
     minify: true,
     skipNodeModulesBundle: true,
-    tsconfig: path.resolve(__dirname, "./tsconfig.json"),
+    tsconfig: path.resolve(__dirname, './tsconfig.json'),
     dts: true,
     entry: [
-        "./src/index.ts",
-        "./src/components/index.ts?(x)",
-        "./src/contexts/*.ts?(x)",
-        "./src/assets/**/index.ts?(x)",
-        "./src/components/**/**/!(index).ts?(x)",
-        "./src/hooks/*.ts?(x)",
-        "./src/types/*.ts?(x)",
-        "./src/utility/*.ts?(x)",
-        "./src/styles/styles.scss"
+        './src/index.ts',
+        './src/components/index.ts?(x)',
+        './src/contexts/*.ts?(x)',
+        './src/assets/**/index.ts?(x)',
+        './src/components/**/**/!(index).ts?(x)',
+        './src/hooks/*.ts?(x)',
+        './src/types/*.ts?(x)',
+        './src/utility/*.ts?(x)',
+        './src/styles/styles.scss'
     ],
-    format: ["esm"],
-    outDir: "lib/",
+    format: ['esm'],
+    outDir: 'lib/',
     target: 'es2020',
     bundle: true,
-    platform: "browser",
-    external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime"
-    ],
+    platform: 'browser',
+    external: ['react', 'react-dom', 'react/jsx-runtime'],
     esbuildPlugins: [
         sassPlugin({
             type: 'style',
@@ -51,7 +47,7 @@ export default defineConfig({
         }),
         sassPlugin({
             type: 'css',
-            filter: /^[^_][^.]*\.scss$/,
+            filter: /^[^_][^.]*\.scss$/
         }),
         svgr(),
         copy({

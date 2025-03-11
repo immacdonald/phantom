@@ -1,0 +1,17 @@
+@layer components {
+    .tabs {
+        border-bottom: var(--border-light);
+        margin-bottom: var(--space-sm);
+    }
+
+    .tabsSegmented {
+        background-color: transparent !important;
+        margin-bottom: var(--space-sm);
+    }
+
+    .tabButton {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom: none !important;
+    }
+}

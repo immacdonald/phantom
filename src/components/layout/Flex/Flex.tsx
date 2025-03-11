@@ -7,14 +7,26 @@ import styles from './Flex.module.scss';
 type FlexDirection = 'row' | 'column';
 
 interface FlexProps extends CommonComponentProps<HTMLDivElement> {
+    /** The child elements inside the flex container. */
     children?: ReactNode;
+
+    /** Defines the flex direction (`row` or `column`), with responsive support. */
     flex?: ResponsiveType<FlexDirection>;
+
+    /** Controls horizontal alignment, with responsive support. */
     align?: ResponsiveType<FlexAlign>;
+
+    /** Controls vertical alignment, with responsive support. */
     verticalAlign?: ResponsiveType<FlexAlign>;
+
+    /** Specifies the gap between flex items, with responsive support. */
     gap?: ResponsiveType<CSSProperties['gap']>;
+
+    /** Sets `position: relative` if `true`. */
     relative?: boolean;
 }
 
+/** A responsive flexbox container component with configurable alignment, direction, and spacing. */
 const Flex: FC<FlexProps> = forwardRef<HTMLDivElement, FlexProps>(({ children, flex, align, verticalAlign, gap, relative = false, className, style, ...props }, ref) => {
     const { parse } = useResponsiveContext();
 
@@ -26,13 +38,14 @@ const Flex: FC<FlexProps> = forwardRef<HTMLDivElement, FlexProps>(({ children, f
             className={flexClasses}
             style={{
                 flexDirection: flexDirection,
-                alignItems: parse<FlexAlign>(flexDirection == 'column' ? align : verticalAlign),
-                justifyContent: parse<FlexAlign>(flexDirection == 'column' ? verticalAlign : align),
+                alignItems: parse<FlexAlign>(flexDirection === 'column' ? align : verticalAlign),
+                justifyContent: parse<FlexAlign>(flexDirection === 'column' ? verticalAlign : align),
                 gap: parse<CSSProperties['gap']>(gap),
                 position: relative ? 'relative' : undefined,
                 ...style
             }}
             ref={ref}
+            role="group"
             {...props}
         >
             {children}

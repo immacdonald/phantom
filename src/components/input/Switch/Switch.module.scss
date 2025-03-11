@@ -1,59 +1,61 @@
-.switch {
-    $padding: 4px;
-    $height: 1em;
-    $full-height: calc($height + $padding + $padding);
-    $width: 40px;
+@layer components {
+    .switch {
+        $padding: 4px;
+        $height: 1em;
+        $full-height: calc($height + $padding + $padding);
+        $width: 40px;
 
-    width: $width;
-    display: inline-block;
-    position: relative;
-    top: calc($padding * 2);
-
-    span {
-        display: flex;
-        align-items: center;
         width: $width;
-        height: $full-height;
-        border-radius: $full-height;
+        display: inline-block;
         position: relative;
-        transition: 0.15s ease;
-        pointer-events: none;
-        border: var(--input-border);
-        background-color: var(--input-color-bg-selected);
+        top: calc($padding * 2);
 
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            pointer-events: none;
-            height: $height;
-            width: $height;
-            background-color: var(--color-text-inverse);
-            border-radius: 50%;
-            box-shadow: var(--shadow-subtle);
+        span {
+            display: flex;
+            align-items: center;
+            width: $width;
+            height: $full-height;
+            border-radius: $full-height;
+            position: relative;
             transition: 0.15s ease;
-            transform: translateX($padding);
-        }
-    }
-
-    &:hover > span {
-        border: var(--input-border-active);
-    }
-
-    input {
-        width: $width;
-        height: $full-height;
-        font-size: inherit;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        opacity: 0;
-
-        &:checked + span {
-            background-color: var(--color-primary);
+            pointer-events: none;
+            border: var(--input-border);
+            background-color: var(--input-color-bg-selected);
 
             &::before {
-                transform: translateX(calc(100% + $padding));
+                content: '';
+                display: block;
+                position: absolute;
+                pointer-events: none;
+                height: $height;
+                width: $height;
+                background-color: var(--color-text-inverse);
+                border-radius: 50%;
+                box-shadow: var(--shadow-subtle);
+                transition: 0.15s ease;
+                transform: translateX($padding);
+            }
+        }
+
+        &:hover > span {
+            border: var(--input-border-active);
+        }
+
+        input {
+            width: $width;
+            height: $full-height;
+            font-size: inherit;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            opacity: 0;
+
+            &:checked + span {
+                background-color: var(--color-primary);
+
+                &::before {
+                    transform: translateX(calc(100% + $padding));
+                }
             }
         }
     }

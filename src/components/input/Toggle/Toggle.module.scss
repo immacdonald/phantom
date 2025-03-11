@@ -1,107 +1,94 @@
-@mixin base-input {
-    color: var(--input-color-fg);
-    background-color: var(--input-color-bg);
-    border-radius: var(--border-radius);
-    font-size: var(--font-size);
-    border: var(--input-border);
-    transition:
-        outline-color var(--transition-fast),
-        border var(--transition-mid);
+@layer components {
+    .toggle {
+        --v-width: auto;
+        --v-half: auto;
+        --v-padding: 4px;
 
-    &:hover {
-        border: var(--input-outline);
-    }
-}
+        position: relative;
+        width: fit-content;
+        height: 3em;
+        overflow: hidden;
+        font-weight: bold;
 
-.toggle {
-    --v-width: auto;
-    --v-half: auto;
-    --v-padding: 4px;
+        @include base-input;
 
-    position: relative;
-    width: fit-content;
-    height: 3em;
-    overflow: hidden;
-    font-weight: bold;
-
-    @include base-input;
-
-    &[disabled],
-    &.disabled {
-        background-color: var(--input-color-bg-disabled);
-        border: none;
-        color: var(--input-color-fg-disabled);
-        cursor: not-allowed;
-        filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
-    }
-}
-
-.checkbox {
-    position: absolute !important;
-    width: 100% !important;
-    height: 100% !important;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 3;
-
-    &::before,
-    &::after {
-        display: none !important;
+        &[disabled],
+        &.disabled {
+            background-color: var(--input-color-bg-disabled);
+            border: none;
+            color: var(--input-color-fg-disabled);
+            cursor: not-allowed;
+            filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
+        }
     }
 
-    &[disabled],
-    &.disabled {
-        cursor: not-allowed;
+    .checkbox {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 3;
+
+        &::before,
+        &::after {
+            display: none !important;
+        }
+
+        &[disabled],
+        &.disabled {
+            cursor: not-allowed;
+        }
     }
-}
 
-.states {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--border-radius);
-    width: var(--v-width);
-    height: 100%;
-    transition: 0.3s ease all;
-    z-index: 1;
-}
+    .states {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--border-radius);
+        width: var(--v-width);
+        height: 100%;
+        transition: 0.3s ease all;
+        z-index: 1;
+    }
 
-.before,
-.indicator,
-.after {
-    padding: var(--v-padding);
-    border-radius: var(--border-radius);
-    transition: 0.3s ease all;
-}
+    .before,
+    .indicator,
+    .after {
+        padding: var(--v-padding);
+        border-radius: var(--border-radius);
+        transition: 0.3s ease all;
+    }
 
-.before,
-.after {
-    width: var(--v-half);
-    text-align: center;
-    line-height: 1;
-    color: var(--input-color-fg);
-    z-index: 1;
-}
+    .before,
+    .after {
+        width: var(--v-half);
+        text-align: center;
+        line-height: 1;
+        color: var(--input-color-fg);
+        z-index: 1;
+    }
 
-.indicator {
-    position: absolute;
-    width: calc(50% - var(--v-padding));
-    height: calc(100% - 2 * var(--v-padding));
-    left: var(--v-padding);
-    background-color: var(--input-color-active);
-    z-index: 0;
-}
+    .indicator {
+        position: absolute;
+        width: calc(50% - var(--v-padding));
+        height: calc(100% - 2 * var(--v-padding));
+        left: var(--v-padding);
+        background-color: var(--input-color-active);
+        z-index: 0;
+    }
 
-.checkbox:checked + .states .indicator {
-    left: calc(50%);
-}
+    .checkbox:checked + .states .indicator {
+        left: calc(50%);
+    }
 
-.checkbox:checked + .states .after {
-    color: var(--input-color-fg-active);
-}
+    .checkbox:checked + .states .after {
+        color: var(--input-color-fg-active);
+    }
 
-.checkbox:not(:checked) + .states .before {
-    color: var(--input-color-fg-active);
+    .checkbox:not(:checked) + .states .before {
+        color: var(--input-color-fg-active);
+    }
 }

@@ -1,25 +1,39 @@
 import { CommonComponentProps } from '@types';
 import { FC, forwardRef, HTMLInputTypeAttribute, ReactNode } from 'react';
-import { Typography } from '@components/general';
+import clsx from 'clsx';
+import { Typography } from '@components/content';
 import style from './FormInput.module.scss';
 
 interface InputProps extends CommonComponentProps<HTMLInputElement> {
+    /** The name of the input field, used for form submission. */
     name: string;
+
+    /** The type of input field. */
     type?: HTMLInputTypeAttribute;
+
+    /** An optional label displayed above the input field. */
     label?: string | ReactNode;
+
+    /** Placeholder text shown inside the input field. */
     placeholder?: string;
+
+    /** An error message displayed below the input field. */
     error?: string;
-    register?: unknown;
-    validationSchema?: unknown;
+
+    /** Additional class names for the fieldset wrapper. */
+    fieldClass?: string;
 }
 
-const FormInput: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(({ name, type = 'text', label, error, id, ...props }, ref) => {
+/** A customizable form input component with optional labels, validation, and error messaging. */
+const FormInput: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(({ name, type = 'text', label, error, id, fieldClass, ...props }, ref) => {
+    const inputId = id || name;
+
     return (
-        <fieldset className={style.input}>
-            {label && <label htmlFor={id || name}>{label}</label>}
-            <input id={id || name} name={name} type={type} aria-invalid={error ? 'true' : 'false'} ref={ref} {...props} />
+        <fieldset className={clsx(style.input, fieldClass)}>
+            {label && <label htmlFor={inputId}>{label}</label>}
+            <input id={inputId} name={name} type={type} aria-invalid={!!error} aria-describedby={error ? `${inputId}-error` : undefined} ref={ref} {...props} />
             {error && (
-                <Typography.Text role="alert" className="error">
+                <Typography.Text id={`${inputId}-error`} role="alert">
                     {error}
                 </Typography.Text>
             )}

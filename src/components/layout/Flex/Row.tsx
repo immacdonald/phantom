@@ -3,6 +3,7 @@ import { Flex, FlexProps } from './Flex';
 
 interface RowProps extends Omit<FlexProps, 'flex'> {}
 
+/** A flexbox-based row layout component that arranges children horizontally. */
 const Row: FC<RowProps> = ({ children, ...props }) => {
     return (
         <Flex flex="row" {...props}>
@@ -12,3 +13,4 @@ const Row: FC<RowProps> = ({ children, ...props }) => {
 };
 
 export { Row };
+export type { RowProps };

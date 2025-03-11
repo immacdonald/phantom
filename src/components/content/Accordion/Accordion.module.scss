@@ -1,0 +1,62 @@
+@layer components {
+    .accordion {
+        width: 100%;
+
+        &.border {
+            border-radius: 0;
+            border-top: var(--border-light);
+            border-bottom: var(--border-light);
+        }
+
+        &.margins {
+            margin-block: var(--space);
+        }
+
+        > .wrapper {
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: height var(--transition-fast);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+
+            .content {
+                height: auto;
+                padding: var(--space-sm);
+                border-radius: var(--border-radius);
+                overflow-y: visible;
+            }
+        }
+
+        &.instant {
+            .wrapper,
+            svg {
+                transition: none !important;
+            }
+        }
+
+        > .toggle {
+            width: 100%;
+
+            .button {
+                justify-content: flex-start;
+                border-radius: 0;
+
+                svg {
+                    transform: rotate(0deg);
+                    transition: transform var(--transition-mid);
+                }
+            }
+        }
+
+        &.open {
+            > .toggle {
+                .button {
+                    svg {
+                        transform: rotate(-180deg);
+                    }
+                }
+            }
+        }
+    }
+}

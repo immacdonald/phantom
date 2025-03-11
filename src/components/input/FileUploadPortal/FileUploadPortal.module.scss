@@ -1,54 +1,61 @@
-.wrapper {
-    margin-top: var(--space);
-}
-
-.inputWrapper {
-    @include base-input;
-
-    $height: 96px;
-
-    width: 100%;
-    height: $height;
-    position: relative;
-    padding: var(--space-xs);
-
-    input[type='file'] {
+@layer components {
+    .wrapper {
         width: 100%;
-        height: 100%;
+        margin-top: var(--space);
+
+        // padding: var(--space-xs);
+        // border: var(--border-light);
+        // border-radius: var(--border-radius);
     }
 
-    &:disabled {
-        background-color: var(--input-color-bg-disabled);
-    }
+    .inputWrapper {
+        @include base-input;
 
-    .visual {
+        $height: 96px;
+
         width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: var(--input-color-bg);
-        border-radius: var(--border-radius);
-        pointer-events: none;
+        height: $height;
+        position: relative;
+        padding: var(--space-xs);
+
+        input[type='file'] {
+            width: 100%;
+            height: 100%;
+        }
+
+        &:disabled {
+            background-color: var(--input-color-bg-disabled);
+        }
+
+        .visual {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--input-color-bg);
+            border-radius: var(--border-radius);
+            pointer-events: none;
+        }
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
     }
 
-    .icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-    }
-}
+    .fileList {
+        font-size: var(--font-size-sm);
+        display: flex;
+        flex-direction: column;
 
-.fileList {
-    font-size: var(--font-size-sm);
-    display: flex;
-    flex-direction: column;
-
-    .fileLabel {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-sm);
+        .fileLabel {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
     }
 }

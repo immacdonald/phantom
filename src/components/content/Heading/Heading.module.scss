@@ -1,0 +1,15 @@
+@layer components {
+    .header {
+        margin-bottom: 0;
+
+        .title {
+            margin-bottom: 0;
+        }
+
+        .subheading {
+            margin-bottom: var(--space-sm);
+            font-weight: normal;
+            color: var(--color-text-soft);
+        }
+    }
+}

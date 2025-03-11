@@ -1,0 +1,13 @@
+@layer components {
+    .link {
+        &.styled {
+            color: var(--color-primary);
+        }
+
+        &:not(.styled) {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

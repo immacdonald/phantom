@@ -1,45 +1,47 @@
-.banner {
-    position: fixed;
-    top: var(--space-sm);
-    left: 50%;
-    min-width: min(max(50%, 320px), 95%);
-    min-height: 48px;
-    z-index: 200;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text);
-    background-color: var(--color-background-overlay);
-    border-radius: var(--border-radius);
-    border: 1px solid transparent;
-    box-shadow: var(--shadow-floating);
-    opacity: 0;
-    transform: translate(-50%, -120%);
-    transition:
-        transform var(--transition-slow),
-        opacity var(--transition-slow);
+@layer components {
+    .banner {
+        position: fixed;
+        top: var(--space-sm);
+        left: 50%;
+        min-width: min(max(50%, 320px), 95%);
+        min-height: 48px;
+        z-index: 200;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-text);
+        background-color: var(--color-background-overlay);
+        border-radius: var(--border-radius);
+        border: 1px solid transparent;
+        box-shadow: var(--shadow-floating);
+        opacity: 0;
+        transform: translate(-50%, -120%);
+        transition:
+            transform var(--transition-slow),
+            opacity var(--transition-slow);
 
-    &[data-state='on'] {
-        transform: translate(-50%, 0%);
-        opacity: 1;
-    }
+        &[data-state='on'] {
+            transform: translate(-50%, 0%);
+            opacity: 1;
+        }
 
-    .message {
-        width: fit-content;
-        font-size: var(--font-size);
-        font-weight: bold;
-    }
+        .message {
+            width: fit-content;
+            font-size: var(--font-size);
+            font-weight: bold;
+        }
 
-    &[data-mode='error'] {
-        background-color: var(--color-background-critical);
-        color: var(--color-text-on-critical);
-        border-color: var(--color-critical);
-    }
+        &[data-mode='error'] {
+            background-color: var(--color-background-critical);
+            color: var(--color-text-on-critical);
+            border-color: var(--color-critical);
+        }
 
-    &[data-mode='success'] {
-        background-color: var(--color-background-positive);
-        color: var(--color-text-on-positive);
-        border-color: var(--color-positive);
+        &[data-mode='success'] {
+            background-color: var(--color-background-positive);
+            color: var(--color-text-on-positive);
+            border-color: var(--color-positive);
+        }
     }
 }

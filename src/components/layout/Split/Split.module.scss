@@ -1,14 +1,16 @@
-.split {
-    width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    gap: var(--space);
+@layer components {
+    .split {
+        width: 100%;
+        display: grid;
+        grid-auto-flow: column;
+        gap: var(--space);
 
-    &[data-split-side='left'] {
-        grid-template-columns: auto 1fr;
-    }
+        &[data-split-side='left'] {
+            grid-template-columns: auto 1fr;
+        }
 
-    &[data-split-side='right'] {
-        grid-template-columns: 1fr auto;
+        &[data-split-side='right'] {
+            grid-template-columns: 1fr auto;
+        }
     }
 }

@@ -1,0 +1,25 @@
+@layer components {
+    .typography {
+        &.sm {
+            font-size: var(--font-size-sm);
+        }
+
+        &.lg {
+            font-size: var(--font-size-lg);
+        }
+
+        &.xl {
+            font-size: var(--font-size-xl);
+        }
+
+        &.soft {
+            color: var(--color-text-soft);
+        }
+    }
+
+    .paragraph {
+        &:not(:last-child) {
+            margin-bottom: var(--space);
+        }
+    }
+}

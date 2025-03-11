@@ -5,11 +5,14 @@ import clsx from 'clsx';
 import { getModal } from './modals';
 import style from './ModalController.module.scss';
 
-const ModalController: FC<CommonComponentProps> = ({ className, ...props }) => {
+interface ModalControllerProps extends CommonComponentProps {}
+
+/** A global modal controller that listens for modal state changes and renders active modals in a portal. */
+const ModalController: FC<ModalControllerProps> = ({ className, ...props }) => {
     const [modal, setModal] = useState<JSX.Element | null>(null);
 
     useEffect(() => {
-        // On a modal change set a useEffect trigger
+        // Handles modal state changes and updates the modal component
         const handleModalChange = (): void => {
             setModal(getModal());
         };
@@ -22,6 +25,7 @@ const ModalController: FC<CommonComponentProps> = ({ className, ...props }) => {
     }, []);
 
     useEffect(() => {
+        // Prevents scrolling while the modal is active
         if (modal) {
             document.documentElement.setAttribute('data-noscroll', '');
         } else {

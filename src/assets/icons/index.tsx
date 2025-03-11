@@ -14,6 +14,7 @@ import { withVectorIcon } from './withIcon';
 
 /* eslint-disable react-refresh/only-export-components */
 export * from './charting';
+export * from './logos';
 export * from './navigation';
 export * from './withIcon';
 /* eslint-enable react-refresh/only-export-components */

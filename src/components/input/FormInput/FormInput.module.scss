@@ -1,21 +1,22 @@
-.input {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: var(--space-sm);
-    padding-inline: var(--space-sm);
-    border: none;
+@layer components {
+    .input {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: var(--space-sm);
+        border: none;
 
-    > input {
-        margin-block: var(--space-sm);
-    }
+        > input {
+            margin-block: var(--space-sm);
+        }
 
-    > [role='alert'] {
-        color: var(--color-critical);
-        font-weight: bold;
-    }
+        > [role='alert'] {
+            color: var(--color-critical);
+            font-weight: bold;
+        }
 
-    &:last-child {
-        margin-bottom: 0;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
