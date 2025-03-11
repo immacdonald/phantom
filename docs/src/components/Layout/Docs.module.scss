@@ -1,0 +1,24 @@
+.examples {
+    border: var(--border-light);
+    padding: var(--space);
+    margin: var(--space-sm);
+    border-radius: var(--border-radius);
+    min-height: 120px;
+    overflow: hidden;
+}
+
+.properties {
+    line-height: 2;
+
+    tr {
+        height: 48px;
+
+        td {
+            text-align: left;
+
+            &:first-of-type {
+                font-weight: 500;
+            }
+        }
+    }
+}

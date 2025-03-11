@@ -1,3 +1,8 @@
 import phantomConfig from 'phantom-config/eslint';
 
-export default [...phantomConfig];
+export default [
+    ...phantomConfig.map((config) => ({
+        ...config,
+        ignores: [...(config.ignores || []), 'docs/**']
+    }))
+];

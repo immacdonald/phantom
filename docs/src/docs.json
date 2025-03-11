@@ -1,0 +1,905 @@
+{
+    "../src/components/content/Accordion/Accordion.tsx": [
+        {
+            "description": "An expandable and collapsible section that can display content when toggled.\nSupports optional icons, border styles, and compact mode.",
+            "methods": [],
+            "displayName": "Accordion",
+            "props": {
+                "label": { "required": true, "tsType": { "name": "string" }, "description": "The label displayed on the accordion button." },
+                "borderless": { "required": false, "tsType": { "name": "boolean" }, "description": "Removes the border." },
+                "compact": { "required": false, "tsType": { "name": "boolean" }, "description": "Reduces the margin and padding to create a more compact appearance." },
+                "Icon": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "ComponentType<IconProps> | null",
+                        "elements": [{ "name": "ComponentType", "elements": [{ "name": "IconProps" }], "raw": "ComponentType<IconProps>" }, { "name": "null" }]
+                    },
+                    "description": "An optional icon to be displayed alongside the label.",
+                    "defaultValue": { "value": "ChevronIcon", "computed": true }
+                },
+                "labelAlignment": {
+                    "required": false,
+                    "tsType": { "name": "FlexAlign" },
+                    "description": "Flex alignment of the accordion label and icon.",
+                    "defaultValue": { "value": "'space-between'", "computed": false }
+                },
+                "iconLeft": { "required": false, "tsType": { "name": "boolean" }, "description": "Whether the icon should be on the left or right of the label." },
+                "defaultState": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "The initial open/closed state of the accordion.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "onClick": {
+                    "required": false,
+                    "tsType": { "name": "Callback", "elements": [{ "name": "void" }], "raw": "Callback<void>" },
+                    "description": "Callback function triggered when the accordion button is clicked."
+                },
+                "innerClassName": { "required": false, "tsType": { "name": "string" }, "description": "Class for the inner content container." },
+                "innerStyle": { "required": false, "tsType": { "name": "CSSProperties" }, "description": "Styles for the inner content container." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content inside the accordion." }
+            },
+            "composes": ["Omit"]
+        }
+    ],
+    "../src/components/content/Anchor/Anchor.tsx": [
+        {
+            "description": "A component that anchors another component in a specific position relative to an element.\nSupports edge-guarding, dynamic positioning, and automatic updates.",
+            "methods": [],
+            "displayName": "Anchor",
+            "props": {
+                "component": { "required": true, "tsType": { "name": "ReactElement" }, "description": "The component that is being anchored." },
+                "direction": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'left' | 'right' | 'top' | 'bottom'",
+                        "elements": [
+                            { "name": "literal", "value": "'left'" },
+                            { "name": "literal", "value": "'right'" },
+                            { "name": "literal", "value": "'top'" },
+                            { "name": "literal", "value": "'bottom'" }
+                        ]
+                    },
+                    "description": "The direction in which the anchor should be positioned relative to the component.",
+                    "defaultValue": { "value": "'top'", "computed": false }
+                },
+                "padding": {
+                    "required": false,
+                    "tsType": { "name": "number" },
+                    "description": "The padding between the anchored component and the anchor.",
+                    "defaultValue": { "value": "8", "computed": false }
+                },
+                "pollingInterval": {
+                    "required": false,
+                    "tsType": { "name": "PollingRate" },
+                    "description": "The interval (in milliseconds) for checking anchor position updates.",
+                    "defaultValue": { "value": "PollingRate.FPS60", "computed": true }
+                },
+                "visible": { "required": false, "tsType": { "name": "boolean" }, "description": "Controls the visibility of the anchor.", "defaultValue": { "value": "true", "computed": false } },
+                "update": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Determines whether the anchor updates its position dynamically.",
+                    "defaultValue": { "value": "true", "computed": false }
+                },
+                "innerRef": {
+                    "required": false,
+                    "tsType": { "name": "RefObject", "elements": [{ "name": "HTMLDivElement" }], "raw": "RefObject<HTMLDivElement>" },
+                    "description": "A ref for the anchor element."
+                },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content inside the anchor." },
+                "anchorClass": { "required": false, "tsType": { "name": "string" }, "description": "Additional class names for styling the anchor." },
+                "anchorProps": {
+                    "required": false,
+                    "tsType": { "name": "HTMLAttributes", "elements": [{ "name": "HTMLDivElement" }], "raw": "HTMLAttributes<HTMLDivElement>" },
+                    "description": "Additional props for the anchor container."
+                },
+                "componentClassName": { "required": false, "tsType": { "name": "string" }, "description": "Additional class names for styling the anchored component." }
+            }
+        }
+    ],
+    "../src/components/content/Divider/Divider.tsx": [
+        {
+            "description": "A horizontal divider with optional expansion beyond its container.",
+            "methods": [],
+            "displayName": "Divider",
+            "props": { "expand": { "required": false, "tsType": { "name": "string" }, "description": "Expands the divider beyond its container by the specified length." } },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/content/Heading/Heading.tsx": [
+        {
+            "description": "A flexible heading component with optional subheading and size variations.",
+            "methods": [],
+            "displayName": "Heading",
+            "props": {
+                "subheading": { "required": false, "tsType": { "name": "ReactNode" }, "description": "An optional subheading displayed below the main heading." },
+                "align": { "required": false, "tsType": { "name": "FlexAlignSimple" }, "description": "The text alignment of the heading." },
+                "size": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'hero' | 'major' | 'regular' | 'minor'",
+                        "elements": [
+                            { "name": "literal", "value": "'hero'" },
+                            { "name": "literal", "value": "'major'" },
+                            { "name": "literal", "value": "'regular'" },
+                            { "name": "literal", "value": "'minor'" }
+                        ]
+                    },
+                    "description": "The size of the heading, determining its semantic tag.",
+                    "defaultValue": { "value": "'regular'", "computed": false }
+                },
+                "subheadingSize": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'hero' | 'major' | 'regular' | 'minor'",
+                        "elements": [
+                            { "name": "literal", "value": "'hero'" },
+                            { "name": "literal", "value": "'major'" },
+                            { "name": "literal", "value": "'regular'" },
+                            { "name": "literal", "value": "'minor'" }
+                        ]
+                    },
+                    "description": "The size of the subheading if it should differ from the heading scale."
+                },
+                "children": { "required": false, "tsType": { "name": "ReactNode" }, "description": "The main heading content." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/content/Icon/Icon.tsx": [
+        {
+            "description": "A flexible icon component that supports sizing, context-based theming, and tooltips.",
+            "methods": [],
+            "displayName": "Icon",
+            "props": {
+                "size": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'small' | 'regular' | 'large' | 'full'",
+                        "elements": [
+                            { "name": "literal", "value": "'small'" },
+                            { "name": "literal", "value": "'regular'" },
+                            { "name": "literal", "value": "'large'" },
+                            { "name": "literal", "value": "'full'" }
+                        ]
+                    },
+                    "description": "Defines the size of the icon (`small`, `regular`, `large`, or `full`).",
+                    "defaultValue": { "value": "'regular'", "computed": false }
+                },
+                "context": { "required": false, "tsType": { "name": "VisualContext" }, "description": "Specifies the visual context (color theme) for the icon." },
+                "inline": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "If `true`, makes the icon align inline with surrounding text.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "tooltip": { "required": false, "tsType": { "name": "string" }, "description": "Tooltip text displayed on hover." },
+                "icon": { "required": true, "tsType": { "name": "ReactElement" }, "description": "The icon element to be rendered." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/content/StyledImage/StyledImage.tsx": [
+        {
+            "description": "A styled image component supporting borders, rounded corners, sizing constraints, and captions.",
+            "methods": [],
+            "displayName": "StyledImage",
+            "props": {
+                "image": { "required": true, "tsType": { "name": "string" }, "description": "The source URL of the image." },
+                "alt": { "required": true, "tsType": { "name": "string" }, "description": "The alt text for the image, used for accessibility." },
+                "border": { "required": false, "tsType": { "name": "boolean" }, "description": "Adds a border around the image." },
+                "round": { "required": false, "tsType": { "name": "boolean" }, "description": "Rounds the corners of the image." },
+                "fit": { "required": false, "tsType": { "name": "boolean" }, "description": "Ensures the image fits within its container while preserving aspect ratio." },
+                "maxWidth": { "required": false, "tsType": { "name": "number" }, "description": "Sets a maximum width for the image in pixels." },
+                "maxHeight": { "required": false, "tsType": { "name": "string" }, "description": "Sets a maximum height for the image using a CSS-compatible string value." },
+                "caption": {
+                    "required": false,
+                    "tsType": { "name": "union", "raw": "string | ReactNode", "elements": [{ "name": "string" }, { "name": "ReactNode" }] },
+                    "description": "An optional caption displayed below the image."
+                }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/content/Popover/Popover.tsx": [
+        {
+            "description": "A floating popover component that appears on hover or click, supporting configurable delays and positioning.",
+            "methods": [],
+            "displayName": "Popover",
+            "props": {
+                "content": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content displayed inside the popover." },
+                "direction": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'bottom' | 'top' | 'left' | 'right'",
+                        "elements": [
+                            { "name": "literal", "value": "'bottom'" },
+                            { "name": "literal", "value": "'top'" },
+                            { "name": "literal", "value": "'left'" },
+                            { "name": "literal", "value": "'right'" }
+                        ]
+                    },
+                    "description": "The direction in which the popover appears relative to the trigger element.",
+                    "defaultValue": { "value": "'top'", "computed": false }
+                },
+                "highlight": { "required": false, "tsType": { "name": "boolean" }, "description": "Highlights the popover for emphasis.", "defaultValue": { "value": "false", "computed": false } },
+                "delay": {
+                    "required": false,
+                    "tsType": { "name": "number" },
+                    "description": "The delay (in milliseconds) before the popover appears on hover.",
+                    "defaultValue": { "value": "500", "computed": false }
+                },
+                "anchorClass": { "required": false, "tsType": { "name": "string" }, "description": "Additional class name for the anchor container." },
+                "anchorProps": {
+                    "required": false,
+                    "tsType": { "name": "HTMLAttributes", "elements": [{ "name": "HTMLDivElement" }], "raw": "HTMLAttributes<HTMLDivElement>" },
+                    "description": "Additional props for the anchor element."
+                },
+                "clickToToggle": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Enables toggling the popover visibility via click instead of hover.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The trigger element that activates the popover." }
+            },
+            "composes": ["Omit"]
+        }
+    ],
+    "../src/components/content/HoverMark/HoverMark.tsx": [
+        {
+            "description": "A component that highlights text when hovered.",
+            "methods": [],
+            "displayName": "HoverMark",
+            "props": { "children": { "required": false, "tsType": { "name": "ReactNode" }, "description": "The text or element to be highlighted." } },
+            "composes": ["HTMLAttributes"]
+        }
+    ],
+    "../src/components/content/Typography/Paragraph.tsx": [
+        {
+            "description": "A flexible text component supporting size, alignment, and optional paragraph rendering.",
+            "methods": [],
+            "displayName": "Paragraph",
+            "props": {
+                "align": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'center' | 'left' | 'right'",
+                        "elements": [
+                            { "name": "literal", "value": "'center'" },
+                            { "name": "literal", "value": "'left'" },
+                            { "name": "literal", "value": "'right'" }
+                        ]
+                    },
+                    "description": "Sets the text alignment."
+                },
+                "size": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'sm' | 'md' | 'lg' | 'xl'",
+                        "elements": [
+                            { "name": "literal", "value": "'sm'" },
+                            { "name": "literal", "value": "'md'" },
+                            { "name": "literal", "value": "'lg'" },
+                            { "name": "literal", "value": "'xl'" }
+                        ]
+                    },
+                    "description": "Defines the text size variant."
+                },
+                "soft": { "required": false, "tsType": { "name": "boolean" }, "description": "Applies a softer visual style to the text." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content of the text element." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/content/Typography/Text.tsx": [
+        {
+            "description": "A flexible text component supporting size, alignment, and optional paragraph rendering.",
+            "methods": [],
+            "displayName": "Text",
+            "props": {
+                "align": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'center' | 'left' | 'right'",
+                        "elements": [
+                            { "name": "literal", "value": "'center'" },
+                            { "name": "literal", "value": "'left'" },
+                            { "name": "literal", "value": "'right'" }
+                        ]
+                    },
+                    "description": "Sets the text alignment."
+                },
+                "size": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'sm' | 'md' | 'lg' | 'xl'",
+                        "elements": [
+                            { "name": "literal", "value": "'sm'" },
+                            { "name": "literal", "value": "'md'" },
+                            { "name": "literal", "value": "'lg'" },
+                            { "name": "literal", "value": "'xl'" }
+                        ]
+                    },
+                    "description": "Defines the text size variant."
+                },
+                "soft": { "required": false, "tsType": { "name": "boolean" }, "description": "Applies a softer visual style to the text." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content of the text element." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/feedback/Banner/Banner.tsx": [
+        {
+            "description": "A floating notification banner that displays error or success messages.\nIt listens for notification changes and automatically updates its state to show new notifications.",
+            "methods": [],
+            "displayName": "Banner",
+            "props": {
+                "notificationLength": {
+                    "required": false,
+                    "tsType": { "name": "number" },
+                    "description": "Duration (in milliseconds) for which the notification is displayed before disappearing.",
+                    "defaultValue": { "value": "5000", "computed": false }
+                },
+                "concurrentNotificationDelay": {
+                    "required": false,
+                    "tsType": { "name": "number" },
+                    "description": "Delay (in milliseconds) before showing a new notification when another notification is already present.",
+                    "defaultValue": { "value": "750", "computed": false }
+                }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/feedback/Loading/Loading.tsx": [
+        {
+            "description": "A customizable loading spinner component with support for size, thickness, and color adjustments.",
+            "methods": [],
+            "displayName": "Loading",
+            "props": {
+                "size": { "required": false, "tsType": { "name": "number" }, "description": "Defines the size of the loading indicator in pixels." },
+                "thickness": { "required": false, "tsType": { "name": "number" }, "description": "Sets the thickness of the loading animation." },
+                "width": { "required": false, "tsType": { "name": "string" }, "description": "Custom width for the loading container." },
+                "height": { "required": false, "tsType": { "name": "string" }, "description": "Custom height for the loading container." },
+                "minHeight": { "required": false, "tsType": { "name": "string" }, "description": "Defines the minimum height of the loading container." },
+                "color": { "required": false, "tsType": { "name": "string" }, "description": "The color of the loading indicator." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/feedback/Modal/Modal.tsx": [
+        {
+            "description": "A flexible modal component with an optional header, icon, buttons, and customizable actions.",
+            "methods": [],
+            "displayName": "Modal",
+            "props": {
+                "icon": { "required": false, "tsType": { "name": "ReactElement" }, "description": "An optional icon displayed next to the header." },
+                "header": { "required": true, "tsType": { "name": "string" }, "description": "The title of the modal." },
+                "accept": {
+                    "required": false,
+                    "tsType": { "name": "union", "raw": "string | null", "elements": [{ "name": "string" }, { "name": "null" }] },
+                    "description": "The text for the accept button.",
+                    "defaultValue": { "value": "'Okay'", "computed": false }
+                },
+                "reject": {
+                    "required": false,
+                    "tsType": { "name": "union", "raw": "string | null", "elements": [{ "name": "string" }, { "name": "null" }] },
+                    "description": "The text for the reject button.",
+                    "defaultValue": { "value": "'Cancel'", "computed": false }
+                },
+                "swapColors": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Swaps the colors of the accept and reject buttons.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "onAccept": {
+                    "required": false,
+                    "tsType": { "name": "Callback", "elements": [{ "name": "void" }], "raw": "Callback<void>" },
+                    "description": "Callback function triggered when the accept button is clicked."
+                },
+                "closeOnAccept": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Closes the modal automatically when the accept button is clicked.",
+                    "defaultValue": { "value": "true", "computed": false }
+                },
+                "onReject": {
+                    "required": false,
+                    "tsType": { "name": "Callback", "elements": [{ "name": "void" }], "raw": "Callback<void>" },
+                    "description": "Callback function triggered when the reject button is clicked."
+                },
+                "form": { "required": false, "tsType": { "name": "string" }, "description": "Associates the accept button with a form by its id." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content inside the modal body." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/input/Button/UnstyledButton.tsx": [
+        {
+            "description": "A button component with no default styles, allowing full customization.",
+            "methods": [],
+            "displayName": "UnstyledButton",
+            "props": { "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content inside the button, typically an icon or text element." } },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/input/Button/Button.tsx": [
+        {
+            "description": "A versatile button component that supports links, different styles, icons, and loading states.",
+            "methods": [],
+            "displayName": "Button",
+            "props": {
+                "type": { "defaultValue": { "value": "'default'", "computed": false }, "required": false },
+                "size": { "defaultValue": { "value": "'regular'", "computed": false }, "required": false }
+            }
+        }
+    ],
+    "../src/components/input/Dropdown/MultiDropdown.tsx": [
+        {
+            "description": "A customizable multi-select dropdown component with support for accessibility, clearing, and controlled values.",
+            "methods": [],
+            "displayName": "MultiDropdown",
+            "props": {
+                "options": {
+                    "required": false,
+                    "tsType": { "name": "Array", "elements": [{ "name": "Option" }], "raw": "Option[]" },
+                    "description": "The list of available options for the multi-select dropdown.",
+                    "defaultValue": { "value": "[]", "computed": false }
+                },
+                "isClearable": { "required": false, "tsType": { "name": "boolean" }, "description": "Allows clearing the selected values.", "defaultValue": { "value": "true", "computed": false } },
+                "defaultValue": {
+                    "required": false,
+                    "tsType": { "name": "Array", "elements": [{ "name": "NullablePrimitive" }], "raw": "NullablePrimitive[]" },
+                    "description": "The default selected values when the component mounts.",
+                    "defaultValue": { "value": "null", "computed": false }
+                },
+                "value": {
+                    "required": false,
+                    "tsType": { "name": "Array", "elements": [{ "name": "NullablePrimitive" }], "raw": "NullablePrimitive[]" },
+                    "description": "The currently selected values (controlled component)."
+                },
+                "placeholder": { "required": false, "tsType": { "name": "string" }, "description": "Placeholder text displayed when no options are selected." },
+                "disabled": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Disables user interaction with the dropdown.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "onChange": {
+                    "required": false,
+                    "tsType": {
+                        "name": "signature",
+                        "type": "function",
+                        "raw": "(selected: NullablePrimitive[]) => void",
+                        "signature": {
+                            "arguments": [{ "type": { "name": "Array", "elements": [{ "name": "NullablePrimitive" }], "raw": "NullablePrimitive[]" }, "name": "selected" }],
+                            "return": { "name": "void" }
+                        }
+                    },
+                    "description": "Callback function triggered when the selection changes.",
+                    "defaultValue": { "value": "(): void => {}", "computed": false }
+                }
+            },
+            "composes": ["Omit"]
+        }
+    ],
+    "../src/components/input/Dropdown/Dropdown.tsx": [
+        {
+            "description": "A customizable dropdown select component with support for accessibility, clearing, and controlled values.",
+            "methods": [],
+            "displayName": "Dropdown",
+            "props": {
+                "options": {
+                    "required": false,
+                    "tsType": { "name": "Array", "elements": [{ "name": "Option" }], "raw": "Option[]" },
+                    "description": "The list of options available in the dropdown.",
+                    "defaultValue": { "value": "[]", "computed": false }
+                },
+                "isClearable": { "required": false, "tsType": { "name": "boolean" }, "description": "Allows clearing the selected value.", "defaultValue": { "value": "true", "computed": false } },
+                "defaultValue": { "required": false, "tsType": { "name": "NullablePrimitive" }, "description": "The default selected value.", "defaultValue": { "value": "null", "computed": false } },
+                "placeholder": { "required": false, "tsType": { "name": "string" }, "description": "Placeholder text displayed when no option is selected." },
+                "disabled": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Disables user interaction with the dropdown.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "onChange": {
+                    "required": false,
+                    "tsType": {
+                        "name": "signature",
+                        "type": "function",
+                        "raw": "(selected: NullablePrimitive) => void",
+                        "signature": { "arguments": [{ "type": { "name": "NullablePrimitive" }, "name": "selected" }], "return": { "name": "void" } }
+                    },
+                    "description": "Callback function triggered when an option is selected.",
+                    "defaultValue": { "value": "(): void => {}", "computed": false }
+                }
+            },
+            "composes": ["Omit"]
+        }
+    ],
+    "../src/components/input/FileUploadPortal/FileUploadPortal.tsx": [
+        {
+            "description": "A file upload portal component that allows multiple file uploads with validation and removal support.",
+            "methods": [],
+            "displayName": "FileUploadPortal",
+            "props": {
+                "maxFiles": { "required": false, "tsType": { "name": "number" }, "description": "Maximum number of files allowed for upload.", "defaultValue": { "value": "4", "computed": false } },
+                "submit": {
+                    "required": true,
+                    "tsType": { "name": "Callback", "elements": [{ "name": "Array", "elements": [{ "name": "File" }], "raw": "File[]" }], "raw": "Callback<File[]>" },
+                    "description": "Callback function triggered when files are submitted."
+                },
+                "wrapperClassName": { "required": false, "tsType": { "name": "string" }, "description": "Class for the file upload wrapper element." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/input/FormInput/FormInput.tsx": [
+        {
+            "description": "A customizable form input component with optional labels, validation, and error messaging.",
+            "methods": [],
+            "displayName": "FormInput",
+            "props": {
+                "name": { "required": true, "tsType": { "name": "string" }, "description": "The name of the input field, used for form submission." },
+                "type": { "required": false, "tsType": { "name": "HTMLInputTypeAttribute" }, "description": "The type of input field.", "defaultValue": { "value": "'text'", "computed": false } },
+                "label": {
+                    "required": false,
+                    "tsType": { "name": "union", "raw": "string | ReactNode", "elements": [{ "name": "string" }, { "name": "ReactNode" }] },
+                    "description": "An optional label displayed above the input field."
+                },
+                "placeholder": { "required": false, "tsType": { "name": "string" }, "description": "Placeholder text shown inside the input field." },
+                "error": { "required": false, "tsType": { "name": "string" }, "description": "An error message displayed below the input field." },
+                "fieldClass": { "required": false, "tsType": { "name": "string" }, "description": "Additional class names for the fieldset wrapper." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/input/Switch/Switch.tsx": [
+        { "description": "A toggle switch component that acts as a styled checkbox.", "methods": [], "displayName": "Switch", "composes": ["CommonComponentProps"] }
+    ],
+    "../src/components/input/Toggle/Toggle.tsx": [
+        {
+            "description": "A customizable toggle switch component with labeled states.",
+            "methods": [],
+            "displayName": "Toggle",
+            "props": {
+                "checked": {
+                    "required": false,
+                    "tsType": { "name": "string" },
+                    "description": "The label displayed when the toggle is in the \"on\" position.",
+                    "defaultValue": { "value": "'Yes'", "computed": false }
+                },
+                "notChecked": {
+                    "required": false,
+                    "tsType": { "name": "string" },
+                    "description": "The label displayed when the toggle is in the \"off\" position.",
+                    "defaultValue": { "value": "'No'", "computed": false }
+                },
+                "defaultState": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "The default state of the toggle when it mounts.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "disabled": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Disables the toggle, preventing user interaction.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "onChange": {
+                    "required": false,
+                    "tsType": { "name": "Callback", "elements": [{ "name": "boolean" }], "raw": "Callback<boolean>" },
+                    "description": "Callback function triggered when the toggle state changes."
+                }
+            },
+            "composes": ["Omit"]
+        }
+    ],
+    "../src/components/input/Segmented/Segmented.tsx": [
+        {
+            "description": "A segmented button group that allows users to toggle between multiple options.",
+            "methods": [],
+            "displayName": "Segmented",
+            "props": {
+                "options": {
+                    "required": false,
+                    "tsType": { "name": "Array", "elements": [{ "name": "Option" }], "raw": "Option[]" },
+                    "description": "Array of selectable options, each containing a `value` and `label`.",
+                    "defaultValue": { "value": "[{ value: 'Default', label: 'Default' }]", "computed": false }
+                },
+                "defaultValue": { "required": false, "tsType": { "name": "number" }, "description": "The default selected index when the component mounts." },
+                "value": { "required": false, "tsType": { "name": "number" }, "description": "The currently selected index (controlled component)." },
+                "full": { "required": false, "tsType": { "name": "boolean" }, "description": "Expands the segmented control to full width." },
+                "disabled": { "required": false, "tsType": { "name": "boolean" }, "description": "Disables all buttons inside the segmented control." },
+                "onChange": {
+                    "required": false,
+                    "tsType": { "name": "Callback", "elements": [{ "name": "NullablePrimitive" }], "raw": "Callback<NullablePrimitive>" },
+                    "description": "Callback function triggered when a selection is made.",
+                    "defaultValue": { "value": "(): void => {}", "computed": false }
+                }
+            },
+            "composes": ["Omit"]
+        }
+    ],
+    "../src/components/layout/DynamicHeader/DynamicHeader.tsx": [
+        {
+            "description": "A header component that dynamically adjusts its behavior based on scroll distance.",
+            "methods": [],
+            "displayName": "DynamicHeader",
+            "props": {
+                "dynamicSettings": { "required": false, "tsType": { "name": "DynamicHeaderSettings" }, "description": "Configures how the header dynamically changes on scroll." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content inside the header." },
+                "inline": { "defaultValue": { "value": "false", "computed": false }, "required": false }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/layout/Flex/Column.tsx": [
+        {
+            "description": "A flexbox-based column layout component that stacks children vertically.",
+            "methods": [],
+            "displayName": "Column",
+            "props": { "verticalAlign": { "defaultValue": { "value": "'start'", "computed": false }, "required": false } },
+            "composes": ["Omit"]
+        }
+    ],
+    "../src/components/layout/Flex/Flex.tsx": [
+        {
+            "description": "A responsive flexbox container component with configurable alignment, direction, and spacing.",
+            "methods": [],
+            "displayName": "Flex",
+            "props": {
+                "children": { "required": false, "tsType": { "name": "ReactNode" }, "description": "The child elements inside the flex container." },
+                "flex": {
+                    "required": false,
+                    "tsType": {
+                        "name": "ResponsiveType",
+                        "elements": [
+                            {
+                                "name": "union",
+                                "raw": "'row' | 'column'",
+                                "elements": [
+                                    { "name": "literal", "value": "'row'" },
+                                    { "name": "literal", "value": "'column'" }
+                                ]
+                            }
+                        ],
+                        "raw": "ResponsiveType<FlexDirection>"
+                    },
+                    "description": "Defines the flex direction (`row` or `column`), with responsive support."
+                },
+                "align": {
+                    "required": false,
+                    "tsType": { "name": "ResponsiveType", "elements": [{ "name": "FlexAlign" }], "raw": "ResponsiveType<FlexAlign>" },
+                    "description": "Controls horizontal alignment, with responsive support."
+                },
+                "verticalAlign": {
+                    "required": false,
+                    "tsType": { "name": "ResponsiveType", "elements": [{ "name": "FlexAlign" }], "raw": "ResponsiveType<FlexAlign>" },
+                    "description": "Controls vertical alignment, with responsive support."
+                },
+                "gap": {
+                    "required": false,
+                    "tsType": { "name": "ResponsiveType", "elements": [{ "name": "CSSProperties['gap']", "raw": "CSSProperties['gap']" }], "raw": "ResponsiveType<CSSProperties['gap']>" },
+                    "description": "Specifies the gap between flex items, with responsive support."
+                },
+                "relative": { "required": false, "tsType": { "name": "boolean" }, "description": "Sets `position: relative` if `true`.", "defaultValue": { "value": "false", "computed": false } }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/layout/Section/Section.tsx": [
+        {
+            "description": "A flexible section component that supports background images, parallax effects, and various styling options.",
+            "methods": [],
+            "displayName": "Section",
+            "props": {
+                "variant": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'regular' | 'floating' | 'inset'",
+                        "elements": [
+                            { "name": "literal", "value": "'regular'" },
+                            { "name": "literal", "value": "'floating'" },
+                            { "name": "literal", "value": "'inset'" }
+                        ]
+                    },
+                    "description": "Defines the overall section style variant.",
+                    "defaultValue": { "value": "'regular'", "computed": false }
+                },
+                "context": { "required": false, "tsType": { "name": "VisualContext" }, "description": "Specifies the visual context (color theme) for the section." },
+                "hasBackground": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Determines whether the section has a background color or image.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "backgroundImage": { "required": false, "tsType": { "name": "string" }, "description": "A URL for a background image applied to the section." },
+                "parallax": { "required": false, "tsType": { "name": "boolean" }, "description": "Enables a parallax effect for the background image." },
+                "edges": { "required": false, "tsType": { "name": "SectionEdges" }, "description": "Specifies the shape of the top and bottom edges of the section." },
+                "children": { "required": false, "tsType": { "name": "ReactNode" }, "description": "The content inside the section." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/layout/Flex/Row.tsx": [
+        { "description": "A flexbox-based row layout component that arranges children horizontally.", "methods": [], "displayName": "Row", "composes": ["Omit"] }
+    ],
+    "../src/components/layout/Page/Page.tsx": [
+        {
+            "description": "A structured layout component that manages headers, footers, and content organization.",
+            "methods": [],
+            "displayName": "Page",
+            "props": {
+                "title": { "required": false, "tsType": { "name": "string" }, "description": "The title of the page, which updates the document title." },
+                "header": { "required": false, "tsType": { "name": "ReactNode" }, "description": "The header section of the page." },
+                "footer": { "required": false, "tsType": { "name": "ReactNode" }, "description": "The footer section of the page." },
+                "children": { "required": false, "tsType": { "name": "ReactNode" }, "description": "The main content of the page." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/layout/Split/Split.tsx": [
+        {
+            "description": "A layout component that splits content into two sections and adapts responsively based on breakpoints.",
+            "methods": [],
+            "displayName": "Split",
+            "props": {
+                "mainSide": {
+                    "required": true,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'left' | 'right'",
+                        "elements": [
+                            { "name": "literal", "value": "'left'" },
+                            { "name": "literal", "value": "'right'" }
+                        ]
+                    },
+                    "description": "Determines whether the left or right side is the main content area."
+                },
+                "asColumn": { "required": true, "tsType": { "name": "SplitColumnProps" }, "description": "Defines responsive behavior for switching to a column layout." },
+                "children": {
+                    "required": true,
+                    "tsType": { "name": "Array", "elements": [{ "name": "ReactNode" }], "raw": "ReactNode[]" },
+                    "description": "The two child elements to be placed in the split layout."
+                }
+            }
+        }
+    ],
+    "../src/components/layout/StyledApp/StyledApp.tsx": [
+        {
+            "description": "The root component for a styled application using Phantom, providing theme, global controllers, and contextual support.",
+            "methods": [],
+            "displayName": "StyledApp",
+            "props": {
+                "initialTheme": { "required": false, "tsType": { "name": "Theme" }, "description": "The initial theme of the application (light or dark)." },
+                "anchors": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Enables or disables the anchor controller for tooltips/popovers.",
+                    "defaultValue": { "value": "true", "computed": false }
+                },
+                "modals": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Enables or disables the modal controller for handling modals.",
+                    "defaultValue": { "value": "true", "computed": false }
+                },
+                "banners": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Enables or disables the banner system for global notifications.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "minimizeCookies": { "required": false, "tsType": { "name": "boolean" }, "description": "Minimizes cookie tracking and storage, useful for privacy-conscious applications." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The main content of the application." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ],
+    "../src/components/navigation/TabGroup/TabGroup.tsx": [
+        {
+            "description": "A tab group component that allows users to switch between different content sections.",
+            "methods": [],
+            "displayName": "TabGroup",
+            "props": {
+                "tabs": {
+                    "required": true,
+                    "tsType": {
+                        "name": "Array",
+                        "elements": [
+                            {
+                                "name": "signature",
+                                "type": "object",
+                                "raw": "{\n    /** The content displayed when this tab is selected. */\n    tab: ReactNode;\n\n    /** The label displayed in the tab selection menu. */\n    label: string;\n\n    /** Disables the tab, preventing selection. */\n    disabled?: boolean;\n}",
+                                "signature": {
+                                    "properties": [
+                                        { "key": "tab", "value": { "name": "ReactNode", "required": true }, "description": "The content displayed when this tab is selected." },
+                                        { "key": "label", "value": { "name": "string", "required": true }, "description": "The label displayed in the tab selection menu." },
+                                        { "key": "disabled", "value": { "name": "boolean", "required": false }, "description": "Disables the tab, preventing selection." }
+                                    ]
+                                }
+                            }
+                        ],
+                        "raw": "Tab[]"
+                    },
+                    "description": "The list of available tabs."
+                },
+                "selectedIndex": { "required": false, "tsType": { "name": "number" }, "description": "The index of the initially selected tab." },
+                "onChange": {
+                    "required": false,
+                    "tsType": { "name": "Callback", "elements": [{ "name": "number" }], "raw": "Callback<number>" },
+                    "description": "Callback function triggered when the selected tab changes.",
+                    "defaultValue": { "value": "(): void => {}", "computed": false }
+                },
+                "variant": {
+                    "required": false,
+                    "tsType": {
+                        "name": "union",
+                        "raw": "'tabs' | 'segmented'",
+                        "elements": [
+                            { "name": "literal", "value": "'tabs'" },
+                            { "name": "literal", "value": "'segmented'" }
+                        ]
+                    },
+                    "description": "Determines whether the tab selection style is `tabs` or `segmented`.",
+                    "defaultValue": { "value": "'tabs'", "computed": false }
+                },
+                "innerClassName": { "required": false, "tsType": { "name": "string" }, "description": "Additional class name for the tab content container." },
+                "innerStyle": { "required": false, "tsType": { "name": "CSSProperties" }, "description": "Additional styles for the tab content container." }
+            }
+        }
+    ],
+    "../src/components/navigation/StyledLink/StyledLink.tsx": [
+        {
+            "description": "A styled link component with styling inheritance and external link handling.",
+            "methods": [],
+            "displayName": "StyledLink",
+            "props": {
+                "inherit": { "required": false, "tsType": { "name": "boolean" }, "description": "If true the link inherits surrounding text styles instead of applying default link styles." },
+                "external": { "required": false, "tsType": { "name": "boolean" }, "description": "For links to be opened in a new tab with appropriate security attributes." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content inside the link." }
+            },
+            "composes": ["LinkProps", "CommonComponentProps"]
+        }
+    ],
+    "../src/components/layout/StyledFooter/StyledFooter.tsx": [
+        {
+            "description": "A styled footer component that supports custom height, theme, and optional top border.",
+            "methods": [],
+            "displayName": "StyledFooter",
+            "props": {
+                "height": {
+                    "required": false,
+                    "tsType": { "name": "ResponsiveType", "elements": [{ "name": "string" }], "raw": "ResponsiveType<string>" },
+                    "description": "Defines the height of the footer."
+                },
+                "topBorder": {
+                    "required": false,
+                    "tsType": { "name": "boolean" },
+                    "description": "Aapplies a top border to separate the footer from content.",
+                    "defaultValue": { "value": "false", "computed": false }
+                },
+                "theme": { "required": false, "tsType": { "name": "Theme" }, "description": "Sets the theme for the footer." },
+                "children": { "required": true, "tsType": { "name": "ReactNode" }, "description": "The content inside the footer." }
+            },
+            "composes": ["CommonComponentProps"]
+        }
+    ]
+}

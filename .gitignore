@@ -1,15 +1,13 @@
 # Node Modules
-node_modules
+**/node_modules
 
 # Logs
 *.log*
 
 # Build files
-/dist
-/lib
-/build
-
-/phantom-website
+**/dist
+**/lib
+**/build
 
 # Additional
 .DS_STORE

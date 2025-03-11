@@ -28,6 +28,7 @@ export default defineConfig({
     bundle: true,
     platform: 'browser',
     external: ['react', 'react-dom', 'react/jsx-runtime'],
+    ignoreWatch: ['docs/**'],
     esbuildPlugins: [
         sassPlugin({
             type: 'style',

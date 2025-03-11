@@ -1,0 +1,27 @@
+{
+    "extends": "phantom-config/tsconfig",
+    "compilerOptions": {
+        "outDir": "dist",
+        "baseUrl": ".",
+        "noEmit": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@assets": ["./src/assets"],
+            "@components": ["./src/components"],
+            "@components/*": ["./src/components/*"],
+            "@config": ["./src/config"],
+            "@data": ["./src/data"],
+            "@data/*": ["./src/data/*"],
+            "@icons": ["./src/icons"],
+            "@types": ["./src/types"],
+            "@utility": ["./src/utility"],
+            "@views": ["./src/views"]
+        },
+        "types": ["vite-plugin-svgr/client"]
+    },
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ]
+}

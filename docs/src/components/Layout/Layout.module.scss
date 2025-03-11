@@ -1,0 +1,49 @@
+@use 'phantom-library/tokens' as *;
+
+$aside-width: 256px;
+
+.main {
+    width: calc(100% - #{$aside-width});
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-height));
+
+    @include respond-max($screen-sm) {
+        width: 100%;
+    }
+}
+
+.aside {
+    width: $aside-width;
+    position: sticky;
+    top: var(--header-height);
+    left: 0;
+    border-right: var(--border-light);
+    height: calc(100vh - var(--header-height));
+    padding: var(--space-sm);
+    overflow-y: auto;
+    flex-shrink: 0;
+    background-color: var(--color-background-foreground);
+    z-index: $z-header - 1;
+    scrollbar-gutter: stable;
+
+    &.mobile {
+        position: fixed;
+        inset: 0;
+        height: 100%;
+        transition: transform var(--transition-mid);
+        padding-top: var(--layout-space-sm);
+
+        &[data-toggled='true'] {
+            transform: translateX(0);
+        }
+
+        &[data-toggled='false'] {
+            transform: translateX(-256px);
+        }
+    }
+}
+
+.category {
+    padding-top: 0;
+}
