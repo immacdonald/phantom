@@ -1,22 +1,32 @@
-name: Build and Deploy
-on: [push]
+name: Build Docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
 permissions:
   contents: write
+
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install and Build
+      - name: Install dependencies and build
         run: |
-          cd /docs
+          cd docs
           npm ci
           npm run build
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: /docs/dist
+          branch: gh-pages
+          folder: docs/dist
+          clean: true
