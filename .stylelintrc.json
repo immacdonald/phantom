@@ -1,0 +1,4 @@
+{
+    "extends": ["phantom-config/stylelint"],
+    "ignoreFiles": ["lib/**/*", "docs/**/*"]
+}

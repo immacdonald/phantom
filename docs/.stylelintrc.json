@@ -1,0 +1,3 @@
+{
+    "extends": ["phantom-config/stylelint"]
+}

@@ -1,0 +1,13 @@
+# Node Modules
+**/node_modules
+
+# Logs
+*.log*
+
+# Build files
+**/dist
+**/lib
+**/build
+
+# Additional
+.DS_STORE
