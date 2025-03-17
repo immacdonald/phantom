@@ -1,5 +1,5 @@
 import { CommonComponentProps, VisualContext } from '@types';
-import { FC, ReactNode } from 'react';
+import { FC, forwardRef, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useScrollDistance } from '@hooks';
 import style from './DynamicHeader.module.scss';
@@ -42,7 +42,7 @@ interface DynamicHeaderProps extends BaseDynamicHeaderProps, CommonComponentProp
 const DEFAULT_SCROLL_DISTANCE = 400;
 
 /** A header component that dynamically adjusts its behavior based on scroll distance. */
-const DynamicHeader: FC<DynamicHeaderProps> = ({ inline = false, pageSpace, hasBackground, context, dynamicSettings, children, className, ...props }) => {
+const DynamicHeader: FC<DynamicHeaderProps> = forwardRef<HTMLElement, DynamicHeaderProps>(({ inline = false, pageSpace, hasBackground, context, dynamicSettings, children, className, ...props }, ref) => {
     const scroll = useScrollDistance();
     const scrolled = dynamicSettings?.enabled && scroll > (dynamicSettings!.scrollDistance || DEFAULT_SCROLL_DISTANCE);
 
@@ -66,11 +66,11 @@ const DynamicHeader: FC<DynamicHeaderProps> = ({ inline = false, pageSpace, hasB
     );
 
     return (
-        <header className={headerClasses} data-context={currentSettings.context} role="navigation" {...props}>
+        <header className={headerClasses} data-context={currentSettings.context} role="navigation" ref={ref} {...props}>
             {children}
         </header>
     );
-};
+});
 
 export type { BaseDynamicHeaderProps as DynamicHeaderProps };
 export { DynamicHeader };

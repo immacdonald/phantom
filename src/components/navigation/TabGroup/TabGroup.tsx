@@ -28,6 +28,9 @@ interface TabGroupProps {
     /** Determines whether the tab selection style is `tabs` or `segmented`. */
     variant?: 'tabs' | 'segmented';
 
+    /** Compact display style. */
+    compact?: boolean;
+
     /** Additional class name for the tab content container. */
     innerClassName?: string;
 
@@ -36,7 +39,7 @@ interface TabGroupProps {
 }
 
 /** A tab group component that allows users to switch between different content sections. */
-const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, innerClassName, innerStyle, onChange = (): void => {} }) => {
+const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, compact, innerClassName, innerStyle, onChange }) => {
     const [selectedTab, setTab] = useState<number>(selectedIndex || 0);
 
     useEffect(() => {
@@ -46,7 +49,7 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, in
     }, [selectedIndex]);
 
     useEffect(() => {
-        onChange(selectedTab);
+        onChange?.(selectedTab);
     }, [selectedTab, onChange]);
 
     return (
@@ -66,6 +69,7 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, in
                     onChange={(value: NullablePrimitive) => setTab(value as number)}
                     className={style.tabsSegmented}
                     role="tablist"
+                    compact={compact}
                 />
             ) : (
                 <Row className={style.tabs} role="tablist">
@@ -83,6 +87,7 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, in
                                 role="tab"
                                 aria-selected={selected}
                                 aria-disabled={tab.disabled}
+                                size={compact ? 'small' : 'regular'}
                             >
                                 {tab.label}
                             </Button>

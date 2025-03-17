@@ -21,6 +21,7 @@
 
     body {
         width: 100%;
+        height: 100%;
         font-family: var(--font-body);
         font-size: var(--font-size);
         line-height: 1.5;
@@ -36,7 +37,7 @@
     }
 
     [id] {
-        scroll-margin-top: 128px;
+        scroll-margin-top: 32px;
     }
 
     ::selection {

@@ -40,7 +40,7 @@
             $width: #{calc($total-width / var(--v-count))};
 
             width: $width;
-            height: 40px;
+            height: var(--height, 40px);
             background-color: var(--color-primary);
             left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
             transition: left var(--transition-fast);

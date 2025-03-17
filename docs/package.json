@@ -11,9 +11,7 @@
         "prettier": "prettier ./ --write --ignore-path ./node_modules/phantom-config/.prettierignore",
         "stylelint": "npx stylelint '**/*.{css,scss}' --fix",
         "format": "npm run lint && npm run stylelint && npm run prettier",
-        "docs": "npx @react-docgen/cli ../src/components/**/**/*.tsx -o ./src/docs.json",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d ./dist"
+        "docs": "npx @react-docgen/cli ../src/components/**/**/*.tsx -o ./src/docs.json"
     },
     "dependencies": {
         "@react-docgen/cli": "^2.0.6",

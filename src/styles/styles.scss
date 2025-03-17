@@ -44,8 +44,8 @@
 
         --color-text-on-light: rgba(#{$text-rgb}, 0.88);
         --color-text-soft-on-light: rgba(#{$text-rgb}, 0.6);
-        --color-text-on-dark: rgba(#{$light-text-rgb}, 0.88);
-        --color-text-soft-on-dark: rgba(#{$light-text-rgb}, 0.6);
+        --color-text-on-dark: rgba(#{$light-text-rgb}, 0.94);
+        --color-text-soft-on-dark: rgba(#{$light-text-rgb}, 0.7);
         --color-text-disabled: rgba(#{$text-rgb}, 0.3);
         --color-background-disabled: var(--grey-2);
 

@@ -3,7 +3,7 @@ import type { CommonComponentProps, FlexAlign, VisualContext } from '@types';
 import { ComponentPropsWithoutRef, ComponentType, CSSProperties, FC, forwardRef, MouseEvent, MouseEventHandler, ReactNode, Ref, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
-import { Loading } from '@components';
+import { Loading, StyledLink } from '@components';
 import styles from './Button.module.scss';
 
 export type ButtonStyle = 'outline' | 'filled' | 'text' | 'ghost';
@@ -54,6 +54,9 @@ interface LinkButtonProps extends BaseButtonProps, CommonComponentProps<HTMLAnch
     /** The URL or route the button should navigate to. */
     link: string;
 
+    /** For links to be opened in a new tab with appropriate security attributes. */
+    external?: boolean;
+
     /** Prevents `onClick` from being used in link buttons to avoid conflicts. */
     onClick?: never;
 
@@ -69,6 +72,9 @@ interface RegularButtonProps extends BaseButtonProps, Omit<CommonComponentProps<
     /** Ensures `link` is not passed when using a regular button. */
     link?: never;
 
+    /** Ensures the link-related external attribute is not passed. */
+    external?: never;
+
     /** Defines the HTML `type` attribute for the button. */
     htmlType?: 'button' | 'reset' | 'submit';
 
@@ -82,7 +88,7 @@ type ButtonProps = LinkButtonProps | RegularButtonProps;
 /** A versatile button component that supports links, different styles, icons, and loading states. */
 const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     (
-        { type = 'default', size = 'regular', full, align, variant, context, rounded, Icon, iconRight, onClick, onHover, link, disabled, isLoading, children, className, style, htmlType, ...props },
+        { type = 'default', size = 'regular', full, align, variant, context, rounded, Icon, iconRight, onClick, onHover, link, external, disabled, isLoading, children, className, style, htmlType, ...props },
         ref
     ) => {
         // Adjusts default variant and context based on the `type` prop.
@@ -149,9 +155,9 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
                 );
             } else {
                 return (
-                    <Link to={link} {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
+                    <StyledLink to={link} external={external} {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
                         {content}
-                    </Link>
+                    </StyledLink>
                 );
             }
         }

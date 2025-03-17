@@ -1,10 +1,10 @@
 import { SetState, Theme } from '@types';
 import { useEffect, useState } from 'react';
 
-const useTheme = (initialTheme?: Theme, serialize: boolean = true): [Theme, SetState<Theme>] => {
+const useTheme = (initialTheme: Theme = 'light', serialize: boolean = true): [Theme, SetState<Theme>] => {
     const [theme, setTheme] = useState<Theme>(() => {
         const savedTheme = serialize ? (localStorage.getItem('theme') as Theme) : null;
-        return savedTheme || initialTheme || 'light';
+        return savedTheme || initialTheme;
     });
 
     useEffect(() => {

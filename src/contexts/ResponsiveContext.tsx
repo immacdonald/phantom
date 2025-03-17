@@ -38,7 +38,6 @@ interface ResponsiveContextInterface {
     windowSize: Dimensions;
     theme: Theme;
     setTheme: Callback<Theme>;
-    toggleTheme: Callback<void>;
     atBreakpoint: (breakpoint: Breakpoints) => boolean;
     parse: <T>(responsiveType: ResponsiveType<T> | undefined) => T | undefined;
     isMobile: boolean;
@@ -49,17 +48,13 @@ const ResponsiveContext = createContext<ResponsiveContextInterface | null>(null)
 
 interface ResponsiveContextProviderProps {
     minimizeCookies?: boolean;
-    initialTheme?: Theme;
+    theme?: Theme;
     children: ReactNode;
 }
 
-const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimizeCookies, initialTheme, children }): ReactElement => {
+const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimizeCookies, theme, children }): ReactElement => {
     const windowSize = useWindowSize();
-    const [theme, setTheme] = useTheme(initialTheme, !minimizeCookies);
-
-    const toggleTheme = (): void => {
-        setTheme(theme == 'light' ? 'dark' : 'light');
-    };
+    const [currentTheme, setTheme] = useTheme(theme, !minimizeCookies);
 
     const atBreakpoint = (breakpoint: Breakpoints): boolean => {
         const currentBreakpoint: Breakpoints | null = getCurrentBreakpoint(windowSize.width);
@@ -99,7 +94,7 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimiz
 
     const isMobile = windowSize.width < pxToInt(designTokens.screen.sm);
 
-    return <ResponsiveContext.Provider value={{ parse, atBreakpoint, isMobile, windowSize, theme, setTheme, toggleTheme, isResponsiveContextLoaded: true }}>{children}</ResponsiveContext.Provider>;
+    return <ResponsiveContext.Provider value={{ parse, atBreakpoint, isMobile, windowSize, theme: currentTheme, setTheme, isResponsiveContextLoaded: true }}>{children}</ResponsiveContext.Provider>;
 };
 
 export { ResponsiveContext, ResponsiveContextProvider };

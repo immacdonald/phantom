@@ -1,5 +1,6 @@
 import type { CommonComponentProps, Theme } from '@types';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
+import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider } from '@contexts';
@@ -7,7 +8,7 @@ import styles from './StyledApp.module.scss';
 
 interface StyledAppProps extends CommonComponentProps {
     /** The initial theme of the application (light or dark). */
-    initialTheme?: Theme;
+    theme?: Theme;
 
     /** Enables or disables the anchor controller for tooltips/popovers. */
     anchors?: boolean;
@@ -18,23 +19,55 @@ interface StyledAppProps extends CommonComponentProps {
     /** Enables or disables the banner system for global notifications. */
     banners?: boolean;
 
-    /** Minimizes cookie tracking and storage, useful for privacy-conscious applications. */
+    /** Minimizes cookie tracking and storage for privacy-conscious applications. */
     minimizeCookies?: boolean;
+
+    /** The id of an existing root DOM element to be used as the StyledApp root. */
+    rootId?: string;
 
     /** The main content of the application. */
     children: ReactNode;
 }
 
 /** The root component for a styled application using Phantom, providing theme, global controllers, and contextual support. */
-const StyledApp: FC<StyledAppProps> = ({ initialTheme, anchors = true, modals = true, banners = false, minimizeCookies, children, className, ...props }) => {
+const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, banners = false, minimizeCookies, rootId, children, className, ...props }) => {
+    const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
+
+    const rootClasses = useMemo(() => clsx(styles.app, className), [className]);
+
+    useEffect(() => {
+        if (rootId) {
+            const existingRoot = document.getElementById(rootId);
+            if (existingRoot) {
+                // Apply styles and attributes to the existing div
+                Object.assign(existingRoot, {...props, role: "application"});
+                existingRoot.className = rootClasses;
+                setRootElement(existingRoot);
+            } else {
+                console.error(`StyledApp: No element found with id "${rootId}".`);
+            }
+        }
+    }, [rootId, className]);
+
+    const internalNodes: ReactNode = (
+        <>
+            {banners && <Banner />}
+            {anchors && <AnchorController />}
+            {modals && <ModalController />}
+            {children}
+        </>
+    )
+
     return (
-        <ResponsiveContextProvider initialTheme={initialTheme ?? 'light'} minimizeCookies={minimizeCookies}>
-            <div className={clsx(styles.app, className)} role="application" {...props}>
-                {banners && <Banner />}
-                {anchors && <AnchorController />}
-                {modals && <ModalController />}
-                {children}
-            </div>
+        <ResponsiveContextProvider theme={theme ?? "light"} minimizeCookies={minimizeCookies}>
+            {(rootId && rootElement) ? (ReactDOM.createPortal(
+                internalNodes,
+                rootElement
+            )) : (
+                <div className={rootClasses} role="application" {...props}>
+                    {internalNodes}
+                </div>
+            )}
         </ResponsiveContextProvider>
     );
 };

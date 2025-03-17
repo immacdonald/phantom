@@ -17,6 +17,9 @@ interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
     /** Expands the segmented control to full width. */
     full?: boolean;
 
+    /** Compact display style. */
+    compact?: boolean;
+
     /** Disables all buttons inside the segmented control. */
     disabled?: boolean;
 
@@ -26,7 +29,7 @@ interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
 
 /** A segmented button group that allows users to toggle between multiple options. */
 const Segmented: FC<SegmentedProps> = forwardRef<HTMLDivElement, SegmentedProps>(
-    ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, value, full, disabled, onChange = (): void => {}, className, style }, ref) => {
+    ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, value, full, compact, disabled, onChange = (): void => {}, className, style }, ref) => {
         const [selected, setSelection] = useState<number | null>(value ?? defaultValue ?? null);
 
         /** Handles selection changes and triggers the `onChange` callback. */
@@ -47,6 +50,7 @@ const Segmented: FC<SegmentedProps> = forwardRef<HTMLDivElement, SegmentedProps>
         const properties: CSSProperties = {
             '--v-count': options.length,
             '--v-selected': selected,
+            '--height': compact ? "32px" : "40px",
             ...style
         } as CSSProperties;
 
@@ -71,6 +75,7 @@ const Segmented: FC<SegmentedProps> = forwardRef<HTMLDivElement, SegmentedProps>
                             role="radio"
                             aria-checked={isSelected}
                             aria-disabled={option.disabled}
+                            size={compact ? 'small' : 'regular'}
                         >
                             {option.label}
                         </Button>
