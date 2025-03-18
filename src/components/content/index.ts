@@ -1,5 +1,6 @@
 export * from './Accordion';
 export * from './Anchor';
+export * from './Callout';
 export * from './Divider';
 export * from './Heading';
 export * from './HoverMark';

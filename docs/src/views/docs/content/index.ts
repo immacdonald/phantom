@@ -3,6 +3,7 @@ export * from './AnchorDocs';
 export * from './DividerDocs';
 export * from './HeadingDocs';
 export * from './HoverMarkDocs';
+export * from './IconDocs';
 export * from './PopoverDocs';
 export * from './StyledImageDocs';
 export * from './TypographyDocs';

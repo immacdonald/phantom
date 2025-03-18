@@ -283,30 +283,6 @@
             --context-color-text: var(--color-text-on-primary);
         }
 
-        /* Dark context styles */
-        &[data-context='dark'] {
-            --context-color: var(--color-text-on-dark);
-            --context-color-hover: var(--color-text-soft-on-dark);
-            --context-color-active: var(--color-text-soft-on-dark);
-            --context-color-surface: var(--color-background-foreground-dark);
-            --context-color-background: var(--color-background-dark);
-            --border-color-light: var(--grey-5);
-            --border-color-dark: var(--grey-3);
-            --context-color-text: var(--color-text-on-dark);
-        }
-
-        /* Light context styles */
-        &[data-context='light'] {
-            --context-color: var(--color-text-on-light);
-            --context-color-hover: var(--color-text-soft-on-light);
-            --context-color-active: var(--color-text-soft-on-light);
-            --context-color-surface: var(--color-background-foreground-light);
-            --context-color-background: var(--color-background-light);
-            --border-color-light: var(--grey-3);
-            --border-color-dark: var(--grey-5);
-            --context-color-text: var(--color-text-on-light);
-        }
-
         /* Accent context styles */
         &[data-context='accent'] {
             --context-color: var(--color-accent);

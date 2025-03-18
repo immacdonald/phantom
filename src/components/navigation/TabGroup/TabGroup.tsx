@@ -25,7 +25,7 @@ interface TabGroupProps {
     /** Callback function triggered when the selected tab changes. */
     onChange?: Callback<number>;
 
-    /** Determines whether the tab selection style is `tabs` or `segmented`. */
+    /** Determines whether the visual style of the tabs. */
     variant?: 'tabs' | 'segmented';
 
     /** Compact display style. */

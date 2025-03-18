@@ -8,7 +8,6 @@
         padding-block: var(--layout-space-xs);
         flex-grow: 1;
         position: relative;
-        color: var(--context-color-text, inherit);
 
         &:not(:last-of-type) {
             flex: 0 0 auto;
@@ -20,12 +19,12 @@
 
         &.background {
             &.regular {
-                background-color: var(--context-color-surface, var(--color-background));
+                background-color: var(--color-background);
             }
 
             &.floating,
             &.inset {
-                background-color: var(--context-color-background, var(--color-background));
+                background-color: var(--color-background);
             }
         }
 

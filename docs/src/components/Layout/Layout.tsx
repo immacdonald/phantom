@@ -1,6 +1,6 @@
 import { FC, Fragment, ReactNode, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
-import { Button, DynamicHeader, Row, StyledFooter, Typography, StyledLink, useResponsiveContext, MenuIcon, designTokens, Accordion, GitHubIcon, Divider, ChevronIcon } from 'phantom-library';
+import { Button, DynamicHeader, Row, StyledFooter, Typography, StyledLink, useResponsiveContext, MenuIcon, designTokens, Accordion, GitHubIcon, Divider, SunFilledIcon, MoonFilledIcon, CircleIcon, CircleFilledIcon } from 'phantom-library';
 import styles from './Layout.module.scss';
 
 interface SidebarContent {
@@ -21,7 +21,7 @@ const sidebar: SidebarContent[] = [
             { title: 'Divider', link: '/divider' },
             { title: 'Heading', link: '/heading' },
             { title: 'HoverMark', link: '/hover-mark' },
-            { title: 'Icon', link: '/icon', done: false },
+            { title: 'Icon', link: '/icon' },
             { title: 'Popover', link: '/popover' },
             { title: 'StyledImage', link: '/styled-image' },
             { title: 'Typography', link: '/typography' }
@@ -73,7 +73,7 @@ interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-    const { atBreakpoint, windowSize } = useResponsiveContext();
+    const { atBreakpoint, windowSize, theme, setTheme } = useResponsiveContext();
     const isMobile = useMemo(() => atBreakpoint('sm'), [windowSize.width]);
     const [sidebarActive, setSidebarActive] = useState<boolean>(false);
 
@@ -84,7 +84,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     const SidebarContent = useMemo(
         () => (
             <aside className={clsx(styles.aside, { [styles.mobile]: isMobile })} data-toggled={sidebarActive}>
-                <Button align="start" Icon={ChevronIcon} full link="/">
+                <Button align="start" Icon={CircleFilledIcon} full link="/">
                     About
                 </Button>
                 <Accordion label="Components" borderless compact iconLeft labelAlignment="start" defaultState={true} innerClassName={styles.category}>
@@ -116,8 +116,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                         About
                     </StyledLink>
                     <StyledLink to="https://github.com/immacdonald/phantom" inherit external>
-                        <GitHubIcon inline />
+                        <GitHubIcon />
                     </StyledLink>
+                    <Button Icon={theme == 'light' ? SunFilledIcon : MoonFilledIcon} onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')} variant="text" />
                 </Row>
             </DynamicHeader>
             <Row verticalAlign="start">
@@ -125,7 +126,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                 <main className={styles.main}>
                     <article>{children}</article>
                     <StyledFooter theme="dark">
-                        <Typography.Paragraph>The Phantom UI Design & Component Library</Typography.Paragraph>
+                        <Typography.Paragraph>The Phantom UI Library</Typography.Paragraph>
                         <Typography.Paragraph>Created with &#x2665; by Ian MacDonald</Typography.Paragraph>
                     </StyledFooter>
                 </main>

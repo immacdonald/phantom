@@ -11,13 +11,13 @@ const iconSizes = {
 };
 
 interface IconProps extends CommonComponentProps {
-    /** Defines the size of the icon (`small`, `regular`, `large`, or `full`). */
+    /** Defines the size of the icon. */
     size?: 'small' | 'regular' | 'large' | 'full';
 
     /** Specifies the visual context (color theme) for the icon. */
     context?: VisualContext;
 
-    /** If `true`, makes the icon align inline with surrounding text. */
+    /** Makes the icon align inline with surrounding text. */
     inline?: boolean;
 
     /** Tooltip text displayed on hover. */
@@ -30,8 +30,8 @@ interface FullIconProps extends IconProps {
 }
 
 /** A flexible icon component that supports sizing, context-based theming, and tooltips. */
-const Icon: FC<FullIconProps> = forwardRef<HTMLElement, FullIconProps>(({ icon, size = 'regular', context, inline = false, tooltip, className, style, ...props }, ref) => {
-    const properties = { '--icon-size': iconSizes[size] } as CSSProperties;
+const Icon: FC<FullIconProps> = forwardRef<HTMLElement, FullIconProps>(({ icon, size, context, inline = false, tooltip, className, style, ...props }, ref) => {
+    const properties = (size ? { '--icon-size': iconSizes[size] } : {}) as CSSProperties;
 
     const classes = clsx(
         styles.icon,

@@ -139,7 +139,7 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
             onMouseOver: onHover
         };
 
-        // Render as `<a>` or `<Link>` if `link` is provided.
+        // Render as a link if provided
         if (link) {
             const linkProps = {
                 ...commonProps,
@@ -147,19 +147,12 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
                 ...props
             };
 
-            if (link.includes('#')) {
-                return (
-                    <a href={link} {...(linkProps as ComponentPropsWithoutRef<'a'>)}>
-                        {content}
-                    </a>
-                );
-            } else {
-                return (
-                    <StyledLink to={link} external={external} {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
-                        {content}
-                    </StyledLink>
-                );
-            }
+            return (
+                <StyledLink to={link} external={external} disabled={disabled} {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
+                    {content}
+                </StyledLink>
+            );
+
         }
 
         // Handles button click events.

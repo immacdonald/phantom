@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider } from '@contexts';
 import styles from './StyledApp.module.scss';
+import { ScrollToAnchor } from './ScrollToAnchor';
 
 interface StyledAppProps extends CommonComponentProps {
     /** The initial theme of the application (light or dark). */
@@ -51,6 +52,7 @@ const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, b
 
     const internalNodes: ReactNode = (
         <>
+            <ScrollToAnchor />
             {banners && <Banner />}
             {anchors && <AnchorController />}
             {modals && <ModalController />}

@@ -5,7 +5,7 @@ import { Button } from '@components';
 import styles from './Segmented.module.scss';
 
 interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
-    /** Array of selectable options, each containing a `value` and `label`. */
+    /** Array of selectable options, each containing a value and label. */
     options?: Option[];
 
     /** The default selected index when the component mounts. */
