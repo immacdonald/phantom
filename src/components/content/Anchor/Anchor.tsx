@@ -175,11 +175,11 @@ const Anchor: FC<AnchorProps> = ({
 
     const componentClasses = clsx(style.component, componentClassName);
     const offsetValues = {
-        '--v-anchor-x': `${componentAnchoring.x}px`,
-        '--v-anchor-y': `${componentAnchoring.y}px`,
-        '--v-padding': `${componentAnchoring.padding.top}px ${componentAnchoring.padding.right}px ${componentAnchoring.padding.bottom}px ${componentAnchoring.padding.left}px`,
-        '--v-offset-x': `${componentAnchoring.offsetX}px`,
-        '--v-offset-y': `${componentAnchoring.offsetY}px`
+        '--anchor-x': `${componentAnchoring.x}px`,
+        '--anchor-y': `${componentAnchoring.y}px`,
+        '--anchor-padding': `${componentAnchoring.padding.top}px ${componentAnchoring.padding.right}px ${componentAnchoring.padding.bottom}px ${componentAnchoring.padding.left}px`,
+        '--anchor-offset-x': `${componentAnchoring.offsetX}px`,
+        '--anchor-offset-y': `${componentAnchoring.offsetY}px`
     } as CSSProperties;
 
     const anchorClasses = clsx(style.anchor, anchorClass);

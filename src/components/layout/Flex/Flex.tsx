@@ -10,19 +10,19 @@ interface FlexProps extends CommonComponentProps<HTMLDivElement> {
     /** The child elements inside the flex container. */
     children?: ReactNode;
 
-    /** Defines the flex direction (`row` or `column`), with responsive support. */
+    /** Defines the flex direction. */
     flex?: ResponsiveType<FlexDirection>;
 
-    /** Controls horizontal alignment, with responsive support. */
+    /** Controls horizontal alignment. */
     align?: ResponsiveType<FlexAlign>;
 
-    /** Controls vertical alignment, with responsive support. */
+    /** Controls vertical alignment. */
     verticalAlign?: ResponsiveType<FlexAlign>;
 
     /** Specifies the gap between flex items, with responsive support. */
     gap?: ResponsiveType<CSSProperties['gap']>;
 
-    /** Sets `position: relative` if `true`. */
+    /** Sets position as relative. */
     relative?: boolean;
 }
 

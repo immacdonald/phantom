@@ -8,7 +8,6 @@
         padding-block: var(--layout-space-xs);
         flex-grow: 1;
         position: relative;
-        color: var(--context-color-text, inherit);
 
         &:not(:last-of-type) {
             flex: 0 0 auto;
@@ -20,12 +19,12 @@
 
         &.background {
             &.regular {
-                background-color: var(--context-color-surface, var(--color-background));
+                background-color: var(--background-container);
             }
 
             &.floating,
             &.inset {
-                background-color: var(--context-color-background, var(--color-background));
+                background-color: var(--background-container);
             }
         }
 
@@ -38,9 +37,9 @@
 
             > div {
                 width: min(600px, 95%);
-                background-color: var(--context-color-surface, var(--color-background-foreground));
+                background-color: var(--context-color-background, var(--background-content));
                 padding: var(--space-lg);
-                border: var(--border-light);
+                border: var(--border-soft);
                 border-radius: var(--border-radius);
                 box-shadow: var(--shadow-lifted);
                 display: flex;
@@ -55,8 +54,8 @@
             @include responsive-width;
 
             min-height: 128px;
-            background-color: var(--context-color-surface, var(--color-background-foreground));
-            border: var(--border-light);
+            background-color: var(--context-color-background, var(--background-content));
+            border: var(--border-soft);
             padding-block: var(--space-lg);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-lifted);
@@ -78,7 +77,7 @@
         &.parallax {
             @mixin parallax {
                 // Fallback color defaults to the primary color
-                background-color: var(--color-background);
+                background-color: var(--background-container);
                 background-attachment: fixed;
                 background-position: center center;
                 background-size: cover;

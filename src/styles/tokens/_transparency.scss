@@ -1,0 +1,11 @@
+@mixin transparency-tokens {
+    $alpha-base-light: 144, 144, 144;
+    $alpha-base-dark: 26, 26, 26;
+
+    --alpha-light: rgba(#{$alpha-base-light}, 0.27);
+    --alpha-lighter: rgba(#{$alpha-base-light}, 0.2);
+    --alpha-lightest: rgba(#{$alpha-base-light}, 0.07);
+    --alpha-dark: rgba(#{$alpha-base-dark}, 0.07);
+    --alpha-darker: rgba(#{$alpha-base-dark}, 0.2);
+    --alpha-darkest: rgba(#{$alpha-base-dark}, 0.27);
+}

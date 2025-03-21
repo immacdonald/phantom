@@ -1,45 +1,19 @@
 import 'phantom-library/styles';
 import 'phantom-library/tokens';
+import './index.module.scss';
 import { FC } from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { StyledApp } from 'phantom-library';
 import { Layout } from '@components/Layout';
-import {
-    AccordionDocs,
-    AnchorDocs,
-    BannerDocs,
-    ButtonDocs,
-    ColumnDocs,
-    DividerDocs,
-    DynamicHeaderDocs,
-    FileUploadPortalDocs,
-    FlexDocs,
-    FormInputDocs,
-    HeadingDocs,
-    HoverMarkDocs,
-    ModalDocs,
-    PopoverDocs,
-    RowDocs,
-    SectionDocs,
-    SegmentedDocs,
-    StyledImageDocs,
-    StyledLinkDocs,
-    SwitchDocs,
-    TabGroupDocs,
-    ToggleDocs,
-    TypographyDocs
-} from './views/docs';
-import './index.module.scss';
-import { StyledFooterDocs } from './views/docs/layout/StyledFooterDocs';
-import { ErrorView } from './views/ErrorView';
-import { Home } from './views/Home';
+import { ErrorView, Home } from '@views';
+import { routes } from './routes';
 
 const router = createBrowserRouter(
     [
         {
             path: '/',
             element: (
-                <StyledApp banners modals anchors>
+                <StyledApp banners modals anchors rootId="root">
                     <Outlet />
                 </StyledApp>
             ),
@@ -56,35 +30,12 @@ const router = createBrowserRouter(
                         </Layout>
                     ),
                     children: [
-                        // Content
-                        { path: 'accordion', element: <AccordionDocs /> },
-                        { path: 'anchor', element: <AnchorDocs /> },
-                        { path: 'divider', element: <DividerDocs /> },
-                        { path: 'heading', element: <HeadingDocs /> },
-                        { path: 'hover-mark', element: <HoverMarkDocs /> },
-                        { path: 'popover', element: <PopoverDocs /> },
-                        { path: 'styled-image', element: <StyledImageDocs /> },
-                        { path: 'typography', element: <TypographyDocs /> },
-                        // Feedback
-                        { path: 'banner', element: <BannerDocs /> },
-                        { path: 'modal', element: <ModalDocs /> },
-                        // Input
-                        { path: 'button', element: <ButtonDocs /> },
-                        { path: 'file-upload-portal', element: <FileUploadPortalDocs /> },
-                        { path: 'form-input', element: <FormInputDocs /> },
-                        { path: 'segmented', element: <SegmentedDocs /> },
-                        { path: 'switch', element: <SwitchDocs /> },
-                        { path: 'toggle', element: <ToggleDocs /> },
-                        // Layout
-                        { path: 'column', element: <ColumnDocs /> },
-                        { path: 'dynamic-header', element: <DynamicHeaderDocs /> },
-                        { path: 'flex', element: <FlexDocs /> },
-                        { path: 'row', element: <RowDocs /> },
-                        { path: 'section', element: <SectionDocs /> },
-                        { path: 'styled-footer', element: <StyledFooterDocs /> },
-                        // Navigation
-                        { path: 'styled-link', element: <StyledLinkDocs /> },
-                        { path: 'tab-group', element: <TabGroupDocs /> }
+                        ...routes.flatMap((route) =>
+                            route.navigation.map((nav) => ({
+                                path: nav.link.replace(/^\//, ''),
+                                element: nav?.docs || false
+                            }))
+                        )
                     ]
                 },
                 { path: '*', element: <ErrorView /> }

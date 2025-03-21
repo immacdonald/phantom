@@ -1,6 +1,6 @@
 {
     "name": "phantom-library",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Phantom Design and Component Library for React",
     "module": "./lib/index.js",
     "type": "module",
@@ -19,7 +19,7 @@
         "dev": "tsup --watch",
         "lint": "npx eslint . --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
         "prettier": "prettier ./ --write --ignore-path .prettierignore",
-        "stylelint": "npx stylelint '**/*.{css,scss}' --fix",
+        "stylelint": "npx stylelint 'src/**/*.{css,scss}' --fix",
         "format": "npm run lint && npm run stylelint && npm run prettier",
         "prepublishOnly": "npm run build",
         "release": "npm publish",

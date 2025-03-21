@@ -14,14 +14,14 @@
     }
 
     .component {
-        --v-anchor-x: 0px;
-        --v-anchor-y: 0px;
-        --v-offset-x: 0px;
-        --v-offset-y: 0px;
-        --v-padding: 0px 0px 0px 0px;
+        --anchor-x: 0px;
+        --anchor-y: 0px;
+        --anchor-offset-x: 0px;
+        --anchor-offset-y: 0px;
+        --anchor-padding: 0px 0px 0px 0px;
 
-        padding: var(--v-padding);
-        transform: translate(calc(var(--v-anchor-x) + var(--v-offset-x)), calc(var(--v-anchor-y) + var(--v-offset-y)));
+        padding: var(--anchor-padding);
+        transform: translate(calc(var(--anchor-x) + var(--anchor-offset-x)), calc(var(--anchor-y) + var(--anchor-offset-y)));
     }
 
     .anchors {

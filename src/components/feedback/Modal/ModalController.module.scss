@@ -11,12 +11,12 @@
         justify-content: center;
         visibility: hidden;
         pointer-events: none;
-        transition: background-color var(--transition-mid);
+        transition: background-color var(--transition-medium);
 
         &.active {
             visibility: visible;
             pointer-events: all;
-            background-color: rgb(0 0 0 / 15%);
+            background-color: var(--alpha-contrast);
         }
     }
 }

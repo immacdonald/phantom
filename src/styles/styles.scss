@@ -1,254 +1,47 @@
 @use 'tokens' as *;
 @forward 'core';
+@forward 'elements';
 
 @layer tokens {
-    @mixin selection {
-        --color-selection: var(--color-primary-alpha);
+    @mixin selection-tokens {
+        --selection-color: var(--color-primary-alpha);
     }
 
     :root {
-        // Colors
-        // To Consider
+        @include color-palette-tokens;
+        @include color-tokens;
+        @include typography-tokens;
+        @include context-tokens;
+        @include border-tokens;
+        @include transparency-tokens;
+        @include space-tokens;
+        @include input-tokens;
+        @include effects-tokens;
+        @include selection-tokens;
 
-        /*
-    --s-grey-1: rgb(250 250 250);
-    --s-grey-2: rgb(244 244 244);
-    --s-grey-3: rgb(235 235 235);
-    --s-grey-4: rgb(221 221 221);
-    --s-grey-5: rgb(202 202 202);
-    --s-grey-6: rgb(155 155 155);
-    --s-grey-7: rgb(117 117 117);
-    --s-grey-8: rgb(83 83 83);
-    --s-grey-9: rgb(61 61 61);
-    --s-grey-10: rgb(41 41 41);
-    --s-grey-11: rgb(31 31 31);
-    --s-grey-12: rgb(20 20 20);
-    */
-
-        // Light
-        --white: rgb(255 255 255);
-        --grey-1: rgb(245 245 245);
-        --grey-2: rgb(242 243 245);
-        --grey-3: rgb(232 234 236);
-
-        // Dark
-        --grey-4: rgb(148 155 160);
-        --grey-5: rgb(88 88 88);
-        --grey-6: rgb(34 37 41);
-        --grey-7: rgb(24 25 27);
-        --black: rgb(1 2 3);
-
-        // Text
-        $text-rgb: 0, 0, 0;
-        $light-text-rgb: 255, 255, 255;
-
-        --color-text-on-light: rgba(#{$text-rgb}, 0.88);
-        --color-text-soft-on-light: rgba(#{$text-rgb}, 0.6);
-        --color-text-on-dark: rgba(#{$light-text-rgb}, 0.94);
-        --color-text-soft-on-dark: rgba(#{$light-text-rgb}, 0.7);
-        --color-text-disabled: rgba(#{$text-rgb}, 0.3);
-        --color-background-disabled: var(--grey-2);
-
-        // Brand
-        // Primary
-        --color-primary: #a490c3;
-        --color-primary-hover: var(--color-primary-dark, var(--color-primary));
-        --color-primary-active: var(--color-primary-darker, var(--color-primary));
-        --color-background-primary: var(--color-primary);
-        --color-text-on-primary: var(--color-text-on-dark);
-        --color-primary-alpha: #bfacdb40;
-
-        // Secondary
-        --color-secondary: lightblue;
-
-        // Accent
-        --color-accent: red;
-        --color-accent-hover: var(--color-accent-dark, var(--color-accent));
-        --color-accent-active: var(--color-accent-darker, var(--color-accent));
-        --color-background-accent: var(--color-accent);
-        --color-text-on-accent: var(--color-text-on-dark);
-
-        // Colors
-        // Surface
-        --color-background-page-light: var(--white);
-        --color-background-light: var(--grey-2);
-        --color-background-foreground-light: var(--white);
-        --color-background-page-dark: var(--grey-7);
-        --color-background-dark: var(--grey-6);
-        --color-background-foreground-dark: var(--grey-7);
-        --color-background-overlay: var(--color-background-foreground);
-
-        // Website
-        @include selection;
-
-        --scrollbar-color: var(--grey-3);
-        --scrollbar-background-color: var(--white);
-
-        // Contexts
-        $positive-light: rgb(141 222 133);
-        $positive: rgb(131 194 118);
-        $positive-dark: rgb(69 151 60);
-        $critical-light: rgb(251 123 129);
-        $critical: rgb(227 63 72);
-        $critical-dark: rgb(191 53 89);
-        $info-light: rgb(100 181 224);
-        $info: rgb(62 154 204);
-        $info-dark: rgb(42 127 172);
-        $warning-light: rgb(250 219 107);
-        $warning: rgb(250 203 34);
-        $warning-dark: rgb(202 177 85);
-
-        // Positive
-        --color-positive: #{$positive};
-        --color-positive-hover: #{$positive-dark};
-        --color-positive-active: #{$positive-dark};
-        --color-background-positive: #{$positive};
-        --color-text-on-positive: var(--color-text-on-dark);
-
-        // Critical
-        --color-critical: #{$critical};
-        --color-critical-hover: #{$critical-dark};
-        --color-critical-active: #{$critical-dark};
-        --color-background-critical: #{$critical};
-        --color-text-on-critical: var(--color-text-on-dark);
-
-        // Info
-        --color-info: #{$info};
-        --color-info-hover: #{$info-dark};
-        --color-info-active: #{$info-dark};
-        --color-background-info: #{$info};
-        --color-text-on-info: var(--color-text-on-dark);
-
-        // Warning
-        --color-warning: #{$warning};
-        --color-warning-hover: #{$warning-dark};
-        --color-warning-active: #{$warning-dark};
-        --color-background-warning: #{$warning};
-        --color-text-on-warning: var(--color-text-on-dark);
-
-        // Alpha
-        $alpha-base: 144, 144, 144;
-        $alpha-base-dark: 26, 26, 26;
-
-        --alpha-1: rgba(#{$alpha-base}, 0.07);
-        --alpha-2: rgba(#{$alpha-base}, 0.2);
-        --alpha-3: rgba(#{$alpha-base}, 0.23);
-        --alpha-4: rgba(#{$alpha-base}, 0.27);
-        --alpha-dark-1: rgba(#{$alpha-base-dark}, 0.07);
-        --alpha-dark-2: rgba(#{$alpha-base-dark}, 0.2);
-        --alpha-dark-3: rgba(#{$alpha-base-dark}, 0.23);
-        --alpha-dark-4: rgba(#{$alpha-base-dark}, 0.27);
-
-        // Border
-        --border-width-thin: 1px;
-        --border-width-thick: 2px;
-        --border-color-light: var(--grey-3);
-        --border-color-dark: var(--grey-5);
-        --border-light: var(--border-width-thin) solid var(--border-color-light);
-        --border-dark: var(--border-width-thin) solid var(--border-color-dark);
-        --border-radius: 8px;
-
-        // Input
-        --input-color-active: var(--color-primary);
-        --input-color-active-hover: var(--color-primary-hover);
-        --input-color-fg-active: var(--color-text-on-primary);
-        --input-border-color: var(--border-color-light);
-        --input-border: var(--border-width-thin) solid var(--input-border-color);
-        --input-border-active: var(--border-width-thin) solid var(--input-color-active);
-        --input-outline: var(--border-width-thin) solid var(--input-color-active);
-        --input-color-fg: var(--color-text);
-        --input-color-fg-light: var(--color-text-soft);
-        --input-color-fg-disabled: var(--color-text-disabled);
-        --input-color-bg: var(--white);
-        --input-color-bg-disabled: var(--color-background-disabled);
-        --input-color-bg-selected: var(--grey-3);
-
-        // Shadows
-        --shadow-subtle: 0px 3px 1px -1px var(--alpha-dark-1);
-        --shadow-raised: 0px 4px 6px -2px var(--alpha-dark-2);
-        --shadow-lifted: 0px 8px 16px -4px var(--alpha-dark-3);
-        --shadow-floating: 0px 12px 20px -8px var(--alpha-dark-4);
-
-        // Spacing
-        --space-xxs: 0.125rem;
-        --space-xs: 0.25rem;
-        --space-sm: 0.5rem;
-        --space: 1rem;
-        --space-lg: 1.5rem;
-        --space-xl: 2rem;
-        --layout-space-xs: 3rem;
-        --layout-space-sm: 4rem;
-        --layout-space-md: 6rem;
-        --layout-space-lg: 8rem;
-        --layout-space-xl: 12rem;
-        --layout-space-xxl: 16rem;
-
-        // Effects
-        // Transitions
-        --transition-slow: 1s ease;
-        --transition-mid: 0.5s ease;
-        --transition-fast: 0.25s ease;
-
-        // Filters
-        --filter-disabled-saturation: 60%;
-        --filter-disabled-brightness: 0.9;
-        --filter-hover-brightness: 1.1;
-        --filter-inverse: 0;
-
-        // Elements
-        --header-height: 64px;
-
-        // Typography
-        --font-body: 'Helvetica Neue', helvetica, arial, sans-serif;
-        --font-heading: 'Helvetica Neue', helvetica, arial, sans-serif;
-
-        // Font
-        --font-size: 1rem;
-        --font-size-xs: calc(var(--font-size) * 0.75);
-        --font-size-sm: calc(var(--font-size) * 0.875);
-        --font-size-lg: calc(var(--font-size) * 1.2);
-        --font-size-xl: calc(var(--font-size) * 1.5);
-
-        // Text
-        --text-header-xxl: 64px;
-        --text-header-xl: 44px;
-        --text-header-lg: 28px;
-        --text-header-md: 22px;
-        --text-header-sm: 18px;
-        --text-header-xs: 14px;
-
-        @include respond-max($screen-lg) {
-            --text-header-xxl: 56px;
-            --text-header-xl: 36px;
-            --text-header-lg: 24px;
-            --text-header-md: 20px;
-            --text-header-sm: 14px;
-            --text-header-xs: 12px;
-        }
-
-        @include respond-max($screen-md) {
-            --text-header-xxl: 48px;
-            --text-header-xl: 28px;
-            --text-header-lg: 22px;
-            --text-header-md: 18px;
-            --font-size: 0.875rem;
-        }
+        --scrollbar-background-color: transparent;
     }
 
     ::selection {
-        @include selection;
+        @include selection-tokens;
     }
 
-    [data-theme='light'] {
+    [data-theme='light'],
+    :root:not([data-theme]) {
         color-scheme: light;
 
         --color-text: var(--color-text-on-light);
         --color-text-soft: var(--color-text-soft-on-light);
+        --color-text-disabled: var(--color-text-on-light-disabled);
         --color-text-inverse: var(--color-text-on-dark);
-        --color-background-page: var(--color-background-page-light);
-        --color-background: var(--color-background-light);
-        --color-background-foreground: var(--color-background-foreground-light);
-        --color-background-inverse: var(--color-background-dark);
+        --alpha-contrast: var(--alpha-dark);
+        --background-page: var(--background-page-light);
+        --background-container: var(--background-container-light);
+        --background-content: var(--background-content-light);
+        --input-background-color: var(--white);
+        --input-background-color-disabled: var(--grey-3);
+        --input-background-color-selected: var(--grey-3);
+        --scrollbar-color: var(--grey-3);
     }
 
     [data-theme='dark'] {
@@ -256,115 +49,20 @@
 
         --color-text: var(--color-text-on-dark);
         --color-text-soft: var(--color-text-soft-on-dark);
+        --color-text-disabled: var(--color-text-on-dark-disabled);
         --color-text-inverse: var(--color-text-on-light);
-        --color-background-page: var(--color-background-page-dark);
-        --color-background-foreground: var(--color-background-dark);
-        --color-background: var(--color-background-foreground-dark);
-        --color-background-inverse: var(--color-background-light);
-        --color-text-disabled: var(--grey-5);
-        --color-background-disabled: var(--grey-6);
-        --input-color-bg: var(--grey-7);
-        --input-color-bg-selected: var(--grey-6);
-        --border-color-light: var(--grey-5);
-        --border-color-dark: var(--grey-3);
-        --scrollbar-color: var(--grey-5);
-        --scrollbar-background-color: var(--black);
+        --alpha-contrast: var(--alpha-light);
+        --border-color-soft: var(--border-color-dark);
+        --border-color-hard: var(--border-color-light);
+        --background-page: var(--background-page-dark);
+        --background-container: var(--background-container-dark);
+        --background-content: var(--background-content-dark);
+        --input-background-color: var(--grey-7);
+        --input-background-color-disabled: var(--grey-6);
+        --input-background-color-selected: var(--grey-6);
+        --scrollbar-color: var(--grey-6);
         --filter-inverse: 1;
     }
 
-    *[data-context] {
-        /* Primary context styles */
-        &[data-context='primary'] {
-            --context-color: var(--color-primary);
-            --context-color-hover: var(--color-primary-hover);
-            --context-color-active: var(--color-primary-active);
-            --context-color-surface: var(--color-background-primary);
-            --context-color-background: var(--context-color-surface);
-            --context-color-text: var(--color-text-on-primary);
-        }
-
-        /* Dark context styles */
-        &[data-context='dark'] {
-            --context-color: var(--color-text-on-dark);
-            --context-color-hover: var(--color-text-soft-on-dark);
-            --context-color-active: var(--color-text-soft-on-dark);
-            --context-color-surface: var(--color-background-foreground-dark);
-            --context-color-background: var(--color-background-dark);
-            --border-color-light: var(--grey-5);
-            --border-color-dark: var(--grey-3);
-            --context-color-text: var(--color-text-on-dark);
-        }
-
-        /* Light context styles */
-        &[data-context='light'] {
-            --context-color: var(--color-text-on-light);
-            --context-color-hover: var(--color-text-soft-on-light);
-            --context-color-active: var(--color-text-soft-on-light);
-            --context-color-surface: var(--color-background-foreground-light);
-            --context-color-background: var(--color-background-light);
-            --border-color-light: var(--grey-3);
-            --border-color-dark: var(--grey-5);
-            --context-color-text: var(--color-text-on-light);
-        }
-
-        /* Accent context styles */
-        &[data-context='accent'] {
-            --context-color: var(--color-accent);
-            --context-color-hover: var(--color-accent-hover);
-            --context-color-active: var(--color-accent-active);
-            --context-color-surface: var(--color-background-accent);
-            --context-color-background: var(--context-color-surface);
-            --context-color-text: var(--color-text-on-accent);
-        }
-
-        /* Secondary context styles */
-        &[data-context='secondary'] {
-            --context-color: var(--color-secondary);
-            --context-color-hover: var(--color-secondary-hover);
-            --context-color-active: var(--color-secondary-active);
-            --context-color-surface: var(--color-background-secondary);
-            --context-color-background: var(--context-color-surface);
-            --context-color-text: var(--color-text-on-secondary);
-        }
-
-        /* Success context styles */
-        &[data-context='positive'] {
-            --context-color: var(--color-positive);
-            --context-color-hover: var(--color-positive-hover);
-            --context-color-active: var(--color-positive-active);
-            --context-color-surface: var(--color-background-positive);
-            --context-color-background: var(--context-color-surface);
-            --context-color-text: var(--color-text-on-positive);
-        }
-
-        /* Critical context styles */
-        &[data-context='critical'] {
-            --context-color: var(--color-critical);
-            --context-color-hover: var(--color-critical-hover);
-            --context-color-active: var(--color-critical-active);
-            --context-color-surface: var(--color-background-critical);
-            --context-color-background: var(--context-color-surface);
-            --context-color-text: var(--color-text-on-critical);
-        }
-
-        /* Warning context styles */
-        &[data-context='warning'] {
-            --context-color: var(--color-warning);
-            --context-color-hover: var(--color-warning-hover);
-            --context-color-active: var(--color-warning-active);
-            --context-color-surface: var(--color-background-warning);
-            --context-color-background: var(--context-color-surface);
-            --context-color-text: var(--color-text-on-warning);
-        }
-
-        /* Info context styles */
-        &[data-context='info'] {
-            --context-color: var(--color-info);
-            --context-color-hover: var(--color-info-hover);
-            --context-color-active: var(--color-info-active);
-            --context-color-surface: var(--color-background-info);
-            --context-color-background: var(--context-color-surface);
-            --context-color-text: var(--color-text-on-info);
-        }
-    }
+    @include context-selectors;
 }

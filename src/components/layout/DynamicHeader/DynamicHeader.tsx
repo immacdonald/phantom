@@ -1,4 +1,4 @@
-import { CommonComponentProps, VisualContext } from '@types';
+import { CommonComponentProps } from '@types';
 import { FC, forwardRef, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useScrollDistance } from '@hooks';
@@ -14,9 +14,6 @@ interface DynamicHeader {
 
     /** Determines whether the header has a background. */
     hasBackground?: boolean;
-
-    /** Defines the visual context (color theme) of the header. */
-    context?: VisualContext;
 }
 
 /** Extends `DynamicHeader` with additional dynamic behavior settings. */
@@ -42,15 +39,14 @@ interface DynamicHeaderProps extends BaseDynamicHeaderProps, CommonComponentProp
 const DEFAULT_SCROLL_DISTANCE = 400;
 
 /** A header component that dynamically adjusts its behavior based on scroll distance. */
-const DynamicHeader: FC<DynamicHeaderProps> = forwardRef<HTMLElement, DynamicHeaderProps>(({ inline = false, pageSpace, hasBackground, context, dynamicSettings, children, className, ...props }, ref) => {
+const DynamicHeader: FC<DynamicHeaderProps> = forwardRef<HTMLElement, DynamicHeaderProps>(({ inline = false, pageSpace, hasBackground, dynamicSettings, children, className, ...props }, ref) => {
     const scroll = useScrollDistance();
     const scrolled = dynamicSettings?.enabled && scroll > (dynamicSettings!.scrollDistance || DEFAULT_SCROLL_DISTANCE);
 
     const currentSettings: DynamicHeader = {
         inline: scrolled ? dynamicSettings!.inline : inline,
         pageSpace: scrolled ? dynamicSettings!.pageSpace : pageSpace,
-        hasBackground: scrolled ? dynamicSettings!.hasBackground : hasBackground,
-        context: scrolled ? dynamicSettings!.context : context
+        hasBackground: scrolled ? dynamicSettings!.hasBackground : hasBackground
     };
 
     const headerClasses = clsx(
@@ -66,7 +62,7 @@ const DynamicHeader: FC<DynamicHeaderProps> = forwardRef<HTMLElement, DynamicHea
     );
 
     return (
-        <header className={headerClasses} data-context={currentSettings.context} role="navigation" ref={ref} {...props}>
+        <header className={headerClasses} role="navigation" ref={ref} {...props}>
             {children}
         </header>
     );

@@ -8,7 +8,12 @@ const TypographyDocs: FC = () => {
     const paragraphDocs = getComponentDoc('Paragraph')!;
 
     return (
-        <MultiComponentDocs name="Typography" about="Typography component collection designed for consistent text rendering across the application." components={[textDocs, paragraphDocs]}>
+        <MultiComponentDocs
+            name="Typography"
+            about="Typography component collection designed for consistent text rendering across the application."
+            source="src/components/content/Typography"
+            components={[textDocs, paragraphDocs]}
+        >
             <Typography.Text size="md">This is medium text aligned to the left.</Typography.Text>
             <Typography.Text size="lg" soft>
                 This is large text with soft styling.

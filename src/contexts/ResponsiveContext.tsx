@@ -1,14 +1,14 @@
 import type { Breakpoints, Callback, Dimensions, ResponsiveObject, ResponsiveType, Theme } from '@types';
 import { createContext, FC, ReactElement, ReactNode } from 'react';
 import { useTheme, useWindowSize } from '@hooks';
-import { designTokens } from '../styles/tokens';
+import { tokens } from '../styles/tokens';
 
 const breakpoints: Record<Breakpoints, string> = {
-    xs: designTokens.screen.xs,
-    sm: designTokens.screen.sm,
-    md: designTokens.screen.md,
-    lg: designTokens.screen.lg,
-    xl: designTokens.screen.xl
+    xs: tokens.screen.xs,
+    sm: tokens.screen.sm,
+    md: tokens.screen.md,
+    lg: tokens.screen.lg,
+    xl: tokens.screen.xl
 };
 
 function isResponsiveObject<T>(obj: ResponsiveType<T>): boolean {
@@ -92,7 +92,7 @@ const ResponsiveContextProvider: FC<ResponsiveContextProviderProps> = ({ minimiz
         return responsiveObject.base;
     };
 
-    const isMobile = windowSize.width < pxToInt(designTokens.screen.sm);
+    const isMobile = windowSize.width < pxToInt(tokens.screen.sm);
 
     return <ResponsiveContext.Provider value={{ parse, atBreakpoint, isMobile, windowSize, theme: currentTheme, setTheme, isResponsiveContextLoaded: true }}>{children}</ResponsiveContext.Provider>;
 };

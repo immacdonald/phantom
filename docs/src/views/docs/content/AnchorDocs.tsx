@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Anchor, designTokens, Typography } from 'phantom-library';
+import { Anchor, tokens, Typography } from 'phantom-library';
 import { ComponentDocs } from '@components/Layout';
 import { getComponentDoc } from '@utility';
 
@@ -12,7 +12,7 @@ const AnchorDocs: FC = () => {
                 component={
                     <Typography.Text
                         data-context="primary"
-                        style={{ color: 'var(--color-text-on-primary)', backgroundColor: 'var(--color-primary)', padding: designTokens.space.sm, borderRadius: designTokens.borderRadius }}
+                        style={{ color: 'var(--color-text-on-primary)', backgroundColor: 'var(--color-primary)', padding: tokens.space.sm, borderRadius: tokens.borderRadius }}
                     >
                         Test
                     </Typography.Text>

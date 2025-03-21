@@ -5,7 +5,7 @@ import { Button } from '@components';
 import styles from './Segmented.module.scss';
 
 interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
-    /** Array of selectable options, each containing a `value` and `label`. */
+    /** Array of selectable options, each containing a value and label. */
     options?: Option[];
 
     /** The default selected index when the component mounts. */
@@ -48,9 +48,9 @@ const Segmented: FC<SegmentedProps> = forwardRef<HTMLDivElement, SegmentedProps>
         );
 
         const properties: CSSProperties = {
-            '--v-count': options.length,
-            '--v-selected': selected,
-            '--height': compact ? "32px" : "40px",
+            '--segmented-count': options.length,
+            '--segmented-selected': selected,
+            '--height': compact ? '32px' : '40px',
             ...style
         } as CSSProperties;
 

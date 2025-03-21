@@ -26,17 +26,17 @@
     }
 }
 
-@mixin ghost($hover) {
+@mixin ghost() {
     border: none;
     background: transparent;
 
     &:not([disabled], .disabled) {
         &:hover {
-            background-color: $hover;
+            background-color: var(--alpha-contrast);
         }
 
         &:active {
-            background-color: var(--alpha-dark-1);
+            background-color: var(--alpha-contrast);
         }
     }
 }
@@ -66,6 +66,7 @@
         font-size: var(--font-size);
         font-family: var(--font-body);
         padding: var(--space-sm);
+        margin: 0;
         border-radius: var(--border-radius);
     }
 
@@ -76,19 +77,20 @@
     .button {
         @extend %clear;
 
-        --v-size: 40px;
-        --v-internal: 24px;
-        --v-font: #{var(--font-size-sm)};
+        --button-size: 40px;
+        --button-internal: 24px;
+        --button-font: var(--font-size-sm);
 
         &.large {
-            --v-size: 64px;
-            --v-internal: 40px;
+            --button-size: 64px;
+            --button-internal: 40px;
+            --button-font: var(--font-size-lg);
         }
 
         &.small {
-            --v-size: 32px;
-            --v-internal: 12px;
-            --v-font: var(--font-size-xs);
+            --button-size: 32px;
+            --button-internal: 12px;
+            --button-font: var(--font-size-xs);
         }
 
         width: auto;
@@ -97,25 +99,24 @@
             width: 100%;
         }
 
-        height: var(--v-size);
+        height: var(--button-size);
         display: flex;
         align-items: center;
         justify-content: center;
         padding: var(--space-sm);
-        margin: 0;
-        font-size: var(--v-font);
+        font-size: var(--button-font);
         font-weight: normal;
         gap: var(--space-xs);
         transition:
-            background var(--transition-mid),
-            transform var(--transition-mid),
-            box-shadow var(--transition-mid),
-            border-color var(--transition-mid),
-            outline var(--transition-mid),
-            color var(--transition-mid);
+            background var(--transition-medium),
+            transform var(--transition-medium),
+            box-shadow var(--transition-medium),
+            border-color var(--transition-medium),
+            outline var(--transition-medium),
+            color var(--transition-medium);
 
         span {
-            height: var(--v-internal);
+            height: var(--button-internal);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -123,9 +124,9 @@
         }
 
         svg {
-            font-size: var(--v-size);
-            width: var(--v-internal);
-            height: var(--v-internal);
+            font-size: var(--button-size);
+            width: var(--button-internal);
+            height: var(--button-internal);
         }
 
         &.link {
@@ -135,30 +136,34 @@
         border-radius: var(--border-radius);
 
         &.rounded {
-            border-radius: var(--v-size);
+            border-radius: var(--button-size);
         }
 
-        --v-default: var(--color-text);
+        --button-default: var(--color-text);
 
         &.filled {
-            @include filled(var(--context-color, var(--input-color-bg)), var(--context-color-hover, var(--input-color-bg-selected)), var(--context-color-active, var(--input-color-bg-selected)));
+            @include filled(
+                var(--context-color, var(--input-background-color)),
+                var(--context-color-hover, var(--input-background-color-selected)),
+                var(--context-color-active, var(--input-background-color-selected))
+            );
 
-            color: var(--context-color-text, var(--v-default));
+            color: var(--context-color-text, var(--button-default));
         }
 
         &.outline {
-            @include filled(var(--input-color-bg), var(--input-color-bg), var(--input-color-bg));
+            @include filled(var(--input-background-color), var(--input-background-color), var(--input-background-color));
             @include outline(var(--context-color, var(--input-border-color)), var(--context-color-hover, var(--input-color-active)), var(--context-color-active, var(--input-color-active)));
-            @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
+            @include dynamic-text(var(--context-color, var(--input-text-color)), var(--context-color-hover, var(--input-text-color)), var(--context-color-active, var(--input-text-color)));
         }
 
         &.ghost {
-            @include ghost(var(--alpha-dark-1));
-            @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg)), var(--context-color-active, var(--input-color-fg)));
+            @include ghost;
+            @include dynamic-text(var(--context-color, var(--input-text-color)), var(--context-color-hover, var(--input-text-color)), var(--context-color-active, var(--input-text-color)));
         }
 
         &.text {
-            @include dynamic-text(var(--context-color, var(--input-color-fg)), var(--context-color-hover, var(--input-color-fg-light)), var(--context-color-active, var(--input-color-fg-light)));
+            @include dynamic-text(var(--context-color, var(--input-text-color)), var(--context-color-hover, var(--input-text-color-soft)), var(--context-color-active, var(--input-text-color-soft)));
         }
 
         &:not([disabled], .disabled) {
@@ -168,8 +173,8 @@
         }
 
         &.loading {
-            --v-color: var(--v-default);
-            --v-secondary-color: var(--v-default);
+            --button-color: var(--button-default);
+            --button-secondary-color: var(--button-default);
 
             display: grid;
             place-items: center;
@@ -182,9 +187,9 @@
 
         &[disabled],
         &.disabled {
-            background-color: var(--input-color-bg-disabled);
+            background-color: var(--input-background-color-disabled);
             border: none;
-            color: var(--input-color-fg-disabled) !important;
+            color: var(--input-text-color-disabled) !important;
             cursor: not-allowed;
             filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
         }

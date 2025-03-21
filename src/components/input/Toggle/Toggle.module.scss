@@ -1,8 +1,8 @@
 @layer components {
     .toggle {
-        --v-width: auto;
-        --v-half: auto;
-        --v-padding: 4px;
+        --toggle-width: auto;
+        --toggle-half: auto;
+        --toggle-padding: var(--space-xs);
 
         position: relative;
         width: fit-content;
@@ -14,9 +14,9 @@
 
         &[disabled],
         &.disabled {
-            background-color: var(--input-color-bg-disabled);
+            background-color: var(--input-background-color-disabled);
             border: none;
-            color: var(--input-color-fg-disabled);
+            color: var(--input-text-color-disabled);
             cursor: not-allowed;
             filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
         }
@@ -48,7 +48,7 @@
         justify-content: center;
         align-items: center;
         border-radius: var(--border-radius);
-        width: var(--v-width);
+        width: var(--toggle-width);
         height: 100%;
         transition: 0.3s ease all;
         z-index: 1;
@@ -57,25 +57,25 @@
     .before,
     .indicator,
     .after {
-        padding: var(--v-padding);
+        padding: var(--toggle-padding);
         border-radius: var(--border-radius);
         transition: 0.3s ease all;
     }
 
     .before,
     .after {
-        width: var(--v-half);
+        width: var(--toggle-half);
         text-align: center;
         line-height: 1;
-        color: var(--input-color-fg);
+        color: var(--input-text-color);
         z-index: 1;
     }
 
     .indicator {
         position: absolute;
-        width: calc(50% - var(--v-padding));
-        height: calc(100% - 2 * var(--v-padding));
-        left: var(--v-padding);
+        width: calc(50% - var(--toggle-padding));
+        height: calc(100% - 2 * var(--toggle-padding));
+        left: var(--toggle-padding);
         background-color: var(--input-color-active);
         z-index: 0;
     }
@@ -85,10 +85,10 @@
     }
 
     .checkbox:checked + .states .after {
-        color: var(--input-color-fg-active);
+        color: var(--input-text-color-active);
     }
 
     .checkbox:not(:checked) + .states .before {
-        color: var(--input-color-fg-active);
+        color: var(--input-text-color-active);
     }
 }

@@ -12,12 +12,15 @@ interface StyledLinkProps extends LinkProps, CommonComponentProps<HTMLAnchorElem
     /** For links to be opened in a new tab with appropriate security attributes. */
     external?: boolean;
 
+    /** Disables the link from being clicked. */
+    disabled?: boolean;
+
     /** The content inside the link. */
     children: ReactNode;
 }
 
 /** A styled link component with styling inheritance and external link handling. */
-const StyledLink: FC<StyledLinkProps> = forwardRef<HTMLAnchorElement, StyledLinkProps>(({ to, inherit, external, className, children, ...props }, ref) => {
+const StyledLink: FC<StyledLinkProps> = forwardRef<HTMLAnchorElement, StyledLinkProps>(({ to, inherit, external, className, disabled, children, ...props }, ref) => {
     const linkClasses = clsx(styles.link, { [styles.styled]: !inherit }, className);
 
     const externalProps = orUndefined(external, {
@@ -27,7 +30,7 @@ const StyledLink: FC<StyledLinkProps> = forwardRef<HTMLAnchorElement, StyledLink
     });
 
     return (
-        <Link to={to} className={linkClasses} ref={ref} {...externalProps} {...props}>
+        <Link to={disabled ? '#' : to} className={linkClasses} ref={ref} {...externalProps} {...props}>
             {children}
         </Link>
     );

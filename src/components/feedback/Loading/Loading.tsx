@@ -27,12 +27,12 @@ interface LoadingProps extends CommonComponentProps {
 const Loading: FC<LoadingProps> = forwardRef<HTMLDivElement, LoadingProps>(({ size, thickness, width, height, minHeight, color, className, style, ...props }, ref) => {
     const properties: CSSProperties = useMemo(
         () => ({
-            '--v-size': size ? `${size}px` : undefined,
-            '--v-thickness': thickness ? `${thickness}px` : undefined,
-            '--v-width': width,
-            '--v-height': height,
-            '--v-min-height': minHeight,
-            '--v-color': color,
+            '--loading-size': size ? `${size}px` : undefined,
+            '--loading-thickness': thickness ? `${thickness}px` : undefined,
+            '--loading-width': width,
+            '--loading-height': height,
+            '--loading-min-height': minHeight,
+            '--loading-color': color,
             ...style
         }),
         [size, thickness, width, height, minHeight, color, style]

@@ -2,3 +2,7 @@
     --font-body: 'Avenir Next', 'Helvetica Neue', helvetica, sans-seriff;
     --font-heading: 'Avenir Next', 'Helvetica Neue', helvetica, sans-seriff;
 }
+
+body {
+    overscroll-behavior-y: none;
+}

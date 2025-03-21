@@ -1,0 +1,11 @@
+@mixin border-tokens {
+    --border-width: 1px;
+    --border-width-thick: 2px;
+    --border-color-light: var(--grey-3);
+    --border-color-dark: var(--grey-6);
+    --border-color-soft: var(--border-color-light);
+    --border-color-hard: var(--border-color-dark);
+    --border-soft: var(--border-width) solid var(--border-color-soft);
+    --border-hard: var(--border-width) solid var(--border-color-hard);
+    --border-radius: 8px;
+}

@@ -32,7 +32,9 @@ interface StyledImageProps extends CommonComponentProps {
 /** A styled image component supporting borders, rounded corners, sizing constraints, and captions. */
 const StyledImage: FC<StyledImageProps> = forwardRef<HTMLElement, StyledImageProps>(({ image, alt, border, round, fit, maxWidth, maxHeight, caption, className, style, ...props }, ref) => {
     // Computes the class names based on props.
-    const imageStyle = clsx(styles.image, {
+    const imageStyle = clsx(
+        styles.image,
+        {
             [styles.border]: border,
             [styles.round]: round,
             [styles.fit]: fit
@@ -42,8 +44,8 @@ const StyledImage: FC<StyledImageProps> = forwardRef<HTMLElement, StyledImagePro
 
     // Applies max width and height as CSS variables.
     const properties = {
-        '--v-max-width': maxWidth ? `${maxWidth}px` : undefined,
-        '--v-max-height': maxHeight,
+        '--image-max-width': maxWidth ? `${maxWidth}px` : undefined,
+        '--image-max-height': maxHeight,
         ...style
     } as CSSProperties;
 

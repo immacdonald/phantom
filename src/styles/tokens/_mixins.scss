@@ -20,14 +20,14 @@
 }
 
 @mixin base-input {
-    color: var(--input-color-fg);
-    background-color: var(--input-color-bg);
+    color: var(--input-text-color);
+    background-color: var(--input-background-color);
     border-radius: var(--border-radius);
     font-size: var(--font-size);
     border: var(--input-border);
     transition:
         outline-color var(--transition-fast),
-        border var(--transition-mid);
+        border var(--transition-medium);
 
     &:hover {
         border-color: var(--input-color-active);

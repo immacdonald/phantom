@@ -1,9 +1,16 @@
 @layer components {
     .icon {
-        --icon-size: 1rem;
+        --icon-size: 24px;
 
         display: inline-block;
         font-size: var(--icon-size);
         height: 1em;
+        vertical-align: middle;
+
+        &.inline {
+            --icon-size: 1em;
+
+            height: var(--icon-size);
+        }
     }
 }

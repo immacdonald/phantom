@@ -12,7 +12,7 @@
             font-family: var(--font-body);
 
             &::placeholder {
-                color: var(--input-color-fg-light);
+                color: var(--input-text-color-soft);
                 opacity: 0.5;
             }
 
@@ -21,9 +21,9 @@
             }
 
             &[disabled] {
-                background-color: var(--input-color-bg-disabled);
+                background-color: var(--input-background-color-disabled);
                 border: none;
-                color: var(--input-color-fg-disabled);
+                color: var(--input-text-color-disabled);
                 cursor: not-allowed;
                 filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
             }
@@ -46,28 +46,28 @@
     }
 
     input[type='radio'] {
-        --v-box-size: 16px;
+        --radio-box-size: 16px;
 
-        width: var(--v-box-size);
-        height: var(--v-box-size);
+        width: var(--radio-box-size);
+        height: var(--radio-box-size);
         margin-top: 4px;
 
         &::before {
-            --v-size: 20px;
+            --radio-size: 20px;
 
-            width: var(--v-size);
-            height: var(--v-size);
+            width: var(--radio-size);
+            height: var(--radio-size);
             position: relative;
             display: block;
-            top: calc((var(--v-size) - var(--v-box-size)) / -2);
-            left: calc((var(--v-size) - var(--v-box-size)) / -2);
+            top: calc((var(--radio-size) - var(--radio-box-size)) / -2);
+            left: calc((var(--radio-size) - var(--radio-box-size)) / -2);
             content: '';
-            background-color: var(--input-color-bg);
+            background-color: var(--input-background-color);
             border: var(--input-border);
             border-radius: 100%;
             transition:
                 background-color var(--transition-fast),
-                border var(--transition-mid);
+                border var(--transition-medium);
         }
 
         &:checked {
@@ -82,35 +82,35 @@
                 left: 2px;
                 font-size: 14px;
                 line-height: 14px;
-                color: var(--input-color-fg-active);
+                color: var(--input-text-color-active);
                 text-align: center;
             }
         }
     }
 
     input[type='checkbox']:not([data-switch]) {
-        --v-box-size: 12px;
-        --v-size: 20px;
+        --checkbox-size: 20px;
+        --checkbox-box-size: 12px;
 
-        width: var(--v-box-size);
-        height: var(--v-box-size);
+        width: var(--checkbox-box-size);
+        height: var(--checkbox-box-size);
         position: relative;
-        left: calc((var(--v-size) - var(--v-box-size)) / 2);
+        left: calc((var(--checkbox-size) - var(--checkbox-box-size)) / 2);
 
         &::before {
-            width: var(--v-size);
-            height: var(--v-size);
+            width: var(--checkbox-size);
+            height: var(--checkbox-size);
             position: relative;
             display: block;
-            top: calc((var(--v-size) - var(--v-box-size)) / -2);
-            left: calc((var(--v-size) - var(--v-box-size)) / -2);
+            top: calc((var(--checkbox-size) - var(--checkbox-box-size)) / -2);
+            left: calc((var(--checkbox-size) - var(--checkbox-box-size)) / -2);
             content: '';
-            background-color: var(--input-color-bg);
+            background-color: var(--input-background-color);
             border: var(--input-border);
             border-radius: var(--border-radius);
             transition:
                 background-color var(--transition-fast),
-                border var(--transition-mid);
+                border var(--transition-medium);
         }
 
         &:checked {
@@ -124,7 +124,7 @@
                 top: -21px;
                 font-size: 16px;
                 line-height: 16px;
-                color: var(--input-color-fg-active);
+                color: var(--input-text-color-active);
                 text-align: center;
             }
         }

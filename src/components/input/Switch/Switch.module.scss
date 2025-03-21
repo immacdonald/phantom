@@ -20,7 +20,7 @@
             transition: 0.15s ease;
             pointer-events: none;
             border: var(--input-border);
-            background-color: var(--input-color-bg-selected);
+            background-color: var(--input-background-color-selected);
 
             &::before {
                 content: '';
@@ -38,7 +38,7 @@
         }
 
         &:hover > span {
-            border: var(--input-border-active);
+            border-color: var(--input-color-active);
         }
 
         input {
