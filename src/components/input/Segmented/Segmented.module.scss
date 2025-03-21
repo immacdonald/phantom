@@ -16,7 +16,7 @@
         @include base-input;
         @include hide-scrollbar;
 
-        background-color: var(--color-background);
+        background-color: var(--background-container);
         outline-width: 0;
         border-width: 0 !important;
 
@@ -26,9 +26,9 @@
 
         &[disabled],
         &.disabled {
-            background-color: var(--input-color-bg-disabled);
+            background-color: var(--input-background-color-disabled);
             border: none;
-            color: var(--input-color-fg-disabled);
+            color: var(--input-text-color-disabled);
             cursor: not-allowed;
             filter: brightness(var(--filter-disabled-brightness)) saturate(var(--filter-disabled-saturation));
         }
@@ -36,13 +36,13 @@
         .indicator {
             position: absolute;
 
-            $total-width: #{calc(100% - var(--v-count) * $gap)};
-            $width: #{calc($total-width / var(--v-count))};
+            $total-width: #{calc(100% - var(--segmented-count) * $gap)};
+            $width: #{calc($total-width / var(--segmented-count))};
 
             width: $width;
             height: var(--height, 40px);
             background-color: var(--color-primary);
-            left: calc($gap + (0.5 * $gap + $width) * var(--v-selected));
+            left: calc($gap + (0.5 * $gap + $width) * var(--segmented-selected));
             transition: left var(--transition-fast);
             border-radius: var(--border-radius);
         }

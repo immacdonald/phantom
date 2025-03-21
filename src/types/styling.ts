@@ -21,7 +21,7 @@ interface CommonComponentProps<T = HTMLElement> extends Omit<HTMLAttributes<T>, 
     id?: string;
 }
 
-type VisualContext = 'primary' | 'secondary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
+type VisualContext = 'primary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
 
 type FlexAlignSimple = 'start' | 'center' | 'end';
 

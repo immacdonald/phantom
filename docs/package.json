@@ -9,9 +9,9 @@
         "preview": "vite preview",
         "lint": "npx eslint . --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
         "prettier": "prettier ./ --write --ignore-path ./node_modules/phantom-config/.prettierignore",
-        "stylelint": "npx stylelint '**/*.{css,scss}' --fix",
+        "stylelint": "npx stylelint 'src/**/*.{css,scss}' --fix",
         "format": "npm run lint && npm run stylelint && npm run prettier",
-        "docs": "npx @react-docgen/cli ../src/components/**/**/*.tsx -o ./src/docs.json"
+        "docs": "npx @react-docgen/cli ../src/components/**/**/*.tsx -o ./src/data/docs.json"
     },
     "dependencies": {
         "@react-docgen/cli": "^2.0.6",

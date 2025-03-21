@@ -46,8 +46,8 @@ const Toggle: FC<ToggleProps> = forwardRef<HTMLInputElement, ToggleProps>(({ che
         () =>
             width
                 ? ({
-                      '--v-width': `calc(${width}px + 2 * var(--v-padding))`,
-                      '--v-half': 'calc(50% - var(--v-padding))'
+                      '--toggle-width': `calc(${width}px + 2 * var(--toggle-padding))`,
+                      '--toggle-half': 'calc(50% - var(--toggle-padding))'
                   } as CSSProperties)
                 : undefined,
         [width]

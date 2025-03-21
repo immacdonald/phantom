@@ -1,0 +1,102 @@
+@mixin context-tokens {
+    // Primary
+    --color-primary: #a490c3;
+    --color-primary-hover: var(--color-primary-dark, var(--color-primary));
+    --color-primary-active: var(--color-primary-darker, var(--color-primary));
+    --background-color-primary: var(--color-primary);
+    --color-text-on-primary: var(--color-text-on-dark);
+    --color-primary-alpha: #bfacdb40;
+
+    // Accent
+    --color-accent: #ffd074;
+    --color-accent-hover: var(--color-accent-dark, var(--color-accent));
+    --color-accent-active: var(--color-accent-darker, var(--color-accent));
+    --background-color-accent: var(--color-accent);
+    --color-text-on-accent: var(--color-text-on-dark);
+
+    // Positive
+    --color-positive: rgb(131 194 118);
+    --color-positive-hover: rgb(141 222 133);
+    --color-positive-active: rgb(69 151 60);
+    --color-text-on-positive: var(--color-text-on-dark);
+    --background-color-positive: rgb(114 196 105);
+
+    // Critical
+    --color-critical: rgb(227 63 72);
+    --color-critical-hover: rgb(251 123 129);
+    --color-critical-active: rgb(191 53 89);
+    --color-text-on-critical: var(--color-text-on-dark);
+    --background-color-critical: rgb(212 89 92);
+
+    // Info
+    --color-info: rgb(62 154 204);
+    --color-info-hover: rgb(100 181 224);
+    --color-info-active: rgb(42 127 172);
+    --color-text-on-info: var(--color-text-on-dark);
+    --background-color-info: rgb(103 172 210);
+
+    // Warning
+    --color-warning: rgb(250 203 34);
+    --color-warning-hover: rgb(250 219 107);
+    --color-warning-active: rgb(237 194 38);
+    --color-text-on-warning: var(--color-text-on-light);
+    --background-color-warning: rgb(255 244 204);
+}
+
+@mixin context-selectors {
+    *[data-context] {
+        /* Primary context styles */
+        &[data-context='primary'] {
+            --context-color: var(--color-primary);
+            --context-color-hover: var(--color-primary-hover);
+            --context-color-active: var(--color-primary-active);
+            --context-color-background: var(--background-color-primary);
+            --context-color-text: var(--color-text-on-primary);
+        }
+
+        /* Accent context styles */
+        &[data-context='accent'] {
+            --context-color: var(--color-accent);
+            --context-color-hover: var(--color-accent-hover);
+            --context-color-active: var(--color-accent-active);
+            --context-color-background: var(--background-color-accent);
+            --context-color-text: var(--color-text-on-accent);
+        }
+
+        /* Success context styles */
+        &[data-context='positive'] {
+            --context-color: var(--color-positive);
+            --context-color-hover: var(--color-positive-hover);
+            --context-color-active: var(--color-positive-active);
+            --context-color-background: var(--background-color-positive);
+            --context-color-text: var(--color-text-on-positive);
+        }
+
+        /* Critical context styles */
+        &[data-context='critical'] {
+            --context-color: var(--color-critical);
+            --context-color-hover: var(--color-critical-hover);
+            --context-color-active: var(--color-critical-active);
+            --context-color-background: var(--background-color-critical);
+            --context-color-text: var(--color-text-on-critical);
+        }
+
+        /* Warning context styles */
+        &[data-context='warning'] {
+            --context-color: var(--color-warning);
+            --context-color-hover: var(--color-warning-hover);
+            --context-color-active: var(--color-warning-active);
+            --context-color-background: var(--background-color-warning);
+            --context-color-text: var(--color-text-on-warning);
+        }
+
+        /* Info context styles */
+        &[data-context='info'] {
+            --context-color: var(--color-info);
+            --context-color-hover: var(--color-info-hover);
+            --context-color-active: var(--color-info-active);
+            --context-color-background: var(--background-color-info);
+            --context-color-text: var(--color-text-on-info);
+        }
+    }
+}

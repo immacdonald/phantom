@@ -46,7 +46,7 @@ const DynamicHeader: FC<DynamicHeaderProps> = forwardRef<HTMLElement, DynamicHea
     const currentSettings: DynamicHeader = {
         inline: scrolled ? dynamicSettings!.inline : inline,
         pageSpace: scrolled ? dynamicSettings!.pageSpace : pageSpace,
-        hasBackground: scrolled ? dynamicSettings!.hasBackground : hasBackground,
+        hasBackground: scrolled ? dynamicSettings!.hasBackground : hasBackground
     };
 
     const headerClasses = clsx(

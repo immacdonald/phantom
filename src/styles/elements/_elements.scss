@@ -29,9 +29,9 @@
     }
 
     code {
-        background: var(--alpha-1);
+        background: var(--alpha-lightest);
         border-radius: var(--border-radius);
-        border: var(--border-light);
+        border: var(--border-soft);
         font-family: 'Courier New', monospace;
         font-size: 0.9em;
         margin: 0 0.25em;
@@ -53,7 +53,7 @@
     hr {
         width: 100%;
         border: 0;
-        border-bottom: var(--border-width-thin) solid var(--alpha-2);
+        border-bottom: var(--border-width) solid var(--alpha-contrast);
         margin-block: var(--space-lg);
     }
 }

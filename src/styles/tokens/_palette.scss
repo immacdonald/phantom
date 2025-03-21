@@ -1,0 +1,13 @@
+@mixin color-palette-tokens {
+    --white: rgb(255 255 255);
+    --grey-1: rgb(245 245 245);
+    --grey-2: rgb(242 243 245);
+    --grey-3: rgb(232 234 236);
+    --grey-4: rgb(221 221 221);
+    --grey-5: rgb(117 117 117);
+    --grey-6: rgb(88 88 88);
+    --grey-7: rgb(34 37 41);
+    --grey-8: rgb(25 26 28);
+    --grey-9: rgb(15 18 20);
+    --black: rgb(1 2 3);
+}

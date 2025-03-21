@@ -11,7 +11,7 @@
         align-items: center;
         justify-content: center;
         color: var(--color-text);
-        background-color: var(--color-background-overlay);
+        background-color: var(--background-overlay);
         border-radius: var(--border-radius);
         border: 1px solid transparent;
         box-shadow: var(--shadow-floating);
@@ -33,13 +33,13 @@
         }
 
         &[data-mode='error'] {
-            background-color: var(--color-background-critical);
+            background-color: var(--background-container-critical);
             color: var(--color-text-on-critical);
             border-color: var(--color-critical);
         }
 
         &[data-mode='success'] {
-            background-color: var(--color-background-positive);
+            background-color: var(--background-container-positive);
             color: var(--color-text-on-positive);
             border-color: var(--color-positive);
         }

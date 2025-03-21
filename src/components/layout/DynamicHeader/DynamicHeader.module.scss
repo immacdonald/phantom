@@ -2,10 +2,12 @@
     .header {
         @include responsive-width;
 
+        $header-height: 64px;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        height: var(--header-height) !important;
+        height: $header-height;
         z-index: $z-header;
 
         &.inline {
@@ -19,12 +21,12 @@
         }
 
         &.overlapPage + main {
-            margin-top: calc(-1 * var(--header-height)) !important;
+            margin-top: calc(-1 * #{$header-height}) !important;
         }
 
         &.background {
-            background-color: var(--color-background-foreground);
-            border-bottom: var(--border-light);
+            background-color: var(--background-content);
+            border-bottom: var(--border-soft);
         }
     }
 }

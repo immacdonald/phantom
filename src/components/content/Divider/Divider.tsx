@@ -12,10 +12,10 @@ interface DividerProps extends CommonComponentProps<HTMLHRElement> {
 /** A horizontal divider with optional expansion beyond its container. */
 const Divider: FC<DividerProps> = forwardRef<HTMLHRElement, DividerProps>(({ expand, space, style, ...props }, ref) => {
     const computedStyle = {
-        ...(expand ? {marginInline: `calc(-1 * ${expand})`, width: `calc(100% + 2 * ${expand})`} : {}), 
-        ...(space ? {marginBlock: space} : {}),
+        ...(expand ? { marginInline: `calc(-1 * ${expand})`, width: `calc(100% + 2 * ${expand})` } : {}),
+        ...(space ? { marginBlock: space } : {}),
         ...style
-    }
+    };
 
     return <hr style={{ ...computedStyle }} ref={ref} {...props} />;
 });

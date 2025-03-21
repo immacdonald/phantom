@@ -13,7 +13,7 @@
 
         th {
             padding: var(--space-xs);
-            border-bottom: var(--border-light);
+            border-bottom: var(--border-soft);
         }
 
         td {
@@ -21,7 +21,7 @@
         }
 
         tbody tr:nth-child(odd) {
-            background-color: var(--color-background);
+            background-color: var(--background-container);
         }
     }
 
@@ -35,14 +35,14 @@
 
             tr {
                 th {
-                    background-color: var(--color-background-foreground);
+                    background-color: var(--background-content);
                     border-collapse: collapse;
                     text-align: center;
                     padding: 0 var(--space-sm);
-                    border-bottom: var(--border-light);
+                    border-bottom: var(--border-soft);
 
                     &:hover {
-                        background-color: var(--color-background);
+                        background-color: var(--background-container);
                     }
                 }
             }
@@ -54,20 +54,20 @@
 
                 td {
                     padding: var(--space-xs) var(--space-sm);
-                    border-top: var(--border-light);
+                    border-top: var(--border-soft);
                     text-align: center;
                 }
 
                 &:last-child {
                     td {
-                        border-bottom: var(--border-light);
+                        border-bottom: var(--border-soft);
                     }
                 }
             }
         }
 
         &[data-interactive] tbody tr:hover td {
-            background-color: var(--color-background);
+            background-color: var(--background-container);
         }
     }
 }

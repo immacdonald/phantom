@@ -1,5 +1,5 @@
 import { Callback, CommonComponentProps } from '@types';
-import { CSSProperties, ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 import { CancelIcon, UploadFileIcon } from '@assets/icons';
 import clsx from 'clsx';
 import { Button, Column } from '@components';
@@ -17,7 +17,7 @@ interface FileUploadPortalProps extends CommonComponentProps<HTMLInputElement> {
 }
 
 /** A file upload portal component that allows multiple file uploads with validation and removal support. */
-const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit, wrapperClassName, style, ...props }) => {
+const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit, wrapperClassName, ...props }) => {
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
     const [fileLimit, setFileLimit] = useState<boolean>(false);
     const [showLimitWarning, setShowLimitWarning] = useState<boolean>(false);
@@ -77,7 +77,7 @@ const FileUploadPortal: FC<FileUploadPortalProps> = ({ maxFiles = 4, submit, wra
     return (
         <div className={clsx(styles.wrapper, wrapperClassName)}>
             <div className={styles.inputWrapper}>
-                <input type="file" multiple onChange={handleFileEvent} disabled={fileLimit} style={{ '--v-icon': `url("${'./icons/upload_file.svg?url'}")`, ...style } as CSSProperties} {...props} />
+                <input type="file" multiple onChange={handleFileEvent} disabled={fileLimit} {...props} />
                 <div className={styles.visual} />
                 <UploadFileIcon context="primary" size="large" className={styles.icon} />
             </div>

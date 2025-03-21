@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider } from '@contexts';
-import styles from './StyledApp.module.scss';
 import { ScrollToAnchor } from './ScrollToAnchor';
+import styles from './StyledApp.module.scss';
 
 interface StyledAppProps extends CommonComponentProps {
     /** The initial theme of the application (light or dark). */
@@ -41,7 +41,7 @@ const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, b
             const existingRoot = document.getElementById(rootId);
             if (existingRoot) {
                 // Apply styles and attributes to the existing div
-                Object.assign(existingRoot, {...props, role: "application"});
+                Object.assign(existingRoot, { ...props, role: 'application' });
                 existingRoot.className = rootClasses;
                 setRootElement(existingRoot);
             } else {
@@ -58,14 +58,13 @@ const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, b
             {modals && <ModalController />}
             {children}
         </>
-    )
+    );
 
     return (
-        <ResponsiveContextProvider theme={theme ?? "light"} minimizeCookies={minimizeCookies}>
-            {(rootId && rootElement) ? (ReactDOM.createPortal(
-                internalNodes,
-                rootElement
-            )) : (
+        <ResponsiveContextProvider theme={theme ?? 'light'} minimizeCookies={minimizeCookies}>
+            {rootId && rootElement ? (
+                ReactDOM.createPortal(internalNodes, rootElement)
+            ) : (
                 <div className={rootClasses} role="application" {...props}>
                     {internalNodes}
                 </div>

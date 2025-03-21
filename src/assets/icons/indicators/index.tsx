@@ -1,6 +1,6 @@
 import { withVectorIcon } from '../withIcon';
-import CircleSVG from './circle.svg?react';
 import CircleFilledSVG from './circle_filled.svg?react';
+import CircleSVG from './circle.svg?react';
 import GroupFilledSVG from './group_filled.svg?react';
 import LinkSVG from './link.svg?react';
 import MoonFilledSVG from './moon_filled.svg?react';

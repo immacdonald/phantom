@@ -62,7 +62,7 @@ const Section: FC<SectionProps> = forwardRef<HTMLDivElement, SectionProps>(
 
         const sectionData = {
             'data-top-shape': edges?.top,
-            'data-bottom-shape': edges?.bottom,
+            'data-bottom-shape': edges?.bottom
         };
 
         return (

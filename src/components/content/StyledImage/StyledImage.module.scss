@@ -1,10 +1,10 @@
 @layer components {
     .figure {
-        --v-max-width: 100%;
-        --v-max-height: 100%;
+        --image-max-width: 100%;
+        --image-max-height: 100%;
 
-        max-width: var(--v-max-width);
-        max-height: var(--v-max-height);
+        max-width: var(--image-max-width);
+        max-height: var(--image-max-height);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -18,7 +18,7 @@
             object-fit: cover;
 
             &.border {
-                border: 1px solid var(--border-light);
+                border: 1px solid var(--border-soft);
             }
 
             &.round {

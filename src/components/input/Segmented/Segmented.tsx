@@ -48,9 +48,9 @@ const Segmented: FC<SegmentedProps> = forwardRef<HTMLDivElement, SegmentedProps>
         );
 
         const properties: CSSProperties = {
-            '--v-count': options.length,
-            '--v-selected': selected,
-            '--height': compact ? "32px" : "40px",
+            '--segmented-count': options.length,
+            '--segmented-selected': selected,
+            '--height': compact ? '32px' : '40px',
             ...style
         } as CSSProperties;
 

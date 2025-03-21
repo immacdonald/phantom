@@ -88,7 +88,28 @@ type ButtonProps = LinkButtonProps | RegularButtonProps;
 /** A versatile button component that supports links, different styles, icons, and loading states. */
 const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     (
-        { type = 'default', size = 'regular', full, align, variant, context, rounded, Icon, iconRight, onClick, onHover, link, external, disabled, isLoading, children, className, style, htmlType, ...props },
+        {
+            type = 'default',
+            size = 'regular',
+            full,
+            align,
+            variant,
+            context,
+            rounded,
+            Icon,
+            iconRight,
+            onClick,
+            onHover,
+            link,
+            external,
+            disabled,
+            isLoading,
+            children,
+            className,
+            style,
+            htmlType,
+            ...props
+        },
         ref
     ) => {
         // Adjusts default variant and context based on the `type` prop.
@@ -127,7 +148,7 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
                 {Icon && !iconRight && <Icon size={size} />}
                 {children && <span style={visibility}>{children}</span>}
                 {Icon && iconRight && <Icon size={size} />}
-                {isLoading && <Loading size={24} thickness={3} color="var(--context-color-text, var(--v-default))" />}
+                {isLoading && <Loading size={24} thickness={3} color="var(--context-color-text, var(--button-default))" />}
             </>
         );
 
@@ -152,7 +173,6 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
                     {content}
                 </StyledLink>
             );
-
         }
 
         // Handles button click events.

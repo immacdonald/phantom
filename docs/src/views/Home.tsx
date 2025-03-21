@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { Heading, Section, StyledLink, Typography } from 'phantom-library';
+import { Heading, Section, StyledImage, StyledLink, Typography } from 'phantom-library';
 import { Layout } from '@components/Layout/Layout';
+import { PhantomBanner } from '@assets';
 
 const Home: FC = () => {
     return (
@@ -9,6 +10,7 @@ const Home: FC = () => {
                 <Heading size="major" subheadingSize="regular" subheading="Documentation & Examples">
                     Phantom
                 </Heading>
+                <StyledImage image={PhantomBanner} alt='Phantom Library banner.' />
                 <Typography.Paragraph>
                     Phantom is a modern, flexible, and accessible component library designed to streamline UI development for scalable applications. Built with consistency, responsiveness, and
                     customization in mind, this library provides a robust set of components that help developers create intuitive and visually appealing interfaces with ease.

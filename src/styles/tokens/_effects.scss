@@ -1,0 +1,20 @@
+@mixin effects-tokens {
+    // Shadows
+    --shadow-subtle: 0px 3px 1px -1px var(--alpha-dark);
+    --shadow-raised: 0px 4px 6px -2px var(--alpha-darker);
+    --shadow-lifted: 0px 8px 16px -4px var(--alpha-darkest);
+    --shadow-floating: 0px 12px 20px -8px var(--alpha-darkest);
+
+    // Transitions
+    --transition-time-slow: 1s;
+    --transition-slow: var(--transition-time-slow) ease;
+    --transition-time-medium: 0.5s;
+    --transition-medium: var(--transition-time-medium) ease;
+    --transition-time-fast: 0.25s;
+    --transition-fast: var(--transition-time-fast) ease;
+
+    // Filters
+    --filter-disabled-saturation: 60%;
+    --filter-disabled-brightness: 0.9;
+    --filter-inverse: 0;
+}

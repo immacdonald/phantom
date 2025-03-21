@@ -1,0 +1,17 @@
+@layer components {
+    .callout {
+        border: var(--border-width-thick) solid var(--context-color, var(--border-color-hard));
+        background-color: var(--context-color-background);
+        color: var(--context-color-text);
+        border-radius: var(--border-radius);
+        width: calc(100% - var(--space-lg) * 2);
+        min-height: 64px;
+        padding: var(--space);
+        margin-inline: var(--space-lg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: var(--space-xl);
+        font-weight: 500;
+    }
+}

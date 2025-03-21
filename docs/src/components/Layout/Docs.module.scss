@@ -1,10 +1,11 @@
 .examples {
-    border: var(--border-light);
+    border: var(--border-soft);
     padding: var(--space);
     margin: var(--space-sm);
     border-radius: var(--border-radius);
     min-height: 120px;
     overflow: hidden;
+    background-color: var(--background-container);
 }
 
 .properties {

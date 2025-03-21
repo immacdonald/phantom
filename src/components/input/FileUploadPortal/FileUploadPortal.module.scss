@@ -4,7 +4,7 @@
         margin-top: var(--space);
 
         // padding: var(--space-xs);
-        // border: var(--border-light);
+        // border: var(--border-soft);
         // border-radius: var(--border-radius);
     }
 
@@ -24,7 +24,7 @@
         }
 
         &:disabled {
-            background-color: var(--input-color-bg-disabled);
+            background-color: var(--input-background-color-disabled);
         }
 
         .visual {
@@ -33,7 +33,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-color: var(--input-color-bg);
+            background-color: var(--input-background-color);
             border-radius: var(--border-radius);
             pointer-events: none;
         }

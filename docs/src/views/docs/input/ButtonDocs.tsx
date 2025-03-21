@@ -1,6 +1,6 @@
 import { PropertyDocumentation } from '@types';
 import { FC } from 'react';
-import { Button, ButtonStyle, capitalizeFirstLetter, designTokens, LinkIcon, Row, VisualContext } from 'phantom-library';
+import { Button, ButtonStyle, capitalizeFirstLetter, tokens, LinkIcon, Row, VisualContext } from 'phantom-library';
 import { ComponentDocs } from '@components/Layout/ComponentDocs';
 import { getComponentDoc } from '@utility';
 
@@ -10,82 +10,98 @@ const buttonProperties: PropertyDocumentation[] = [
         property: 'type',
         description: 'Specifies the button type, determining default styles.',
         type: ["'primary'", "'default'", "'text'"],
-        default: "'default'"
+        default: "'default'",
+        required: false
     },
     {
         property: 'size',
         description: 'Defines the button size.',
-        type: ["'regular'", "'small'", "'large'"]
+        type: ["'regular'", "'small'", "'large'"],
+        required: false
     },
     {
         property: 'full',
         description: 'Expands the button to full width.',
-        type: 'boolean'
+        type: 'boolean',
+        required: false
     },
     {
         property: 'align',
         description: "Sets the button's content alignment.",
-        type: 'FlexAlign'
+        type: 'FlexAlign',
+        required: false
     },
     {
         property: 'variant',
         description: 'Specifies the visual style of the button.',
-        type: ["'outline'", "'filled'", "'text'", "'ghost'"]
+        type: ["'outline'", "'filled'", "'text'", "'ghost'"],
+        required: false
     },
     {
         property: 'context',
         description: "Determines the button's color scheme based on context.",
-        type: 'VisualContext'
+        type: 'VisualContext',
+        required: false
     },
     {
         property: 'rounded',
         description: 'Applies rounded styles to the button.',
-        type: 'boolean'
+        type: 'boolean',
+        required: false
     },
     {
         property: 'Icon',
         description: 'An optional icon displayed inside the button.',
-        type: 'Icon'
+        type: 'Icon',
+        required: false
     },
     {
         property: 'iconRight',
         description: 'Positions the icon to the right side of the button content.',
-        type: 'boolean'
+        type: 'boolean',
+        required: false
     },
     {
         property: 'onHover',
         description: 'Handler for hover events.',
-        type: 'MouseEventHandler<HTMLElement>'
+        type: 'MouseEventHandler<HTMLElement>',
+        required: false
     },
     {
         property: 'disabled',
         description: 'Disables the button when set to `true`.',
-        type: 'boolean'
+        type: 'boolean',
+        required: false
     },
     {
         property: 'isLoading',
         description: 'Displays a loading spinner inside the button.',
-        type: 'boolean'
+        type: 'boolean',
+        required: false
     },
     {
         property: 'children',
         description: 'The content inside the button.',
-        type: 'ReactNode'
+        type: 'ReactNode',
+        required: false
     },
     {
         property: 'link',
         description: 'The URL or route the button should navigate to (if applicable).',
-        type: 'string'
+        type: 'string',
+        required: false
     },
     {
         property: 'htmlType',
         description: 'Defines the HTML `type` attribute for the button.',
-        type: ["'button'", "'reset'", "'submit'"]
+        type: ["'button'", "'reset'", "'submit'"],
+        required: false
     },
     {
         property: 'form',
         description: 'Associates the button with a form by its `id`.',
-        type: 'string'
+        type: 'string',
+        required: false
     }
 ];
 
@@ -99,7 +115,7 @@ const ButtonDocs: FC = () => {
         <ComponentDocs {...parsedDocs}>
             {contexts.map((context) => {
                 return (
-                    <Row gap={designTokens.space.md} verticalAlign="center" style={{ backgroundColor: 'var(--color-surface-background)', padding: designTokens.space.sm }} key={context}>
+                    <Row gap={tokens.space.md} verticalAlign="center" style={{ backgroundColor: 'var(--color-surface-background)', padding: tokens.space.sm }} key={context}>
                         {buttonStyles.map((buttonStyle) => (
                             <Button variant={buttonStyle} context={context} key={buttonStyle}>
                                 {capitalizeFirstLetter(buttonStyle)} Button

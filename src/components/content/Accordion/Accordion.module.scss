@@ -4,8 +4,8 @@
 
         &.border {
             border-radius: 0;
-            border-top: var(--border-light);
-            border-bottom: var(--border-light);
+            border-top: var(--border-soft);
+            border-bottom: var(--border-soft);
         }
 
         &.margins {
@@ -44,7 +44,7 @@
 
                 svg {
                     transform: rotate(0deg);
-                    transition: transform var(--transition-mid);
+                    transition: transform var(--transition-medium);
                 }
             }
         }
