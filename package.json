@@ -42,11 +42,13 @@
     "devDependencies": {
         "@types/react": "^18.2.73",
         "@types/react-dom": "^18.2.25",
+        "autoprefixer": "^10.4.21",
         "esbuild": "^0.21.5",
         "esbuild-plugin-copy": "^2.1.1",
         "esbuild-plugin-svgr": "npm:@imacdonald/esbuild-plugin-svgr@^2.2.1",
         "esbuild-sass-plugin": "^3.2.0",
         "eslint": "^9.12.0",
+        "postcss": "^8.5.3",
         "postcss-modules": "^6.0.0",
         "react": "^18.2.0",
         "react-router-dom": "^6.22.3",
@@ -65,5 +67,6 @@
         "react": ">=18",
         "react-dom": ">=18",
         "react-router-dom": ">=6"
-    }
+    },
+    "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead"
 }

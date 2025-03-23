@@ -23,6 +23,9 @@ interface StyledAppProps extends CommonComponentProps {
     /** Minimizes cookie tracking and storage for privacy-conscious applications. */
     minimizeCookies?: boolean;
 
+    /** Set the minimum height to always fill the viewport. */
+    fillViewport?: boolean;
+
     /** The id of an existing root DOM element to be used as the StyledApp root. */
     rootId?: string;
 
@@ -31,10 +34,10 @@ interface StyledAppProps extends CommonComponentProps {
 }
 
 /** The root component for a styled application using Phantom, providing theme, global controllers, and contextual support. */
-const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, banners = false, minimizeCookies, rootId, children, className, ...props }) => {
+const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, banners, minimizeCookies, fillViewport = true, rootId, children, className, ...props }) => {
     const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
 
-    const rootClasses = useMemo(() => clsx(styles.app, className), [className]);
+    const rootClasses = useMemo(() => clsx(styles.app, { [styles.viewport]: fillViewport }, className), [className, fillViewport]);
 
     useEffect(() => {
         if (rootId) {
@@ -48,7 +51,7 @@ const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, b
                 console.error(`StyledApp: No element found with id "${rootId}".`);
             }
         }
-    }, [rootId, className]);
+    }, [rootId, rootClasses]);
 
     const internalNodes: ReactNode = (
         <>

@@ -1,7 +1,9 @@
 import path from 'path';
+import autoprefixer from 'autoprefixer';
 import { copy } from 'esbuild-plugin-copy';
 import svgr from 'esbuild-plugin-svgr';
 import { postcssModules, sassPlugin } from 'esbuild-sass-plugin';
+import postcss from 'postcss';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
@@ -42,19 +44,27 @@ export default defineConfig({
                     return source;
                 }
             },
-            transform: postcssModules({
-                generateScopedName: 'phantom-[local]_[hash:base64:5]'
-            })
+            transform: async (css, resolveDir, context) => {
+                const prefixedCSS = (await postcss([autoprefixer()]).process(css, { from: undefined })).css;
+
+                return await postcssModules({
+                    generateScopedName: 'phantom-[local]_[hash:base64:5]'
+                })(prefixedCSS, resolveDir, context);
+            }
         }),
         sassPlugin({
             type: 'css',
-            filter: /^[^_][^.]*\.scss$/
+            filter: /^[^_][^.]*\.scss$/,
+            transform: async (css) => {
+                const result = await postcss([autoprefixer()]).process(css, { from: undefined });
+                return result.css;
+            }
         }),
         svgr(),
         copy({
             resolveFrom: 'cwd',
             assets: {
-                from: ['./src/styles/**'],
+                from: ['./src/styles/{styles,tokens.module}.scss'],
                 to: ['./lib/styles/']
             },
             watch: true
