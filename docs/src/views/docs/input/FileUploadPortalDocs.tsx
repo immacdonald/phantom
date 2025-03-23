@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { FileUploadPortal } from 'phantom-library';
 import { ComponentDocs } from '@components/Layout/ComponentDocs';
 import { getComponentDoc } from '@utility';

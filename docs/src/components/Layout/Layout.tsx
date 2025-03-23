@@ -1,5 +1,5 @@
-import { FC, Fragment, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { PhantomLogo } from '@assets';
+import type { FC, ReactNode } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import {
     Button,
@@ -20,8 +20,10 @@ import {
     useOutsideClick,
     useNoScroll
 } from 'phantom-library';
+import { PhantomLogo } from '@assets';
 import { routes } from '../../routes';
 import styles from './Layout.module.scss';
+import { useLocation } from 'react-router-dom';
 
 interface LayoutProps {
     children?: ReactNode;
@@ -30,23 +32,36 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
     const { atBreakpoint, windowSize, theme, setTheme } = useResponsiveContext();
     const isMobile = useMemo(() => atBreakpoint('sm'), [windowSize.width]);
+    const location = useLocation();
     const [sidebarActive, setSidebarActive] = useState<boolean>(false);
+    const [sidebarCooldown, setSidebarCooldown] = useState<boolean>(false);
     const sidebarRef = useRef<HTMLElement>(null);
     const setNoScroll = useNoScroll();
 
+    const closeSidebar = () => {
+        setSidebarActive(false);
+        setSidebarCooldown(true);
+
+        setTimeout(() => setSidebarCooldown(false), 500);
+    }
+
     useOutsideClick(sidebarRef, () => {
         if (sidebarActive) {
-            setSidebarActive(false);
+            closeSidebar()
         }
     });
 
     useEffect(() => {
-        setSidebarActive(false);
+        closeSidebar()
     }, [isMobile]);
 
     useEffect(() => {
         setNoScroll(sidebarActive && isMobile);
     }, [sidebarActive, isMobile]);
+
+    useEffect(() => {
+        closeSidebar();
+    }, [location])
 
     const SidebarContent = useMemo(
         () => (
@@ -75,7 +90,11 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <div style={{ width: '100%' }}>
             <DynamicHeader hasBackground pageSpace="pad" style={{ borderBottom: tokens.border.soft, paddingInline: tokens.space.lg }}>
                 <Row align="start" gap={tokens.space.md}>
-                    {isMobile && <Button Icon={MenuIcon} onClick={() => setSidebarActive(!sidebarActive)} />}
+                    {isMobile && <Button Icon={MenuIcon} onClick={() => {
+                        if (!sidebarCooldown) {
+                            setSidebarActive(!sidebarActive)
+                        }
+                    }} />}
                     <StyledLink to="/" inherit>
                         <PhantomLogo />
                     </StyledLink>

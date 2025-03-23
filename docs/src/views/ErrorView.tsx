@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Heading, Section, Typography } from 'phantom-library';
 import { Layout } from '@components/Layout/Layout';
 

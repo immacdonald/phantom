@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Heading, TabGroup } from 'phantom-library';
 import { ComponentDocs } from '@components/Layout';
 import { getComponentDoc } from '@utility';

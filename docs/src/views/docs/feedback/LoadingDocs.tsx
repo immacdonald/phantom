@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { getComponentDoc } from '@utility';
 import { ComponentDocs } from '../../../components/Layout/ComponentDocs';
 

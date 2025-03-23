@@ -1,7 +1,7 @@
 import 'phantom-library/styles';
 import 'phantom-library/tokens';
 import './index.module.scss';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { StyledApp } from 'phantom-library';
 import { Layout } from '@components/Layout';

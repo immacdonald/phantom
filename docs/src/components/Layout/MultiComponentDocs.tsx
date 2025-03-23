@@ -1,5 +1,6 @@
 import type { ComponentDocumentation, PropertyDocumentation } from '@types';
-import { FC, Fragment, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
+import { Fragment } from 'react';
 import { Column, tokens, Divider, Heading, Row, Section, Typography, StyledLink, GitHubIcon } from 'phantom-library';
 import styles from './Docs.module.scss';
 

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Typography } from 'phantom-library';
 import { MultiComponentDocs } from '@components/Layout';
 import { getComponentDoc } from '@utility';

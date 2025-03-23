@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import { AstrophotographyImage } from '@assets';
+import type { FC } from 'react';
 import { StyledImage, TabGroup } from 'phantom-library';
+import { AstrophotographyImage } from '@assets';
 import { ComponentDocs } from '@components/Layout';
 import { getComponentDoc } from '@utility';
 

@@ -1,6 +1,7 @@
-import { PropertyDocumentation } from '@types';
-import { FC } from 'react';
-import { Button, ButtonStyle, capitalizeFirstLetter, tokens, LinkIcon, Row, VisualContext } from 'phantom-library';
+import type { ButtonStyle, VisualContext } from 'phantom-library';
+import type { PropertyDocumentation } from '@types';
+import type { FC } from 'react';
+import { Button, capitalizeFirstLetter, tokens, LinkIcon, Row } from 'phantom-library';
 import { ComponentDocs } from '@components/Layout/ComponentDocs';
 import { getComponentDoc } from '@utility';
 
