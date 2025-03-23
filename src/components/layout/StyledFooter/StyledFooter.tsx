@@ -1,5 +1,5 @@
-import { CommonComponentProps, ResponsiveType, Theme } from '@types';
-import { CSSProperties, FC, ReactNode } from 'react';
+import type { CommonComponentProps, ResponsiveType, Theme } from '@types';
+import type { CSSProperties, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
 import styles from './StyledFooter.module.scss';

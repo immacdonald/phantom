@@ -1,5 +1,6 @@
-import { CommonComponentProps } from '@types';
-import { FC, useEffect, useState } from 'react';
+import type { CommonComponentProps } from '@types';
+import type { FC } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import { getModal } from './modals';

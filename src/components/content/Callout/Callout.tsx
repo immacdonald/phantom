@@ -1,5 +1,6 @@
-import { CommonComponentProps, VisualContext } from '@types';
-import { FC, forwardRef, ReactNode } from 'react';
+import type { CommonComponentProps, VisualContext } from '@types';
+import type { FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import styles from './Callout.module.scss';
 
 interface CalloutProps extends CommonComponentProps<HTMLDivElement> {

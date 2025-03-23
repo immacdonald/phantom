@@ -1,5 +1,6 @@
 import type { CommonComponentProps } from '@types';
-import { FC, forwardRef } from 'react';
+import type { FC } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from './Switch.module.scss';
 

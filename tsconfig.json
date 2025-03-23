@@ -18,7 +18,8 @@
             "@types": ["./src/types"],
             "@utility": ["./src/utility"]
         },
-        "typeRoots": ["./src/types"]
+        "typeRoots": ["./src/types"],
+        "verbatimModuleSyntax": true
     },
     "include": ["src", "types.d.ts"],
     "exclude": ["docs"]

@@ -1,6 +1,8 @@
 import type { CommonComponentProps, NullablePrimitive, Option } from '@types';
-import { FC, useEffect, useState } from 'react';
-import Select, { MultiValue } from 'react-select';
+import type { FC } from 'react';
+import { useEffect, useState } from 'react';
+import type { MultiValue } from 'react-select';
+import Select from 'react-select';
 import clsx from 'clsx';
 import style from './Dropdown.module.scss';
 

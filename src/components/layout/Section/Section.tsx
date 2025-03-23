@@ -1,5 +1,6 @@
 import type { CommonComponentProps } from '@types';
-import { CSSProperties, FC, forwardRef, ReactNode } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from './Section.module.scss';
 

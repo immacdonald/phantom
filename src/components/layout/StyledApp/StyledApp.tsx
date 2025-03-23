@@ -1,5 +1,6 @@
 import type { CommonComponentProps, Theme } from '@types';
-import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
+import type { FC, ReactNode } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';

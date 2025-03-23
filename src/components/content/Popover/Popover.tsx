@@ -1,5 +1,7 @@
-import { CommonComponentProps, PollingRate } from '@types';
-import { FC, HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import type { CommonComponentProps } from '@types';
+import { PollingRate } from '@types';
+import type { FC, HTMLAttributes, ReactNode } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Anchor } from '@components';
 import { useOutsideClick } from '@hooks';

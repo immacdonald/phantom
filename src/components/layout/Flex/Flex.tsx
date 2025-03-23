@@ -1,5 +1,6 @@
 import type { CommonComponentProps, FlexAlign, ResponsiveType } from '@types';
-import { CSSProperties, FC, forwardRef, ReactNode } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
 import styles from './Flex.module.scss';
@@ -53,5 +54,5 @@ const Flex: FC<FlexProps> = forwardRef<HTMLDivElement, FlexProps>(({ children, f
     );
 });
 
-export type { FlexProps };
 export { Flex };
+export type { FlexProps };

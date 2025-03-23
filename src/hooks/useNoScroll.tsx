@@ -1,4 +1,4 @@
-import { Callback } from '@types';
+import type { Callback } from '@types';
 
 const useNoScroll = (): Callback<boolean> => {
     const setScroll = (noscroll: boolean): void => {

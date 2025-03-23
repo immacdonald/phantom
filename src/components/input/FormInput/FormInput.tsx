@@ -1,5 +1,6 @@
-import { CommonComponentProps } from '@types';
-import { FC, forwardRef, HTMLInputTypeAttribute, ReactNode } from 'react';
+import type { CommonComponentProps } from '@types';
+import type { FC, HTMLInputTypeAttribute, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import { Typography } from '@components/content';
 import style from './FormInput.module.scss';

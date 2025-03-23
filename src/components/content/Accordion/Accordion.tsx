@@ -1,9 +1,10 @@
-import type { IconProps } from '@components';
 import type { Callback, CommonComponentProps, FlexAlign } from '@types';
 import { PollingRate } from '@types';
-import { ComponentType, CSSProperties, FC, ReactNode, useEffect, useRef, useState } from 'react';
-import { ChevronIcon } from '@assets/icons';
+import type { IconProps } from '@components';
+import type { ComponentType, CSSProperties, FC, ReactNode } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import { ChevronIcon } from '@assets/icons';
 import { Button } from '@components';
 import { useInterval } from '@hooks';
 import styles from './Accordion.module.scss';

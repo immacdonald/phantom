@@ -1,5 +1,6 @@
 import type { CommonComponentProps, VisualContext } from '@types';
-import { cloneElement, CSSProperties, FC, forwardRef, ReactElement } from 'react';
+import type { CSSProperties, FC, ReactElement } from 'react';
+import { cloneElement, forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from './Icon.module.scss';
 

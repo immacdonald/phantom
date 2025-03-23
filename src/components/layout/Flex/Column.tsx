@@ -1,5 +1,6 @@
-import { FC } from 'react';
-import { Flex, FlexProps } from './Flex';
+import type { FlexProps } from './Flex';
+import type { FC } from 'react';
+import { Flex } from './Flex';
 
 interface ColumnProps extends Omit<FlexProps, 'flex'> {}
 

@@ -1,4 +1,5 @@
-import { ReactElement, isValidElement } from 'react';
+import type { ReactElement } from 'react';
+import { isValidElement } from 'react';
 
 const validateElement = (type: string, element?: ReactElement<unknown>, required: boolean = false): void => {
     if (required && !element) {

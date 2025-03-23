@@ -1,5 +1,6 @@
 import type { CommonComponentProps } from '@types';
-import { CSSProperties, FC, forwardRef, useMemo } from 'react';
+import type { CSSProperties, FC } from 'react';
+import { forwardRef, useMemo } from 'react';
 import clsx from 'clsx';
 import styles from './Loading.module.scss';
 

@@ -1,7 +1,8 @@
-import type { IconProps } from '@components';
 import type { CommonComponentProps, FlexAlign, VisualContext } from '@types';
-import { ComponentPropsWithoutRef, ComponentType, CSSProperties, FC, forwardRef, MouseEvent, MouseEventHandler, ReactNode, Ref, useCallback, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import type { IconProps } from '@components';
+import type { ComponentPropsWithoutRef, ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, ReactNode, Ref } from 'react';
+import { forwardRef, useCallback, useMemo } from 'react';
+import type { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { Loading, StyledLink } from '@components';
 import styles from './Button.module.scss';

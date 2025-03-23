@@ -1,5 +1,7 @@
-import { Dimensions, PollingRate, Position } from '@types';
-import React, { CSSProperties, FC, HTMLAttributes, ReactElement, ReactNode, RefObject, useRef, useState } from 'react';
+import type { Dimensions, Position } from '@types';
+import { PollingRate } from '@types';
+import type { CSSProperties, FC, HTMLAttributes, ReactElement, ReactNode, RefObject } from 'react';
+import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';

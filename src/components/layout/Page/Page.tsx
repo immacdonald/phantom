@@ -1,5 +1,6 @@
 import type { CommonComponentProps } from '@types';
-import { FC, ReactNode, useEffect } from 'react';
+import type { FC, ReactNode } from 'react';
+import { useEffect } from 'react';
 import clsx from 'clsx';
 import style from './Page.module.scss';
 

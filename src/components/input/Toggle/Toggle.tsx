@@ -1,5 +1,6 @@
 import type { Callback, CommonComponentProps } from '@types';
-import { CSSProperties, ChangeEvent, FC, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { CSSProperties, ChangeEvent, FC } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import style from './Toggle.module.scss';
 

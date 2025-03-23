@@ -1,4 +1,4 @@
-import { SetState, Theme } from '@types';
+import type { SetState, Theme } from '@types';
 import { useEffect, useState } from 'react';
 
 const useTheme = (initialTheme: Theme = 'light', serialize: boolean = true): [Theme, SetState<Theme>] => {

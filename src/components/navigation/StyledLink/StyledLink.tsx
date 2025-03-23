@@ -1,6 +1,8 @@
-import { CommonComponentProps } from '@types';
-import { FC, forwardRef, ReactNode } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
+import type { CommonComponentProps } from '@types';
+import type { FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
+import type { LinkProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { orUndefined } from '@utility';
 import styles from './StyledLink.module.scss';

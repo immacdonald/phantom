@@ -1,5 +1,6 @@
-import { CommonComponentProps } from '@types';
-import { FC, forwardRef, ReactNode } from 'react';
+import type { CommonComponentProps } from '@types';
+import type { FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import { useScrollDistance } from '@hooks';
 import style from './DynamicHeader.module.scss';
@@ -68,5 +69,5 @@ const DynamicHeader: FC<DynamicHeaderProps> = forwardRef<HTMLElement, DynamicHea
     );
 });
 
-export type { BaseDynamicHeaderProps as DynamicHeaderProps };
 export { DynamicHeader };
+export type { BaseDynamicHeaderProps as DynamicHeaderProps };

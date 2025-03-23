@@ -1,5 +1,6 @@
+import type { ResponsiveContextInterface } from './ResponsiveContext';
 import { useContext } from 'react';
-import { ResponsiveContext, ResponsiveContextInterface } from './ResponsiveContext';
+import { ResponsiveContext } from './ResponsiveContext';
 
 const useResponsiveContext = (): ResponsiveContextInterface => {
     const context = useContext(ResponsiveContext);

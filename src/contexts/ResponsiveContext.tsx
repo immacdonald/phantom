@@ -1,5 +1,6 @@
 import type { Breakpoints, Callback, Dimensions, ResponsiveObject, ResponsiveType, Theme } from '@types';
-import { createContext, FC, ReactElement, ReactNode } from 'react';
+import type { FC, ReactElement, ReactNode } from 'react';
+import { createContext } from 'react';
 import { useTheme, useWindowSize } from '@hooks';
 import { tokens } from '../styles/tokens';
 

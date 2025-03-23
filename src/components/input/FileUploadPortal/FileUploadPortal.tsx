@@ -1,7 +1,8 @@
-import { Callback, CommonComponentProps } from '@types';
-import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
-import { CancelIcon, UploadFileIcon } from '@assets/icons';
+import type { Callback, CommonComponentProps } from '@types';
+import type { ChangeEvent, FC } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
+import { CancelIcon, UploadFileIcon } from '@assets/icons';
 import { Button, Column } from '@components';
 import styles from './FileUploadPortal.module.scss';
 

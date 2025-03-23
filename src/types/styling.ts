@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes } from 'react';
+import type { CSSProperties, HTMLAttributes } from 'react';
 
 // Responsive design and component system
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';

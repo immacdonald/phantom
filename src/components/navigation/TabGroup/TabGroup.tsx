@@ -1,5 +1,6 @@
 import type { Callback, NullablePrimitive, Option } from '@types';
-import { CSSProperties, FC, ReactNode, useEffect, useState } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Row, Segmented } from '@components';
 import { orUndefined } from '@utility';
 import style from './TabGroup.module.scss';

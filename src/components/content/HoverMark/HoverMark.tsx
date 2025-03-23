@@ -1,4 +1,5 @@
-import { FC, forwardRef, HTMLAttributes, ReactNode } from 'react';
+import type { FC, HTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import style from './HoverMark.module.scss';
 
 interface HoverMarkProps extends HTMLAttributes<HTMLElement> {

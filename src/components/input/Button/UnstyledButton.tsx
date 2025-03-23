@@ -1,5 +1,6 @@
-import { CommonComponentProps } from '@types';
-import { FC, forwardRef, ReactNode } from 'react';
+import type { CommonComponentProps } from '@types';
+import type { FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from './Button.module.scss';
 

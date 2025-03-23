@@ -1,2 +1,2 @@
-export * from './TabGroup';
 export * from './StyledLink';
+export * from './TabGroup';

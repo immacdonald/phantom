@@ -1,7 +1,8 @@
-import { Breakpoints } from '@types';
-import { FC, ReactNode } from 'react';
+import type { Breakpoints } from '@types';
+import type { FlexProps } from '../Flex';
+import type { FC, ReactNode } from 'react';
 import { useResponsiveContext } from '@contexts';
-import { FlexProps, Column } from '../Flex';
+import { Column } from '../Flex';
 import style from './Split.module.scss';
 
 interface SplitColumnProps extends Omit<FlexProps, 'flex'> {

@@ -1,5 +1,6 @@
-import { Callback, CommonComponentProps } from '@types';
-import { FC, forwardRef, ReactElement, ReactNode } from 'react';
+import type { Callback, CommonComponentProps } from '@types';
+import type { FC, ReactElement, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import { Button, Heading, Icon } from '@components';
 import { setModal } from './modals';

@@ -1,5 +1,6 @@
-import { CommonComponentProps } from '@types';
-import { FC, forwardRef } from 'react';
+import type { CommonComponentProps } from '@types';
+import type { FC } from 'react';
+import { forwardRef } from 'react';
 
 interface DividerProps extends CommonComponentProps<HTMLHRElement> {
     /** Expands the divider beyond its container by the specified length. */

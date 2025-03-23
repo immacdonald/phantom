@@ -1,5 +1,6 @@
 import type { Callback, CommonComponentProps, NullablePrimitive, Option } from '@types';
-import { CSSProperties, FC, forwardRef, useEffect, useState } from 'react';
+import type { CSSProperties, FC } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@components';
 import styles from './Segmented.module.scss';
