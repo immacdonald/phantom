@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { AnchorController, Banner, ModalController } from '@components';
 import { ResponsiveContextProvider } from '@contexts';
 import { ScrollToAnchor } from './ScrollToAnchor';
+import { ScrollToTop } from './ScrollToTop';
 import styles from './StyledApp.module.scss';
 
 interface StyledAppProps extends CommonComponentProps {
@@ -27,6 +28,9 @@ interface StyledAppProps extends CommonComponentProps {
     /** Set the minimum height to always fill the viewport. */
     fillViewport?: boolean;
 
+    /** Scrolls back to the top of the page upon changing the path. */
+    resetOnNavigation?: boolean;
+
     /** The id of an existing root DOM element to be used as the StyledApp root. */
     rootId?: string;
 
@@ -35,7 +39,7 @@ interface StyledAppProps extends CommonComponentProps {
 }
 
 /** The root component for a styled application using Phantom, providing theme, global controllers, and contextual support. */
-const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, banners, minimizeCookies, fillViewport = true, rootId, children, className, ...props }) => {
+const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, banners, minimizeCookies, fillViewport = true, resetOnNavigation = true, rootId, children, className, ...props }) => {
     const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
 
     const rootClasses = useMemo(() => clsx(styles.app, { [styles.viewport]: fillViewport }, className), [className, fillViewport]);
@@ -57,6 +61,7 @@ const StyledApp: FC<StyledAppProps> = ({ theme, anchors = true, modals = true, b
     const internalNodes: ReactNode = (
         <>
             <ScrollToAnchor />
+            {resetOnNavigation && <ScrollToTop />}
             {banners && <Banner />}
             {anchors && <AnchorController />}
             {modals && <ModalController />}

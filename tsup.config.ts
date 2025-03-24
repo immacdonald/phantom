@@ -65,15 +65,11 @@ export default defineConfig({
             resolveFrom: 'cwd',
             assets: [
                 {
-                    from: [
-                        './src/styles/styles.scss',
-                    ],
+                    from: ['./src/styles/styles.scss'],
                     to: ['./lib/styles/']
                 },
                 {
-                    from: [
-                        './src/styles/tokens/*'
-                    ],
+                    from: ['./src/styles/tokens/*'],
                     to: ['./lib/styles/tokens/']
                 }
             ],
