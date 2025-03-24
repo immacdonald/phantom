@@ -67,6 +67,5 @@
         "react": ">=18",
         "react-dom": ">=18",
         "react-router-dom": ">=6"
-    },
-    "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead"
+    }
 }

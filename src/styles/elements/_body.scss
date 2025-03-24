@@ -12,11 +12,14 @@
         box-sizing: inherit;
     }
 
+    $scrollbar-width: 14px;
+
     html {
         height: 100%;
         display: block;
         box-sizing: border-box;
         scroll-behavior: smooth;
+        overflow-x: hidden;
     }
 
     body {
@@ -28,12 +31,14 @@
         color: var(--color-text);
         background-color: var(--background-page);
         background-attachment: fixed;
-        overflow-x: hidden;
     }
 
     html[data-noscroll] body {
         overflow-y: hidden;
-        padding-right: 14px;
+    }
+
+    html[data-noscroll][data-scroll-padding] body {
+        padding-right: $scrollbar-width;
     }
 
     [id] {
@@ -45,7 +50,7 @@
     }
 
     ::-webkit-scrollbar {
-        width: 14px;
+        width: $scrollbar-width;
         height: 8px;
     }
 

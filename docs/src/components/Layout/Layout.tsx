@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from 'react';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import {
     Button,
@@ -23,7 +24,6 @@ import {
 import { PhantomLogo } from '@assets';
 import { routes } from '../../routes';
 import styles from './Layout.module.scss';
-import { useLocation } from 'react-router-dom';
 
 interface LayoutProps {
     children?: ReactNode;
@@ -43,16 +43,16 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         setSidebarCooldown(true);
 
         setTimeout(() => setSidebarCooldown(false), 500);
-    }
+    };
 
     useOutsideClick(sidebarRef, () => {
         if (sidebarActive) {
-            closeSidebar()
+            closeSidebar();
         }
     });
 
     useEffect(() => {
-        closeSidebar()
+        closeSidebar();
     }, [isMobile]);
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
     useEffect(() => {
         closeSidebar();
-    }, [location])
+    }, [location]);
 
     const SidebarContent = useMemo(
         () => (
@@ -90,11 +90,16 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <div style={{ width: '100%' }}>
             <DynamicHeader hasBackground pageSpace="pad" style={{ borderBottom: tokens.border.soft, paddingInline: tokens.space.lg }}>
                 <Row align="start" gap={tokens.space.md}>
-                    {isMobile && <Button Icon={MenuIcon} onClick={() => {
-                        if (!sidebarCooldown) {
-                            setSidebarActive(!sidebarActive)
-                        }
-                    }} />}
+                    {isMobile && (
+                        <Button
+                            Icon={MenuIcon}
+                            onClick={() => {
+                                if (!sidebarCooldown) {
+                                    setSidebarActive(!sidebarActive);
+                                }
+                            }}
+                        />
+                    )}
                     <StyledLink to="/" inherit>
                         <PhantomLogo />
                     </StyledLink>

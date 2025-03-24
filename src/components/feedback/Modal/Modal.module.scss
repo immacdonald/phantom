@@ -3,7 +3,7 @@
         display: flex;
         position: relative;
         width: 25%;
-        min-width: 480px;
+        min-width: min(480px, 95%);
         max-height: 90%;
         border-radius: var(--border-radius);
         background-color: var(--background-overlay);

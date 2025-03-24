@@ -8,6 +8,7 @@
         padding-block: var(--layout-space-xs);
         flex-grow: 1;
         position: relative;
+        overflow-x: hidden;
 
         &:not(:last-of-type) {
             flex: 0 0 auto;

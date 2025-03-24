@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "host": "vite --host",
         "build": "tsc && vite build",
         "preview": "vite preview",
         "lint": "npx eslint . --report-unused-disable-directives --fix && tsc --noEmit --emitDeclarationOnly false",
@@ -16,6 +17,7 @@
     "dependencies": {
         "@react-docgen/cli": "^2.0.6",
         "clsx": "^2.1.1",
+        "phantom-library": "^1.1.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-router-dom": "^6.26.2"

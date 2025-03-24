@@ -63,10 +63,16 @@ export default defineConfig({
         svgr(),
         copy({
             resolveFrom: 'cwd',
-            assets: {
-                from: ['./src/styles/{styles,tokens.module}.scss'],
-                to: ['./lib/styles/']
-            },
+            assets: [
+                {
+                    from: ['./src/styles/styles.scss'],
+                    to: ['./lib/styles/']
+                },
+                {
+                    from: ['./src/styles/tokens/*'],
+                    to: ['./lib/styles/tokens/']
+                }
+            ],
             watch: true
         })
     ]
