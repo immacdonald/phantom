@@ -170,7 +170,7 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
             };
 
             return (
-                <StyledLink to={link} external={external} disabled={disabled} {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
+                <StyledLink to={link} external={external} disabled={disabled} inherit {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
                     {content}
                 </StyledLink>
             );

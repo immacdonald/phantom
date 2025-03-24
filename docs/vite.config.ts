@@ -25,7 +25,7 @@ const baseConfig = {
                 silenceDeprecations: ['legacy-js-api']
             }
         }
-    }
+    },
 };
 
 function devConfig(): UserConfig {
@@ -37,6 +37,6 @@ function devConfig(): UserConfig {
 function prodConfig(): UserConfig {
     return {
         ...baseConfig,
-        base: '/phantom/'
+        //base: '/phantom/'
     };
 }
