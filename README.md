@@ -2,7 +2,11 @@
 
 **React Components, Hooks, Utilities, and Design Systems**
 
+![Phantom Library Banner](https://raw.githubusercontent.com/immacdonald/phantom/refs/heads/main/docs/src/assets/phantom-banner.png)
+
 The Phantom Library for React is a versatile and powerful package designed to streamline your workflow for any sort of web development project by providing a collection of cohesive, modular React components. Each component is built with flexibility in mind, allowing for easy customization using React props and modern CSS styling practices. Whether you're building a complex application or a simple interface, Phantom enables you to maintain consistency and efficiency across your projects by leveraging a well-structured design system.
+
+For documentation and example usage please visit [https://immacdonald.github.io/phantom/](https://immacdonald.github.io/phantom/).
 
 ### Installation
 
@@ -23,6 +27,8 @@ All done!
 
 #### Components
 
+Phantom contains dozens of components from essential building blocks like typography and buttons, to more advanced components like modals and segmented controls.
+
 #### Responsive Design
 
-Through the use of CSS variables and React contexts which span the entire app, it is simple and easy to develop a consistent design style for your websites. Phantom also includes integration with SASS for easily utilizing design tokens for attributes such as colors and sizes.
+Through the use of CSS variables and global React contexts it is simple and easy to develop a consistent design style for your websites. Phantom also includes integration with SASS for easily utilizing design tokens for attributes such as colors and sizes.
