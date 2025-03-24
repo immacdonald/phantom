@@ -37,6 +37,6 @@ function devConfig(): UserConfig {
 function prodConfig(): UserConfig {
     return {
         ...baseConfig,
-        //base: '/phantom/'
+        base: '/phantom/'
     };
 }
