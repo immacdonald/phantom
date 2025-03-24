@@ -18,11 +18,6 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v4
 
-            - name: Install and build phantom-library
-              run: |
-                  npm ci
-                  npm run build
-
             - name: Install dependencies and build docs
               run: |
                   cd docs
