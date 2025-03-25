@@ -25,7 +25,7 @@ const baseConfig = {
                 silenceDeprecations: ['legacy-js-api']
             }
         }
-    },
+    }
 };
 
 function devConfig(): UserConfig {
