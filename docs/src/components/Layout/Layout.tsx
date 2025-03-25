@@ -38,7 +38,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     const sidebarRef = useRef<HTMLElement>(null);
     const setNoScroll = useNoScroll();
 
-    const closeSidebar = () => {
+    const closeSidebar = (): void => {
         setSidebarActive(false);
         setSidebarCooldown(true);
 

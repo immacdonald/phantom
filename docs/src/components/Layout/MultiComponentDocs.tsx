@@ -25,15 +25,13 @@ const MultiComponentDocs: FC<MultiComponentDocsProps> = ({ name, about, importSt
                     <Typography.Paragraph>{about}</Typography.Paragraph>
                     <Row align="start" gap={tokens.space.md}>
                         <Typography.Text soft>Import </Typography.Text>
-                        <pre>
-                            <code>{importStatement || `import { ${name}} } from 'phantom-library'`}</code>
-                        </pre>
+                        <code>{importStatement || `import { ${name}} } from 'phantom-library'`}</code>
                     </Row>
                     <Row align="start" gap={tokens.space.md}>
                         <Typography.Text soft>Source </Typography.Text>
                         <Typography.Text>
                             <StyledLink to={sourceURL} inherit external>
-                                {formattedSource} <GitHubIcon />
+                                <code>{formattedSource}</code> <GitHubIcon />
                             </StyledLink>
                         </Typography.Text>
                     </Row>

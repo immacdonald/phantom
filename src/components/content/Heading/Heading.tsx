@@ -26,45 +26,50 @@ interface HeadingProps extends CommonComponentProps {
     /** The size of the subheading if it should differ from the heading scale. */
     subheadingSize?: HeadingLevels;
 
+    /** Whether both the heading and subheading should be soft text. */
+    soft?: boolean;
+
     /** The main heading content. */
     children?: ReactNode;
 }
 
 /** A flexible heading component with optional subheading and size variations. */
-const Heading: FC<HeadingProps> = forwardRef<HTMLElement | HTMLHeadingElement, HeadingProps>(({ subheading, align, size = 'regular', subheadingSize, children, className, style, ...props }, ref) => {
-    const HeadingAs = headingTags[size].heading;
-    const SubheadingAs = headingTags[subheadingSize || size].subheading;
+const Heading: FC<HeadingProps> = forwardRef<HTMLElement | HTMLHeadingElement, HeadingProps>(
+    ({ subheading, align, size = 'regular', subheadingSize, soft, children, className, style, ...props }, ref) => {
+        const HeadingAs = headingTags[size].heading;
+        const SubheadingAs = headingTags[subheadingSize || size].subheading;
 
-    // Computes the inline styles for text alignment.
-    const computedStyle: CSSProperties = { textAlign: align, ...style };
-    const titleClass = clsx(styles.title, className);
-    const subheadingClass = styles.subheading;
+        // Computes the inline styles for text alignment.
+        const computedStyle: CSSProperties = { textAlign: align, ...style };
+        const titleClass = clsx(styles.title, { [styles.soft]: soft }, className);
+        const subheadingClass = styles.subheading;
 
-    // If both a heading and subheading exist, wrap them in a `<header>` tag.
-    if (children && subheading) {
+        // If both a heading and subheading exist, wrap them in a `<header>` tag.
+        if (children && subheading) {
+            return (
+                <header className={clsx(styles.header, styles[size])} style={computedStyle} {...props} ref={ref}>
+                    <HeadingAs className={titleClass}>{children}</HeadingAs>
+                    <SubheadingAs className={subheadingClass}>{subheading}</SubheadingAs>
+                </header>
+            );
+        }
+
+        // If only a heading exists, return it without a `<header>` wrapper.
+        if (children) {
+            return (
+                <HeadingAs className={titleClass} style={computedStyle} {...props} ref={ref as React.RefObject<HTMLHeadingElement>}>
+                    {children}
+                </HeadingAs>
+            );
+        }
+
+        // If only a subheading exists, return it instead of the main heading.
         return (
-            <header className={clsx(styles.header, styles[size])} style={computedStyle} {...props} ref={ref}>
-                <HeadingAs className={titleClass}>{children}</HeadingAs>
-                <SubheadingAs className={subheadingClass}>{subheading}</SubheadingAs>
-            </header>
+            <SubheadingAs className={subheadingClass} style={computedStyle} {...props} ref={ref as React.RefObject<HTMLHeadingElement>}>
+                {subheading}
+            </SubheadingAs>
         );
     }
-
-    // If only a heading exists, return it without a `<header>` wrapper.
-    if (children) {
-        return (
-            <HeadingAs className={titleClass} style={computedStyle} {...props} ref={ref as React.RefObject<HTMLHeadingElement>}>
-                {children}
-            </HeadingAs>
-        );
-    }
-
-    // If only a subheading exists, return it instead of the main heading.
-    return (
-        <SubheadingAs className={subheadingClass} style={computedStyle} {...props} ref={ref as React.RefObject<HTMLHeadingElement>}>
-            {subheading}
-        </SubheadingAs>
-    );
-});
+);
 
 export { Heading };

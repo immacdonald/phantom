@@ -7,8 +7,16 @@
         }
 
         .subheading {
-            margin-bottom: var(--space-sm);
+            margin-bottom: 0;
             font-weight: normal;
+            color: var(--color-text-soft);
+        }
+
+        .title + .subheading {
+            margin-top: var(--space-xs);
+        }
+
+        &.soft .title {
             color: var(--color-text-soft);
         }
     }
