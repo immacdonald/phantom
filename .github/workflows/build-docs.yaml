@@ -22,6 +22,7 @@ jobs:
               run: |
                   cd docs
                   npm ci
+                  npm install phantom-library@latest
                   npm run build
 
             - name: Deploy to GitHub Pages
