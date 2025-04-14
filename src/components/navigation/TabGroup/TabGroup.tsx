@@ -1,6 +1,6 @@
 import type { Callback, NullablePrimitive, Option } from '@types';
-import type { CSSProperties, FC, ReactNode } from 'react';
-import { useEffect, useState } from 'react';
+import type { CSSProperties, ForwardRefExoticComponent, ReactNode, RefAttributes } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { Button, Row, Segmented } from '@components';
 import { orUndefined } from '@utility';
 import style from './TabGroup.module.scss';
@@ -40,7 +40,7 @@ interface TabGroupProps {
 }
 
 /** A tab group component that allows users to switch between different content sections. */
-const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, compact, innerClassName, innerStyle, onChange }) => {
+const TabGroup = forwardRef<HTMLDivElement, TabGroupProps>(({ tabs, variant = 'tabs', selectedIndex, compact, innerClassName, innerStyle, onChange }, ref) => {
     const [selectedTab, setTab] = useState<number>(selectedIndex || 0);
 
     useEffect(() => {
@@ -71,9 +71,10 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, co
                     className={style.tabsSegmented}
                     role="tablist"
                     compact={compact}
+                    ref={ref}
                 />
             ) : (
-                <Row className={style.tabs} role="tablist">
+                <Row className={style.tabs} role="tablist" ref={ref}>
                     {tabs.map((tab: Tab, index: number) => {
                         const selected = index === selectedTab;
                         return (
@@ -101,6 +102,6 @@ const TabGroup: FC<TabGroupProps> = ({ tabs, variant = 'tabs', selectedIndex, co
             </div>
         </>
     );
-};
+}) as ForwardRefExoticComponent<TabGroupProps & RefAttributes<HTMLDivElement>>;
 
 export { TabGroup };

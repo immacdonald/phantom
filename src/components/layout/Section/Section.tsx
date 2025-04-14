@@ -1,7 +1,8 @@
-import type { CommonComponentProps } from '@types';
-import type { CSSProperties, FC, ReactNode } from 'react';
+import type { BackgroundDepth, CommonComponentProps } from '@types';
+import type { CSSProperties, ForwardRefExoticComponent, ReactNode, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
+import { tokens } from '@styles/tokens';
 import styles from './Section.module.scss';
 
 type EdgeShape = 'inset' | 'outset';
@@ -14,12 +15,9 @@ interface SectionEdges {
     bottom?: EdgeShape;
 }
 
-interface SectionProps extends CommonComponentProps {
-    /** Defines the overall section style variant. */
-    variant?: 'regular' | 'floating' | 'inset';
-
-    /** Determines whether the section has a background color or image. */
-    hasBackground?: boolean;
+interface SectionProps extends CommonComponentProps<HTMLDivElement> {
+    /** Determines the background color of the section. */
+    background?: BackgroundDepth;
 
     /** A URL for a background image applied to the section. */
     backgroundImage?: string;
@@ -35,49 +33,40 @@ interface SectionProps extends CommonComponentProps {
 }
 
 /** A flexible section component that supports background images, parallax effects, and various styling options. */
-const Section: FC<SectionProps> = forwardRef<HTMLDivElement, SectionProps>(
-    ({ variant = 'regular', hasBackground = false, backgroundImage, parallax, edges, children, className, style, ...props }, ref) => {
-        const sectionClass = clsx(
-            styles.section,
-            {
-                [styles.regular]: variant === 'regular' || !variant,
-                [styles.floating]: variant === 'floating',
-                [styles.inset]: variant === 'inset',
-                [styles.background]: hasBackground,
-                [styles.image]: !!backgroundImage,
-                [styles.parallax]: parallax
-            },
-            className
-        );
+const Section = forwardRef<HTMLDivElement, SectionProps>(({ background, backgroundImage, parallax, edges, children, className, style, ...props }, ref) => {
+    const sectionClass = clsx(
+        styles.section,
+        {
+            [styles.image]: !!backgroundImage,
+            [styles.parallax]: parallax
+        },
+        className
+    );
 
-        const irregularShape = variant === 'floating' || variant === 'inset';
-        const innerDiv = irregularShape;
-
-        if (irregularShape && edges) {
-            console.warn('Cannot have an edge shape on an irregular section shape');
-        }
-
-        if (parallax && !backgroundImage) {
-            console.warn('Parallax effect enabled but no background image provided.');
-        }
-
-        const sectionData = {
-            'data-top-shape': edges?.top,
-            'data-bottom-shape': edges?.bottom
-        };
-
-        return (
-            <section
-                className={sectionClass}
-                style={{ '--background-image': backgroundImage ? `url(${backgroundImage})` : undefined, ...style } as CSSProperties}
-                ref={ref}
-                {...sectionData}
-                {...props}
-            >
-                {innerDiv ? <div>{children}</div> : <>{children}</>}
-            </section>
-        );
+    if (background && backgroundImage) {
+        console.warn('Section cannot have a background color and background image.');
     }
-);
+
+    if (parallax && !backgroundImage) {
+        console.warn('Parallax effect enabled but no background image provided.');
+    }
+
+    const sectionData = {
+        'data-top-shape': edges?.top,
+        'data-bottom-shape': edges?.bottom
+    };
+
+    const sectionStyle: CSSProperties = {
+        ...(background && { '--background-color': tokens.color.background[background] }),
+        ...(backgroundImage && { '--background-image': `url(${backgroundImage})` }),
+        ...style
+    };
+
+    return (
+        <section className={sectionClass} style={sectionStyle} {...sectionData} ref={ref} {...props}>
+            {children}
+        </section>
+    );
+}) as ForwardRefExoticComponent<SectionProps & RefAttributes<HTMLDivElement>>;
 
 export { Section };

@@ -1,5 +1,5 @@
 import type { Callback, CommonComponentProps } from '@types';
-import type { FC, ReactElement, ReactNode } from 'react';
+import type { ForwardRefExoticComponent, ReactElement, ReactNode, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 import { Button, Heading, Icon } from '@components';
@@ -39,7 +39,7 @@ interface ModalProps extends CommonComponentProps<HTMLDivElement> {
 }
 
 /** A flexible modal component with an optional header, icon, buttons, and customizable actions. */
-const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
+const Modal = forwardRef<HTMLDivElement, ModalProps>(
     ({ icon, header, accept = 'Okay', reject = 'Cancel', swapColors = false, onAccept, closeOnAccept = true, onReject, form, children, className, ...props }, ref) => {
         return (
             <div className={clsx(style.modal, className)} ref={ref} {...props}>
@@ -86,6 +86,6 @@ const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
             </div>
         );
     }
-);
+) as ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivElement>>;
 
 export { Modal };

@@ -1,5 +1,5 @@
 import type { CommonComponentProps, FlexAlign, ResponsiveType } from '@types';
-import type { CSSProperties, FC, ReactNode } from 'react';
+import type { CSSProperties, ForwardRefExoticComponent, ReactNode, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 import { useResponsiveContext } from '@contexts';
@@ -25,13 +25,26 @@ interface FlexProps extends CommonComponentProps<HTMLDivElement> {
 
     /** Sets position as relative. */
     relative?: boolean;
+
+    /** Takes up 100% of available width. */
+    block?: boolean;
+
+    /** Takes up 100% of available height. */
+    stretch?: boolean;
 }
 
 /** A responsive flexbox container component with configurable alignment, direction, and spacing. */
-const Flex: FC<FlexProps> = forwardRef<HTMLDivElement, FlexProps>(({ children, flex, align, verticalAlign, gap, relative = false, className, style, ...props }, ref) => {
+const Flex = forwardRef<HTMLDivElement, FlexProps>(({ children, flex, align, verticalAlign, gap, relative = false, block, stretch, className, style, ...props }, ref) => {
     const { parse } = useResponsiveContext();
 
-    const flexClasses = clsx(styles.flex, className);
+    const flexClasses = clsx(
+        styles.flex,
+        {
+            [styles.block]: parse<boolean>(block),
+            [styles.stretch]: parse<boolean>(stretch)
+        },
+        className
+    );
     const flexDirection = parse<FlexDirection>(flex);
 
     return (
@@ -52,7 +65,7 @@ const Flex: FC<FlexProps> = forwardRef<HTMLDivElement, FlexProps>(({ children, f
             {children}
         </div>
     );
-});
+}) as ForwardRefExoticComponent<FlexProps & RefAttributes<HTMLDivElement>>;
 
 export { Flex };
 export type { FlexProps };

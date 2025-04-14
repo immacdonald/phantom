@@ -4,14 +4,7 @@
     // Links
     a {
         text-decoration: none;
-
-        // color: var(--context-color-text, var(--color-primary));
-        // color: var(--color-primary);
         color: inherit;
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 
     // Lists

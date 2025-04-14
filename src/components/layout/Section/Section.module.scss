@@ -3,6 +3,7 @@
         @include responsive-width;
 
         --background-image: none;
+        --background-color: transparent;
 
         min-height: 64px;
         padding-block: var(--layout-space-xs);
@@ -18,14 +19,7 @@
         }
 
         &.background {
-            &.regular {
-                background-color: var(--background-container);
-            }
-
-            &.floating,
-            &.inset {
-                background-color: var(--background-container);
-            }
+            background-color: var(--background-color);
         }
 
         &.floating {

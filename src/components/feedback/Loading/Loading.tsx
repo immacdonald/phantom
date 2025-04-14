@@ -1,5 +1,5 @@
 import type { CommonComponentProps } from '@types';
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef, useMemo } from 'react';
 import clsx from 'clsx';
 import styles from './Loading.module.scss';
@@ -25,7 +25,7 @@ interface LoadingProps extends CommonComponentProps {
 }
 
 /** A customizable loading spinner component with support for size, thickness, and color adjustments. */
-const Loading: FC<LoadingProps> = forwardRef<HTMLDivElement, LoadingProps>(({ size, thickness, width, height, minHeight, color, className, style, ...props }, ref) => {
+const Loading = forwardRef<HTMLDivElement, LoadingProps>(({ size, thickness, width, height, minHeight, color, className, style, ...props }, ref) => {
     const properties: CSSProperties = useMemo(
         () => ({
             '--loading-size': size ? `${size}px` : undefined,
@@ -46,6 +46,6 @@ const Loading: FC<LoadingProps> = forwardRef<HTMLDivElement, LoadingProps>(({ si
             <div />
         </div>
     );
-});
+}) as ForwardRefExoticComponent<LoadingProps & RefAttributes<HTMLDivElement>>;
 
 export { Loading };

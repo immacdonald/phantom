@@ -1,10 +1,10 @@
 import type { CommonComponentProps, FlexAlign, VisualContext } from '@types';
 import type { IconProps } from '@components';
-import type { ComponentPropsWithoutRef, ComponentType, CSSProperties, FC, MouseEvent, MouseEventHandler, ReactNode, Ref } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType, CSSProperties, ForwardRefExoticComponent, MouseEvent, MouseEventHandler, ReactNode, Ref, RefAttributes } from 'react';
 import { forwardRef, useCallback, useMemo } from 'react';
 import type { Link } from 'react-router-dom';
 import clsx from 'clsx';
-import { Loading, StyledLink } from '@components';
+import { Loading, UnstyledLink } from '@components';
 import styles from './Button.module.scss';
 
 export type ButtonStyle = 'outline' | 'filled' | 'text' | 'ghost';
@@ -87,7 +87,7 @@ interface RegularButtonProps extends BaseButtonProps, Omit<CommonComponentProps<
 type ButtonProps = LinkButtonProps | RegularButtonProps;
 
 /** A versatile button component that supports links, different styles, icons, and loading states. */
-const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     (
         {
             type = 'default',
@@ -170,9 +170,9 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
             };
 
             return (
-                <StyledLink to={link} external={external} disabled={disabled} inherit {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
+                <UnstyledLink to={link} external={external} disabled={disabled} {...(linkProps as Omit<ComponentPropsWithoutRef<typeof Link>, 'to'>)}>
                     {content}
-                </StyledLink>
+                </UnstyledLink>
             );
         }
 
@@ -191,6 +191,6 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement | HTMLAnchorElement
             </button>
         );
     }
-);
+) as ForwardRefExoticComponent<ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>>;
 
 export { Button };

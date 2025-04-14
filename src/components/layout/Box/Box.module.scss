@@ -1,0 +1,25 @@
+@layer components {
+    .box {
+        --background-color: transparent;
+
+        background-color: var(--background-color);
+        color: var(--color-text);
+        padding: var(--space);
+
+        &.border {
+            border: var(--border-soft);
+        }
+
+        &:not(.sharp) {
+            border-radius: var(--border-radius);
+        }
+
+        &.block {
+            width: 100%;
+        }
+
+        &.stretch {
+            height: 100%;
+        }
+    }
+}

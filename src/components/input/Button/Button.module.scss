@@ -137,6 +137,7 @@
 
         &.rounded {
             border-radius: var(--button-size);
+            min-width: var(--button-size);
         }
 
         --button-default: var(--color-text);

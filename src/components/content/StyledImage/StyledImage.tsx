@@ -1,5 +1,5 @@
 import type { CommonComponentProps } from '@types';
-import type { CSSProperties, FC, ReactNode } from 'react';
+import type { CSSProperties, ForwardRefExoticComponent, ReactNode, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from './StyledImage.module.scss';
@@ -31,7 +31,7 @@ interface StyledImageProps extends CommonComponentProps {
 }
 
 /** A styled image component supporting borders, rounded corners, sizing constraints, and captions. */
-const StyledImage: FC<StyledImageProps> = forwardRef<HTMLElement, StyledImageProps>(({ image, alt, border, round, fit, maxWidth, maxHeight, caption, className, style, ...props }, ref) => {
+const StyledImage = forwardRef<HTMLElement, StyledImageProps>(({ image, alt, border, round, fit, maxWidth, maxHeight, caption, className, style, ...props }, ref) => {
     // Computes the class names based on props.
     const imageStyle = clsx(
         styles.image,
@@ -56,6 +56,6 @@ const StyledImage: FC<StyledImageProps> = forwardRef<HTMLElement, StyledImagePro
             {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
         </figure>
     );
-});
+}) as ForwardRefExoticComponent<StyledImageProps & RefAttributes<HTMLElement>>;
 
 export { StyledImage };

@@ -1,11 +1,22 @@
 import type { FC } from 'react';
+import { MultiDropdown } from 'phantom-library';
 import { ComponentDocs } from '@components/Layout/ComponentDocs';
 import { getComponentDoc } from '@utility';
 
 const MultiDropdownDocs: FC = () => {
     const parsedDocs = getComponentDoc('MultiDropdown')!;
 
-    return <ComponentDocs {...parsedDocs} unstable />;
+    const options = [
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2 },
+        { label: 'Option 3', value: 3 }
+    ];
+
+    return (
+        <ComponentDocs {...parsedDocs} unstable>
+            <MultiDropdown options={options} />
+        </ComponentDocs>
+    );
 };
 
 export { MultiDropdownDocs };

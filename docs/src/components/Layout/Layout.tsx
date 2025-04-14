@@ -8,7 +8,6 @@ import {
     Row,
     StyledFooter,
     Typography,
-    StyledLink,
     useResponsiveContext,
     MenuIcon,
     tokens,
@@ -19,7 +18,8 @@ import {
     MoonFilledIcon,
     CircleFilledIcon,
     useOutsideClick,
-    useNoScroll
+    useNoScroll,
+    StyledLink
 } from 'phantom-library';
 import { PhantomLogo } from '@assets';
 import { routes } from '../../routes';
@@ -89,7 +89,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <div style={{ width: '100%' }}>
             <DynamicHeader hasBackground pageSpace="pad" style={{ borderBottom: tokens.border.soft, paddingInline: tokens.space.lg }}>
-                <Row align="start" gap={tokens.space.md}>
+                <Row align="start" gap={tokens.space.md} block>
                     {isMobile && (
                         <Button
                             Icon={MenuIcon}
@@ -100,13 +100,13 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                             }}
                         />
                     )}
-                    <StyledLink to="/" inherit>
+                    <StyledLink to="/" visual={null} hover="color">
                         <PhantomLogo />
                     </StyledLink>
-                    <StyledLink to="/" inherit style={{ marginLeft: 'auto' }}>
+                    <StyledLink to="/" style={{ marginLeft: 'auto' }} visual={null} hover="subtle">
                         About
                     </StyledLink>
-                    <StyledLink to="https://github.com/immacdonald/phantom" inherit external>
+                    <StyledLink to="https://github.com/immacdonald/phantom" visual={null} hover="subtle" external>
                         <GitHubIcon />
                     </StyledLink>
                     <Button Icon={theme == 'light' ? SunFilledIcon : MoonFilledIcon} onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')} variant="text" />
@@ -120,7 +120,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                         <Typography.Paragraph>The Phantom UI Library</Typography.Paragraph>
                         <Typography.Paragraph>
                             Created with &#x2665; by{' '}
-                            <StyledLink to="https://ian-macdonald.com" inherit external>
+                            <StyledLink to="https://ian-macdonald.com" external visual={null} hover="color">
                                 Ian MacDonald
                             </StyledLink>
                         </Typography.Paragraph>

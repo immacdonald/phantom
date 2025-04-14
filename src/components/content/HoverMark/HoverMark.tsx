@@ -1,4 +1,4 @@
-import type { FC, HTMLAttributes, ReactNode } from 'react';
+import type { ForwardRefExoticComponent, HTMLAttributes, ReactNode, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 import style from './HoverMark.module.scss';
 
@@ -8,12 +8,12 @@ interface HoverMarkProps extends HTMLAttributes<HTMLElement> {
 }
 
 /** A component that highlights text when hovered. */
-const HoverMark: FC<HoverMarkProps> = forwardRef<HTMLElement, HoverMarkProps>(({ children, ...props }, ref) => {
+const HoverMark = forwardRef<HTMLElement, HoverMarkProps>(({ children, ...props }, ref) => {
     return (
         <mark className={style.hoverMark} ref={ref} {...props}>
             {children}
         </mark>
     );
-});
+}) as ForwardRefExoticComponent<HoverMarkProps & RefAttributes<HTMLElement>>;
 
 export { HoverMark };

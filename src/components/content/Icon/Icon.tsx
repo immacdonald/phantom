@@ -1,5 +1,5 @@
 import type { CommonComponentProps, VisualContext } from '@types';
-import type { CSSProperties, FC, ReactElement } from 'react';
+import type { CSSProperties, ForwardRefExoticComponent, ReactElement, RefAttributes } from 'react';
 import { cloneElement, forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from './Icon.module.scss';
@@ -31,7 +31,7 @@ interface FullIconProps extends IconProps {
 }
 
 /** A flexible icon component that supports sizing, context-based theming, and tooltips. */
-const Icon: FC<FullIconProps> = forwardRef<HTMLElement, FullIconProps>(({ icon, size, context, inline = false, tooltip, className, style, ...props }, ref) => {
+const Icon = forwardRef<HTMLElement, FullIconProps>(({ icon, size, context, inline = false, tooltip, className, style, ...props }, ref) => {
     const properties = (size ? { '--icon-size': iconSizes[size] } : {}) as CSSProperties;
 
     const classes = clsx(
@@ -53,7 +53,7 @@ const Icon: FC<FullIconProps> = forwardRef<HTMLElement, FullIconProps>(({ icon, 
         ref,
         ...props
     });
-});
+}) as ForwardRefExoticComponent<FullIconProps & RefAttributes<HTMLElement>>;
 
 export { Icon };
 export type { IconProps };

@@ -91,10 +91,6 @@
                 > svg {
                     fill: var(--input-text-color-active) !important;
                 }
-
-                &:hover {
-                    background-color: var(--input-text-color-active-hover);
-                }
             }
         }
 
@@ -114,6 +110,7 @@
         background-color: var(--input-background-color);
         margin-top: -2px;
         z-index: 50;
+        border: 1px solid;
         border-color: var(--input-color-active);
         border-top: none;
         border-radius: 0 0 var(--border-radius) var(--border-radius);

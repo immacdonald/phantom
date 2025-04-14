@@ -1,7 +1,7 @@
 import type { ComponentDocumentation, PropertyDocumentation } from '@types';
 import type { FC, ReactNode } from 'react';
 import { Fragment } from 'react';
-import { Callout, Column, tokens, Divider, Heading, Row, Section, Typography, StyledLink, GitHubIcon } from 'phantom-library';
+import { Callout, Column, tokens, Divider, Heading, Row, Section, Typography, GitHubIcon, UnstyledLink } from 'phantom-library';
 import styles from './Docs.module.scss';
 
 interface ComponentDocsProps extends Omit<ComponentDocumentation, 'examples'> {
@@ -37,9 +37,9 @@ const ComponentDocs: FC<ComponentDocsProps> = ({ name, about, importStatement, s
                     <Row align="start" gap={tokens.space.md}>
                         <Typography.Text soft>Source </Typography.Text>
                         <Typography.Text>
-                            <StyledLink to={sourceURL} inherit external>
+                            <UnstyledLink to={sourceURL} external>
                                 <code>{formattedSource}</code> <GitHubIcon />
-                            </StyledLink>
+                            </UnstyledLink>
                         </Typography.Text>
                     </Row>
                 </Column>
@@ -52,8 +52,9 @@ const ComponentDocs: FC<ComponentDocsProps> = ({ name, about, importStatement, s
                         </Column>
                     </>
                 )}
-                <br />
-                <Heading size="minor">{name} Props</Heading>
+                <Heading size="minor" style={{ marginTop: tokens.space.layout.sm }}>
+                    {name} Props
+                </Heading>
                 <table className={styles.properties}>
                     <thead>
                         <tr>

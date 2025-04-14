@@ -1,5 +1,5 @@
 import type { Callback, CommonComponentProps, NullablePrimitive, Option } from '@types';
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@components';
@@ -29,7 +29,7 @@ interface SegmentedProps extends Omit<CommonComponentProps, 'onChange'> {
 }
 
 /** A segmented button group that allows users to toggle between multiple options. */
-const Segmented: FC<SegmentedProps> = forwardRef<HTMLDivElement, SegmentedProps>(
+const Segmented = forwardRef<HTMLDivElement, SegmentedProps>(
     ({ options = [{ value: 'Default', label: 'Default' }], defaultValue, value, full, compact, disabled, onChange = (): void => {}, className, style }, ref) => {
         const [selected, setSelection] = useState<number | null>(value ?? defaultValue ?? null);
 
@@ -86,6 +86,6 @@ const Segmented: FC<SegmentedProps> = forwardRef<HTMLDivElement, SegmentedProps>
             </div>
         );
     }
-);
+) as ForwardRefExoticComponent<SegmentedProps & RefAttributes<HTMLDivElement>>;
 
 export { Segmented };

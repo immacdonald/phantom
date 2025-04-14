@@ -1,5 +1,5 @@
 import type { CommonComponentProps } from '@types';
-import type { FC } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 
 interface DividerProps extends CommonComponentProps<HTMLHRElement> {
@@ -11,7 +11,7 @@ interface DividerProps extends CommonComponentProps<HTMLHRElement> {
 }
 
 /** A horizontal divider with optional expansion beyond its container. */
-const Divider: FC<DividerProps> = forwardRef<HTMLHRElement, DividerProps>(({ expand, space, style, ...props }, ref) => {
+const Divider = forwardRef<HTMLHRElement, DividerProps>(({ expand, space, style, ...props }, ref) => {
     const computedStyle = {
         ...(expand ? { marginInline: `calc(-1 * ${expand})`, width: `calc(100% + 2 * ${expand})` } : {}),
         ...(space ? { marginBlock: space } : {}),
@@ -19,6 +19,6 @@ const Divider: FC<DividerProps> = forwardRef<HTMLHRElement, DividerProps>(({ exp
     };
 
     return <hr style={{ ...computedStyle }} ref={ref} {...props} />;
-});
+}) as ForwardRefExoticComponent<DividerProps & RefAttributes<HTMLHRElement>>;
 
 export { Divider };

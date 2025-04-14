@@ -31,6 +31,7 @@ import {
     ToggleDocs,
     TypographyDocs
 } from '@views';
+import { BoxDocs } from './views/docs/layout/BoxDocs';
 
 interface RouteContent {
     title: string;
@@ -81,6 +82,7 @@ const routes: RouteContent[] = [
     {
         title: 'Layout',
         navigation: [
+            { title: 'Box', link: '/box', docs: <BoxDocs /> },
             { title: 'DynamicHeader', link: '/dynamic-header', docs: <DynamicHeaderDocs /> },
             { title: 'Flex', link: '/flex', docs: <FlexDocs /> },
             { title: 'Page', link: '/page', docs: <PageDocs /> },

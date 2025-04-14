@@ -12,12 +12,12 @@ const StyledLinkDocs: FC = () => {
                 This is a <StyledLink to="/">styled link</StyledLink> with some text.
             </Typography.Paragraph>
             <Typography.Paragraph>
-                But this is a{' '}
-                <StyledLink to="https://www.example.com" external inherit>
+                While this is a{' '}
+                <StyledLink to="https://www.example.com" external visual={null} hover="color">
                     {' '}
-                    link to an external site using the inherited style{' '}
+                    link to an external site{' '}
                 </StyledLink>{' '}
-                to stand out less.
+                with just a hover effect.
             </Typography.Paragraph>
         </ComponentDocs>
     );

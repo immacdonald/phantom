@@ -1,5 +1,5 @@
 import type { CommonComponentProps } from '@types';
-import type { FC } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
@@ -22,7 +22,7 @@ interface BannerProps extends CommonComponentProps {
  * A floating notification banner that displays error or success messages.
  * It listens for notification changes and automatically updates its state to show new notifications.
  */
-const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notificationLength = 5000, concurrentNotificationDelay = 750, className, ...props }, ref) => {
+const Banner = forwardRef<HTMLDivElement, BannerProps>(({ notificationLength = 5000, concurrentNotificationDelay = 750, className, ...props }, ref) => {
     const [state, setState] = useState<boolean>(false);
     const [previousState, setPreviousState] = useState<boolean>(false);
 
@@ -85,7 +85,7 @@ const Banner: FC<BannerProps> = forwardRef<HTMLDivElement, BannerProps>(({ notif
         </div>,
         document.getElementById('root')!
     );
-});
+}) as ForwardRefExoticComponent<BannerProps & RefAttributes<HTMLElement>>;
 
 export { Banner };
 export type { BannerProps };

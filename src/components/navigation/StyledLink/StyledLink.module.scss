@@ -1,13 +1,59 @@
+@mixin link-color() {
+    color: var(--color-primary);
+}
+
+@mixin link-underline() {
+    text-decoration: underline;
+}
+
+@mixin link-bold() {
+    font-weight: bold;
+}
+
+@mixin link-subtle() {
+    color: var(--input-text-color-soft);
+}
+
 @layer components {
+    .unstyled {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
     .link {
-        &.styled {
-            color: var(--color-primary);
+        transition: color var(--transition-fast);
+
+        &.color {
+            @include link-color;
         }
 
-        &:not(.styled) {
-            &:hover {
-                text-decoration: none;
-            }
+        &.underline {
+            @include link-underline;
+        }
+
+        &.bold {
+            @include link-bold;
+        }
+
+        &.subtle {
+            @include link-subtle;
+        }
+
+        &.activeColor:hover {
+            @include link-color;
+        }
+
+        &.activeUnderline:hover {
+            @include link-underline;
+        }
+
+        &.activeBold:hover {
+            @include link-bold;
+        }
+
+        &.activeSubtle:hover {
+            @include link-subtle;
         }
     }
 }

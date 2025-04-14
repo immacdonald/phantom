@@ -1,7 +1,7 @@
 import type { ComponentDocumentation, PropertyDocumentation } from '@types';
 import type { FC, ReactNode } from 'react';
 import { Fragment } from 'react';
-import { Column, tokens, Divider, Heading, Row, Section, Typography, StyledLink, GitHubIcon } from 'phantom-library';
+import { Column, tokens, Divider, Heading, Row, Section, Typography, GitHubIcon, UnstyledLink } from 'phantom-library';
 import styles from './Docs.module.scss';
 
 interface MultiComponentDocsProps {
@@ -30,9 +30,9 @@ const MultiComponentDocs: FC<MultiComponentDocsProps> = ({ name, about, importSt
                     <Row align="start" gap={tokens.space.md}>
                         <Typography.Text soft>Source </Typography.Text>
                         <Typography.Text>
-                            <StyledLink to={sourceURL} inherit external>
+                            <UnstyledLink to={sourceURL} external>
                                 <code>{formattedSource}</code> <GitHubIcon />
-                            </StyledLink>
+                            </UnstyledLink>
                         </Typography.Text>
                     </Row>
                 </Column>

@@ -1,3 +1,4 @@
+export * from './Box';
 export * from './DynamicHeader';
 export * from './Flex';
 export * from './Page';

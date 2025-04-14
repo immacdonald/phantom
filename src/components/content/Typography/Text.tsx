@@ -1,5 +1,5 @@
 import type { CommonComponentProps } from '@types';
-import type { CSSProperties, FC, ReactNode } from 'react';
+import type { CSSProperties, ForwardRefExoticComponent, ReactNode, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from './Typography.module.scss';
@@ -19,7 +19,7 @@ interface TextProps extends CommonComponentProps {
 }
 
 /** A flexible text component supporting size, alignment, and optional paragraph rendering. */
-const Text: FC<TextProps> = forwardRef<HTMLSpanElement, TextProps>(({ size, align, soft, className, style, children, ...props }, ref) => {
+const Text = forwardRef<HTMLSpanElement, TextProps>(({ size, align, soft, className, style, children, ...props }, ref) => {
     const textClasses = clsx(
         styles.typography,
         {
@@ -38,7 +38,7 @@ const Text: FC<TextProps> = forwardRef<HTMLSpanElement, TextProps>(({ size, alig
             {children}
         </span>
     );
-});
+}) as ForwardRefExoticComponent<TextProps & RefAttributes<HTMLSpanElement>>;
 
 export { Text };
 export type { TextProps };

@@ -15,9 +15,9 @@
         .title + .subheading {
             margin-top: var(--space-xs);
         }
+    }
 
-        &.soft .title {
-            color: var(--color-text-soft);
-        }
+    .soft {
+        color: var(--color-text-soft);
     }
 }

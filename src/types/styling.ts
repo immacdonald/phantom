@@ -31,4 +31,6 @@ type Theme = 'light' | 'dark';
 
 type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export type { Breakpoints, CommonComponentProps, FlexAlign, FlexAlignSimple, HeadingTag, ResponsiveObject, ResponsiveType, Theme, VisualContext };
+type BackgroundDepth = 'page' | 'container' | 'content';
+
+export type { Breakpoints, CommonComponentProps, FlexAlign, FlexAlignSimple, HeadingTag, ResponsiveObject, ResponsiveType, Theme, VisualContext, BackgroundDepth };
