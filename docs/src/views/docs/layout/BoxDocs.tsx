@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, Typography } from 'phantom-library';
+import { Box, tokens, Typography } from 'phantom-library';
 import { ComponentDocs } from '@components/Layout/ComponentDocs';
 import { getComponentDoc } from '@utility';
 
@@ -8,10 +8,10 @@ const BoxDocs: FC = () => {
 
     return (
         <ComponentDocs {...parsedDocs}>
-            <Box background="content">
+            <Box background="content" padding={tokens.space.md}>
                 <Typography.Text>A box with a background color.</Typography.Text>
             </Box>
-            <Box border block>
+            <Box border block padding={tokens.space.md}>
                 <Typography.Text>A full-width box with a border.</Typography.Text>
             </Box>
         </ComponentDocs>

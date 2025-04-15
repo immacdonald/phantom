@@ -9,6 +9,7 @@
         padding-block: var(--layout-space-xs);
         flex-grow: 1;
         position: relative;
+        color: var(--color-text);
         background-color: var(--background-color);
 
         &:not(:last-of-type) {

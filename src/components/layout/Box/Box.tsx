@@ -16,6 +16,9 @@ interface BoxProps extends CommonComponentProps<HTMLDivElement> {
     /** Removes the default border radius corner rounding. */
     sharp?: boolean;
 
+    /** Internal padding of the box. */
+    padding?: string;
+
     /** Takes up 100% of available width. */
     block?: boolean;
 
@@ -27,7 +30,7 @@ interface BoxProps extends CommonComponentProps<HTMLDivElement> {
 }
 
 /** A basic styled box component. */
-const Box = forwardRef<HTMLDivElement, BoxProps>(({ background, border, sharp, block, stretch, className, style, children, ...props }, ref) => {
+const Box = forwardRef<HTMLDivElement, BoxProps>(({ background, border, sharp, padding, block, stretch, className, style, children, ...props }, ref) => {
     const { parse } = useResponsiveContext();
 
     const boxClasses = clsx(
@@ -43,6 +46,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(({ background, border, sharp, b
 
     const boxStyle: CSSProperties = {
         ...(background && { '--background-color': tokens.color.background[background] }),
+        ...(padding && { padding: padding }),
         ...style
     };
 

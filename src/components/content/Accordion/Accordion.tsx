@@ -1,6 +1,6 @@
 import type { Callback, CommonComponentProps, FlexAlign } from '@types';
 import { PollingRate } from '@types';
-import type { IconProps } from '@components';
+import type { ButtonStyle, IconProps } from '@components';
 import type { ComponentType, CSSProperties, FC, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
@@ -40,6 +40,9 @@ interface AccordionProps extends Omit<CommonComponentProps, 'onClick'> {
     /** Styles for the inner content container. */
     innerStyle?: CSSProperties;
 
+    /** Visual style of the accordion internal button. */
+    buttonStyle?: ButtonStyle;
+
     /** The content inside the accordion. */
     children: ReactNode;
 }
@@ -63,6 +66,7 @@ const Accordion: FC<AccordionProps> = ({
     onClick,
     innerClassName,
     innerStyle,
+    buttonStyle,
     children
 }) => {
     const [open, setState] = useState<boolean>(false);
@@ -107,7 +111,7 @@ const Accordion: FC<AccordionProps> = ({
                         setState(!open);
                         onClick?.();
                     }}
-                    variant="ghost"
+                    variant={buttonStyle || 'ghost'}
                     Icon={Icon ?? undefined}
                     align={labelAlignment}
                     iconRight={!iconLeft}
