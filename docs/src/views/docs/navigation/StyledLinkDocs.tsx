@@ -13,7 +13,7 @@ const StyledLinkDocs: FC = () => {
             </Typography.Paragraph>
             <Typography.Paragraph>
                 While this is a{' '}
-                <StyledLink to="https://www.example.com" external visual={null} hover="color">
+                <StyledLink to="https://www.example.com" external base={null} hover="color">
                     {' '}
                     link to an external site{' '}
                 </StyledLink>{' '}

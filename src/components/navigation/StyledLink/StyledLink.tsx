@@ -13,7 +13,7 @@ interface StyledLinkProps extends LinkProps, CommonComponentProps<HTMLAnchorElem
     disabled?: boolean;
 
     /** The base visual style for link. */
-    visual?: LinkDecoration | null;
+    base?: LinkDecoration | null;
 
     /** The style for link on hover. */
     hover?: LinkDecoration | null;
@@ -26,14 +26,14 @@ interface StyledLinkProps extends LinkProps, CommonComponentProps<HTMLAnchorElem
 }
 
 /** A styled link component with styling inheritance and external link handling. */
-const StyledLink = forwardRef<HTMLAnchorElement, StyledLinkProps>(({ to, visual = 'color', hover = 'underline', disabled, external, className, children, ...props }, ref) => {
+const StyledLink = forwardRef<HTMLAnchorElement, StyledLinkProps>(({ to, base = 'color', hover = 'underline', disabled, external, className, children, ...props }, ref) => {
     const linkClasses = clsx(
         styles.link,
         {
-            [styles.color]: visual == 'color',
-            [styles.bold]: visual == 'bold',
-            [styles.underline]: visual == 'underline',
-            [styles.subtle]: visual == 'subtle',
+            [styles.color]: base == 'color',
+            [styles.bold]: base == 'bold',
+            [styles.underline]: base == 'underline',
+            [styles.subtle]: base == 'subtle',
             [styles.activeColor]: hover == 'color',
             [styles.activeBold]: hover == 'bold',
             [styles.activeUnderline]: hover == 'underline',
