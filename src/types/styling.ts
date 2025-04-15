@@ -15,11 +15,13 @@ type ResponsiveObject<T> = {
 type ResponsiveType<T> = T | ResponsiveObject<T>;
 
 // Styling
-interface CommonComponentProps<T = HTMLElement> extends Omit<HTMLAttributes<T>, 'align' | 'children' | 'className' | 'id' | 'style'> {
+interface BaseCommonComponentProps {
     className?: string;
     style?: CSSProperties;
     id?: string;
 }
+
+interface CommonComponentProps<T extends HTMLElement = HTMLElement> extends Omit<HTMLAttributes<T>, 'align' | 'children' | 'className' | 'id' | 'style'>, BaseCommonComponentProps {}
 
 type VisualContext = 'primary' | 'accent' | 'positive' | 'critical' | 'warning' | 'info';
 
@@ -33,4 +35,4 @@ type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 type BackgroundDepth = 'page' | 'container' | 'content';
 
-export type { Breakpoints, CommonComponentProps, FlexAlign, FlexAlignSimple, HeadingTag, ResponsiveObject, ResponsiveType, Theme, VisualContext, BackgroundDepth };
+export type { Breakpoints, BaseCommonComponentProps, CommonComponentProps, FlexAlign, FlexAlignSimple, HeadingTag, ResponsiveObject, ResponsiveType, Theme, VisualContext, BackgroundDepth };

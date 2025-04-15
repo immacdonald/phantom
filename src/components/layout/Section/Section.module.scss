@@ -9,6 +9,7 @@
         padding-block: var(--layout-space-xs);
         flex-grow: 1;
         position: relative;
+        background-color: var(--background-color);
 
         &:not(:last-of-type) {
             flex: 0 0 auto;
@@ -16,10 +17,6 @@
 
         &:last-of-type {
             flex: 1 0 auto;
-        }
-
-        &.background {
-            background-color: var(--background-color);
         }
 
         &.image {
@@ -34,7 +31,7 @@
                 background-position: center center;
                 background-size: cover;
             }
-            
+
             @include parallax;
         }
 

@@ -1,6 +1,18 @@
-import type { CommonComponentProps, FlexAlign, VisualContext } from '@types';
+import type { BaseCommonComponentProps, FlexAlign, VisualContext } from '@types';
 import type { IconProps } from '@components';
-import type { ComponentPropsWithoutRef, ComponentType, CSSProperties, ForwardRefExoticComponent, MouseEvent, MouseEventHandler, ReactNode, Ref, RefAttributes } from 'react';
+import type {
+    AnchorHTMLAttributes,
+    ButtonHTMLAttributes,
+    ComponentPropsWithoutRef,
+    ComponentType,
+    CSSProperties,
+    ForwardRefExoticComponent,
+    MouseEvent,
+    MouseEventHandler,
+    ReactNode,
+    Ref,
+    RefAttributes
+} from 'react';
 import { forwardRef, useCallback, useMemo } from 'react';
 import type { Link } from 'react-router-dom';
 import clsx from 'clsx';
@@ -9,7 +21,7 @@ import styles from './Button.module.scss';
 
 export type ButtonStyle = 'outline' | 'filled' | 'text' | 'ghost';
 
-interface BaseButtonProps {
+interface BaseButtonProps extends BaseCommonComponentProps {
     /** Specifies the button type, determining default styles. */
     type?: 'primary' | 'default' | 'text';
 
@@ -51,7 +63,7 @@ interface BaseButtonProps {
 }
 
 /** Props for a link-style button using an `<a>` or `<Link>`. */
-interface LinkButtonProps extends BaseButtonProps, CommonComponentProps<HTMLAnchorElement> {
+interface LinkButtonProps extends BaseButtonProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type'> {
     /** The URL or route the button should navigate to. */
     link: string;
 
@@ -69,7 +81,7 @@ interface LinkButtonProps extends BaseButtonProps, CommonComponentProps<HTMLAnch
 }
 
 /** Props for a regular `<button>` element. */
-interface RegularButtonProps extends BaseButtonProps, Omit<CommonComponentProps<HTMLButtonElement>, 'type'> {
+interface RegularButtonProps extends BaseButtonProps, Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
     /** Ensures `link` is not passed when using a regular button. */
     link?: never;
 
