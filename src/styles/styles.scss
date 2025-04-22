@@ -35,13 +35,22 @@
         --color-text-disabled: var(--color-text-on-light-disabled);
         --color-text-inverse: var(--color-text-on-dark);
         --alpha-contrast: var(--alpha-dark);
+        --border-color-soft: var(--border-color-light);
+        --border-color-hard: var(--border-color-dark);
+
+        @include border-theme-tokens;
+
         --background-page: var(--background-page-light);
         --background-container: var(--background-container-light);
         --background-content: var(--background-content-light);
         --input-background-color: var(--white);
         --input-background-color-disabled: var(--grey-3);
         --input-background-color-selected: var(--grey-3);
+
+        @include input-theme-tokens;
+
         --scrollbar-color: var(--grey-3);
+        --filter-inverse: 0;
     }
 
     [data-theme='dark'] {
@@ -54,12 +63,18 @@
         --alpha-contrast: var(--alpha-light);
         --border-color-soft: var(--border-color-dark);
         --border-color-hard: var(--border-color-light);
+
+        @include border-theme-tokens;
+
         --background-page: var(--background-page-dark);
         --background-container: var(--background-container-dark);
         --background-content: var(--background-content-dark);
         --input-background-color: var(--grey-7);
         --input-background-color-disabled: var(--grey-6);
         --input-background-color-selected: var(--grey-6);
+
+        @include input-theme-tokens;
+
         --scrollbar-color: var(--grey-6);
         --filter-inverse: 1;
     }

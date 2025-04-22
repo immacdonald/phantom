@@ -2,6 +2,7 @@ import type { Breakpoints, Callback, Dimensions, ResponsiveObject, ResponsiveTyp
 import type { FC, ReactElement, ReactNode } from 'react';
 import { createContext } from 'react';
 import { useTheme, useWindowSize } from '@hooks';
+import { pxToInt } from '@utility';
 import { tokens } from '../styles/tokens';
 
 const breakpoints: Record<Breakpoints, string> = {
@@ -19,11 +20,6 @@ function isResponsiveObject<T>(obj: ResponsiveType<T>): boolean {
 
     return ['base', ...Object.keys(breakpoints)].some((key: string) => key in (obj as ResponsiveObject<T>));
 }
-
-const pxToInt = (property: string): number => {
-    const pixels = property.split('px')[0];
-    return +pixels;
-};
 
 const getCurrentBreakpoint = (width: number): Breakpoints | null => {
     for (const [breakpoint, token] of Object.entries(breakpoints)) {

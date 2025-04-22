@@ -62,4 +62,9 @@ const loadImageDimensions = (source: string): Promise<LoadedImage> => {
     });
 };
 
-export { loadImageDimensions, parseBool, parseNullableObject, parseNullableString, parsePrimitive };
+const pxToInt = (property: string): number => {
+    const pixels = property.split('px')[0];
+    return +pixels;
+};
+
+export { loadImageDimensions, parseBool, parseNullableObject, parseNullableString, parsePrimitive, pxToInt };

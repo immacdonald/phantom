@@ -1,6 +1,9 @@
 @mixin input-tokens {
     --input-color-active: var(--color-primary);
     --input-text-color-active: var(--color-text-on-primary);
+}
+
+@mixin input-theme-tokens {
     --input-border-color: var(--border-color-soft);
     --input-border: var(--border-width) solid var(--input-border-color);
     --input-outline: var(--border-width) solid var(--input-color-active);
